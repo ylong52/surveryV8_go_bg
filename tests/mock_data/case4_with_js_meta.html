@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>Brand Survey</title></head>
+<body>
+<script type="text/javascript">
+var SGWrap = SGWrap || {};
+SGWrap.questionData = {
+  "id": "q_brand",
+  "type": "single",
+  "title": "Which brand do you prefer?",
+  "options": [
+    {"id": "opt1", "text": "Brand A"},
+    {"id": "opt2", "text": "Brand B"},
+    {"id": "opt3", "text": "Brand C"}
+  ]
+};
+</script>
+<form id="survey-form">
+  <legend>Which brand do you prefer?</legend>
+  <input type="radio" name="brand" value="1"><label>Brand A</label>
+  <input type="radio" name="brand" value="2"><label>Brand B</label>
+  <input type="radio" name="brand" value="3"><label>Brand C</label>
+  <input type="submit" value="Next">
+</form>
+</body>
+</html>

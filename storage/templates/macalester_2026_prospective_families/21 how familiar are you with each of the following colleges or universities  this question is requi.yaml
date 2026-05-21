@@ -1,0 +1,28 @@
+survey_page:
+  fingerprint: "How familiar are you with each of the following colleges or universities?"
+  title: "(untitled)"
+  page_metadata:
+    has_next_button: true
+    has_submit_button: false
+    is_thank_you_page: false
+    is_empty_page: false
+    is_welcome_page: false
+  questions:
+    - title: "How familiar are you with each of the following colleges or universities?"
+      questions_type: "matrix_radio"
+      required: true
+      columns:
+        - "I've never heard of it"
+        - "I've only heard the name"
+        - "I've heard of it and could tell you 1-2 things about it"
+        - "I've heard of it and know it fairly well"
+      rows:
+        - "University of Minnesota - Twin Cities"
+        - "Washington University in St. Louis"
+        - "Macalester College"
+        - "Carleton College"
+      response_format:
+        type: "single_per_row"
+        orientation: "vertical"
+        option_sort: "shuffled"
+        max_selections: null

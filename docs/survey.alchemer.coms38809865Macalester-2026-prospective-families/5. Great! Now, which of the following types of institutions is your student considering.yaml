@@ -1,0 +1,17 @@
+survey_page:
+  fingerprint: "5. Great! Now, which of the following types of institutions is your student considering? Please select all that apply. *This question is required."
+  title: "5. Great! Now, which of the following types of institutions is your student considering? Please select all that apply. *This question is required."
+  questions:
+    - text: "5. Great! Now, which of the following types of institutions is your student considering? Please select all that apply. *This question is required."
+      question_type: "multi"
+      qid: "q1"
+      choices:
+        - "Vocational/Technical Program (<1 year)"
+        - "Vocational/Technical Program (1+ years)"
+        - "Community college (2-year program)"
+        - "Community college (2+ year program)"
+        - "Public University (4-year program)"
+        - "Private University (4-year program)"
+        - "Liberal Arts College (4-year program)"
+        - "Other"
+        - "None of the above"

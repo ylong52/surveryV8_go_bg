@@ -1,0 +1,24 @@
+survey_page:
+  fingerprint: "10. Which of the following statements best describes how financial aid will impact your student's decision on where to attend college or university?"
+  title: "Macalester 2026- prospective families"
+  page_metadata:
+    has_next_button: true
+    has_submit_button: false
+    is_thank_you_page: false
+    is_empty_page: false
+    is_welcome_page: false
+  questions:
+    - title: "Which of the following statements best describes how financial aid will impact your student's decision on where to attend college or university?"
+      questions_type: "single"
+      required: true
+      choices:
+        - "Financial aid will not impact where my student decides to go to college/university."
+        - "Financial aid will have some impact where my student decides to go to college/university."
+        - "Financial aid will have a large impact where my student decides to go to college/university."
+        - "Financial aid will be the sole deciding factor on where my student decides to go to college/university."
+      columns: 1
+      response_format:
+        type: "single_select"
+        orientation: "vertical"
+        option_sort: "as_appearing"
+        max_selections: null

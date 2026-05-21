@@ -1,0 +1,32 @@
+{
+  "question_types": [
+    {
+      "type": "single_choice",
+      "description": "单选题，从多个选项中选择一个"
+    },
+    {
+      "type": "multi_choice",
+      "description": "多选题，从多个选项中选择一个或多个"
+    },
+    {
+      "type": "matrix_single",
+      "description": "矩阵单选题，每行选择一列"
+    },
+    {
+      "type": "matrix_multiple",
+      "description": "矩阵多选题，每行可选择多列"
+    },
+    {
+      "type": "open_short",
+      "description": "简答题，填写短文本"
+    },
+    {
+      "type": "slider_scale",
+      "description": "滑动条量表题，在数值范围内选值"
+    },
+    {
+      "type": "instruction",
+      "description": "说明/引导页，无需作答"
+    }
+  ]
+}

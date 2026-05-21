@@ -1,0 +1,24 @@
+survey_page:
+  fingerprint: "How much do the politics of the state where a college or university is located impact your impression of that institution?"
+  title: "Macalester 2026- prospective families"
+  page_metadata:
+    has_next_button: true
+    has_submit_button: false
+    is_thank_you_page: false
+    is_empty_page: false
+    is_welcome_page: false
+  questions:
+    - title: "How much do the politics of the state where a college or university is located impact your impression of that institution?"
+      questions_type: "single"
+      required: true
+      choices:
+        - "Very much"
+        - "Somewhat"
+        - "Very little"
+        - "Not at all"
+      columns: 1
+      response_format:
+        type: "single_select"
+        orientation: "vertical"
+        option_sort: "as_appearing"
+        max_selections: null

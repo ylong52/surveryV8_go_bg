@@ -1,0 +1,80 @@
+﻿# config/page-fingerprints.yaml
+# 页面指纹配置文件
+
+version: "1.0"
+
+# 当前激活的关键词（系统启动时自动加载对应的组）
+active_keyword: "q_Macalester"
+
+# ─────────────────────────────────────────────────────────
+# 默认配置（所有站点共享，可被站点级配置覆盖）
+# ─────────────────────────────────────────────────────────
+defaults:
+  cache:
+    enabled: true
+    base_path: "storage/cache/{survey_id}/"
+    ttl_days: 30
+    save_screenshots: true
+    save_html: true
+    save_question_type_data: true
+
+  logs:
+    enabled: true
+    root_path: "storage/logs/{survey_id}"
+    
+    page_events:
+      enabled: true
+      subdir: "storage/page_events/{survey_id}"
+      filename_template: "page_events_{timestamp}.jsonl"
+      max_size_mb: 100
+      max_days: 30
+      events:
+        - fingerprint_extraction
+        - ai_analysis
+        - next_button_hook
+        - cache_skip
+        - page_skip
+    
+    analysis:
+      enabled: true
+      subdir: "storage/analysis/{survey_id}"
+      filename_template: "analysis_{timestamp}.jsonl"
+      max_size_mb: 100
+      max_days: 30
+      save:
+        subject: true
+        qtype: true
+        yaml: true
+        prompt: true
+        answers: true
+
+  filename_format:
+    max_length: 100
+    keep_chars: 'a-zA-Z0-9_'
+    collapse_underscores: true
+    trim_underscores: true
+    lowercase: true
+
+# ─────────────────────────────────────────────────────────
+# 网站配置
+# ─────────────────────────────────────────────────────────
+sites:
+    
+  - keyword: "q_Macalester"
+    name: "Macalester-2026-prospective-families"
+    url: "https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families"
+    survey_id: "macalester_2026_prospective_families"
+    updated_at: "2026-05-17"
+
+    # page_id_页面指纹正则配置
+    page_id_fingerprints:
+      question_pattern:
+        regex: 
+          - '/<legend[^>]*>([\s\S]*?)<\/legend>/gi'
+          - '/<label[^>]*>([\s\S]*?)<\/label>/gi'
+          - '/<div[^>]*>([\s\S]*?)<\/div>/gi'
+      
+    # Next/Submit 按钮结构
+    next_button:
+      next_pattern: '/<input[^>]*id="sg_NextButton"/'
+      wait_after_click: 1500

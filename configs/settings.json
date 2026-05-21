@@ -1,0 +1,6 @@
+{
+  "proxy": "",
+  "timeout_seconds": 30,
+  "storage_path": "./storage",
+  "survey_type": "macalester_2026_prospective_families"
+}

@@ -1,0 +1,25 @@
+survey_page:
+  fingerprint: "How important is prestige in your perception of a college university this question is required"
+  title: "Macalester 2026- prospective families"
+  page_metadata:
+    has_next_button: true
+    has_submit_button: false
+    is_thank_you_page: false
+    is_empty_page: false
+    is_welcome_page: false
+  questions:
+    - title: "How important is prestige in your perception of a college/university?"
+      questions_type: "single"
+      required: true
+      choices:
+        - "5 - Very Important"
+        - "4 - Important"
+        - "3 - Moderately Important"
+        - "2 - Slightly Important"
+        - "1 - Not at all important"
+      columns: 1
+      response_format:
+        type: single_select
+        orientation: vertical
+        option_sort: as_appearing
+        max_selections: null
