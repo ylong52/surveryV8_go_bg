@@ -15,7 +15,7 @@ import (
 type ExtractResult struct {
 	Meta       PageMetadata
 	Prompt     AssembledPrompt // 步骤3：答题用AI Prompt
-	YamlPrompt YamlPrompt     // 步骤4：YAML提取专用提示词
+	YamlPrompt YamlPrompt      // 步骤4：YAML提取专用提示词
 }
 
 // Extract 执行步骤 1-4：接收参数、提取 PageMetadata、组装 AI Prompt、整理 YAML Prompt，并写日志

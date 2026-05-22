@@ -5,8 +5,7 @@ survey_page:
     has_next_button: true
     has_submit_button: false
     is_thank_you_page: false
-    is_empty_page: false
-    is_welcome_page: false
+    is_description_page: false
   questions:
     - title: "What grade is your student currently in? If there is more than one student in your household, please select the grades of those students who you will be helping apply to college."
       questions_type: "multi"

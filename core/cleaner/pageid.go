@@ -18,8 +18,8 @@ const (
 
 // 预编译正则（包级别，只编译一次）
 var (
-	// 只保留字母、数字、空格；其他字符全部替换为空格
-	reKeepAlphanumeric = regexp.MustCompile(`[^a-zA-Z0-9 ]+`)
+	// 只保留字母、数字、空格、连字符、下划线、撇号；其他字符全部替换为空格（包括点号）
+	reKeepAlphanumeric = regexp.MustCompile(`[^a-zA-Z0-9 _\-'` + "`" + `]+`)
 )
 
 // 默认的 page_id 提取模式（按优先级）
@@ -60,11 +60,12 @@ func ExtractPageIDWithPatterns(html string, patterns []string) (string, error) {
 // 规则：
 //   1. 移除所有 HTML 标签
 //   2. 解码 HTML 实体（如 &nbsp; → 空格）
-//   3. 转小写
-//   4. 只保留字母、数字、空格，其他字符替换为空格
-//   5. 合并多余空格为单个空格
-//   6. 去除首尾空格
-//   7. 截断至 100 字符
+//   3. 处理 JSON/JS 字符串转义（如 \" → 空, \\' → ', \\n → 空格）
+//   4. 转小写
+//   5. 只保留字母、数字、空格、连字符(-)、下划线(_)、撇号(')，其他字符替换为空格（包括点号）
+//   6. 合并多余空格为单个空格
+//   7. 去除首尾空格
+//   8. 截断至 100 字符
 // @param raw  原始页面文本
 // @returns    清洗后的 page_id
 func CleanPageID(raw string) string {
@@ -74,19 +75,22 @@ func CleanPageID(raw string) string {
 	// 2. 解码 HTML 实体
 	s = decodeHTMLEntities(s)
 
-	// 3. 转小写
+	// 3. 处理 JSON/JS 字符串转义
+	s = cleanJsonEscapes(s)
+
+	// 4. 转小写
 	s = strings.ToLower(s)
 
-	// 4. 只保留字母、数字、空格
+	// 5. 只保留字母、数字、空格、连字符、下划线、撇号，其他替换为空格（包括点号）
 	s = reKeepAlphanumeric.ReplaceAllString(s, " ")
 
-	// 5. 合并多余空格
+	// 6. 合并多余空格
 	s = reSpaces.ReplaceAllString(s, " ")
 
-	// 6. 去除首尾空格
+	// 7. 去除首尾空格
 	s = strings.TrimSpace(s)
 
-	// 7. 截断至 100 字符
+	// 8. 截断至 100 字符
 	if len(s) > MaxPageIDLength {
 		s = s[:MaxPageIDLength]
 		s = strings.TrimRight(s, " ")
@@ -94,6 +98,35 @@ func CleanPageID(raw string) string {
 
 	return s
 }
+
+// cleanJsonEscapes 处理 JSON/JS 字符串转义序列
+//   \" → 空 (移除 JSON 引号)
+//   \\' → ' (保留撇号)
+//   \\n, \\t, \\r → 空格
+//   \\ → 空 (移除剩余反斜杠)
+func cleanJsonEscapes(s string) string {
+	// 移除 JSON 字符串包裹的引号 \" 或 \" 或 "
+	s = reJsonQuote.ReplaceAllString(s, "")
+
+	// 处理常见的 JSON/JS 转义
+	s = strings.ReplaceAll(s, `\"`, "") // JSON 双引号转义
+	s = strings.ReplaceAll(s, `\'`, "'") // JS 单引号转义
+	s = strings.ReplaceAll(s, `\\`, "") // 剩余反斜杠
+	s = strings.ReplaceAll(s, `\n`, " ")
+	s = strings.ReplaceAll(s, `\t`, " ")
+	s = strings.ReplaceAll(s, `\r`, " ")
+
+	// 处理 Unicode 转义 \uXXXX
+	s = reUnicodeEscape.ReplaceAllString(s, "")
+
+	return s
+}
+
+// reJsonQuote 匹配 JSON 字符串引号包裹
+var reJsonQuote = regexp.MustCompile(`^[\"']|[\"']$`)
+
+// reUnicodeEscape 匹配 Unicode 转义序列
+var reUnicodeEscape = regexp.MustCompile(`\\u[0-9a-fA-F]{4}`)
 
 // decodeHTMLEntities 解码常见 HTML 实体为对应字符
 // &nbsp; → 空格, &amp; → &, &lt; → <, &gt; → >, &quot; → ", &apos; → '

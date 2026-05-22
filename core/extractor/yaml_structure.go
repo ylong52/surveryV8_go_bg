@@ -22,7 +22,7 @@ import (
 // YamlStructureConfig 对应 configs/yaml_structure_prompt.yaml 的字段
 type YamlStructureConfig struct {
 	// YAML 结构提取
-	SystemPrompt      string `yaml:"STRUCTURE_SYSTEM_PROMPT"`
+	SystemPrompt     string `yaml:"STRUCTURE_SYSTEM_PROMPT"`
 	UserPromptPrefix string `yaml:"STRUCTURE_USER_PROMPT_PREFIX"`
 	// 答案推荐
 	AnswerSystemPrompt     string `yaml:"ANSWER_SYSTEM_PROMPT"`
@@ -66,11 +66,11 @@ type PageSettings struct {
 
 // NavButtonItem 导航按钮项
 type NavButtonItem struct {
-	Role            string            `json:"role"`
-	XPath           string            `json:"xpath"`
-	Text            string            `json:"text"`
-	WaitAfterClick  int               `json:"wait_after_click"`
-	Attributes      map[string]string `json:"attributes"`
+	Role           string            `json:"role"`
+	XPath          string            `json:"xpath"`
+	Text           string            `json:"text"`
+	WaitAfterClick int               `json:"wait_after_click"`
+	Attributes     map[string]string `json:"attributes"`
 }
 
 // NavButtonsOutput 导航按钮输出
@@ -83,22 +83,22 @@ type NavButtonsOutput struct {
 type PageMetadataOutput struct {
 	PageID          string `json:"page_id"`
 	IsMatrixPage    bool   `json:"is_matrix_page"`
-	HasNextButton  bool   `json:"has_next_button"`
+	HasNextButton   bool   `json:"has_next_button"`
 	HasSubmitButton bool   `json:"has_submit_button"`
-	IsThankYouPage bool   `json:"is_thank_you_page"`
+	IsThankYouPage  bool   `json:"is_thank_you_page"`
 }
 
 // InteractionItem interactions 项
 type InteractionItem struct {
-	QuestionType        string      `json:"question_type"`
-	Subject             string      `json:"subject"`
-	RecommendedAnswers  interface{} `json:"recommended_answers"` // string or []string
+	QuestionType       string      `json:"question_type"`
+	Subject            string      `json:"subject"`
+	RecommendedAnswers interface{} `json:"recommended_answers"` // string or []string
 }
 
 // DataOutput data 输出
 type DataOutput struct {
 	PageMetadata PageMetadataOutput `json:"page_metadata"`
-	Interactions []InteractionItem   `json:"interactions"`
+	Interactions []InteractionItem  `json:"interactions"`
 	NavButtons   NavButtonsOutput   `json:"nav_buttons"`
 	PageSummary  string             `json:"page_summary"`
 }
@@ -150,6 +150,7 @@ func LoadYamlStructureConfig() (*YamlStructureConfig, error) {
 // BuildYamlStructurePrompt 构建 YAML 结构提取专用提示词
 //   - 检查 HTML 长度，超过 60000 直接报错
 //   - 传给 AI 时保留完整 HTML
+//
 // @param surveyID  问卷 ID
 // @param pageID    页面 ID
 // @param cleanHTML 清洗后 HTML（不超过 60000 字符）
@@ -240,12 +241,14 @@ func WriteYamlStructurePromptLog(basePath, surveyID string, meta PageMetadata, p
 // =============================================================================
 
 // ExtractYamlStructureV2 执行 YAML 结构提取（v2 版本）
-//   步骤1: 参数验证
-//   步骤2: 提取 PageMetadata
-//   步骤3: 组装 AI Prompt
-//   步骤4: 查找本地 YAML 模板
-//   步骤5: 未命中则调用 AI
-//   步骤6: 保存 YAML 到缓存目录
+//
+//	步骤1: 参数验证
+//	步骤2: 提取 PageMetadata
+//	步骤3: 组装 AI Prompt
+//	步骤4: 查找本地 YAML 模板
+//	步骤5: 未命中则调用 AI
+//	步骤6: 保存 YAML 到缓存目录
+//
 // @param surveyID  问卷 ID
 // @param cleanHTML 清洗后 HTML
 // @param basePath  存储根目录
@@ -341,8 +344,8 @@ func (p *YamlStructurePrompt) GetHtmlPreview() string {
 
 // TemplateToYamlResult 模板转YAML结果
 type TemplateToYamlResult struct {
-	YamlData  string       // 最新YAML数据
-	CachePath string       // 缓存路径
+	YamlData  string // 最新YAML数据
+	CachePath string // 缓存路径
 	PageID    string
 	SurveyID  string
 	PageMeta  PageMetadata
@@ -350,7 +353,9 @@ type TemplateToYamlResult struct {
 }
 
 // GenerateLatestYamlData 根据模板 + 实时HTML 生成最新YAML数据
-//   流程：读取YAML模板 → 构建Prompt → 调用AI → 保存到storage/logs
+//
+//	流程：读取YAML模板 → 构建Prompt → 调用AI → 保存到storage/logs
+//
 // @param html         清洗后的HTML
 // @param yamlTemplate YAML模板内容（结构参考）
 // @param surveyID     问卷ID
@@ -471,8 +476,10 @@ type RealtimeYamlResult struct {
 }
 
 // GenerateRealtimeYamlData 根据缓存的 YAML 模板 + 实时 HTML 生成最新 YAML 数据
-//   仅当 YamlStructureResult.Source == "cache" 时调用
-//   流程：提取元数据 → 加载配置 → 构建Prompt → 调用AI → 保存到 realtime-yamldata/
+//
+//	仅当 YamlStructureResult.Source == "cache" 时调用
+//	流程：提取元数据 → 加载配置 → 构建Prompt → 调用AI → 保存到 realtime-yamldata/
+//
 // @param cleanHTML    清洗后的实时 HTML
 // @param cachedYaml   步骤 6 返回的 YamlStructureResult.YamlContent（缓存的模板）
 // @param surveyID     问卷 ID
@@ -672,24 +679,26 @@ func printRealtimeYamlResult(meta PageMetadata, yamlData, cachePath string) {
 
 // RealtimeYamlWithAnswersResult 步骤 7+8 的合并结果
 type RealtimeYamlWithAnswersResult struct {
-	YamlData     string              // 实时 YAML 数据
-	Answers      []Interaction       // 推荐答案列表
-	PageID       string              // 页面 ID
-	SurveyID     string              // 问卷 ID
-	PageMeta     PageMetadata        // 页面元数据
-	PageSettings PageSettings        // 页面设置
-	FinalJson    FinalAnswerJson     // 最终 JSON 输出
-	Source       string              // "realtime"
+	YamlData     string          // 实时 YAML 数据
+	Answers      []Interaction   // 推荐答案列表
+	PageID       string          // 页面 ID
+	SurveyID     string          // 问卷 ID
+	PageMeta     PageMetadata    // 页面元数据
+	PageSettings PageSettings    // 页面设置
+	FinalJson    FinalAnswerJson // 最终 JSON 输出
+	Source       string          // "realtime"
 }
 
 // GenerateRealtimeYamlWithAnswers 生成实时 YAML + 推荐答案（步骤 7 + 步骤 8）
-//   流程：提取元数据 → 加载配置 → 生成 YAML → 调用 AI → 生成答案 → 合并返回
+//
+//	流程：提取元数据 → 加载配置 → 生成 YAML → 调用 AI → 生成答案 → 合并返回
+//
 // @param cleanHTML   清洗后的实时 HTML
 // @param cachedYaml  缓存的 YAML 模板
 // @param surveyID    问卷 ID
 // @param basePath    存储根目录
 // @returns           RealtimeYamlWithAnswersResult, error
-func GenerateRealtimeYamlWithAnswers(cleanHTML, cachedYaml, surveyID, basePath string, pageSettings PageSettings) (*RealtimeYamlWithAnswersResult, error) {
+func GenerateRealtimeYamlWithAnswers(cleanHTML, cachedYaml, surveyID, sessionID, basePath string, pageSettings PageSettings) (*RealtimeYamlWithAnswersResult, error) {
 	// 步骤 1: 提取页面元数据
 	meta, err := extractPageMetadata(surveyID, cleanHTML)
 	if err != nil {
@@ -738,23 +747,35 @@ func GenerateRealtimeYamlWithAnswers(cleanHTML, cachedYaml, surveyID, basePath s
 		cachePath = ""
 	}
 
-	// 步骤 7: 生成推荐答案
-	answerResult, err := ExtractYamlAnswers(yamlData, surveyID, meta.PageID, basePath)
+	// 步骤 7: 生成推荐答案（使用人设 + 答题上下文）
+	fmt.Println("[GenerateRealtimeYamlWithAnswers] 开始生成推荐答案...")
+	answerContext := GetPageSummaryContext(sessionID, meta.PageID)
+	if answerContext != "" {
+		fmt.Printf("[GenerateRealtimeYamlWithAnswers] 获取答题上下文: %d 字符\n", len(answerContext))
+	} else {
+		fmt.Println("[GenerateRealtimeYamlWithAnswers] 无答题上下文（首次运行或缓存为空）")
+	}
+	answerResult, err := extractAnswersWithContext(yamlData, surveyID, sessionID, meta.PageID, basePath, answerContext)
 	if err != nil {
-		return nil, fmt.Errorf("GenerateRealtimeYamlWithAnswers: ExtractYamlAnswers failed: %w", err)
+		return nil, fmt.Errorf("GenerateRealtimeYamlWithAnswers: extractAnswersWithContext failed: %w", err)
 	}
 
-	// 步骤 8: 构建最终 JSON 输出
+	// 步骤 8: 保存 page_summary 到缓存
+	if answerResult.PageSummary != "" {
+		SavePageSummaryCache(sessionID, meta.PageID, answerResult.PageSummary)
+	}
+
+	// 步骤 9: 构建最终 JSON 输出
 	finalJson := buildFinalAnswerJson(answerResult, yamlData, pageSettings, surveyID)
 
-	// 步骤 9: 保存 JSON 文件
+	// 步骤 10: 保存 JSON 文件
 	jsonPath, err := saveRealtimeAnswersJson(basePath, surveyID, meta.PageID, finalJson)
 	if err != nil {
 		fmt.Printf("[警告] saveRealtimeAnswersJson 失败: %v\n", err)
 		jsonPath = ""
 	}
 
-	// 步骤 10: 打印摘要
+	// 步骤 11: 打印摘要
 	printRealtimeYamlWithAnswersResult(meta, yamlData, answerResult.Interactions, cachePath, finalJson, jsonPath)
 
 	return &RealtimeYamlWithAnswersResult{
@@ -765,7 +786,7 @@ func GenerateRealtimeYamlWithAnswers(cleanHTML, cachedYaml, surveyID, basePath s
 		PageMeta:     meta,
 		PageSettings: pageSettings,
 		FinalJson:    finalJson,
-		Source:      "realtime",
+		Source:       "realtime",
 	}, nil
 }
 
@@ -798,14 +819,16 @@ func printRealtimeYamlWithAnswersResult(meta PageMetadata, yamlData string, answ
 	fmt.Println()
 
 	// 打印 JSON 输出
-	fmt.Println("=== JSON 输出 ===")
-	jsonBytes, _ := json.MarshalIndent(finalJson, "", "  ")
-	fmt.Println(string(jsonBytes))
-	fmt.Println()
+	// fmt.Println("=== JSON 输出 ===")
+	// jsonBytes, _ := json.MarshalIndent(finalJson, "", "  ")
+	// fmt.Println(string(jsonBytes))
+	// fmt.Println()
 }
 
 // extractPageMetadataBlock 从 cachedYaml 中提取 page_metadata 块
-//   查找 "page_metadata:" 行到 "questions:" 行之间的内容
+//
+//	查找 "page_metadata:" 行到 "questions:" 行之间的内容
+//
 // @param cachedYaml  缓存的 YAML 模板
 // @returns           page_metadata 块字符串（包含缩进），如果未找到返回空字符串
 func extractPageMetadataBlock(cachedYaml string) string {
@@ -894,7 +917,9 @@ func removePageMetadataBlock(yamlData string) string {
 }
 
 // mergePageMetadata 将 page_metadata 插入到 yamlData 中
-//   逻辑：找到 title 行，在其后插入 page_metadata
+//
+//	逻辑：找到 title 行，在其后插入 page_metadata
+//
 // @param yamlData         AI 生成的 YAML 字符串
 // @param pageMetadata      page_metadata 块字符串
 // @returns                合并后的 YAML 字符串
@@ -993,7 +1018,7 @@ func buildFinalAnswerJson(answerResult *YamlAnswerResult, yamlData string, pageS
 			PageMetadata: PageMetadataOutput{
 				PageID:          pageID,
 				IsMatrixPage:    isMatrixPage,
-				HasNextButton:  pageSettings.HasNextButton,
+				HasNextButton:   pageSettings.HasNextButton,
 				HasSubmitButton: pageSettings.HasSubmitButton,
 				IsThankYouPage:  pageSettings.IsThankYouPage,
 			},
@@ -1076,7 +1101,7 @@ type NextButtonConfig struct {
 
 // SiteConfig 网站配置
 type SiteConfig struct {
-	Keyword    string            `yaml:"keyword"`
+	Keyword    string           `yaml:"keyword"`
 	SurveyID   string           `yaml:"survey_id"`
 	NextButton NextButtonConfig `yaml:"next_button"`
 }
@@ -1130,22 +1155,22 @@ func buildNavButtons(pageSettings PageSettings, surveyID string) NavButtonsOutpu
 
 	if pageSettings.HasNextButton {
 		buttons = append(buttons, NavButtonItem{
-			Role:            "next",
-			XPath:           nextButtonCfg.NextPattern,
-			Text:            "Next",
-			WaitAfterClick:  nextButtonCfg.WaitAfterClick,
-			Attributes:      map[string]string{},
+			Role:           "next",
+			XPath:          nextButtonCfg.NextPattern,
+			Text:           "Next",
+			WaitAfterClick: nextButtonCfg.WaitAfterClick,
+			Attributes:     map[string]string{},
 		})
 		primaryButton = "next"
 	}
 
 	if pageSettings.HasSubmitButton {
 		buttons = append(buttons, NavButtonItem{
-			Role:            "submit",
-			XPath:           "",
-			Text:            "Submit",
-			WaitAfterClick:  0,
-			Attributes:      map[string]string{},
+			Role:           "submit",
+			XPath:          "",
+			Text:           "Submit",
+			WaitAfterClick: 0,
+			Attributes:     map[string]string{},
 		})
 		primaryButton = "submit"
 	}
