@@ -22,8 +22,7 @@ multi_question_rules: |
         has_next_button: true
         has_submit_button: false
         is_thank_you_page: false
-        is_empty_page: false
-        is_welcome_page: false
+        is_description_page: false
       questions:
         - title: "题目文本"
           questions_type: "single"
@@ -91,8 +90,7 @@ output_format_rules: |
   - has_next_button: true/false (是否有"下一页"按钮)
   - has_submit_button: true/false (是否有"提交"按钮)
   - is_thank_you_page: true/false (是否是感谢页)
-  - is_empty_page: true/false (是否是无题目页面，仅有说明/欢迎语)
-  - is_welcome_page: true/false (是否是欢迎页面)
+  - is_description_page: true/false (是否是无题目说明页，仅有说明文字无表单输入)
 
 # [H] 页面属性检测规则（用于AI识别）
 page_detection_rules: |
@@ -110,12 +108,8 @@ page_detection_rules: |
   is_thank_you_page: true
   - 当页面内容包含"Thank you"、"谢谢"、"感谢"、"提交成功"等感谢信息时为true
   - 通常出现在问卷最后或提交后
-  
-  is_empty_page: true
+
+  is_description_page: true
   - 当页面没有任何题目（无fieldset、无input、无select）时为true
-  - 只有说明文字、图片、欢迎语等非题目内容时为true
-  
-  is_welcome_page: true
-  - 当页面是问卷开头，显示"Welcome"、"欢迎"、"Let's begin"、"开始"等欢迎信息时为true
-  - 通常是问卷第一页，无题目
-  - 注意：如果同时有题目和欢迎语，is_welcome_page应为false
+  - 只有说明文字、图片等非题目内容，无任何可交互表单元素时为true
+  - 包含：问卷说明、免责声明、隐私政策、答题指引等

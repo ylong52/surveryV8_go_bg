@@ -204,9 +204,10 @@ ANSWER_USER_PROMPT_PREFIX: |
   ```json
   {
     "interactions": [
-      { "subject": "题目文本", "showAnswer": "选中的选项" },
-      { "subject": "题目文本", "showAnswer": ["选项1", "选项2"] }
-    ]
+      { "questionType": "single", "subject": "题目文本", "showAnswer": "选中的选项" },
+      { "questionType": "multiple", "subject": "题目文本", "showAnswer": ["选项1", "选项2"] }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
   }
   ```
 

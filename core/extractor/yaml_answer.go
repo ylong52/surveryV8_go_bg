@@ -26,21 +26,24 @@ type YamlAnswerConfig struct {
 
 // Interaction 单个题目的推荐答案
 type Interaction struct {
-	Subject    string      `yaml:"subject" json:"subject"`
-	ShowAnswer interface{} `yaml:"showAnswer" json:"showAnswer"` // string 或 []string
+	Subject      string      `yaml:"subject" json:"subject"`
+	ShowAnswer   interface{} `yaml:"showAnswer" json:"showAnswer"` // string 或 []string
+	QuestionType string      `yaml:"questionType" json:"questionType"` // 题目类型
 }
 
 // YamlAnswerResult 推荐答案结果
 type YamlAnswerResult struct {
 	Interactions []Interaction // 推荐答案列表
-	Source      string         // "cache" / "ai"
-	Meta        PageMetadata
-	CachePath   string
+	PageSummary  string        // 页面总结（AI 回复）
+	Source       string        // "cache" / "ai"
+	Meta         PageMetadata
+	CachePath    string
 }
 
 // InteractionsResponse AI 返回的 JSON 结构
 type InteractionsResponse struct {
 	Interactions []Interaction `json:"interactions"`
+	PageSummary  string        `json:"page_summary"`
 }
 
 // =============================================================================
@@ -138,7 +141,7 @@ func ExtractYamlAnswers(yamlStructure, surveyID, pageID, basePath string) (*Yaml
 	}
 
 	// 步骤 4: 解析 AI 响应
-	interactions, err := parseInteractionsResponse(aiResponse)
+	interactions, pageSummary, err := parseInteractionsResponse(aiResponse)
 	if err != nil {
 		saveAnswerFailureLog(basePath, surveyID, pageID, systemPrompt, userPrompt, aiResponse, err)
 		return nil, fmt.Errorf("ExtractYamlAnswers: parse response failed: %w", err)
@@ -146,25 +149,26 @@ func ExtractYamlAnswers(yamlStructure, surveyID, pageID, basePath string) (*Yaml
 
 	return &YamlAnswerResult{
 		Interactions: interactions,
+		PageSummary:  pageSummary,
 		Source:      "ai",
 	}, nil
 }
 
 // parseInteractionsResponse 解析 AI 返回的 JSON 响应
-func parseInteractionsResponse(content string) ([]Interaction, error) {
+func parseInteractionsResponse(content string) ([]Interaction, string, error) {
 	// 去除可能的 markdown 代码块
 	cleaned := stripMarkdownFence(content)
 
 	var resp InteractionsResponse
 	if err := json.Unmarshal([]byte(cleaned), &resp); err != nil {
-		return nil, fmt.Errorf("json.Unmarshal failed: %w", err)
+		return nil, "", fmt.Errorf("json.Unmarshal failed: %w", err)
 	}
 
 	if len(resp.Interactions) == 0 {
-		return nil, fmt.Errorf("no interactions found in response")
+		return nil, "", fmt.Errorf("no interactions found in response")
 	}
 
-	return resp.Interactions, nil
+	return resp.Interactions, resp.PageSummary, nil
 }
 
 // stripMarkdownFence 去除 markdown 代码块包裹（复用 ai_caller.go 中的实现）

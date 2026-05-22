@@ -14,12 +14,16 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"survey.cli/core/cleaner"
 	"survey.cli/core/extractor"
 )
 
 func main() {
+	// AI 调用计数器
+	aiCallCount := 0
+
 	htmlPath := flag.String("html", "", "HTML 文件路径")
 	surveyID := flag.String("survey_id", "", "问卷 ID")
 	basePath := flag.String("base_path", "./storage", "存储根目录（默认 ./storage）")
@@ -54,53 +58,115 @@ func main() {
 		log.Fatal("html 文件路径和 survey_id 不能为空")
 	}
 
+	// 打印开始信息
+	fmt.Println()
+	fmt.Println("========================================")
+	fmt.Println("            开始处理问卷页面")
+	fmt.Println("========================================")
+	fmt.Printf("HTML 文件: %s\n", *htmlPath)
+	fmt.Printf("Survey ID: %s\n", *surveyID)
+	fmt.Printf("存储路径: %s\n", *basePath)
+	fmt.Println()
+
 	// ① 读取 HTML 文件，自动修复 CP1252 乱码
+	fmt.Println(">>> 步骤 1: 读取并修复 HTML 文件编码...")
 	rawBytes, err := os.ReadFile(*htmlPath)
 	if err != nil {
 		log.Fatalf("读取文件失败: %v", err)
 	}
 	rawHTML := fixEncoding(rawBytes)
+	fmt.Printf("    HTML 长度: %d 字符\n", len(rawHTML))
+	fmt.Println()
 
 	// ② HTML 清洗（StripForDirectSurvey 保留 legend/label 等语义标签，不影响 page_id 提取）
+	fmt.Println(">>> 步骤 2: 清洗 HTML...")
 	cleanHTML := cleaner.StripForDirectSurvey(rawHTML)
+	fmt.Printf("    清洗后长度: %d 字符\n", len(cleanHTML))
+	fmt.Println()
 
 	// ③ extractor.ExtractYamlStructure：提取YAML结构
+	fmt.Println(">>> 步骤 3: 提取 YAML 结构...")
+	startStep := time.Now()
 	result, err := extractor.ExtractYamlStructure(*surveyID, cleanHTML, *basePath)
+	elapsed := time.Since(startStep)
 	if err != nil {
 		log.Fatalf("extractor.ExtractYamlStructure 失败: %v", err)
 	}
 
-	fmt.Printf("=== SurveyID: %s ===\n", result.Meta.SurveyID)
-	fmt.Printf("=== PageID: %s ===\n", result.Meta.PageID)
-	fmt.Printf("=== Timestamp: %s ===\n", result.Meta.Timestamp)
-	fmt.Printf("=== YAML长度: %d字符 ===\n", len(result.YamlContent))
-	fmt.Printf("=== 缓存路径: %s ===\n", result.CachePath)
-	fmt.Printf("=== 来源: %s ===\n", result.Source)
+	// 根据来源判断是否调用了 AI
+	if result.Source == "cache" {
+		fmt.Println("    [缓存命中] 使用本地模板，跳过 AI 调用")
+	} else {
+		aiCallCount++
+		fmt.Printf("    [AI 调用] 耗时 %.2f 秒\n", elapsed.Seconds())
+	}
+
+	fmt.Println()
+	fmt.Println("========== YAML 结构提取结果 ==========")
+	fmt.Printf("SurveyID: %s\n", result.Meta.SurveyID)
+	fmt.Printf("PageID: %s\n", result.Meta.PageID)
+	fmt.Printf("Timestamp: %s\n", result.Meta.Timestamp)
+	fmt.Printf("YAML长度: %d 字符\n", len(result.YamlContent))
+	fmt.Printf("缓存路径: %s\n", result.CachePath)
+	fmt.Printf("来源: %s\n", result.Source)
+	fmt.Println()
 
 	// ④ 步骤 7: 当 Source="cache" 时，生成实时 YAML 数据
 	if result.Source == "cache" {
-		fmt.Println()
-		fmt.Println("=== 触发步骤 7: 生成实时 YAML 数据 ===")
+		fmt.Println(">>> 步骤 7: 生成实时 YAML 数据...")
+		fmt.Println("    [AI 调用 #1] 生成实时 YAML 结构")
+		startAI := time.Now()
 		realtimeResult, err := extractor.GenerateRealtimeYamlData(cleanHTML, result.YamlContent, *surveyID, *basePath)
+		elapsedAI := time.Since(startAI)
+		aiCallCount++
 		if err != nil {
 			log.Fatalf("步骤 7 GenerateRealtimeYamlData 失败: %v", err)
 		}
-		fmt.Printf("=== 实时 YAML 长度: %d字符 ===\n", len(realtimeResult.YamlData))
-		fmt.Printf("=== 实时 YAML 保存路径: %s ===\n", realtimeResult.CachePath)
-		fmt.Printf("=== 实时 YAML 来源: %s ===\n", realtimeResult.Source)
+		fmt.Printf("    [AI #1 耗时] %.2f 秒\n", elapsedAI.Seconds())
+		fmt.Println()
+
+		fmt.Println("========== 实时 YAML 生成结果 ==========")
+		fmt.Printf("YAML长度: %d 字符\n", len(realtimeResult.YamlData))
+		fmt.Printf("保存路径: %s\n", realtimeResult.CachePath)
+		fmt.Printf("来源: %s\n", realtimeResult.Source)
+		fmt.Println()
 
 		// ⑤ 步骤 8: 生成推荐答案
-		fmt.Println()
-		fmt.Println("=== 触发步骤 8: 生成推荐答案 ===")
-		answerResult, err := extractor.GenerateRealtimeYamlWithAnswers(cleanHTML, result.YamlContent, *surveyID, *basePath)
+		fmt.Println(">>> 步骤 8: 生成推荐答案...")
+		fmt.Println("    [AI 调用 #2] 生成推荐答案 + page_summary")
+		startAI = time.Now()
+		answerResult, err := extractor.GenerateRealtimeYamlWithAnswers(cleanHTML, result.YamlContent, *surveyID, *basePath, realtimeResult.PageSettings)
+		elapsedAI = time.Since(startAI)
+		aiCallCount++
 		if err != nil {
 			log.Fatalf("步骤 8 GenerateRealtimeYamlWithAnswers 失败: %v", err)
 		}
-		fmt.Printf("=== 推荐答案数量: %d ===\n", len(answerResult.Answers))
-		fmt.Printf("=== 推荐答案来源: %s ===\n", answerResult.Source)
+		fmt.Printf("    [AI #2 耗时] %.2f 秒\n", elapsedAI.Seconds())
+		fmt.Println()
+
+		fmt.Println("========== 推荐答案生成结果 ==========")
+		fmt.Printf("推荐答案数量: %d\n", len(answerResult.Answers))
+		fmt.Printf("来源: %s\n", answerResult.Source)
+		fmt.Printf("PageID: %s\n", answerResult.PageID)
+		fmt.Println()
+
+		// 打印 FinalJson
+		fmt.Println("========== Final JSON 输出 ==========")
+		fmt.Printf("%+v\n", answerResult.FinalJson)
+		fmt.Println()
+
+		fmt.Println("========== 处理完成 ==========")
+		fmt.Printf("总 AI 调用次数: %d\n", aiCallCount)
+		fmt.Printf("总耗时: %.2f 秒\n", time.Since(startStep).Seconds())
+		fmt.Println()
 	} else {
 		fmt.Println()
-		fmt.Println("=== 跳过步骤 7（Source != cache）===")
+		fmt.Println(">>> 跳过步骤 7-8（来源不是 cache）...")
+		fmt.Println()
+		fmt.Println("========== 处理完成 ==========")
+		fmt.Printf("总 AI 调用次数: %d\n", aiCallCount)
+		fmt.Printf("总耗时: %.2f 秒\n", time.Since(startStep).Seconds())
+		fmt.Println()
 	}
 }
 
