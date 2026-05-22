@@ -1,6 +1,7 @@
 package main
 
 // CLI 工具：读取 HTML 文件 → 清洗 → extractor.Extract（提取元数据+组装Prompt+写日志）→ 保存到 cache
+//   步骤 7: 当 Source="cache" 时，根据缓存模板 + 实时 HTML 生成最新 YAML 数据
 //
 // 用法：
 //   go run tests/html_yaml.go --html <HTML路径> --survey_id <ID> [--base_path <路径>]
@@ -75,6 +76,22 @@ func main() {
 	fmt.Printf("=== YAML长度: %d字符 ===\n", len(result.YamlContent))
 	fmt.Printf("=== 缓存路径: %s ===\n", result.CachePath)
 	fmt.Printf("=== 来源: %s ===\n", result.Source)
+
+	// ④ 步骤 7: 当 Source="cache" 时，生成实时 YAML 数据
+	if result.Source == "cache" {
+		fmt.Println()
+		fmt.Println("=== 触发步骤 7: 生成实时 YAML 数据 ===")
+		realtimeResult, err := extractor.GenerateRealtimeYamlData(cleanHTML, result.YamlContent, *surveyID, *basePath)
+		if err != nil {
+			log.Fatalf("步骤 7 GenerateRealtimeYamlData 失败: %v", err)
+		}
+		fmt.Printf("=== 实时 YAML 长度: %d字符 ===\n", len(realtimeResult.YamlData))
+		fmt.Printf("=== 实时 YAML 保存路径: %s ===\n", realtimeResult.CachePath)
+		fmt.Printf("=== 实时 YAML 来源: %s ===\n", realtimeResult.Source)
+	} else {
+		fmt.Println()
+		fmt.Println("=== 跳过步骤 7（Source != cache）===")
+	}
 }
 
 // fixEncoding 检测 CP1252 特征字节并替换为对应 UTF-8 字符
