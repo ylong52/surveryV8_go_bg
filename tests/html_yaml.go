@@ -88,6 +88,16 @@ func main() {
 		fmt.Printf("=== 实时 YAML 长度: %d字符 ===\n", len(realtimeResult.YamlData))
 		fmt.Printf("=== 实时 YAML 保存路径: %s ===\n", realtimeResult.CachePath)
 		fmt.Printf("=== 实时 YAML 来源: %s ===\n", realtimeResult.Source)
+
+		// ⑤ 步骤 8: 生成推荐答案
+		fmt.Println()
+		fmt.Println("=== 触发步骤 8: 生成推荐答案 ===")
+		answerResult, err := extractor.GenerateRealtimeYamlWithAnswers(cleanHTML, result.YamlContent, *surveyID, *basePath)
+		if err != nil {
+			log.Fatalf("步骤 8 GenerateRealtimeYamlWithAnswers 失败: %v", err)
+		}
+		fmt.Printf("=== 推荐答案数量: %d ===\n", len(answerResult.Answers))
+		fmt.Printf("=== 推荐答案来源: %s ===\n", answerResult.Source)
 	} else {
 		fmt.Println()
 		fmt.Println("=== 跳过步骤 7（Source != cache）===")
