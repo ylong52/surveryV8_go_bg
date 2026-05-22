@@ -624,6 +624,7 @@ func GenerateRealtimeAnswerOnly(cleanHTML, cachedYaml, surveyID, sessionID, base
 		cachedYaml,
 		pageSettings,
 		surveyID,
+		cleanHTML,
 	)
 
 	// 步骤10: 保存JSON缓存

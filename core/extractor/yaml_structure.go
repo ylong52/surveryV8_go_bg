@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -66,11 +67,10 @@ type PageSettings struct {
 
 // NavButtonItem 导航按钮项
 type NavButtonItem struct {
-	Role           string            `json:"role"`
-	XPath          string            `json:"xpath"`
-	Text           string            `json:"text"`
-	WaitAfterClick int               `json:"wait_after_click"`
-	Attributes     map[string]string `json:"attributes"`
+	Role       string            `json:"role"`
+	XPath      string            `json:"xpath"`
+	Text       string            `json:"text"`
+	Attributes map[string]string `json:"attributes"`
 }
 
 // NavButtonsOutput 导航按钮输出
@@ -766,7 +766,7 @@ func GenerateRealtimeYamlWithAnswers(cleanHTML, cachedYaml, surveyID, sessionID,
 	}
 
 	// 步骤 9: 构建最终 JSON 输出
-	finalJson := buildFinalAnswerJson(answerResult, yamlData, pageSettings, surveyID)
+	finalJson := buildFinalAnswerJson(answerResult, yamlData, pageSettings, surveyID, cleanHTML)
 
 	// 步骤 10: 保存 JSON 文件
 	jsonPath, err := saveRealtimeAnswersJson(basePath, surveyID, meta.PageID, finalJson)
@@ -1006,12 +1006,13 @@ func parseYamlBool(line string) bool {
 // @param yamlData     YAML 数据
 // @param pageSettings 页面设置
 // @param surveyID    问卷 ID
+// @param cleanHTML   清洗后的 HTML
 // @returns            FinalAnswerJson
-func buildFinalAnswerJson(answerResult *YamlAnswerResult, yamlData string, pageSettings PageSettings, surveyID string) FinalAnswerJson {
+func buildFinalAnswerJson(answerResult *YamlAnswerResult, yamlData string, pageSettings PageSettings, surveyID string, cleanHTML string) FinalAnswerJson {
 	pageID := parseYamlPageID(yamlData)
 	isMatrixPage := detectIsMatrixPage(yamlData)
 	interactions := buildInteractions(answerResult.Interactions)
-	navButtons := buildNavButtons(pageSettings, surveyID)
+	navButtons := buildNavButtons(pageSettings, surveyID, cleanHTML)
 
 	return FinalAnswerJson{
 		Data: DataOutput{
@@ -1146,31 +1147,34 @@ func loadNextButtonConfig(surveyID string) (NextButtonConfig, error) {
 }
 
 // buildNavButtons 构建 nav_buttons
-func buildNavButtons(pageSettings PageSettings, surveyID string) NavButtonsOutput {
+// @param pageSettings 页面设置
+// @param surveyID     问卷 ID
+// @param cleanHTML    清洗后的 HTML 内容
+// @returns            NavButtonsOutput
+func buildNavButtons(pageSettings PageSettings, surveyID string, cleanHTML string) NavButtonsOutput {
 	var buttons []NavButtonItem
 	primaryButton := ""
 
-	// 从配置文件加载 next_button 配置
-	nextButtonCfg, _ := loadNextButtonConfig(surveyID)
-
 	if pageSettings.HasNextButton {
+		// 从 HTML 中解析 Next 按钮
+		xpath, text, attrs := extractButtonFromHTML(cleanHTML, "next")
 		buttons = append(buttons, NavButtonItem{
-			Role:           "next",
-			XPath:          nextButtonCfg.NextPattern,
-			Text:           "Next",
-			WaitAfterClick: nextButtonCfg.WaitAfterClick,
-			Attributes:     map[string]string{},
+			Role:       "next",
+			XPath:      xpath,
+			Text:       text,
+			Attributes: attrs,
 		})
 		primaryButton = "next"
 	}
 
 	if pageSettings.HasSubmitButton {
+		// 从 HTML 中解析 Submit 按钮
+		xpath, text, attrs := extractButtonFromHTML(cleanHTML, "submit")
 		buttons = append(buttons, NavButtonItem{
-			Role:           "submit",
-			XPath:          "",
-			Text:           "Submit",
-			WaitAfterClick: 0,
-			Attributes:     map[string]string{},
+			Role:       "submit",
+			XPath:      xpath,
+			Text:       text,
+			Attributes: attrs,
 		})
 		primaryButton = "submit"
 	}
@@ -1179,6 +1183,83 @@ func buildNavButtons(pageSettings PageSettings, surveyID string) NavButtonsOutpu
 		Buttons:       buttons,
 		PrimaryButton: primaryButton,
 	}
+}
+
+// extractButtonFromHTML 从 HTML 中提取按钮的 XPath、文本和属性
+// @param html  清洗后的 HTML
+// @param role  按钮角色 (next/submit)
+// @returns     (xpath, text, attributes)
+func extractButtonFromHTML(html string, role string) (string, string, map[string]string) {
+	attrs := make(map[string]string)
+	xpath := ""
+	text := "Next"
+
+	if role == "next" {
+		// 匹配 Next 按钮: <input ... value="Next" ...> 或 <button ...>Next</button>
+		// 优先匹配 value="Next"
+		if match, x, a, t := extractInputButton(html, "Next"); match {
+			return x, t, a
+		}
+		// 备选：匹配 Continue
+		if match, x, a, t := extractInputButton(html, "Continue"); match {
+			return x, t, a
+		}
+		// 备选：匹配 Proceed
+		if match, x, a, t := extractInputButton(html, "Proceed"); match {
+			return x, t, a
+		}
+		// 默认 XPath
+		xpath = "//input[@type='submit' and @value='Next']"
+		attrs = map[string]string{"type": "submit", "value": "Next"}
+	} else if role == "submit" {
+		// 匹配 Submit 按钮
+		if match, x, a, t := extractInputButton(html, "Submit"); match {
+			return x, t, a
+		}
+		// 默认 XPath
+		xpath = "//input[@type='submit' and @value='Submit']"
+		attrs = map[string]string{"type": "submit", "value": "Submit"}
+	}
+
+	return xpath, text, attrs
+}
+
+// extractInputButton 提取 input 按钮
+func extractInputButton(html string, value string) (bool, string, map[string]string, string) {
+	// 匹配 <input ... value="Next" ...>
+	pattern := fmt.Sprintf(`<input[^>]*value=["']%s["'][^>]*>`, value)
+	re := regexp.MustCompile(`(?i)` + pattern)
+	idxs := re.FindStringIndex(html)
+	if idxs == nil {
+		return false, "", nil, ""
+	}
+
+	match := html[idxs[0]:idxs[1]]
+
+	// 提取所有属性
+	attrs := extractAttributes(match)
+
+	// 构建 XPath
+	xpath := fmt.Sprintf("//input[@type='submit' and @value='%s']", value)
+
+	return true, xpath, attrs, value
+}
+
+// extractAttributes 从 HTML 标签中提取属性
+func extractAttributes(tag string) map[string]string {
+	attrs := make(map[string]string)
+
+	// 匹配所有属性: name="xxx" 或 name='xxx' 或 name=xxx
+	re := regexp.MustCompile(`(\w+)=["']?([^"'>]+)["']?`)
+	matches := re.FindAllStringSubmatch(tag, -1)
+
+	for _, m := range matches {
+		if len(m) == 3 {
+			attrs[m[1]] = m[2]
+		}
+	}
+
+	return attrs
 }
 
 // saveRealtimeAnswersJson 保存答案 JSON 到文件
