@@ -9,22 +9,24 @@ import (
 	"os"
 	"strings"
 
+	"github.com/google/uuid"
 	"github.com/gorilla/websocket"
 )
 
 var (
 	sessionID = flag.String("session_id", "session_test", "Session ID")
 	urlStr    = flag.String("url", "https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families", "Survey URL")
-	wsURL     = flag.String("ws", "ws://localhost:10501/ws", "WebSocket server URL")
+	wsURL     = flag.String("ws", "ws://localhost:10502/ws", "WebSocket server URL")
 	htmlFile  = flag.String("html", "", "HTML file path")
 )
 
 type WsMessage struct {
-	SessionID string `json:"session_id"`
-	RawHTML   string `json:"rawhtml"`
-	URL       string `json:"url"`
-	Type      string `json:"type"`
-	DebugMode string `json:"debugmode"`
+	SessionID  string `json:"session_id"`
+	RawHTML    string `json:"rawhtml"`
+	URL        string `json:"url"`
+	Type       string `json:"type"`
+	RequestID  string `json:"requestId"`
+	DebugMode  string `json:"debugmode,omitempty"`
 }
 
 func main() {
@@ -77,11 +79,15 @@ func main() {
 	// 	typeStr = "@ai"
 	// }
 
+	// 生成随机请求ID
+	requestID := uuid.New().String()
+
 	msg := WsMessage{
 		SessionID: *sessionID,
 		RawHTML:   rawHTML,
 		URL:       *urlStr,
-		// Type:      typeStr,
+		Type:      "analyze_request",
+		RequestID: requestID,
 		DebugMode: "true",
 	}
 
@@ -93,15 +99,16 @@ func main() {
 
 	fmt.Println()
 	fmt.Println("=== 发送消息 ===")
-	fmt.Printf("SESSION_ID: %s\n", msg.SessionID)
+	fmt.Printf("SESSION_ID:  %s\n", msg.SessionID)
+	fmt.Printf("REQUEST_ID:  %s\n", msg.RequestID)
+	fmt.Printf("TYPE:        %s\n", msg.Type)
 	if len(rawHTML) > 200 {
-		fmt.Printf("RAWHTML:    [%.2f KB]\n", float64(len(rawHTML))/1024)
+		fmt.Printf("RAWHTML:     [%.2f KB]\n", float64(len(rawHTML))/1024)
 	} else {
-		fmt.Printf("RAWHTML:    %s\n", msg.RawHTML)
+		fmt.Printf("RAWHTML:     %s\n", msg.RawHTML)
 	}
-	fmt.Printf("URL:        %s\n", msg.URL)
-	fmt.Printf("TYPE:       %s\n", msg.Type)
-	fmt.Printf("DEBUGMODE:  %s\n", msg.DebugMode)
+	fmt.Printf("URL:         %s\n", msg.URL)
+	fmt.Printf("DEBUGMODE:   %s\n", msg.DebugMode)
 	fmt.Println("=============")
 
 	parsedURL, err := url.Parse(*wsURL)

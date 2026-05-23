@@ -7,8 +7,12 @@ package cleaner
 import (
 	"fmt"
 	"html"
+	"os"
+	"path/filepath"
 	"regexp"
 	"strings"
+
+	"gopkg.in/yaml.v3"
 )
 
 // 常量
@@ -22,27 +26,78 @@ var (
 	reKeepAlphanumeric = regexp.MustCompile(`[^a-zA-Z0-9 _\-'` + "`" + `]+`)
 )
 
-// 默认的 page_id 提取模式（按优先级）
-var defaultPatterns = []string{
-	`<legend[^>]*>([\s\S]*?)</legend>`,
-	`<label[^>]*>([\s\S]*?)</label>`,
-	`<div[^>]*>([\s\S]*?)</div>`,
+// pageFingerprintsConfig page-fingerprints.yaml 配置结构
+type pageFingerprintsConfig struct {
+	Sites []siteConfig `yaml:"sites"`
 }
 
-// ExtractPageID 从 HTML 中按优先级提取并清洗 page_id
-// @param html  原始 HTML 字符串
-// @returns     清洗后的 page_id，或错误（空 page_id 时返回错误）
-func ExtractPageID(html string) (string, error) {
-	return ExtractPageIDWithPatterns(html, defaultPatterns)
+type siteConfig struct {
+	SurveyID string `yaml:"survey_id"`
+	PageIDFingerprints struct {
+		QuestionPattern struct {
+			Regex []string `yaml:"regex"`
+		} `yaml:"question_pattern"`
+	} `yaml:"page_id_fingerprints"`
+}
+
+// LoadPatternsForSurvey 根据 surveyID 从 page-fingerprints.yaml 加载正则配置
+// @param surveyID  问卷 ID
+// @returns         正则模式列表，或错误（找不到则返回错误，不兜底）
+func LoadPatternsForSurvey(surveyID string) ([]string, error) {
+	configPath := "configs/page-fingerprints.yaml"
+	if !filepath.IsAbs(configPath) {
+		wd, err := os.Getwd()
+		if err != nil {
+			return nil, fmt.Errorf("LoadPatternsForSurvey: getwd: %w", err)
+		}
+		configPath = filepath.Join(wd, configPath)
+	}
+
+	data, err := os.ReadFile(configPath)
+	if err != nil {
+		return nil, fmt.Errorf("LoadPatternsForSurvey: read %s: %w", configPath, err)
+	}
+
+	var cfg pageFingerprintsConfig
+	if err := yaml.Unmarshal(data, &cfg); err != nil {
+		return nil, fmt.Errorf("LoadPatternsForSurvey: parse yaml: %w", err)
+	}
+
+	for _, site := range cfg.Sites {
+		if strings.EqualFold(site.SurveyID, surveyID) {
+			patterns := site.PageIDFingerprints.QuestionPattern.Regex
+			if len(patterns) == 0 {
+				return nil, fmt.Errorf("LoadPatternsForSurvey: survey_id=%s has empty regex patterns", surveyID)
+			}
+			return patterns, nil
+		}
+	}
+
+	return nil, fmt.Errorf("LoadPatternsForSurvey: survey_id=%s not found in page-fingerprints.yaml", surveyID)
 }
 
 // ExtractPageIDWithPatterns 从 HTML 中按指定模式提取并清洗 page_id
 // @param html     原始 HTML 字符串
 // @param patterns 正则表达式列表（按优先级排序，提取第1个捕获组）
+//                   格式支持 JavaScript 风格：/pattern/flags，如 /<legend>.../gi
 // @returns        清洗后的 page_id，或错误
 func ExtractPageIDWithPatterns(html string, patterns []string) (string, error) {
 	for _, pattern := range patterns {
-		re := regexp.MustCompile(`(?i)` + pattern)
+		// 去掉 JavaScript 风格的 /gi 或 /g 或 /i 修饰符
+		// 输入: /<legend>.../gi -> <legend>...
+		cleanPattern := strings.TrimPrefix(pattern, "/")
+		if strings.HasSuffix(cleanPattern, "/gi") {
+			cleanPattern = strings.TrimSuffix(cleanPattern, "/gi")
+		} else if strings.HasSuffix(cleanPattern, "/g") {
+			cleanPattern = strings.TrimSuffix(cleanPattern, "/g")
+		} else if strings.HasSuffix(cleanPattern, "/i") {
+			cleanPattern = strings.TrimSuffix(cleanPattern, "/i")
+		}
+
+		re, err := regexp.Compile(`(?i)` + cleanPattern)
+		if err != nil {
+			return "", fmt.Errorf("ExtractPageIDWithPatterns: invalid regex '%s': %w", pattern, err)
+		}
 		matches := re.FindAllStringSubmatch(html, -1)
 		for _, match := range matches {
 			if len(match) >= 2 {

@@ -23,7 +23,14 @@ type PageMetadata struct {
 // @param cleanHTML 清洗后的 HTML 字符串
 // @returns         PageMetadata, 或错误
 func extractPageMetadata(surveyID, cleanHTML string) (PageMetadata, error) {
-	pageID, err := cleaner.ExtractPageID(cleanHTML)
+	// 根据 surveyID 加载对应的正则配置
+	patterns, err := cleaner.LoadPatternsForSurvey(surveyID)
+	if err != nil {
+		return PageMetadata{}, fmt.Errorf("extractPageMetadata: %w", err)
+	}
+
+	// 使用配置的正则提取 page_id
+	pageID, err := cleaner.ExtractPageIDWithPatterns(cleanHTML, patterns)
 	if err != nil {
 		return PageMetadata{}, fmt.Errorf("extractPageMetadata: %w", err)
 	}

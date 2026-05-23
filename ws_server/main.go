@@ -1,11 +1,13 @@
 package main
 
 import (
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -35,17 +37,23 @@ var upgrader = websocket.Upgrader{
 }
 
 type Msg struct {
-	SessionID string `json:"session_id"`
-	RawHTML   string `json:"rawhtml"`
-	URL       string `json:"url"`
-	Type      string `json:"type"`
-	DebugMode string `json:"debugmode"`
+	SessionID  string `json:"session_id"`
+	RawHTML    string `json:"rawhtml"`
+	URL        string `json:"url"`
+	Type       string `json:"type"`
+	DebugMode  string `json:"debugmode"`
+	RequestID  string `json:"requestId,omitempty"`
+	ImageBase64 string `json:"imageBase64,omitempty"`
+	PageID     string `json:"page_id,omitempty"`
 }
 
 type Response struct {
-	Code    int         `json:"code"`
-	Message string      `json:"message"`
-	Data    interface{} `json:"data,omitempty"`
+	Code       int         `json:"code"`
+	Message    string      `json:"message"`
+	RequestID  string      `json:"requestId,omitempty"`
+	YamlSource string      `json:"yaml_source,omitempty"`
+	ElapsedSec float64     `json:"elapsed_sec,omitempty"`
+	Data       interface{} `json:"data,omitempty"`
 }
 
 func wsHandler(w http.ResponseWriter, r *http.Request) {
@@ -74,166 +82,176 @@ func wsHandler(w http.ResponseWriter, r *http.Request) {
 
 		var msg Msg
 		if err := json.Unmarshal(message, &msg); err != nil {
-			sendError(conn, "JSON parse error: "+err.Error())
+			sendError(conn, "JSON parse error: "+err.Error(), msg.RequestID)
 			continue
 		}
 
-		// 解析 survey_id 从 URL
-		surveyID := extractSurveyID(msg.URL)
-		if surveyID == "" {
-			surveyID = "unknown"
+		// ========== 类型路由分发 ==========
+		switch msg.Type {
+		case "analyze_request":
+			handleAnalyzeRequest(conn, msg, basePath)
+		case "submit":
+			handleSubmit(conn, msg, basePath)
+		default:
+			sendError(conn, "unknown type: "+msg.Type, msg.RequestID)
 		}
-
-		startTime := time.Now()
-
-		// ========== 调试：打印原始输入 ==========
-		fmt.Println()
-		fmt.Println("========================================")
-		fmt.Println("            接收到的原始数据")
-		fmt.Println("========================================")
-		fmt.Printf("SessionID: %s\n", msg.SessionID)
-		fmt.Printf("URL:       %s\n", msg.URL)
-		fmt.Printf("SurveyID:  %s\n", surveyID)
-		fmt.Printf("RawHTML长度: %d 字符\n", len(msg.RawHTML))
-		fmt.Println()
-
-		// 原始 HTML 预览（截断显示）
-		// previewLen := 500
-		// if len(msg.RawHTML) > previewLen {
-		// 	fmt.Printf("RawHTML预览（前%d字符）:\n%s...\n\n", previewLen, msg.RawHTML[:previewLen])
-		// } else {
-		// 	fmt.Printf("RawHTML内容:\n%s\n\n", msg.RawHTML)
-		// }
-
-		// 步骤1: 修复编码
-		// fmt.Println("========================================")
-		// fmt.Println(">>> 步骤 1: 修复 HTML 编码")
-		// fmt.Println("========================================")
-		fixedHTML := fixEncoding([]byte(msg.RawHTML))
-		// fmt.Printf("修复后长度: %d 字符\n", len(fixedHTML))
-		// if len(fixedHTML) > previewLen {
-		// 	fmt.Printf("修复后预览（前%d字符）:\n%s...\n\n", previewLen, fixedHTML[:previewLen])
-		// } else {
-		// 	fmt.Printf("修复后内容:\n%s\n\n", fixedHTML)
-		// }
-
-		// 步骤2: 清洗 HTML
-		// fmt.Println("========================================")
-		// fmt.Println(">>> 步骤 2: 清洗 HTML")
-		// fmt.Println("========================================")
-		cleanHTML := cleaner.StripForDirectSurvey(fixedHTML)
-		// fmt.Printf("清洗后长度: %d 字符\n", len(cleanHTML))
-		// if len(cleanHTML) > previewLen {
-		// 	fmt.Printf("清洗后预览（前%d字符）:\n%s...\n\n", previewLen, cleanHTML[:previewLen])
-		// } else {
-		// 	fmt.Printf("清洗后内容:\n%s\n\n", cleanHTML)
-		// }
-
-		// 步骤3: 提取 YAML 结构
-		fmt.Println("========================================")
-		fmt.Println(">>> 步骤 3: 提取 YAML 结构")
-		fmt.Println("========================================")
-		yamlResult, err := extractor.ExtractYamlStructure(surveyID, cleanHTML, basePath)
-		if err != nil {
-			sendError(conn, "ExtractYamlStructure error: "+err.Error())
-			continue
-		}
-		fmt.Printf("PageID:    %s\n", yamlResult.Meta.PageID)
-		fmt.Printf("Source:    %s\n", yamlResult.Source)
-		fmt.Printf("CachePath: %s\n", yamlResult.CachePath)
-		fmt.Printf("YAML长度:  %d 字符\n", len(yamlResult.YamlContent))
-		if len(yamlResult.YamlContent) > 300 {
-			fmt.Printf("YAML预览（前300字符）:\n%s...\n\n", yamlResult.YamlContent[:300])
-		} else {
-			fmt.Printf("YAML内容:\n%s\n\n", yamlResult.YamlContent)
-		}
-
-		var finalJson extractor.FinalAnswerJson
-
-		fmt.Println("========================================")
-		fmt.Println(">>> 步骤 4: 生成推荐答案")
-		fmt.Println("========================================")
-
-		if yamlResult.Source == "cache" {
-			// 缓存命中：单次 AI 调用
-			fmt.Println("Source: cache（使用缓存模板）")
-			fmt.Println("调用 AI: GenerateRealtimeAnswerOnly...")
-			answerResult, err := extractor.GenerateRealtimeAnswerOnly(cleanHTML, yamlResult.YamlContent, surveyID, msg.SessionID, basePath)
-			if err != nil {
-				sendError(conn, "GenerateRealtimeAnswerOnly error: "+err.Error())
-				continue
-			}
-			finalJson = answerResult.FinalJson
-			fmt.Printf("AI 响应来源: %s\n", answerResult.Source)
-			fmt.Printf("推荐答案数量: %d\n", len(answerResult.Interactions))
-		} else {
-			// 未命中：AI 生成实时 YAML + 答案
-			fmt.Println("Source: ai（实时生成）")
-			fmt.Println("调用 AI: GenerateRealtimeYamlWithAnswers...")
-			answerResult, err := extractor.GenerateRealtimeYamlWithAnswers(cleanHTML, yamlResult.YamlContent, surveyID, msg.SessionID, basePath, extractor.PageSettings{})
-			if err != nil {
-				sendError(conn, "GenerateRealtimeYamlWithAnswers error: "+err.Error())
-				continue
-			}
-			finalJson = answerResult.FinalJson
-			fmt.Printf("AI 响应来源: %s\n", answerResult.Source)
-			fmt.Printf("推荐答案数量: %d\n", len(answerResult.Answers))
-		}
-
-		jsonBytes, _ := json.MarshalIndent(finalJson, "", "  ")
-		fmt.Println("FinalJson:")
-		fmt.Println(string(jsonBytes))
-
-		elapsed := time.Since(startTime)
-
-		// 构造响应
-		response := Response{
-			Code:    200,
-			Message: "success",
-			Data: map[string]interface{}{
-				"session_id":  msg.SessionID,
-				"page_id":     yamlResult.Meta.PageID,
-				"yaml_source": yamlResult.Source,
-				"yaml_cache":  yamlResult.CachePath,
-				"elapsed_sec": elapsed.Seconds(),
-				"final_json":  finalJson,
-			},
-		}
-
-		respBytes, _ := json.Marshal(response)
-		if err := conn.WriteMessage(websocket.TextMessage, respBytes); err != nil {
-			log.Printf("write error: %v", err)
-			break
-		}
-
-		fmt.Printf(">>> 完成: session=%s, page_id=%s, source=%s, elapsed=%.2fs\n",
-			msg.SessionID, yamlResult.Meta.PageID, yamlResult.Source, elapsed.Seconds())
-
-		// 传给前端
-		if err := conn.WriteMessage(websocket.TextMessage, jsonBytes); err != nil {
-			log.Printf("write error: %v", err)
-			break
-		}
-		fmt.Println("FinalJson 传给前端完成")
 	}
 }
 
-func sendError(conn *websocket.Conn, errMsg string) {
-	resp := Response{Code: 500, Message: errMsg}
+func handleAnalyzeRequest(conn *websocket.Conn, msg Msg, basePath string) {
+	startTime := time.Now()
+
+	surveyID := extractSurveyID(msg.URL)
+	if surveyID == "" || surveyID == "unknown" {
+		sendError(conn, "extractSurveyID: invalid URL format, survey_id not found", msg.RequestID)
+		return
+	}
+
+	fmt.Println()
+	fmt.Println("========================================")
+	fmt.Println("            接收到的原始数据")
+	fmt.Println("========================================")
+	fmt.Printf("SessionID: %s\n", msg.SessionID)
+	fmt.Printf("RequestID: %s\n", msg.RequestID)
+	fmt.Printf("URL:       %s\n", msg.URL)
+	fmt.Printf("SurveyID:  %s\n", surveyID)
+	fmt.Printf("RawHTML长度: %d 字符\n", len(msg.RawHTML))
+	fmt.Println()
+
+	fixedHTML := fixEncoding([]byte(msg.RawHTML))
+	cleanHTML := cleaner.StripForDirectSurvey(fixedHTML)
+
+	fmt.Println("========================================")
+	fmt.Println(">>> 步骤 3: 提取 YAML 结构")
+	fmt.Println("========================================")
+	yamlResult, err := extractor.ExtractYamlStructure(surveyID, cleanHTML, basePath)
+	if err != nil {
+		sendError(conn, "ExtractYamlStructure error: "+err.Error(), msg.RequestID)
+		return
+	}
+	fmt.Printf("PageID:    %s\n", yamlResult.Meta.PageID)
+	fmt.Printf("Source:    %s\n", yamlResult.Source)
+	fmt.Printf("CachePath: %s\n", yamlResult.CachePath)
+
+	var finalJson extractor.FinalAnswerJson
+
+	fmt.Println("========================================")
+	fmt.Println(">>> 步骤 4: 生成推荐答案")
+	fmt.Println("========================================")
+
+	if yamlResult.Source == "cache" {
+		fmt.Println("Source: cache（使用缓存模板）")
+		fmt.Println("调用 AI: GenerateRealtimeAnswerOnly...")
+		answerResult, err := extractor.GenerateRealtimeAnswerOnly(cleanHTML, yamlResult.YamlContent, surveyID, msg.SessionID, basePath)
+		if err != nil {
+			sendError(conn, "GenerateRealtimeAnswerOnly error: "+err.Error(), msg.RequestID)
+			return
+		}
+		finalJson = answerResult.FinalJson
+		fmt.Printf("AI 响应来源: %s\n", answerResult.Source)
+		fmt.Printf("推荐答案数量: %d\n", len(answerResult.Interactions))
+	} else {
+		fmt.Println("Source: ai（实时生成）")
+		fmt.Println("调用 AI: GenerateRealtimeYamlWithAnswers...")
+		answerResult, err := extractor.GenerateRealtimeYamlWithAnswers(cleanHTML, yamlResult.YamlContent, surveyID, msg.SessionID, basePath, extractor.PageSettings{})
+		if err != nil {
+			sendError(conn, "GenerateRealtimeYamlWithAnswers error: "+err.Error(), msg.RequestID)
+			return
+		}
+		finalJson = answerResult.FinalJson
+		fmt.Printf("AI 响应来源: %s\n", answerResult.Source)
+		fmt.Printf("推荐答案数量: %d\n", len(answerResult.Answers))
+	}
+
+	_, _ = json.MarshalIndent(finalJson, "", "  ")
+	elapsed := time.Since(startTime)
+
+	response := Response{
+		Code:       200,
+		Message:    "success",
+		RequestID:  msg.RequestID,
+		YamlSource: yamlResult.Source,
+		ElapsedSec: elapsed.Seconds(),
+		Data:       finalJson.Data,
+	}
+
+	respBytes, _ := json.Marshal(response)
+	if err := conn.WriteMessage(websocket.TextMessage, respBytes); err != nil {
+		log.Printf("write error: %v", err)
+		return
+	}
+
+	fmt.Printf(">>> 完成: session=%s, page_id=%s, source=%s, elapsed=%.2fs\n",
+		msg.SessionID, yamlResult.Meta.PageID, yamlResult.Source, elapsed.Seconds())
+}
+
+func handleSubmit(conn *websocket.Conn, msg Msg, basePath string) {
+	go func() {
+		defer func() {
+			if r := recover(); r != nil {
+				log.Printf("handleSubmit panic: %v", r)
+			}
+		}()
+
+		screenshotDir := filepath.Join(basePath, "screenshots", msg.SessionID)
+		if err := os.MkdirAll(screenshotDir, 0755); err != nil {
+			log.Printf("mkdir error: %v", err)
+			return
+		}
+
+		filename := fmt.Sprintf("%s_%s.jpg", msg.PageID, time.Now().Format("20060102150405"))
+		filePath := filepath.Join(screenshotDir, filename)
+
+		imageData, err := base64.StdEncoding.DecodeString(msg.ImageBase64)
+		if err != nil {
+			log.Printf("base64 decode error: %v", err)
+			return
+		}
+
+		if err := os.WriteFile(filePath, imageData, 0644); err != nil {
+			log.Printf("write file error: %v", err)
+			return
+		}
+
+		fmt.Printf(">>> 截图已保存: %s\n", filePath)
+	}()
+
+	resp := Response{
+		Code:      200,
+		Message:   "success",
+		RequestID: msg.RequestID,
+		Data: map[string]interface{}{
+			"session_id": msg.SessionID,
+			"page_id":    msg.PageID,
+			"status":     "saving",
+		},
+	}
+	respBytes, _ := json.Marshal(resp)
+	conn.WriteMessage(websocket.TextMessage, respBytes)
+}
+
+func sendError(conn *websocket.Conn, errMsg string, requestID string) {
+	resp := Response{Code: 500, Message: errMsg, RequestID: requestID}
 	bytes, _ := json.Marshal(resp)
 	conn.WriteMessage(websocket.TextMessage, bytes)
 }
 
 func extractSurveyID(url string) string {
-	// 从 URL 提取 survey_id，例如:
-	// https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families
-	// 返回 "8809865"
+	// 1. 尝试 alchemer 格式: /s3/{survey_id}/
 	parts := strings.Split(url, "/")
 	for i, p := range parts {
 		if p == "s3" && i+1 < len(parts) {
 			return parts[i+1]
 		}
 	}
+
+	// 2. 尝试 qualtrics 格式: /form/{survey_id}
+	for i, p := range parts {
+		if p == "form" && i+1 < len(parts) {
+			return parts[i+1]
+		}
+	}
+
 	return ""
 }
 
@@ -244,6 +262,13 @@ func main() {
 	}
 
 	http.HandleFunc("/ws", wsHandler)
+
+	// 健康检查接口
+	http.HandleFunc("/api/v2/health", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(`{"status":"ok"}`))
+	})
 
 	fmt.Printf("WS server running on :%s\n", port)
 	log.Fatal(http.ListenAndServe(":"+port, nil))

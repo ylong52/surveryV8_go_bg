@@ -6,6 +6,56 @@ version: "1.0"
 # 当前激活的关键词（系统启动时自动加载对应的组）
 active_keyword: "q_Macalester"
 
+# ═════════════════════════════════════════════════════════════════════════════
+# 正则编写规范（重要！修改前必读）
+# ═════════════════════════════════════════════════════════════════════════════
+#
+# 【HTML 清洗流程】
+#   原始 HTML → fixEncoding() → StripForDirectSurvey() → 用于正则匹配
+#
+# 【StripForDirectSurvey 会移除以下内容】
+#   - <style>、<svg>、HTML注释
+#   - class 属性（不在白名单中）
+#   - style 属性
+#   - aria-* 属性
+#   - 未列出的 data-* 属性
+#
+# 【属性白名单（会被保留）】
+#   name, value, id, type, checked, selected, for, headers, role,
+#   data-name, data-value, data-id, data-index, data-qid
+#
+# 【常见问题】
+#   1. ❌ 不要依赖 class 属性匹配，如 class="QuestionText"
+#      因为 class 会被清洗掉
+#   2. ❌ 不要使用贪婪匹配 .*，会导致匹配到多个标签
+#   3. ✅ 使用非贪婪匹配 .*? 或 [\s\S]*?
+#   4. ✅ 优先匹配外层标签（如 <legend><div>...）而非属性
+#   5. ✅ 如果 HTML 中有换行符，必须使用 [\s\S]*? 而不是 .*?
+#   6. ✅ 如果 legend 与子标签之间有空格，使用 \s* 匹配
+#
+# 【正则格式】
+#   - 使用 JavaScript 风格：/pattern/flags
+#   - flags 只支持：gi（全局+忽略大小写）
+#   - Go 代码会自动去掉 / 和 flags 进行编译
+#
+# ═════════════════════════════════════════════════════════════════════════════
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# 为 {survey_id} 修改 page_id 正则。
+# HTML 结构示例：
+# <legend><div class="QuestionText...">题目内容</div></legend>
+# <legend> <label class="QuestionText...">题目内容</label></legend>
+# 注意事项：
+# 1. StripForDirectSurvey() 会移除 class 属性，不要依赖 class 匹配
+# 2. HTML 中可能有换行符或空格，必须使用 [\s\S]*? 和 \s*
+# 3. 正则格式：/<pattern>/gi
+# 4. 先用 tests/test_*.go 验证正则能匹配
+# 常见问题对应：
+# - 换行符：用 [\s\S]*? 而不是 .*?
+# - legend 与子标签间有空格：用 \s* 匹配
+# ═════════════════════════════════════════════════════════════════════════════
+
 # ─────────────────────────────────────────────────────────
 # 默认配置（所有站点共享，可被站点级配置覆盖）
 # ─────────────────────────────────────────────────────────
@@ -63,10 +113,10 @@ sites:
   - keyword: "q_Macalester"
     name: "Macalester-2026-prospective-families"
     url: "https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families"
-    survey_id: "macalester_2026_prospective_families"
+    survey_id: "8809865"
     updated_at: "2026-05-17"
 
-    # page_id_页面指纹正则配置
+    # page_id_页面指纹正则配置（见文件头部规范）
     page_id_fingerprints:
       question_pattern:
         regex: 
@@ -78,3 +128,47 @@ sites:
     next_button:
       next_pattern: '/<input[^>]*id="sg_NextButton"/'
       wait_after_click: 1500
+
+
+  - keyword: "sv_3bhtjkfaeoedj5c"
+    name: "SV_3BHtJkfaEOEDj5c"
+    url: "https://survey.qualtrics.com/jfe/form/SV_3BHtJkfaEOEDj5c"
+    survey_id: "sv_3bhtjkfaeoedj5c"
+    updated_at: "2026-05-17"
+
+    # page_id_页面指纹正则配置（见文件头部规范）
+    page_id_fingerprints:
+      question_pattern:
+        regex: 
+          # 优先级1: HTML legend/label 结构
+          - '/<legend><label[^>]*>(.*?)<\/label><\/legend>/gi'
+          # 优先级2: JSON QuestionText 字段
+          - '/"QuestionText":"([^"]+)"/gi'
+  
+      
+    # Next/Submit 按钮结构
+    next_button:
+      next_pattern: '/<input[^>]*id="NextButton"[^>]*>/'
+      wait_after_click: 1500
+
+
+  - keyword: "sv_em9m11pt2xiyuno"
+    name: "sv_eM9M11Pt2XiyUNo"
+    url: "https://escalentcspacehandp.qualtrics.com/jfe/form/SV_eM9M11Pt2XiyUNo"
+    survey_id: "sv_em9m11pt2xiyuno"
+    updated_at: "2026-05-17"
+    # page_id_页面指纹正则配置（见文件头部规范）
+    page_id_fingerprints:
+      question_pattern:
+        regex: 
+          # 优先级1: <legend><div>题目内容</div></legend>
+          - '/<legend><div[^>]*>([\s\S]*?)<\/div><\/legend>/gi'
+          # 优先级2: <legend><label>题目内容</label></legend>（legend 与 label 之间可能有空格）
+          - '/<legend>\s*<label[^>]*>([\s\S]*?)<\/label><\/legend>/gi'
+          
+      
+    # Next/Submit 按钮结构
+    next_button:
+      next_pattern: '/<input[^>]*id="NextButton"[^>]*>/'
+      wait_after_click: 1500
+

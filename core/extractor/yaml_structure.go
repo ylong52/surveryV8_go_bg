@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"gopkg.in/yaml.v3"
+	"survey.cli/core/cleaner"
 )
 
 // =============================================================================
@@ -67,10 +68,11 @@ type PageSettings struct {
 
 // NavButtonItem 导航按钮项
 type NavButtonItem struct {
-	Role       string            `json:"role"`
-	XPath      string            `json:"xpath"`
-	Text       string            `json:"text"`
-	Attributes map[string]string `json:"attributes"`
+	Role            string            `json:"role"`
+	XPath           string            `json:"xpath"`
+	Text            string            `json:"text"`
+	Attributes      map[string]string `json:"attributes"`
+	WaitAfterClick  int               `json:"wait_after_click,omitempty"`
 }
 
 // NavButtonsOutput 导航按钮输出
@@ -1017,7 +1019,7 @@ func buildFinalAnswerJson(answerResult *YamlAnswerResult, yamlData string, pageS
 	return FinalAnswerJson{
 		Data: DataOutput{
 			PageMetadata: PageMetadataOutput{
-				PageID:          pageID,
+				PageID:          cleaner.CleanPageID(pageID),
 				IsMatrixPage:    isMatrixPage,
 				HasNextButton:   pageSettings.HasNextButton,
 				HasSubmitButton: pageSettings.HasSubmitButton,
@@ -1066,7 +1068,7 @@ func buildInteractions(answers []Interaction) []InteractionItem {
 	for _, ans := range answers {
 		item := InteractionItem{
 			QuestionType: ans.QuestionType, // AI 回复
-			Subject:      ans.Subject,
+			Subject:      cleaner.CleanPageID(ans.Subject),
 		}
 
 		switch v := ans.ShowAnswer.(type) {
@@ -1135,9 +1137,9 @@ func loadNextButtonConfig(surveyID string) (NextButtonConfig, error) {
 		return NextButtonConfig{}, fmt.Errorf("loadNextButtonConfig: parse yaml: %w", err)
 	}
 
-	// 匹配 survey_id
+	// 匹配 survey_id（忽略大小写）
 	for _, site := range cfg.Sites {
-		if site.SurveyID == surveyID {
+		if strings.EqualFold(site.SurveyID, surveyID) {
 			return site.NextButton, nil
 		}
 	}
@@ -1155,8 +1157,23 @@ func buildNavButtons(pageSettings PageSettings, surveyID string, cleanHTML strin
 	var buttons []NavButtonItem
 	primaryButton := ""
 
-	if pageSettings.HasNextButton {
-		// 从 HTML 中解析 Next 按钮
+	// 从 page-fingerprints.yaml 加载 next_button 配置
+	nextButtonConfig, err := loadNextButtonConfig(surveyID)
+	if err == nil && nextButtonConfig.NextPattern != "" {
+		// 使用配置中的 next_pattern 生成 XPath
+		xpath := regexToXPath(nextButtonConfig.NextPattern)
+		// 从 HTML 中提取按钮属性
+		attrs := extractButtonAttrs(cleanHTML, xpath)
+		buttons = append(buttons, NavButtonItem{
+			Role:            "next",
+			XPath:           xpath,
+			Text:            "Next",
+			Attributes:      attrs,
+			WaitAfterClick:  nextButtonConfig.WaitAfterClick,
+		})
+		primaryButton = "next"
+	} else if pageSettings.HasNextButton {
+		// 回退到默认逻辑
 		xpath, text, attrs := extractButtonFromHTML(cleanHTML, "next")
 		buttons = append(buttons, NavButtonItem{
 			Role:       "next",
@@ -1183,6 +1200,94 @@ func buildNavButtons(pageSettings PageSettings, surveyID string, cleanHTML strin
 		Buttons:       buttons,
 		PrimaryButton: primaryButton,
 	}
+}
+
+// regexToXPath 将 JavaScript 风格的正则转换为 XPath
+// 输入: /<input[^>]*id="NextButton"[^>]*>/gi
+// 输出: //input[@id='NextButton']
+func regexToXPath(pattern string) string {
+	// 去掉 /gi 或 /g 后缀
+	cleanPattern := pattern
+	if strings.HasSuffix(cleanPattern, "/gi") {
+		cleanPattern = cleanPattern[:len(cleanPattern)-3]
+	} else if strings.HasSuffix(cleanPattern, "/g") {
+		cleanPattern = cleanPattern[:len(cleanPattern)-2]
+	} else if strings.HasSuffix(cleanPattern, "/") {
+		cleanPattern = cleanPattern[:len(cleanPattern)-1]
+	}
+
+	// 去掉开头的 /
+	if strings.HasPrefix(cleanPattern, "/") {
+		cleanPattern = cleanPattern[1:]
+	}
+
+	// 从正则中提取标签名和属性
+	// <input[^>]*id="NextButton"[^>]*> -> //input[@id='NextButton']
+	xpath := "//"
+
+	// 提取标签名
+	tagMatch := regexp.MustCompile(`<([a-zA-Z]+)`).FindStringSubmatch(cleanPattern)
+	if len(tagMatch) >= 2 {
+		xpath += tagMatch[1]
+	} else {
+		return "//input[@id='NextButton']" // 默认
+	}
+
+	// 提取 id 属性值
+	idMatch := regexp.MustCompile(`id=["']([^"']+)["']`).FindStringSubmatch(cleanPattern)
+	if len(idMatch) >= 2 {
+		xpath += "[@id='" + idMatch[1] + "']"
+	} else {
+		// 提取 value 属性值
+		valueMatch := regexp.MustCompile(`value=["']([^"']+)["']`).FindStringSubmatch(cleanPattern)
+		if len(valueMatch) >= 2 {
+			xpath += "[@value='" + valueMatch[1] + "']"
+		}
+	}
+
+	return xpath
+}
+
+// extractButtonAttrs 从 HTML 中根据 XPath 提取按钮属性
+func extractButtonAttrs(html string, xpath string) map[string]string {
+	attrs := make(map[string]string)
+
+	// 简单实现：从 xpath 提取属性构建正则
+	// 例如: //input[@id='NextButton'] -> <input[^>]*id="NextButton"[^>]*>
+	rePattern := `<(` + strings.Split(xpath, "//")[1]
+	if strings.Contains(xpath, "@id=") {
+		idMatch := regexp.MustCompile(`@id='([^']+)'`).FindStringSubmatch(xpath)
+		if len(idMatch) >= 2 {
+			rePattern = `<[^>]*id=["']` + idMatch[1] + `["'][^>]*>`
+		}
+	} else if strings.Contains(xpath, "@value=") {
+		valueMatch := regexp.MustCompile(`@value='([^']+)'`).FindStringSubmatch(xpath)
+		if len(valueMatch) >= 2 {
+			rePattern = `<[^>]*value=["']` + valueMatch[1] + `["'][^>]*>`
+		}
+	}
+
+	re := regexp.MustCompile(`(?i)` + rePattern)
+	match := re.FindString(html)
+	if match != "" {
+		// 提取 type
+		typeMatch := regexp.MustCompile(`type=["']([^"']+)["']`).FindStringSubmatch(match)
+		if len(typeMatch) >= 2 {
+			attrs["type"] = typeMatch[1]
+		}
+		// 提取 id
+		idMatch := regexp.MustCompile(`id=["']([^"']+)["']`).FindStringSubmatch(match)
+		if len(idMatch) >= 2 {
+			attrs["id"] = idMatch[1]
+		}
+		// 提取 value
+		valueMatch := regexp.MustCompile(`value=["']([^"']+)["']`).FindStringSubmatch(match)
+		if len(valueMatch) >= 2 {
+			attrs["value"] = valueMatch[1]
+		}
+	}
+
+	return attrs
 }
 
 // extractButtonFromHTML 从 HTML 中提取按钮的 XPath、文本和属性
