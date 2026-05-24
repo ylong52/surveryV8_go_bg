@@ -140,12 +140,12 @@ sites:
     page_id_fingerprints:
       question_pattern:
         regex: 
-          # 优先级1: HTML legend/label 结构
-          - '/<legend><label[^>]*>(.*?)<\/label><\/legend>/gi'
-          # 优先级2: JSON QuestionText 字段
-          - '/"QuestionText":"([^"]+)"/gi'
-  
-      
+          # 优先级1: <legend> <label class="QuestionText">题目内容</label></legend>
+          # 注意：legend 与 label 之间可能有空格
+          - '/<legend>\s*<label[^>]*class="[^"]*QuestionText[^"]*"[^>]*>([\s\S]*?)<\/label><\/legend>/gi'
+          # 优先级2: <legend><div class="QuestionText">题目内容</div></legend>
+          - '/<legend>\s*<div[^>]*class="[^"]*QuestionText[^"]*"[^>]*>([\s\S]*?)<\/div>\s*<\/legend>/gi'
+
     # Next/Submit 按钮结构
     next_button:
       next_pattern: '/<input[^>]*id="NextButton"[^>]*>/'
@@ -161,9 +161,11 @@ sites:
     page_id_fingerprints:
       question_pattern:
         regex: 
-          # 优先级1: <legend><div>题目内容</div></legend>
+          # 优先级1: <legend> <div class="QuestionText">题目内容</div></legend>
+          - '/<legend>\s*<div[^>]*class="[^"]*QuestionText[^"]*"[^>]*>([\s\S]*?)<\/div>\s*<\/legend>/gi'
+          # 优先级2: <legend><div>题目内容</div></legend>（无class限制，兜底）
           - '/<legend><div[^>]*>([\s\S]*?)<\/div><\/legend>/gi'
-          # 优先级2: <legend><label>题目内容</label></legend>（legend 与 label 之间可能有空格）
+          # 优先级3: <legend><label>题目内容</label></legend>（legend 与 label 之间可能有空格）
           - '/<legend>\s*<label[^>]*>([\s\S]*?)<\/label><\/legend>/gi'
           
       

@@ -95,6 +95,77 @@ func ExtractYamlStructure(surveyID, cleanHTML, basePath string) (*YamlResult, er
 	}, nil
 }
 
+// ExtractYamlStructureWithPageID 执行步骤 1-5，但 page_id 已知（从原始 HTML 提取）
+// 用于 page_id 提取需要保留 class 属性的场景
+// @param surveyID  问卷ID
+// @param pageID     已知的 page_id（从原始 HTML 提取）
+// @param cleanHTML 清洗后HTML
+// @param basePath  存储根目录
+// @returns         YamlResult，或错误
+func ExtractYamlStructureWithPageID(surveyID, pageID, cleanHTML, basePath string) (*YamlResult, error) {
+	// 步骤 1-4：调用 ExtractWithPageID() 获取 YamlPrompt
+	result, err := ExtractWithPageID(surveyID, pageID, cleanHTML, basePath)
+	if err != nil {
+		return nil, fmt.Errorf("ExtractYamlStructureWithPageID: ExtractWithPageID failed: %w", err)
+	}
+	yamlPrompt := result.YamlPrompt
+	meta := result.Meta
+
+	// 查找本地 YAML 模板
+	templatePath := filepath.Join(basePath, "templates", surveyID, meta.PageID+".yaml")
+
+	if yamlContent, err := os.ReadFile(templatePath); err == nil {
+		// 命中本地模板，跳过 AI 调用
+		writeCacheHitLog(basePath, surveyID, meta, templatePath)
+		printCacheHitSummary(meta, templatePath, string(yamlContent))
+
+		return &YamlResult{
+			YamlContent: string(yamlContent),
+			CachePath:   templatePath,
+			Meta:        meta,
+			YamlPrompt:  yamlPrompt,
+			Source:      "cache",
+		}, nil
+	}
+
+	// 未命中模板，继续调用 AI
+	writeCacheMissLog(basePath, surveyID, meta, templatePath)
+
+	// 写步骤5开始日志
+	writeStep5StartLog(basePath, surveyID, meta, yamlPrompt)
+
+	// 步骤 5：调用 AI 提取 YAML 结构
+	aiResponse, err := CallAI(
+		surveyID,
+		yamlPrompt.System,
+		yamlPrompt.User,
+		basePath,
+	)
+	if err != nil {
+		return nil, fmt.Errorf("ExtractYamlStructureWithPageID: CallAI failed: %w", err)
+	}
+
+	// 写步骤5完成日志
+	writeStep5CompleteLog(basePath, surveyID, meta, aiResponse)
+
+	// 步骤 6：保存 YAML 到缓存目录
+	cachePath, err := saveYamlToCache(basePath, surveyID, meta.PageID, aiResponse)
+	if err != nil {
+		return nil, fmt.Errorf("ExtractYamlStructureWithPageID: saveYamlToCache failed: %w", err)
+	}
+
+	// 控制台输出摘要
+	printYamlResultSummary(meta, cachePath, aiResponse)
+
+	return &YamlResult{
+		YamlContent: aiResponse,
+		CachePath:   cachePath,
+		Meta:       meta,
+		YamlPrompt: yamlPrompt,
+		Source:     "ai",
+	}, nil
+}
+
 // writeStep5StartLog 写入步骤5开始日志
 func writeStep5StartLog(basePath, surveyID string, meta PageMetadata, yamlPrompt YamlPrompt) {
 	logDir := filepath.Join(basePath, "logs")

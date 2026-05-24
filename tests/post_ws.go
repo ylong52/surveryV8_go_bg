@@ -7,26 +7,29 @@ import (
 	"fmt"
 	"net/url"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/google/uuid"
 	"github.com/gorilla/websocket"
+	"gopkg.in/yaml.v3"
 )
 
 var (
 	sessionID = flag.String("session_id", "session_test", "Session ID")
 	urlStr    = flag.String("url", "https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families", "Survey URL")
-	wsURL     = flag.String("ws", "ws://localhost:10502/ws", "WebSocket server URL")
+	wsURL     = flag.String("ws", "ws://localhost:10501/ws", "WebSocket server URL")
 	htmlFile  = flag.String("html", "", "HTML file path")
 )
 
 type WsMessage struct {
-	SessionID  string `json:"session_id"`
-	RawHTML    string `json:"rawhtml"`
-	URL        string `json:"url"`
-	Type       string `json:"type"`
-	RequestID  string `json:"requestId"`
-	DebugMode  string `json:"debugmode,omitempty"`
+	SessionID string `json:"session_id"`
+	RawHTML   string `json:"rawhtml"`
+	URL       string `json:"url"`
+	Type      string `json:"type"`
+	RequestID string `json:"requestId"`
+	DebugMode string `json:"debugmode,omitempty"`
+	SurveyID  string `json:"survey_id,omitempty"`
 }
 
 func main() {
@@ -82,6 +85,9 @@ func main() {
 	// 生成随机请求ID
 	requestID := uuid.New().String()
 
+	// 从 URL 提取 survey_id（用于调试）
+	surveyID := extractSurveyID(*urlStr)
+
 	msg := WsMessage{
 		SessionID: *sessionID,
 		RawHTML:   rawHTML,
@@ -89,6 +95,7 @@ func main() {
 		Type:      "analyze_request",
 		RequestID: requestID,
 		DebugMode: "true",
+		SurveyID:  surveyID,
 	}
 
 	payload, err := json.Marshal(msg)
@@ -102,6 +109,7 @@ func main() {
 	fmt.Printf("SESSION_ID:  %s\n", msg.SessionID)
 	fmt.Printf("REQUEST_ID:  %s\n", msg.RequestID)
 	fmt.Printf("TYPE:        %s\n", msg.Type)
+	fmt.Printf("SURVEY_ID:   %s\n", msg.SurveyID)
 	if len(rawHTML) > 200 {
 		fmt.Printf("RAWHTML:     [%.2f KB]\n", float64(len(rawHTML))/1024)
 	} else {
@@ -167,4 +175,59 @@ func main() {
 	}
 
 	fmt.Println(">> 客户端退出")
+}
+
+// SiteConfig 站点配置（与 page-fingerprints.yaml 结构对应）
+type SiteConfig struct {
+	Keyword  string `yaml:"keyword"`
+	Name     string `yaml:"name"`
+	URL      string `yaml:"url"`
+	SurveyID string `yaml:"survey_id"`
+}
+
+// FingerprintsConfig 配置文件结构
+type FingerprintsConfig struct {
+	Sites []SiteConfig `yaml:"sites"`
+}
+
+// loadSitesFromConfig 加载配置文件，返回站点列表
+func loadSitesFromConfig(configPath string) ([]SiteConfig, error) {
+	data, err := os.ReadFile(configPath)
+	if err != nil {
+		return nil, err
+	}
+	var cfg FingerprintsConfig
+	if err := yaml.Unmarshal(data, &cfg); err != nil {
+		return nil, err
+	}
+	return cfg.Sites, nil
+}
+
+// extractSurveyID 从 URL 匹配 page-fingerprints.yaml 配置获取 survey_id
+func extractSurveyID(rawURL string) string {
+	if rawURL == "" {
+		return ""
+	}
+	// 查找配置文件（相对于可执行文件或工作目录）
+	configPaths := []string{
+		"configs/page-fingerprints.yaml",
+		filepath.Join(os.Getenv("GOPATH"), "src/e-case2025-adspower-surveyV8-go-surveryV8-go-bg/configs/page-fingerprints.yaml"),
+	}
+	var sites []SiteConfig
+	for _, p := range configPaths {
+		if s, err := loadSitesFromConfig(p); err == nil {
+			sites = s
+			break
+		}
+	}
+	if len(sites) == 0 {
+		return ""
+	}
+	// URL 精确或前缀匹配
+	for _, site := range sites {
+		if strings.HasPrefix(rawURL, site.URL) || rawURL == site.URL {
+			return site.SurveyID
+		}
+	}
+	return ""
 }

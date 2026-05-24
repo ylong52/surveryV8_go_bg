@@ -18,6 +18,63 @@ type ExtractResult struct {
 	YamlPrompt YamlPrompt      // 步骤4：YAML提取专用提示词
 }
 
+// ExtractWithPageID 执行步骤 1-4，但 page_id 已知（从原始 HTML 提取）
+// 用于 page_id 提取需要保留 class 属性的场景
+// @param surveyID  问卷标识
+// @param pageID    已知的 page_id（从原始 HTML 提取）
+// @param cleanHTML 清洗后的 HTML 字符串
+// @param basePath  存储根目录
+// @returns         ExtractResult，或错误
+func ExtractWithPageID(surveyID, pageID, cleanHTML, basePath string) (*ExtractResult, error) {
+	if surveyID == "" {
+		return nil, fmt.Errorf("ExtractWithPageID: surveyID cannot be empty")
+	}
+	if pageID == "" {
+		return nil, fmt.Errorf("ExtractWithPageID: pageID cannot be empty")
+	}
+	if cleanHTML == "" {
+		return nil, fmt.Errorf("ExtractWithPageID: cleanHTML cannot be empty")
+	}
+	if basePath == "" {
+		basePath = "./storage"
+	}
+
+	// 使用已知的 pageID 构建 PageMetadata
+	meta := PageMetadata{
+		SurveyID:       surveyID,
+		PageID:         pageID,
+		Timestamp:       time.Now().UTC().Format(time.RFC3339),
+		QuestionsCount: 0,
+	}
+
+	// 步骤 3：组装 AI Prompt（答题用）
+	prompt, err := buildPrompt(surveyID, meta.PageID, cleanHTML)
+	if err != nil {
+		return nil, fmt.Errorf("ExtractWithPageID step3: %w", err)
+	}
+
+	// 写步骤1-3的日志
+	if err := writeLog(basePath, surveyID, meta, prompt, len(cleanHTML)); err != nil {
+		return nil, fmt.Errorf("ExtractWithPageID writeLog: %w", err)
+	}
+
+	// 步骤 4：整理 YAML 专用提示词
+	yamlPrompt, err := BuildYamlPrompt(surveyID, meta.PageID, cleanHTML)
+	if err != nil {
+		return nil, fmt.Errorf("ExtractWithPageID step4: %w", err)
+	}
+
+	// 写步骤4的YAML提示词日志（完整保存，不截断）
+	if err := WriteYamlPromptLog(basePath, surveyID, meta, yamlPrompt, cleanHTML); err != nil {
+		return nil, fmt.Errorf("ExtractWithPageID writeYamlPromptLog: %w", err)
+	}
+
+	// 控制台输出YAML提示词摘要（HTML截断300字符）
+	printYamlPromptSummary(surveyID, meta, yamlPrompt, cleanHTML)
+
+	return &ExtractResult{Meta: meta, Prompt: prompt, YamlPrompt: yamlPrompt}, nil
+}
+
 // Extract 执行步骤 1-4：接收参数、提取 PageMetadata、组装 AI Prompt、整理 YAML Prompt，并写日志
 // @param surveyID  问卷标识（不能为空）
 // @param cleanHTML 清洗后的 HTML 字符串（不能为空，超过60000字符直接报错）

@@ -156,6 +156,7 @@ func CallAI(surveyID, systemPrompt, userPrompt, basePath string) (string, error)
 		// 成功 200：去除 markdown 代码块，验证 YAML 格式
 		lastRawResponse = content
 		cleaned := stripMarkdownFence(content)
+		
 		if yamlErr := validateYAMLString(cleaned); yamlErr != nil {
 			msg := fmt.Sprintf("YAML 解析失败, retry %d/%d: %v", attempt+1, maxRetries, yamlErr)
 			writeAILog(basePath, surveyID, cfg.Model, attempt, msg, content, elapsed)
@@ -177,6 +178,9 @@ func CallAI(surveyID, systemPrompt, userPrompt, basePath string) (string, error)
 // doDeepSeekRequest 发起单次 HTTP 请求到 DeepSeek /chat/completions
 // @returns content（AI 回复文本），statusCode，网络层错误
 func doDeepSeekRequest(cfg *deepSeekEnvConfig, systemPrompt, userPrompt string) (string, int, error) {
+	// 调试标志：确认函数被调用
+	fmt.Fprintf(os.Stderr, "[DEBUG] doDeepSeekRequest 被调用, prompt长度: system=%d, user=%d\n", len(systemPrompt), len(userPrompt))
+	
 	reqBody := deepSeekRequest{
 		Model: cfg.Model,
 		Messages: []deepSeekMessage{
@@ -192,7 +196,23 @@ func doDeepSeekRequest(cfg *deepSeekEnvConfig, systemPrompt, userPrompt string) 
 		return "", 0, fmt.Errorf("marshal request: %w", err)
 	}
 
-	client := &http.Client{Timeout: time.Duration(cfg.Timeout) * time.Second}
+	// 使用更宽松的超时配置：总超时 + 连接超时分开
+	timeout := time.Duration(cfg.Timeout) * time.Second
+	if timeout == 0 {
+		timeout = 120 * time.Second // 默认 120 秒
+	}
+
+	// 创建带有自定义 Transport 的 HTTP Client
+	transport := &http.Transport{
+		MaxIdleConns:        10,
+		IdleConnTimeout:     60 * time.Second,
+		TLSHandshakeTimeout: 30 * time.Second,
+	}
+
+	client := &http.Client{
+		Timeout:   timeout,
+		Transport: transport,
+	}
 
 	req, err := http.NewRequest("POST", cfg.BaseURL+"/chat/completions", bytes.NewReader(bodyBytes))
 	if err != nil {
@@ -217,15 +237,33 @@ func doDeepSeekRequest(cfg *deepSeekEnvConfig, systemPrompt, userPrompt string) 
 		return "", resp.StatusCode, nil
 	}
 
+	// 关键修复：确保响应是有效 UTF-8
+	// 处理可能的编码混乱问题（如 Windows-1252 被误解析为 UTF-8）
+	respContent := strings.ToValidUTF8(string(respBytes), "\uFFFD")
+
+	// 调试：检查是否发生了 UTF-8 修复
+	if respContent != string(respBytes) {
+		// 写入到 stderr，确保能看到
+		fmt.Fprintf(os.Stderr, "[DEBUG] AI 响应发生了 UTF-8 修复，原长度: %d, 修复后: %d\n", len(respBytes), len(respContent))
+	}
+
 	var dsResp deepSeekResponse
-	if err := json.Unmarshal(respBytes, &dsResp); err != nil {
+	if err := json.Unmarshal([]byte(respContent), &dsResp); err != nil {
 		return "", resp.StatusCode, fmt.Errorf("parse response JSON: %w", err)
 	}
 	if len(dsResp.Choices) == 0 || dsResp.Choices[0].Message.Content == "" {
 		return "", resp.StatusCode, fmt.Errorf("AI 响应为空")
 	}
 
-	return dsResp.Choices[0].Message.Content, resp.StatusCode, nil
+	// 调试：输出 AI 返回内容的前200字符
+	content := dsResp.Choices[0].Message.Content
+	if len(content) > 200 {
+		fmt.Printf("[DEBUG] AI 返回内容 (%d 字符): %s...\n", len(content), content[:200])
+	} else {
+		fmt.Printf("[DEBUG] AI 返回内容 (%d 字符): %s\n", len(content), content)
+	}
+
+	return content, resp.StatusCode, nil
 }
 
 // stripMarkdownFence 去除 AI 输出中可能存在的 ```yaml ... ``` 包裹
@@ -238,7 +276,38 @@ func stripMarkdownFence(s string) string {
 		}
 	}
 	s = strings.TrimSuffix(s, "```")
-	return strings.TrimSpace(s)
+	s = strings.TrimSpace(s)
+	// 去除控制字符（YAML 不允许控制字符）
+	s = stripControlChars(s)
+	return s
+}
+
+// stripControlChars 移除字符串中的控制字符
+// YAML 规范不允许控制字符（0x00-0x1F，除 \t \n \r 外）
+// 处理流程：先用 ToValidUTF8 修复无效 UTF-8 序列，再用 Unicode 码点过滤控制字符
+func stripControlChars(s string) string {
+	// 关键修复：将无效的 UTF-8 序列替换为 Unicode 替换字符
+	// 解决 AI 输出中 "â\x80\x99" 等被误解的编码序列问题
+	s = strings.ToValidUTF8(s, "\uFFFD")
+
+	var result strings.Builder
+	for _, r := range s {
+		// 保留制表符、换行、回车
+		if r == '\t' || r == '\n' || r == '\r' {
+			result.WriteRune(r)
+		// 保留所有可打印 Unicode 字符（0x20 及以上，不包括 DEL）
+		// 但过滤 C1 控制字符 (0x80-0x9F)
+		} else if r >= 0x20 && r < 0x7F {
+			result.WriteRune(r)
+		} else if r >= 0xA0 {
+			// 保留 Latin-1 补充字符 (0xA0) 及以上
+			result.WriteRune(r)
+		}
+		// Unicode C0 控制字符 (0x00-0x1F) 被过滤
+		// DEL (0x7F) 被过滤
+		// Unicode C1 控制字符 (0x80-0x9F) 被过滤（这是 YAML 规范的要求）
+	}
+	return result.String()
 }
 
 // validateYAMLString 检验字符串是否为合法 YAML

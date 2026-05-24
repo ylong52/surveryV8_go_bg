@@ -44,36 +44,57 @@ type siteConfig struct {
 // @param surveyID  问卷 ID
 // @returns         正则模式列表，或错误（找不到则返回错误，不兜底）
 func LoadPatternsForSurvey(surveyID string) ([]string, error) {
-	configPath := "configs/page-fingerprints.yaml"
-	if !filepath.IsAbs(configPath) {
-		wd, err := os.Getwd()
-		if err != nil {
-			return nil, fmt.Errorf("LoadPatternsForSurvey: getwd: %w", err)
-		}
-		configPath = filepath.Join(wd, configPath)
+	// 尝试多个可能的配置文件路径
+	configPaths := []string{
+		"configs/page-fingerprints.yaml",                    // 相对路径（相对于工作目录）
+		"../configs/page-fingerprints.yaml",                 // ws_server 子目录
+		"../../configs/page-fingerprints.yaml",              // 更上层目录
 	}
 
-	data, err := os.ReadFile(configPath)
-	if err != nil {
-		return nil, fmt.Errorf("LoadPatternsForSurvey: read %s: %w", configPath, err)
+	// 如果设置了环境变量，优先使用
+	if envPath := os.Getenv("PAGE_FINGERPRINTS_CONFIG"); envPath != "" {
+		configPaths = append([]string{envPath}, configPaths...)
 	}
 
-	var cfg pageFingerprintsConfig
-	if err := yaml.Unmarshal(data, &cfg); err != nil {
-		return nil, fmt.Errorf("LoadPatternsForSurvey: parse yaml: %w", err)
-	}
-
-	for _, site := range cfg.Sites {
-		if strings.EqualFold(site.SurveyID, surveyID) {
-			patterns := site.PageIDFingerprints.QuestionPattern.Regex
-			if len(patterns) == 0 {
-				return nil, fmt.Errorf("LoadPatternsForSurvey: survey_id=%s has empty regex patterns", surveyID)
+	var lastErr error
+	for _, configPath := range configPaths {
+		var fullPath string
+		if filepath.IsAbs(configPath) {
+			fullPath = configPath
+		} else {
+			wd, err := os.Getwd()
+			if err != nil {
+				lastErr = err
+				continue
 			}
-			return patterns, nil
+			fullPath = filepath.Join(wd, configPath)
 		}
+
+		data, err := os.ReadFile(fullPath)
+		if err != nil {
+			lastErr = fmt.Errorf("read %s: %w", fullPath, err)
+			continue
+		}
+
+		var cfg pageFingerprintsConfig
+		if err := yaml.Unmarshal(data, &cfg); err != nil {
+			lastErr = fmt.Errorf("parse %s: %w", fullPath, err)
+			continue
+		}
+
+		for _, site := range cfg.Sites {
+			if strings.EqualFold(site.SurveyID, surveyID) {
+				patterns := site.PageIDFingerprints.QuestionPattern.Regex
+				if len(patterns) == 0 {
+					return nil, fmt.Errorf("LoadPatternsForSurvey: survey_id=%s has empty regex patterns", surveyID)
+				}
+				return patterns, nil
+			}
+		}
+		return nil, fmt.Errorf("LoadPatternsForSurvey: survey_id=%s not found in page-fingerprints.yaml", surveyID)
 	}
 
-	return nil, fmt.Errorf("LoadPatternsForSurvey: survey_id=%s not found in page-fingerprints.yaml", surveyID)
+	return nil, fmt.Errorf("LoadPatternsForSurvey: could not find config file (tried %v): %w", configPaths, lastErr)
 }
 
 // ExtractPageIDWithPatterns 从 HTML 中按指定模式提取并清洗 page_id

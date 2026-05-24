@@ -653,6 +653,112 @@ func GenerateRealtimeAnswerOnly(cleanHTML, cachedYaml, surveyID, sessionID, base
 	}, nil
 }
 
+// GenerateRealtimeAnswerOnlyWithMeta 生成推荐答案，使用已知的 meta
+// page_id 从原始 HTML 提取，不从清洗后的 HTML 提取
+// @param meta        已知的页面元数据（包含 page_id）
+// @param cleanHTML   清洗后的 HTML
+// @param cachedYaml  缓存的 YAML 模板
+// @param surveyID    问卷 ID
+// @param sessionID   会话 ID
+// @param basePath    存储根目录
+// @returns           RealtimeAnswerOnlyResult, error
+func GenerateRealtimeAnswerOnlyWithMeta(meta PageMetadata, cleanHTML, cachedYaml, surveyID, sessionID, basePath string) (*RealtimeAnswerOnlyResult, error) {
+	// 步骤2: 从cachedYaml解析pageSettings
+	pageSettings := parseYamlPageSettings(cachedYaml)
+
+	// 步骤3: 加载人设（优先级：语义化人设 > 系统预设人设）
+	fmt.Println("[GenerateRealtimeAnswerOnlyWithMeta] 开始加载人设...")
+
+	// 优先尝试加载语义化人设（来自 persona_generic.description）
+	semanticPersona, err := LoadSemanticPersona()
+	if err != nil {
+		fmt.Printf("[警告] LoadSemanticPersona 失败: %v，将使用系统预设人设\n", err)
+	}
+
+	var effectivePersona string
+	var personaSource string // 人设来源标识，用于日志备查
+
+	if semanticPersona != "" {
+		// 语义化人设存在，使用答案题目的人设
+		effectivePersona = semanticPersona
+		personaSource = "semantic (persona_generic.description)"
+	} else {
+		// 语义化人设为空，fallback 到系统预设人设
+		effectivePersona, err = LoadPersona()
+		if err != nil {
+			return nil, fmt.Errorf("GenerateRealtimeAnswerOnlyWithMeta: LoadPersona failed: %w", err)
+		}
+		personaSource = "system (persona_fixed/generic)"
+	}
+	fmt.Printf("[人设加载] 有效人设: %s\n", effectivePersona)
+	fmt.Printf("[人设加载] 完成，有效人设长度: %d 字符\n", len(effectivePersona))
+
+	// 步骤4: 获取答题上下文（从 page_summary 缓存）
+	answerContext := GetPageSummaryContext(sessionID, meta.PageID)
+
+	// 步骤5: 构建Prompt（使用 effectivePersona + answerContext）
+	systemPrompt, userPrompt, err := BuildYamlAnswerPromptWithHtml(effectivePersona, answerContext, cachedYaml, cleanHTML)
+	if err != nil {
+		return nil, fmt.Errorf("GenerateRealtimeAnswerOnlyWithMeta: BuildYamlAnswerPromptWithHtml failed: %w", err)
+	}
+
+	// 步骤6: 调用AI（唯一一次）
+	aiResponse, err := CallAI(surveyID, systemPrompt, userPrompt, basePath)
+	if err != nil {
+		saveAnswerFailureLog(basePath, surveyID, meta.PageID, systemPrompt, userPrompt, aiResponse, err)
+		return nil, fmt.Errorf("GenerateRealtimeAnswerOnlyWithMeta: CallAI failed: %w", err)
+	}
+
+	// 步骤7: 解析响应
+	interactions, pageSummary, err := parseInteractionsResponse(aiResponse)
+	if err != nil {
+		saveAnswerFailureLog(basePath, surveyID, meta.PageID, systemPrompt, userPrompt, aiResponse, err)
+		return nil, fmt.Errorf("GenerateRealtimeAnswerOnlyWithMeta: parse response failed: %w", err)
+	}
+
+	// 步骤8: 保存 page_summary 到缓存（按 session_id:page_id 去重）
+	if pageSummary != "" {
+		SavePageSummaryCache(sessionID, meta.PageID, pageSummary)
+	}
+
+	// 步骤9: 构建FinalJson
+	finalJson := buildFinalAnswerJson(
+		&YamlAnswerResult{
+			Interactions: interactions,
+			PageSummary:  pageSummary,
+		},
+		cachedYaml,
+		pageSettings,
+		surveyID,
+		cleanHTML,
+	)
+
+	// 步骤10: 保存JSON缓存
+	jsonPath, err := saveRealtimeAnswersJson(basePath, surveyID, meta.PageID, finalJson)
+	if err != nil {
+		fmt.Printf("[警告] saveRealtimeAnswersJson 失败: %v\n", err)
+		jsonPath = ""
+	}
+
+	// 步骤11: 记录Prompt日志（保持独立）
+	fmt.Println("[日志] 记录 Prompt 日志...")
+	writeAnswerPromptLog(basePath, surveyID, meta, personaSource, systemPrompt, userPrompt, aiResponse)
+	fmt.Printf("[日志] Prompt 日志记录完成 (来源: %s)\n", personaSource)
+
+	// 步骤12: 打印摘要
+	printRealtimeAnswerOnlyResult(meta, interactions, pageSummary, pageSettings, jsonPath)
+
+	return &RealtimeAnswerOnlyResult{
+		Interactions:  interactions,
+		PageSummary:   pageSummary,
+		PageID:        meta.PageID,
+		PageSettings:  pageSettings,
+		YamlStructure: cachedYaml,
+		FinalJson:     finalJson,
+		Source:        "realtime",
+	}, nil
+}
+
 // BuildYamlAnswerPromptWithHtml 构建答案推荐Prompt（包含HTML内容）
 //
 //	在 BuildYamlAnswerPrompt 基础上，追加HTML内容供AI参考

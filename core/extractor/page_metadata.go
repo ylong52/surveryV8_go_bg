@@ -18,6 +18,28 @@ type PageMetadata struct {
 	QuestionsCount int
 }
 
+// ExtractPageMetadataFromRaw 从原始 HTML（保留 class）中提取 page_id，生成 PageMetadata
+// 用于 page_id 提取需要保留 class 属性的场景
+func ExtractPageMetadataFromRaw(surveyID, rawHTML string) (PageMetadata, error) {
+	// 根据 surveyID 加载对应的正则配置
+	patterns, err := cleaner.LoadPatternsForSurvey(surveyID)
+	if err != nil {
+		return PageMetadata{}, fmt.Errorf("extractPageMetadataFromRaw: %w", err)
+	}
+
+	// 使用配置的正则从原始 HTML 提取 page_id（不经过清洗）
+	pageID, err := cleaner.ExtractPageIDWithPatterns(rawHTML, patterns)
+	if err != nil {
+		return PageMetadata{}, fmt.Errorf("extractPageMetadataFromRaw: %w", err)
+	}
+	return PageMetadata{
+		SurveyID:       surveyID,
+		PageID:         pageID,
+		Timestamp:      time.Now().UTC().Format(time.RFC3339),
+		QuestionsCount: 0,
+	}, nil
+}
+
 // extractPageMetadata 从 cleanHTML 中提取 page_id，生成 PageMetadata
 // @param surveyID  问卷 ID（由调用方传入）
 // @param cleanHTML 清洗后的 HTML 字符串

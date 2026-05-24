@@ -28,7 +28,7 @@ type yamlPromptsConfig struct {
 	FieldExtractionRules     string `yaml:"field_extraction_rules"`
 	QuestionTypeDifferential string `yaml:"question_type_differential"`
 	ResponseFormatRules      string `yaml:"response_format_rules"`
-	Prohibitions            string `yaml:"prohibitions"`
+	Prohibitions             string `yaml:"prohibitions"`
 	OutputFormatRules        string `yaml:"output_format_rules"`
 	PageDetectionRules       string `yaml:"page_detection_rules"`
 }
@@ -51,14 +51,15 @@ func loadYamlPromptsConfig() (yamlPromptsConfig, error) {
 //   - 检查HTML长度，超过60000直接报错（不截断）
 //   - 传给AI时保留完整HTML
 //   - 日志中保存完整HTML
+//
 // @param surveyID  问卷ID
 // @param pageID    页面ID
 // @param cleanHTML 清洗后HTML（不超过60000字符）
 // @returns         YamlPrompt，或错误
 func BuildYamlPrompt(surveyID, pageID, cleanHTML string) (YamlPrompt, error) {
-	// 检查HTML长度，超过60000直接报错
-	if len(cleanHTML) > 60000 {
-		return YamlPrompt{}, fmt.Errorf("HTML长度 %d 超过60000字符限制", len(cleanHTML))
+	// 检查HTML长度，超过240000直接报错
+	if len(cleanHTML) > 240000 {
+		return YamlPrompt{}, fmt.Errorf("HTML长度 %d 超过240000字符限制", len(cleanHTML))
 	}
 
 	// 读取配置

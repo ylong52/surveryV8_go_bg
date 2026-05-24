@@ -68,11 +68,11 @@ type PageSettings struct {
 
 // NavButtonItem 导航按钮项
 type NavButtonItem struct {
-	Role            string            `json:"role"`
-	XPath           string            `json:"xpath"`
-	Text            string            `json:"text"`
-	Attributes      map[string]string `json:"attributes"`
-	WaitAfterClick  int               `json:"wait_after_click,omitempty"`
+	Role           string            `json:"role"`
+	XPath          string            `json:"xpath"`
+	Text           string            `json:"text"`
+	Attributes     map[string]string `json:"attributes"`
+	WaitAfterClick int               `json:"wait_after_click,omitempty"`
 }
 
 // NavButtonsOutput 导航按钮输出
@@ -417,7 +417,7 @@ func GenerateLatestYamlData(html, yamlTemplate, surveyID, basePath string) (*Tem
 	}, nil
 }
 
-// stripYamlMarkdown 去除markdown代码块包裹
+// stripYamlMarkdown 去除markdown代码块包裹，并清理控制字符
 func stripYamlMarkdown(s string) string {
 	s = strings.TrimSpace(s)
 	// 去除 ```yaml 或 ``` 或 ```yml 开头的行
@@ -429,7 +429,10 @@ func stripYamlMarkdown(s string) string {
 	}
 	// 去除结尾的 ```
 	s = strings.TrimSuffix(s, "```")
-	return strings.TrimSpace(s)
+	s = strings.TrimSpace(s)
+	// 去除控制字符（YAML 不允许控制字符）
+	s = stripControlChars(s)
+	return s
 }
 
 // saveTemplateToYamlCache 保存模板生成的YAML数据到缓存
@@ -760,6 +763,102 @@ func GenerateRealtimeYamlWithAnswers(cleanHTML, cachedYaml, surveyID, sessionID,
 	answerResult, err := extractAnswersWithContext(yamlData, surveyID, sessionID, meta.PageID, basePath, answerContext)
 	if err != nil {
 		return nil, fmt.Errorf("GenerateRealtimeYamlWithAnswers: extractAnswersWithContext failed: %w", err)
+	}
+
+	// 步骤 8: 保存 page_summary 到缓存
+	if answerResult.PageSummary != "" {
+		SavePageSummaryCache(sessionID, meta.PageID, answerResult.PageSummary)
+	}
+
+	// 步骤 9: 构建最终 JSON 输出
+	finalJson := buildFinalAnswerJson(answerResult, yamlData, pageSettings, surveyID, cleanHTML)
+
+	// 步骤 10: 保存 JSON 文件
+	jsonPath, err := saveRealtimeAnswersJson(basePath, surveyID, meta.PageID, finalJson)
+	if err != nil {
+		fmt.Printf("[警告] saveRealtimeAnswersJson 失败: %v\n", err)
+		jsonPath = ""
+	}
+
+	// 步骤 11: 打印摘要
+	printRealtimeYamlWithAnswersResult(meta, yamlData, answerResult.Interactions, cachePath, finalJson, jsonPath)
+
+	return &RealtimeYamlWithAnswersResult{
+		YamlData:     yamlData,
+		Answers:      answerResult.Interactions,
+		PageID:       meta.PageID,
+		SurveyID:     surveyID,
+		PageMeta:     meta,
+		PageSettings: pageSettings,
+		FinalJson:    finalJson,
+		Source:       "realtime",
+	}, nil
+}
+
+// GenerateRealtimeYamlWithAnswersWithMeta 生成实时 YAML + 推荐答案，使用已知的 meta
+// page_id 从原始 HTML 提取，不从清洗后的 HTML 提取
+// @param meta         已知的页面元数据（包含 page_id）
+// @param cleanHTML    清洗后的 HTML
+// @param cachedYaml   缓存的 YAML 模板
+// @param surveyID     问卷 ID
+// @param sessionID    会话 ID
+// @param basePath     存储根目录
+// @param pageSettings 页面设置
+// @returns            RealtimeYamlWithAnswersResult, error
+func GenerateRealtimeYamlWithAnswersWithMeta(meta PageMetadata, cleanHTML, cachedYaml, surveyID, sessionID, basePath string, pageSettings PageSettings) (*RealtimeYamlWithAnswersResult, error) {
+	// 步骤 2: 加载 Prompt 配置
+	cfg, err := LoadYamlStructureConfig()
+	if err != nil {
+		return nil, fmt.Errorf("GenerateRealtimeYamlWithAnswersWithMeta: LoadYamlStructureConfig failed: %w", err)
+	}
+
+	if cfg.TemplateToYamlSystemPrompt == "" {
+		return nil, fmt.Errorf("GenerateRealtimeYamlWithAnswersWithMeta: TEMPLATE_TO_YAML_SYSTEM_PROMPT is empty")
+	}
+	if cfg.TemplateToYamlUserPrompt == "" {
+		return nil, fmt.Errorf("GenerateRealtimeYamlWithAnswersWithMeta: TEMPLATE_TO_YAML_USER_PROMPT is empty")
+	}
+
+	// 步骤 3: 构建 YAML 生成 Prompt
+	systemPrompt := cfg.TemplateToYamlSystemPrompt
+	userPrompt := cfg.TemplateToYamlUserPrompt
+	userPrompt = strings.Replace(userPrompt, "{yamlTemplate}", cachedYaml, 1)
+	userPrompt = strings.Replace(userPrompt, "{html}", cleanHTML, 1)
+
+	// 步骤 3.5: 从 cachedYaml 中提取 page_metadata
+	pageMetadataBlock := extractPageMetadataBlock(cachedYaml)
+
+	// 步骤 4: 调用 AI 生成实时 YAML
+	aiResponse, err := CallAI(surveyID, systemPrompt, userPrompt, basePath)
+	if err != nil {
+		saveRealtimeYamlFailureLog(basePath, surveyID, meta.PageID, systemPrompt, userPrompt, "", err)
+		return nil, fmt.Errorf("GenerateRealtimeYamlWithAnswersWithMeta: CallAI (YAML) failed: %w", err)
+	}
+
+	// 步骤 5: 去除 markdown 包裹
+	yamlData := stripYamlMarkdown(aiResponse)
+
+	// 步骤 5.5: 确保 page_metadata 正确
+	yamlData = mergePageMetadata(yamlData, pageMetadataBlock)
+
+	// 步骤 6: 保存实时 YAML
+	cachePath, err := saveRealtimeYamlData(basePath, surveyID, meta.PageID, yamlData)
+	if err != nil {
+		fmt.Printf("[警告] saveRealtimeYamlData 失败: %v\n", err)
+		cachePath = ""
+	}
+
+	// 步骤 7: 生成推荐答案（使用人设 + 答题上下文）
+	fmt.Println("[GenerateRealtimeYamlWithAnswersWithMeta] 开始生成推荐答案...")
+	answerContext := GetPageSummaryContext(sessionID, meta.PageID)
+	if answerContext != "" {
+		fmt.Printf("[GenerateRealtimeYamlWithAnswersWithMeta] 获取答题上下文: %d 字符\n", len(answerContext))
+	} else {
+		fmt.Println("[GenerateRealtimeYamlWithAnswersWithMeta] 无答题上下文（首次运行或缓存为空）")
+	}
+	answerResult, err := extractAnswersWithContext(yamlData, surveyID, sessionID, meta.PageID, basePath, answerContext)
+	if err != nil {
+		return nil, fmt.Errorf("GenerateRealtimeYamlWithAnswersWithMeta: extractAnswersWithContext failed: %w", err)
 	}
 
 	// 步骤 8: 保存 page_summary 到缓存
@@ -1165,11 +1264,11 @@ func buildNavButtons(pageSettings PageSettings, surveyID string, cleanHTML strin
 		// 从 HTML 中提取按钮属性
 		attrs := extractButtonAttrs(cleanHTML, xpath)
 		buttons = append(buttons, NavButtonItem{
-			Role:            "next",
-			XPath:           xpath,
-			Text:            "Next",
-			Attributes:      attrs,
-			WaitAfterClick:  nextButtonConfig.WaitAfterClick,
+			Role:           "next",
+			XPath:          xpath,
+			Text:           "Next",
+			Attributes:     attrs,
+			WaitAfterClick: nextButtonConfig.WaitAfterClick,
 		})
 		primaryButton = "next"
 	} else if pageSettings.HasNextButton {
