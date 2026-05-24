@@ -2,6 +2,7 @@
   "permissions": {
     "allow": [
      "Bash(*)",
+     "Bash(powershell:*)",
      "Edit(file://*)",
      "Write(file://*)",
      "Read(file://*)"

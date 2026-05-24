@@ -7,6 +7,32 @@ version: "1.0"
 active_keyword: "q_Macalester"
 
 # ═════════════════════════════════════════════════════════════════════════════
+# URL 清洗规则（重要！修改前必读）
+# ═════════════════════════════════════════════════════════════════════════════
+#
+# 【URL 匹配流程】
+#   原始 URL → 清洗（移除尾部非合法URL字符）→ 与 sites[].url 匹配
+#
+# 【清洗规则】
+#   正则：(https?://[^/]+[/a-zA-Z0-9_.-]*)[^a-zA-Z0-9_/.-]*$
+#   含义：
+#     - 捕获组1：协议(https://) + 域名 + 路径（允许字母/数字/斜杠/点/横线/下划线）
+#     - 移除尾部所有非合法URL字符（[^a-zA-Z0-9_/.-]*）
+#
+# 【清洗示例】
+#   https://xxx/260216#?         → https://xxx/260216
+#   https://xxx/260216#?abc123   → https://xxx/260216
+#   https://xxx/260216##         → https://xxx/260216
+#   https://xxx/260216?a=1       → https://xxx/260216
+#   https://xxx/260216^          → https://xxx/260216
+#
+# 【注意】
+#   1. 清洗仅用于 YAML 匹配，原始 URL 保持不变供其他地方使用
+#   2. YAML 配置中的 url 建议使用干净版本（不带尾部特殊字符）
+#
+# ═════════════════════════════════════════════════════════════════════════════
+
+# ═════════════════════════════════════════════════════════════════════════════
 # 正则编写规范（重要！修改前必读）
 # ═════════════════════════════════════════════════════════════════════════════
 #
@@ -174,3 +200,40 @@ sites:
       next_pattern: '/<input[^>]*id="NextButton"[^>]*>/'
       wait_after_click: 1500
 
+
+  - keyword: "sv_79t3rq4xn7fneig"
+    name: "SV_79T3rQ4xn7FNeiG"
+    url: "https://survey.qualtrics.com/jfe/form/SV_79T3rQ4xn7FNeiG?link=1&wspid=0133-2SV_79T3rQ4xn7FNeiG"
+    survey_id: "sv_79t3rq4xn7fneig"
+    updated_at: "2026-05-17"
+
+    # page_id_页面指纹正则配置（见文件头部规范）
+    page_id_fingerprints:
+      question_pattern:
+        regex: 
+          - '/<legend[^>]*>([\s\S]*?)<\/legend>/gi'
+          - '/<label[^>]*>([\s\S]*?)<\/label>/gi'
+          - '/<div[^>]*>([\s\S]*?)<\/div>/gi'
+     # Next/Submit 按钮结构
+    next_button:
+      next_pattern: '/<input[^>]*id="btn_continue"[^>]*>/'
+      wait_after_click: 1500
+
+  - keyword: "selfserve_2222_2600216"
+    name: "selfserve_2222_2600216"
+    url: "https://surveys.tapestryresearch.com/survey/selfserve/2222/260216"
+    survey_id: "selfserve_2222_2600216"
+    updated_at: "2026-05-17"
+
+    # page_id_页面指纹正则配置（见文件头部规范）
+    page_id_fingerprints:
+      question_pattern:
+        regex: 
+          - '/<h1 title="question" class="question-text"[^>]*>(.*?)</h1>/gi'
+        
+    next_button:
+      next_pattern: '/<input[^>]*id="btn_continue"[^>]*>/'
+      wait_after_click: 1500
+      
+
+  

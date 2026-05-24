@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -268,9 +269,13 @@ func extractSurveyID(rawURL string, rawHTML string) string {
 
 	// Step 1: URL prefix/exact match (most reliable)
 	if rawURL != "" {
+	// 清洗 URL：移除尾部非字母/数字/斜杠的字符（仅用于 YAML 匹配，不影响原始 URL）
+	// 保留 https:// 协议部分和路径中的合法字符
+	cleanedURL := regexp.MustCompile(`(https?://[^/]+[/a-zA-Z0-9_.-]*)[^a-zA-Z0-9_/.-]*$`).ReplaceAllString(rawURL, "$1")
+		fmt.Printf("[extractSurveyID] cleanedURL=%q\n", cleanedURL)
 		for _, site := range sites {
 			fmt.Printf("[extractSurveyID] checking site URL=%s surveyID=%s\n", site.URL, site.SurveyID)
-			if strings.HasPrefix(rawURL, site.URL) || rawURL == site.URL {
+			if strings.HasPrefix(cleanedURL, site.URL) || cleanedURL == site.URL {
 				fmt.Printf("[extractSurveyID] URL matched! returning %s\n", site.SurveyID)
 				return site.SurveyID
 			}
