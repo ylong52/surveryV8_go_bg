@@ -91,13 +91,24 @@ func loadDeepSeekEnvConfig() (*deepSeekEnvConfig, error) {
 	return &f.DeepSeek, nil
 }
 
-// CallAI 调用 DeepSeek API，返回 YAML 格式的 AI 响应
+// CallAI 调用 DeepSeek API，返回 AI 响应（不验证格式）
 // @param surveyID     问卷 ID（用于日志文件命名）
 // @param systemPrompt 系统提示词
 // @param userPrompt   用户提示词（含完整 HTML）
 // @param basePath     存储根目录（日志写入 basePath/logs/）
-// @returns            AI 响应内容（YAML 格式，已去除 markdown 代码块），或错误
+// @returns            AI 响应内容（已去除 markdown 代码块），或错误
 func CallAI(surveyID, systemPrompt, userPrompt, basePath string) (string, error) {
+	return CallAIWithValidation(surveyID, systemPrompt, userPrompt, basePath, false)
+}
+
+// CallAIWithValidation 调用 DeepSeek API，支持选择验证方式
+// @param surveyID        问卷 ID（用于日志文件命名）
+// @param systemPrompt   系统提示词
+// @param userPrompt     用户提示词（含完整 HTML）
+// @param basePath       存储根目录（日志写入 basePath/logs/）
+// @param validateJSON   true=验证JSON格式，false=验证YAML格式
+// @returns              AI 响应内容（已去除 markdown 代码块），或错误
+func CallAIWithValidation(surveyID, systemPrompt, userPrompt, basePath string, validateJSON bool) (string, error) {
 	cfg, err := loadDeepSeekEnvConfig()
 	if err != nil {
 		return "", fmt.Errorf("CallAI: load config: %w", err)
@@ -153,16 +164,28 @@ func CallAI(surveyID, systemPrompt, userPrompt, basePath string) (string, error)
 			return "", otherErr
 		}
 
-		// 成功 200：去除 markdown 代码块，验证 YAML 格式
+		// 成功 200：去除 markdown 代码块
 		lastRawResponse = content
 		cleaned := stripMarkdownFence(content)
-		
-		if yamlErr := validateYAMLString(cleaned); yamlErr != nil {
-			msg := fmt.Sprintf("YAML 解析失败, retry %d/%d: %v", attempt+1, maxRetries, yamlErr)
-			writeAILog(basePath, surveyID, cfg.Model, attempt, msg, content, elapsed)
-			lastErr = fmt.Errorf("YAML 解析失败: %w", yamlErr)
-			time.Sleep(1 * time.Second)
-			continue
+
+		// 根据模式选择验证方式
+		if validateJSON {
+			if jsonErr := validateJSONString(cleaned); jsonErr != nil {
+				msg := fmt.Sprintf("JSON 解析失败, retry %d/%d: %v", attempt+1, maxRetries, jsonErr)
+				writeAILog(basePath, surveyID, cfg.Model, attempt, msg, content, elapsed)
+				lastErr = fmt.Errorf("JSON 解析失败: %w", jsonErr)
+				time.Sleep(1 * time.Second)
+				continue
+			}
+		} else {
+			// 默认验证 YAML
+			if yamlErr := validateYAMLString(cleaned); yamlErr != nil {
+				msg := fmt.Sprintf("YAML 解析失败, retry %d/%d: %v", attempt+1, maxRetries, yamlErr)
+				writeAILog(basePath, surveyID, cfg.Model, attempt, msg, content, elapsed)
+				lastErr = fmt.Errorf("YAML 解析失败: %w", yamlErr)
+				time.Sleep(1 * time.Second)
+				continue
+			}
 		}
 
 		// 全部通过
@@ -173,6 +196,12 @@ func CallAI(surveyID, systemPrompt, userPrompt, basePath string) (string, error)
 	// 所有重试均失败
 	saveAIFailureLog(basePath, surveyID, systemPrompt, userPrompt, lastRawResponse, lastErr, maxRetries)
 	return "", fmt.Errorf("调用 AI 失败，已重试 %d 次: %w", maxRetries, lastErr)
+}
+
+// validateJSONString 验证字符串是否为有效 JSON
+func validateJSONString(s string) error {
+	var out interface{}
+	return json.Unmarshal([]byte(s), &out)
 }
 
 // doDeepSeekRequest 发起单次 HTTP 请求到 DeepSeek /chat/completions

@@ -1,8 +1,8 @@
 package extractor
 
-// yaml_structure.go — YAML 结构化提示词配置与构建
-//   从 configs/yaml_structure_prompt.yaml 加载提示词配置
-//   提供独立的 Prompt 构建函数，供外部调用
+// yaml_structure.go — 输出类型定义与工具函数
+//   PageSettings / FinalAnswerJson 及相关构建工具
+//   loadNextButtonConfig 从 page-fingerprints.yaml 读取按钮配置
 
 import (
 	"encoding/json"
@@ -18,53 +18,16 @@ import (
 )
 
 // =============================================================================
-// 1. 数据结构定义
+// 1. 类型定义
 // =============================================================================
 
-// YamlStructureConfig 对应 configs/yaml_structure_prompt.yaml 的字段
-type YamlStructureConfig struct {
-	// YAML 结构提取
-	SystemPrompt     string `yaml:"STRUCTURE_SYSTEM_PROMPT"`
-	UserPromptPrefix string `yaml:"STRUCTURE_USER_PROMPT_PREFIX"`
-	// 答案推荐
-	AnswerSystemPrompt     string `yaml:"ANSWER_SYSTEM_PROMPT"`
-	AnswerUserPromptPrefix string `yaml:"ANSWER_USER_PROMPT_PREFIX"`
-	PersonaContextPrefix   string `yaml:"PERSONA_CONTEXT_PREFIX"`
-	// 模板转YAML数据
-	TemplateToYamlSystemPrompt string `yaml:"TEMPLATE_TO_YAML_SYSTEM_PROMPT"`
-	TemplateToYamlUserPrompt   string `yaml:"TEMPLATE_TO_YAML_USER_PROMPT"`
-}
-
-// YamlStructurePrompt 构建后的完整提示词
-type YamlStructurePrompt struct {
-	System string // 系统提示词
-	User   string // 用户提示词（含 HTML）
-}
-
-// YamlStructureResult 提取结果
-type YamlStructureResult struct {
-	YamlContent string       // YAML 内容（已去除 markdown 包裹）
-	CachePath   string       // 缓存路径
-	Meta        PageMetadata // 页面元数据
-	Prompt      YamlStructurePrompt
-	Source      string // "cache"=命中本地模板，"ai"=AI生成
-}
-
-// =============================================================================
-// 1.5 PageSettings 页面设置
-// =============================================================================
-
-// PageSettings 页面设置
+// PageSettings 页面按钮/类型设置
 type PageSettings struct {
 	HasNextButton     bool `json:"has_next_button"`
 	HasSubmitButton   bool `json:"has_submit_button"`
 	IsThankYouPage    bool `json:"is_thank_you_page"`
 	IsDescriptionPage bool `json:"is_description_page"`
 }
-
-// =============================================================================
-// 1.6 FinalAnswerJson 最终 JSON 输出
-// =============================================================================
 
 // NavButtonItem 导航按钮项
 type NavButtonItem struct {
@@ -111,956 +74,15 @@ type FinalAnswerJson struct {
 }
 
 // =============================================================================
-// 2. 配置加载
+// 2. YAML 解析工具
 // =============================================================================
 
-const yamlStructureConfigPath = "configs/yaml_structure_prompt.yaml"
-
-// LoadYamlStructureConfig 从 configs/yaml_structure_prompt.yaml 读取配置
-func LoadYamlStructureConfig() (*YamlStructureConfig, error) {
-	// 支持相对路径和绝对路径
-	configPath := yamlStructureConfigPath
-	if !filepath.IsAbs(configPath) {
-		// 尝试相对于工作目录
-		wd, err := os.Getwd()
-		if err == nil {
-			configPath = filepath.Join(wd, configPath)
-		}
-	}
-
-	data, err := os.ReadFile(configPath)
-	if err != nil {
-		return nil, fmt.Errorf("LoadYamlStructureConfig: read %s: %w", configPath, err)
-	}
-
-	var cfg YamlStructureConfig
-	if err := yaml.Unmarshal(data, &cfg); err != nil {
-		return nil, fmt.Errorf("LoadYamlStructureConfig: parse yaml: %w", err)
-	}
-
-	if cfg.SystemPrompt == "" {
-		return nil, fmt.Errorf("LoadYamlStructureConfig: STRUCTURE_SYSTEM_PROMPT is empty in %s", configPath)
-	}
-
-	return &cfg, nil
-}
-
-// =============================================================================
-// 3. Prompt 构建
-// =============================================================================
-
-// BuildYamlStructurePrompt 构建 YAML 结构提取专用提示词
-//   - 检查 HTML 长度，超过 60000 直接报错
-//   - 传给 AI 时保留完整 HTML
+// parseYamlPageSettings 从 yamlData 中解析 page_metadata 下的布尔字段
 //
-// @param surveyID  问卷 ID
-// @param pageID    页面 ID
-// @param cleanHTML 清洗后 HTML（不超过 60000 字符）
-// @returns         YamlStructurePrompt，或错误
-func BuildYamlStructurePrompt(surveyID, pageID, cleanHTML string) (*YamlStructurePrompt, error) {
-	if len(cleanHTML) > 60000 {
-		return nil, fmt.Errorf("HTML 长度 %d 超过 60000 字符限制", len(cleanHTML))
-	}
-
-	cfg, err := LoadYamlStructureConfig()
-	if err != nil {
-		return nil, fmt.Errorf("BuildYamlStructurePrompt: %w", err)
-	}
-
-	systemPrompt := cfg.SystemPrompt
-
-	userPrompt := cfg.UserPromptPrefix + "\n" +
-		"survey_id: " + surveyID + "\n" +
-		"page_id: " + pageID + "\n\n" +
-		cleanHTML
-
-	return &YamlStructurePrompt{
-		System: systemPrompt,
-		User:   userPrompt,
-	}, nil
-}
-
-// BuildYamlStructurePromptFromMeta 从 PageMetadata 构建提示词
-// @param surveyID  问卷 ID
-// @param meta      页面元数据
-// @param cleanHTML 清洗后 HTML
-// @returns         YamlStructurePrompt，或错误
-func BuildYamlStructurePromptFromMeta(surveyID string, meta PageMetadata, cleanHTML string) (*YamlStructurePrompt, error) {
-	return BuildYamlStructurePrompt(surveyID, meta.PageID, cleanHTML)
-}
-
-// =============================================================================
-// 4. 日志写入
-// =============================================================================
-
-// WriteYamlStructurePromptLog 将提示词写入日志文件
-// @param basePath   存储根目录
-// @param surveyID   问卷 ID
-// @param meta       页面元数据
-// @param prompt     YAML 提示词
-// @param fullHTML   完整 HTML（不截断）
-func WriteYamlStructurePromptLog(basePath, surveyID string, meta PageMetadata, prompt YamlStructurePrompt, fullHTML string) error {
-	logDir := filepath.Join(basePath, "logs")
-	if err := os.MkdirAll(logDir, 0755); err != nil {
-		return fmt.Errorf("WriteYamlStructurePromptLog: mkdir %s: %w", logDir, err)
-	}
-
-	sep := strings.Repeat("=", 80)
-	var sb strings.Builder
-
-	sb.WriteString(sep + "\n")
-	sb.WriteString("【YAML Structure】提示词整理\n")
-	sb.WriteString(sep + "\n")
-	sb.WriteString(fmt.Sprintf("时间: %s\n", meta.Timestamp))
-	sb.WriteString(fmt.Sprintf("survey_id: %s\n", surveyID))
-	sb.WriteString(fmt.Sprintf("page_id: %s\n", meta.PageID))
-
-	sb.WriteString(sep + "\n")
-	sb.WriteString(fmt.Sprintf("=== System Prompt (%d字符) ===\n", len(prompt.System)))
-	sb.WriteString(prompt.System + "\n")
-
-	sb.WriteString(sep + "\n")
-	sb.WriteString(fmt.Sprintf("=== User Prompt (%d字符，含HTML) ===\n", len(prompt.User)))
-	sb.WriteString(prompt.User + "\n")
-
-	date := time.Now().Format("20060102")
-	logPath := filepath.Join(logDir, fmt.Sprintf("%s_%s.log", surveyID, date))
-
-	f, err := os.OpenFile(logPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		return fmt.Errorf("WriteYamlStructurePromptLog: open %s: %w", logPath, err)
-	}
-	defer f.Close()
-
-	if _, err := f.WriteString(sb.String()); err != nil {
-		return fmt.Errorf("WriteYamlStructurePromptLog: write %s: %w", logPath, err)
-	}
-	return nil
-}
-
-// =============================================================================
-// 5. 提取入口（整合 Extract + CallAI + 缓存）
-// =============================================================================
-
-// ExtractYamlStructureV2 执行 YAML 结构提取（v2 版本）
-//
-//	步骤1: 参数验证
-//	步骤2: 提取 PageMetadata
-//	步骤3: 组装 AI Prompt
-//	步骤4: 查找本地 YAML 模板
-//	步骤5: 未命中则调用 AI
-//	步骤6: 保存 YAML 到缓存目录
-//
-// @param surveyID  问卷 ID
-// @param cleanHTML 清洗后 HTML
-// @param basePath  存储根目录
-// @returns         YamlStructureResult，或错误
-func ExtractYamlStructureV2(surveyID, cleanHTML, basePath string) (*YamlStructureResult, error) {
-	// 步骤 1-3：构建提示词
-	prompt, err := BuildYamlStructurePrompt(surveyID, "unknown_page_id", cleanHTML)
-	if err != nil {
-		return nil, fmt.Errorf("ExtractYamlStructureV2: BuildYamlStructurePrompt failed: %w", err)
-	}
-
-	// 步骤 2：从 HTML 提取 PageMetadata
-	meta, err := extractPageMetadata(surveyID, cleanHTML)
-	if err != nil {
-		return nil, fmt.Errorf("ExtractYamlStructureV2: extractPageMetadata failed: %w", err)
-	}
-
-	// 更新 prompt 的 pageID
-	prompt, err = BuildYamlStructurePrompt(surveyID, meta.PageID, cleanHTML)
-	if err != nil {
-		return nil, fmt.Errorf("ExtractYamlStructureV2: rebuild prompt failed: %w", err)
-	}
-
-	// 写入日志
-	if err := WriteYamlStructurePromptLog(basePath, surveyID, meta, *prompt, cleanHTML); err != nil {
-		// 日志失败不影响主流程
-		fmt.Printf("[警告] WriteYamlStructurePromptLog 失败: %v\n", err)
-	}
-
-	// 步骤 4：查找本地 YAML 模板
-	templatePath := filepath.Join(basePath, "templates", surveyID, meta.PageID+".yaml")
-
-	if yamlContent, err := os.ReadFile(templatePath); err == nil {
-		// 命中本地模板
-		fmt.Printf("[缓存命中] %s\n", templatePath)
-		return &YamlStructureResult{
-			YamlContent: string(yamlContent),
-			CachePath:   templatePath,
-			Meta:        meta,
-			Prompt:      *prompt,
-			Source:      "cache",
-		}, nil
-	}
-
-	// 步骤 5：调用 AI
-	aiResponse, err := CallAI(surveyID, prompt.System, prompt.User, basePath)
-	if err != nil {
-		return nil, fmt.Errorf("ExtractYamlStructureV2: CallAI failed: %w", err)
-	}
-
-	// 步骤 6：保存到缓存
-	cachePath, err := saveYamlToCache(basePath, surveyID, meta.PageID, aiResponse)
-	if err != nil {
-		return nil, fmt.Errorf("ExtractYamlStructureV2: saveYamlToCache failed: %w", err)
-	}
-
-	// 输出摘要
-	printYamlStructureResult(meta, cachePath, aiResponse)
-
-	return &YamlStructureResult{
-		YamlContent: aiResponse,
-		CachePath:   cachePath,
-		Meta:        meta,
-		Prompt:      *prompt,
-		Source:      "ai",
-	}, nil
-}
-
-// printYamlStructureResult 输出提取结果摘要
-func printYamlStructureResult(meta PageMetadata, cachePath, yamlContent string) {
-	fmt.Println()
-	fmt.Println("=== YAML Structure 提取完成 ===")
-	fmt.Printf("SurveyID: %s\n", meta.SurveyID)
-	fmt.Printf("PageID: %s\n", meta.PageID)
-	fmt.Printf("Timestamp: %s\n", meta.Timestamp)
-	fmt.Printf("YAML长度: %d字符\n", len(yamlContent))
-	fmt.Printf("缓存路径: %s\n", cachePath)
-	fmt.Printf("来源: ai\n")
-	fmt.Println()
-}
-
-// GetHtmlPreview 返回 HTML 的前 300 字符预览（用于控制台输出）
-func (p *YamlStructurePrompt) GetHtmlPreview() string {
-	if len(p.User) <= 300 {
-		return p.User
-	}
-	return p.User[:300] + "..."
-}
-
-// =============================================================================
-// 6. 模板转YAML数据（步骤1核心）
-// =============================================================================
-
-// TemplateToYamlResult 模板转YAML结果
-type TemplateToYamlResult struct {
-	YamlData  string // 最新YAML数据
-	CachePath string // 缓存路径
-	PageID    string
-	SurveyID  string
-	PageMeta  PageMetadata
-	Source    string // 来源标记: "realtime"=实时生成, "template"=模板转换
-}
-
-// GenerateLatestYamlData 根据模板 + 实时HTML 生成最新YAML数据
-//
-//	流程：读取YAML模板 → 构建Prompt → 调用AI → 保存到storage/logs
-//
-// @param html         清洗后的HTML
-// @param yamlTemplate YAML模板内容（结构参考）
-// @param surveyID     问卷ID
-// @param basePath     存储根目录
-// @returns            TemplateToYamlResult, error
-func GenerateLatestYamlData(html, yamlTemplate, surveyID, basePath string) (*TemplateToYamlResult, error) {
-	// 步骤1: 提取PageMetadata（获取pageID）
-	meta, err := extractPageMetadata(surveyID, html)
-	if err != nil {
-		return nil, fmt.Errorf("GenerateLatestYamlData: extractPageMetadata failed: %w", err)
-	}
-
-	// 步骤2: 加载配置
-	cfg, err := LoadYamlStructureConfig()
-	if err != nil {
-		return nil, fmt.Errorf("GenerateLatestYamlData: LoadYamlStructureConfig failed: %w", err)
-	}
-
-	if cfg.TemplateToYamlSystemPrompt == "" {
-		return nil, fmt.Errorf("GenerateLatestYamlData: TEMPLATE_TO_YAML_SYSTEM_PROMPT is empty")
-	}
-	if cfg.TemplateToYamlUserPrompt == "" {
-		return nil, fmt.Errorf("GenerateLatestYamlData: TEMPLATE_TO_YAML_USER_PROMPT is empty")
-	}
-
-	// 步骤3: 构建Prompt
-	systemPrompt := cfg.TemplateToYamlSystemPrompt
-	userPrompt := strings.Replace(cfg.TemplateToYamlUserPrompt, "{yamlTemplate}", yamlTemplate, 1)
-	userPrompt = strings.Replace(userPrompt, "{html}", html, 1)
-
-	// 步骤4: 调用AI
-	aiResponse, err := CallAI(surveyID, systemPrompt, userPrompt, basePath)
-	if err != nil {
-		return nil, fmt.Errorf("GenerateLatestYamlData: CallAI failed: %w", err)
-	}
-
-	// 步骤5: 去除markdown包裹
-	yamlData := stripYamlMarkdown(aiResponse)
-
-	// 步骤6: 保存到storage/logs/{surveyID}/{pageID}_yamldata_{YMDHis}.yaml
-	cachePath, err := saveTemplateToYamlCache(basePath, surveyID, meta.PageID, yamlData)
-	if err != nil {
-		// 保存失败不影响主流程，仅打印警告
-		fmt.Printf("[警告] saveTemplateToYamlCache 失败: %v\n", err)
-		cachePath = ""
-	}
-
-	// 步骤7: 打印摘要
-	printTemplateToYamlResult(meta, yamlData, cachePath)
-
-	return &TemplateToYamlResult{
-		YamlData:  yamlData,
-		CachePath: cachePath,
-		PageID:    meta.PageID,
-		SurveyID:  surveyID,
-		PageMeta:  meta,
-	}, nil
-}
-
-// stripYamlMarkdown 去除markdown代码块包裹，并清理控制字符
-func stripYamlMarkdown(s string) string {
-	s = strings.TrimSpace(s)
-	// 去除 ```yaml 或 ``` 或 ```yml 开头的行
-	if strings.HasPrefix(s, "```") {
-		lines := strings.SplitN(s, "\n", 2)
-		if len(lines) > 1 {
-			s = lines[1]
-		}
-	}
-	// 去除结尾的 ```
-	s = strings.TrimSuffix(s, "```")
-	s = strings.TrimSpace(s)
-	// 去除控制字符（YAML 不允许控制字符）
-	s = stripControlChars(s)
-	return s
-}
-
-// saveTemplateToYamlCache 保存模板生成的YAML数据到缓存
-func saveTemplateToYamlCache(basePath, surveyID, pageID, yamlData string) (string, error) {
-	cacheDir := filepath.Join(basePath, "logs", surveyID)
-	if err := os.MkdirAll(cacheDir, 0755); err != nil {
-		return "", fmt.Errorf("saveTemplateToYamlCache: mkdir %s: %w", cacheDir, err)
-	}
-
-	ts := time.Now().Format("20060102150405")
-	cachePath := filepath.Join(cacheDir, fmt.Sprintf("%s_yamldata_%s.yaml", pageID, ts))
-
-	if err := os.WriteFile(cachePath, []byte(yamlData), 0644); err != nil {
-		return "", fmt.Errorf("saveTemplateToYamlCache: write %s: %w", cachePath, err)
-	}
-
-	return cachePath, nil
-}
-
-// printTemplateToYamlResult 打印模板转YAML结果
-func printTemplateToYamlResult(meta PageMetadata, yamlData, cachePath string) {
-	fmt.Println()
-	fmt.Println("=== 模板转YAML数据生成完成 ===")
-	fmt.Printf("SurveyID: %s\n", meta.SurveyID)
-	fmt.Printf("PageID: %s\n", meta.PageID)
-	fmt.Printf("YAML长度: %d字符\n", len(yamlData))
-	if cachePath != "" {
-		fmt.Printf("缓存路径: %s\n", cachePath)
-	}
-	fmt.Println()
-}
-
-// =============================================================================
-// 7. 步骤 7: 生成实时 YAML 数据（仅当 Source="cache" 时触发）
-// =============================================================================
-
-// RealtimeYamlResult 实时 YAML 数据生成结果
-type RealtimeYamlResult struct {
-	YamlData     string       // 实时的最新 YAML 数据
-	CachePath    string       // 保存路径
-	PageID       string       // 页面 ID
-	SurveyID     string       // 问卷 ID
-	PageMeta     PageMetadata // 页面元数据
-	PageSettings PageSettings // 页面设置
-	Source       string       // "realtime" = 实时生成
-}
-
-// GenerateRealtimeYamlData 根据缓存的 YAML 模板 + 实时 HTML 生成最新 YAML 数据
-//
-//	仅当 YamlStructureResult.Source == "cache" 时调用
-//	流程：提取元数据 → 加载配置 → 构建Prompt → 调用AI → 保存到 realtime-yamldata/
-//
-// @param cleanHTML    清洗后的实时 HTML
-// @param cachedYaml   步骤 6 返回的 YamlStructureResult.YamlContent（缓存的模板）
-// @param surveyID     问卷 ID
-// @param basePath     存储根目录
-// @returns            RealtimeYamlResult, error
-func GenerateRealtimeYamlData(cleanHTML, cachedYaml, surveyID, basePath string) (*RealtimeYamlResult, error) {
-	// 步骤 1: 前置条件校验
-	if cleanHTML == "" {
-		return nil, fmt.Errorf("GenerateRealtimeYamlData: cleanHTML 不能为空")
-	}
-	if cachedYaml == "" {
-		return nil, fmt.Errorf("GenerateRealtimeYamlData: cachedYaml 不能为空")
-	}
-
-	// 步骤 2: 提取页面元数据
-	meta, err := extractPageMetadata(surveyID, cleanHTML)
-	if err != nil {
-		return nil, fmt.Errorf("GenerateRealtimeYamlData: extractPageMetadata failed: %w", err)
-	}
-
-	// 步骤 3: 加载 Prompt 配置
-	cfg, err := LoadYamlStructureConfig()
-	if err != nil {
-		return nil, fmt.Errorf("GenerateRealtimeYamlData: LoadYamlStructureConfig failed: %w", err)
-	}
-
-	if cfg.TemplateToYamlSystemPrompt == "" {
-		return nil, fmt.Errorf("GenerateRealtimeYamlData: TEMPLATE_TO_YAML_SYSTEM_PROMPT 配置为空")
-	}
-	if cfg.TemplateToYamlUserPrompt == "" {
-		return nil, fmt.Errorf("GenerateRealtimeYamlData: TEMPLATE_TO_YAML_USER_PROMPT 配置为空")
-	}
-
-	// 步骤 4: 构建 AI Prompt
-	systemPrompt := cfg.TemplateToYamlSystemPrompt
-	userPrompt := cfg.TemplateToYamlUserPrompt
-	userPrompt = strings.Replace(userPrompt, "{yamlTemplate}", cachedYaml, 1)
-	userPrompt = strings.Replace(userPrompt, "{html}", cleanHTML, 1)
-
-	// 步骤 4.5: 从 cachedYaml 中提取 page_metadata
-	pageMetadataBlock := extractPageMetadataBlock(cachedYaml)
-
-	// 步骤 5: 调用 AI（失败则记录日志并返回错误）
-	aiResponse, err := CallAI(surveyID, systemPrompt, userPrompt, basePath)
-	if err != nil {
-		// 记录详细错误日志
-		saveRealtimeYamlFailureLog(basePath, surveyID, meta.PageID, systemPrompt, userPrompt, "", err)
-		fmt.Printf("[错误] GenerateRealtimeYamlData: CallAI 失败 - %v\n", err)
-		return nil, fmt.Errorf("GenerateRealtimeYamlData: CallAI failed: %w", err)
-	}
-
-	// 步骤 6: 去除 markdown 包裹
-	yamlData := stripYamlMarkdown(aiResponse)
-
-	// 步骤 6.5: 确保 page_metadata 正确
-	yamlData = mergePageMetadata(yamlData, pageMetadataBlock)
-
-	// 步骤 6.6: 解析 page_settings
-	pageSettings := parseYamlPageSettings(yamlData)
-
-	// 步骤 7: 保存到 storage/logs/{surveyID}/realtime-yamldata/{pageID}_{YMDHis}.yaml
-	cachePath, err := saveRealtimeYamlData(basePath, surveyID, meta.PageID, yamlData)
-	if err != nil {
-		// 保存失败不影响主流程，仅打印警告
-		fmt.Printf("[警告] saveRealtimeYamlData 失败: %v\n", err)
-		cachePath = ""
-	}
-
-	// 步骤 8: 记录 Prompt 日志
-	writeRealtimePromptLog(basePath, surveyID, meta, systemPrompt, userPrompt, yamlData)
-
-	// 步骤 9: 打印摘要
-	printRealtimeYamlResult(meta, yamlData, cachePath)
-
-	return &RealtimeYamlResult{
-		YamlData:     yamlData,
-		CachePath:    cachePath,
-		PageID:       meta.PageID,
-		SurveyID:     surveyID,
-		PageMeta:     meta,
-		PageSettings: pageSettings,
-		Source:       "realtime",
-	}, nil
-}
-
-// saveRealtimeYamlData 保存实时 YAML 数据到独立目录
-// 路径: storage/logs/{surveyID}/realtime-yamldata/{pageID}_{YMDHis}.yaml
-func saveRealtimeYamlData(basePath, surveyID, pageID, yamlData string) (string, error) {
-	cacheDir := filepath.Join(basePath, "logs", surveyID, "realtime-yamldata")
-	if err := os.MkdirAll(cacheDir, 0755); err != nil {
-		return "", fmt.Errorf("saveRealtimeYamlData: mkdir %s: %w", cacheDir, err)
-	}
-
-	ts := time.Now().Format("20060102150405")
-	cachePath := filepath.Join(cacheDir, fmt.Sprintf("%s_%s.yaml", pageID, ts))
-
-	if err := os.WriteFile(cachePath, []byte(yamlData), 0644); err != nil {
-		return "", fmt.Errorf("saveRealtimeYamlData: write %s: %w", cachePath, err)
-	}
-
-	return cachePath, nil
-}
-
-// saveRealtimeYamlFailureLog 保存实时 YAML 生成失败的详细日志
-func saveRealtimeYamlFailureLog(basePath, surveyID, pageID, systemPrompt, userPrompt, aiResponse string, err error) {
-	logDir := filepath.Join(basePath, "logs", "realtime-yamldata-failures")
-	if mkErr := os.MkdirAll(logDir, 0755); mkErr != nil {
-		fmt.Printf("[警告] saveRealtimeYamlFailureLog: mkdir 失败: %v\n", mkErr)
-		return
-	}
-
-	ts := time.Now().Format("20060102_150405")
-	logPath := filepath.Join(logDir, fmt.Sprintf("%s_%s_%s.log", surveyID, pageID, ts))
-
-	var sb strings.Builder
-	sb.WriteString(fmt.Sprintf("时间: %s\n", time.Now().UTC().Format(time.RFC3339)))
-	sb.WriteString(fmt.Sprintf("survey_id: %s\n", surveyID))
-	sb.WriteString(fmt.Sprintf("page_id: %s\n", pageID))
-	sb.WriteString(fmt.Sprintf("错误: %v\n", err))
-	sb.WriteString("\n=== System Prompt ===\n")
-	sb.WriteString(systemPrompt)
-	sb.WriteString("\n\n=== User Prompt ===\n")
-	sb.WriteString(userPrompt)
-	if aiResponse != "" {
-		sb.WriteString("\n\n=== AI Response ===\n")
-		sb.WriteString(aiResponse)
-	}
-
-	if writeErr := os.WriteFile(logPath, []byte(sb.String()), 0644); writeErr != nil {
-		fmt.Printf("[警告] saveRealtimeYamlFailureLog: write 失败: %v\n", writeErr)
-	}
-}
-
-// writeRealtimePromptLog 记录实时 YAML Prompt 日志
-func writeRealtimePromptLog(basePath, surveyID string, meta PageMetadata, systemPrompt, userPrompt, yamlData string) {
-	logDir := filepath.Join(basePath, "logs", surveyID)
-	if err := os.MkdirAll(logDir, 0755); err != nil {
-		fmt.Printf("[警告] writeRealtimePromptLog: mkdir 失败: %v\n", err)
-		return
-	}
-
-	sep := strings.Repeat("=", 80)
-	var sb strings.Builder
-
-	sb.WriteString(sep + "\n")
-	sb.WriteString("【实时 YAML 数据】Prompt 日志\n")
-	sb.WriteString(sep + "\n")
-	sb.WriteString(fmt.Sprintf("时间: %s\n", meta.Timestamp))
-	sb.WriteString(fmt.Sprintf("survey_id: %s\n", surveyID))
-	sb.WriteString(fmt.Sprintf("page_id: %s\n", meta.PageID))
-
-	sb.WriteString(sep + "\n")
-	sb.WriteString(fmt.Sprintf("=== System Prompt (%d字符) ===\n", len(systemPrompt)))
-	sb.WriteString(systemPrompt + "\n")
-
-	sb.WriteString(sep + "\n")
-	sb.WriteString(fmt.Sprintf("=== User Prompt (%d字符) ===\n", len(userPrompt)))
-	sb.WriteString(userPrompt + "\n")
-
-	sb.WriteString(sep + "\n")
-	sb.WriteString(fmt.Sprintf("=== AI 响应 YAML (%d字符) ===\n", len(yamlData)))
-	sb.WriteString(yamlData + "\n")
-
-	date := time.Now().Format("20060102")
-	logPath := filepath.Join(logDir, fmt.Sprintf("realtime_%s_%s.log", surveyID, date))
-
-	f, err := os.OpenFile(logPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		fmt.Printf("[警告] writeRealtimePromptLog: open 失败: %v\n", err)
-		return
-	}
-	defer f.Close()
-
-	if _, err := f.WriteString(sb.String()); err != nil {
-		fmt.Printf("[警告] writeRealtimePromptLog: write 失败: %v\n", err)
-	}
-}
-
-// printRealtimeYamlResult 打印实时 YAML 生成结果摘要
-func printRealtimeYamlResult(meta PageMetadata, yamlData, cachePath string) {
-	fmt.Println()
-	fmt.Println("=== 实时 YAML 数据生成完成 ===")
-	fmt.Printf("SurveyID: %s\n", meta.SurveyID)
-	fmt.Printf("PageID: %s\n", meta.PageID)
-	fmt.Printf("Timestamp: %s\n", meta.Timestamp)
-	fmt.Printf("YAML长度: %d字符\n", len(yamlData))
-	if cachePath != "" {
-		fmt.Printf("保存路径: %s\n", cachePath)
-	}
-	fmt.Printf("来源: realtime\n")
-	fmt.Println()
-}
-
-// =============================================================================
-// 8. 步骤 8: 生成推荐答案（整合到 GenerateRealtimeYamlWithAnswers）
-// =============================================================================
-
-// RealtimeYamlWithAnswersResult 步骤 7+8 的合并结果
-type RealtimeYamlWithAnswersResult struct {
-	YamlData     string          // 实时 YAML 数据
-	Answers      []Interaction   // 推荐答案列表
-	PageID       string          // 页面 ID
-	SurveyID     string          // 问卷 ID
-	PageMeta     PageMetadata    // 页面元数据
-	PageSettings PageSettings    // 页面设置
-	FinalJson    FinalAnswerJson // 最终 JSON 输出
-	Source       string          // "realtime"
-}
-
-// GenerateRealtimeYamlWithAnswers 生成实时 YAML + 推荐答案（步骤 7 + 步骤 8）
-//
-//	流程：提取元数据 → 加载配置 → 生成 YAML → 调用 AI → 生成答案 → 合并返回
-//
-// @param cleanHTML   清洗后的实时 HTML
-// @param cachedYaml  缓存的 YAML 模板
-// @param surveyID    问卷 ID
-// @param basePath    存储根目录
-// @returns           RealtimeYamlWithAnswersResult, error
-func GenerateRealtimeYamlWithAnswers(cleanHTML, cachedYaml, surveyID, sessionID, basePath string, pageSettings PageSettings) (*RealtimeYamlWithAnswersResult, error) {
-	// 步骤 1: 提取页面元数据
-	meta, err := extractPageMetadata(surveyID, cleanHTML)
-	if err != nil {
-		return nil, fmt.Errorf("GenerateRealtimeYamlWithAnswers: extractPageMetadata failed: %w", err)
-	}
-
-	// 步骤 2: 加载 Prompt 配置
-	cfg, err := LoadYamlStructureConfig()
-	if err != nil {
-		return nil, fmt.Errorf("GenerateRealtimeYamlWithAnswers: LoadYamlStructureConfig failed: %w", err)
-	}
-
-	if cfg.TemplateToYamlSystemPrompt == "" {
-		return nil, fmt.Errorf("GenerateRealtimeYamlWithAnswers: TEMPLATE_TO_YAML_SYSTEM_PROMPT is empty")
-	}
-	if cfg.TemplateToYamlUserPrompt == "" {
-		return nil, fmt.Errorf("GenerateRealtimeYamlWithAnswers: TEMPLATE_TO_YAML_USER_PROMPT is empty")
-	}
-
-	// 步骤 3: 构建 YAML 生成 Prompt
-	systemPrompt := cfg.TemplateToYamlSystemPrompt
-	userPrompt := cfg.TemplateToYamlUserPrompt
-	userPrompt = strings.Replace(userPrompt, "{yamlTemplate}", cachedYaml, 1)
-	userPrompt = strings.Replace(userPrompt, "{html}", cleanHTML, 1)
-
-	// 步骤 3.5: 从 cachedYaml 中提取 page_metadata
-	pageMetadataBlock := extractPageMetadataBlock(cachedYaml)
-
-	// 步骤 4: 调用 AI 生成实时 YAML
-	aiResponse, err := CallAI(surveyID, systemPrompt, userPrompt, basePath)
-	if err != nil {
-		saveRealtimeYamlFailureLog(basePath, surveyID, meta.PageID, systemPrompt, userPrompt, "", err)
-		return nil, fmt.Errorf("GenerateRealtimeYamlWithAnswers: CallAI (YAML) failed: %w", err)
-	}
-
-	// 步骤 5: 去除 markdown 包裹
-	yamlData := stripYamlMarkdown(aiResponse)
-
-	// 步骤 5.5: 确保 page_metadata 正确
-	yamlData = mergePageMetadata(yamlData, pageMetadataBlock)
-
-	// 步骤 6: 保存实时 YAML
-	cachePath, err := saveRealtimeYamlData(basePath, surveyID, meta.PageID, yamlData)
-	if err != nil {
-		fmt.Printf("[警告] saveRealtimeYamlData 失败: %v\n", err)
-		cachePath = ""
-	}
-
-	// 步骤 7: 生成推荐答案（使用人设 + 答题上下文）
-	fmt.Println("[GenerateRealtimeYamlWithAnswers] 开始生成推荐答案...")
-	answerContext := GetPageSummaryContext(sessionID, meta.PageID)
-	if answerContext != "" {
-		fmt.Printf("[GenerateRealtimeYamlWithAnswers] 获取答题上下文: %d 字符\n", len(answerContext))
-	} else {
-		fmt.Println("[GenerateRealtimeYamlWithAnswers] 无答题上下文（首次运行或缓存为空）")
-	}
-	answerResult, err := extractAnswersWithContext(yamlData, surveyID, sessionID, meta.PageID, basePath, answerContext)
-	if err != nil {
-		return nil, fmt.Errorf("GenerateRealtimeYamlWithAnswers: extractAnswersWithContext failed: %w", err)
-	}
-
-	// 步骤 8: 保存 page_summary 到缓存
-	if answerResult.PageSummary != "" {
-		SavePageSummaryCache(sessionID, meta.PageID, answerResult.PageSummary)
-	}
-
-	// 步骤 9: 构建最终 JSON 输出
-	finalJson := buildFinalAnswerJson(answerResult, yamlData, pageSettings, surveyID, cleanHTML)
-
-	// 步骤 10: 保存 JSON 文件
-	jsonPath, err := saveRealtimeAnswersJson(basePath, surveyID, meta.PageID, finalJson)
-	if err != nil {
-		fmt.Printf("[警告] saveRealtimeAnswersJson 失败: %v\n", err)
-		jsonPath = ""
-	}
-
-	// 步骤 11: 打印摘要
-	printRealtimeYamlWithAnswersResult(meta, yamlData, answerResult.Interactions, cachePath, finalJson, jsonPath)
-
-	return &RealtimeYamlWithAnswersResult{
-		YamlData:     yamlData,
-		Answers:      answerResult.Interactions,
-		PageID:       meta.PageID,
-		SurveyID:     surveyID,
-		PageMeta:     meta,
-		PageSettings: pageSettings,
-		FinalJson:    finalJson,
-		Source:       "realtime",
-	}, nil
-}
-
-// GenerateRealtimeYamlWithAnswersWithMeta 生成实时 YAML + 推荐答案，使用已知的 meta
-// page_id 从原始 HTML 提取，不从清洗后的 HTML 提取
-// @param meta         已知的页面元数据（包含 page_id）
-// @param cleanHTML    清洗后的 HTML
-// @param cachedYaml   缓存的 YAML 模板
-// @param surveyID     问卷 ID
-// @param sessionID    会话 ID
-// @param basePath     存储根目录
-// @param pageSettings 页面设置
-// @returns            RealtimeYamlWithAnswersResult, error
-func GenerateRealtimeYamlWithAnswersWithMeta(meta PageMetadata, cleanHTML, cachedYaml, surveyID, sessionID, basePath string, pageSettings PageSettings) (*RealtimeYamlWithAnswersResult, error) {
-	// 步骤 2: 加载 Prompt 配置
-	cfg, err := LoadYamlStructureConfig()
-	if err != nil {
-		return nil, fmt.Errorf("GenerateRealtimeYamlWithAnswersWithMeta: LoadYamlStructureConfig failed: %w", err)
-	}
-
-	if cfg.TemplateToYamlSystemPrompt == "" {
-		return nil, fmt.Errorf("GenerateRealtimeYamlWithAnswersWithMeta: TEMPLATE_TO_YAML_SYSTEM_PROMPT is empty")
-	}
-	if cfg.TemplateToYamlUserPrompt == "" {
-		return nil, fmt.Errorf("GenerateRealtimeYamlWithAnswersWithMeta: TEMPLATE_TO_YAML_USER_PROMPT is empty")
-	}
-
-	// 步骤 3: 构建 YAML 生成 Prompt
-	systemPrompt := cfg.TemplateToYamlSystemPrompt
-	userPrompt := cfg.TemplateToYamlUserPrompt
-	userPrompt = strings.Replace(userPrompt, "{yamlTemplate}", cachedYaml, 1)
-	userPrompt = strings.Replace(userPrompt, "{html}", cleanHTML, 1)
-
-	// 步骤 3.5: 从 cachedYaml 中提取 page_metadata
-	pageMetadataBlock := extractPageMetadataBlock(cachedYaml)
-
-	// 步骤 4: 调用 AI 生成实时 YAML
-	aiResponse, err := CallAI(surveyID, systemPrompt, userPrompt, basePath)
-	if err != nil {
-		saveRealtimeYamlFailureLog(basePath, surveyID, meta.PageID, systemPrompt, userPrompt, "", err)
-		return nil, fmt.Errorf("GenerateRealtimeYamlWithAnswersWithMeta: CallAI (YAML) failed: %w", err)
-	}
-
-	// 步骤 5: 去除 markdown 包裹
-	yamlData := stripYamlMarkdown(aiResponse)
-
-	// 步骤 5.5: 确保 page_metadata 正确
-	yamlData = mergePageMetadata(yamlData, pageMetadataBlock)
-
-	// 步骤 6: 保存实时 YAML
-	cachePath, err := saveRealtimeYamlData(basePath, surveyID, meta.PageID, yamlData)
-	if err != nil {
-		fmt.Printf("[警告] saveRealtimeYamlData 失败: %v\n", err)
-		cachePath = ""
-	}
-
-	// 步骤 7: 生成推荐答案（使用人设 + 答题上下文）
-	fmt.Println("[GenerateRealtimeYamlWithAnswersWithMeta] 开始生成推荐答案...")
-	answerContext := GetPageSummaryContext(sessionID, meta.PageID)
-	if answerContext != "" {
-		fmt.Printf("[GenerateRealtimeYamlWithAnswersWithMeta] 获取答题上下文: %d 字符\n", len(answerContext))
-	} else {
-		fmt.Println("[GenerateRealtimeYamlWithAnswersWithMeta] 无答题上下文（首次运行或缓存为空）")
-	}
-	answerResult, err := extractAnswersWithContext(yamlData, surveyID, sessionID, meta.PageID, basePath, answerContext)
-	if err != nil {
-		return nil, fmt.Errorf("GenerateRealtimeYamlWithAnswersWithMeta: extractAnswersWithContext failed: %w", err)
-	}
-
-	// 步骤 8: 保存 page_summary 到缓存
-	if answerResult.PageSummary != "" {
-		SavePageSummaryCache(sessionID, meta.PageID, answerResult.PageSummary)
-	}
-
-	// 步骤 9: 构建最终 JSON 输出
-	finalJson := buildFinalAnswerJson(answerResult, yamlData, pageSettings, surveyID, cleanHTML)
-
-	// 步骤 10: 保存 JSON 文件
-	jsonPath, err := saveRealtimeAnswersJson(basePath, surveyID, meta.PageID, finalJson)
-	if err != nil {
-		fmt.Printf("[警告] saveRealtimeAnswersJson 失败: %v\n", err)
-		jsonPath = ""
-	}
-
-	// 步骤 11: 打印摘要
-	printRealtimeYamlWithAnswersResult(meta, yamlData, answerResult.Interactions, cachePath, finalJson, jsonPath)
-
-	return &RealtimeYamlWithAnswersResult{
-		YamlData:     yamlData,
-		Answers:      answerResult.Interactions,
-		PageID:       meta.PageID,
-		SurveyID:     surveyID,
-		PageMeta:     meta,
-		PageSettings: pageSettings,
-		FinalJson:    finalJson,
-		Source:       "realtime",
-	}, nil
-}
-
-// printRealtimeYamlWithAnswersResult 打印步骤 7+8 结果摘要
-func printRealtimeYamlWithAnswersResult(meta PageMetadata, yamlData string, answers []Interaction, cachePath string, finalJson FinalAnswerJson, jsonPath string) {
-	fmt.Println()
-	fmt.Println("=== 实时 YAML + 推荐答案生成完成 ===")
-	fmt.Printf("SurveyID: %s\n", meta.SurveyID)
-	fmt.Printf("PageID: %s\n", meta.PageID)
-	fmt.Printf("Timestamp: %s\n", meta.Timestamp)
-	fmt.Printf("YAML长度: %d字符\n", len(yamlData))
-	fmt.Printf("答案数量: %d\n", len(answers))
-	if cachePath != "" {
-		fmt.Printf("YAML保存路径: %s\n", cachePath)
-	}
-	if jsonPath != "" {
-		fmt.Printf("JSON保存路径: %s\n", jsonPath)
-	}
-	fmt.Printf("来源: realtime\n")
-	fmt.Println()
-
-	for i, item := range answers {
-		fmt.Printf("[%d] %s\n", i+1, item.Subject)
-		if arr, ok := item.ShowAnswer.([]interface{}); ok {
-			fmt.Printf("    → %v\n", arr)
-		} else {
-			fmt.Printf("    → %v\n", item.ShowAnswer)
-		}
-	}
-	fmt.Println()
-
-	// 打印 JSON 输出
-	// fmt.Println("=== JSON 输出 ===")
-	// jsonBytes, _ := json.MarshalIndent(finalJson, "", "  ")
-	// fmt.Println(string(jsonBytes))
-	// fmt.Println()
-}
-
-// extractPageMetadataBlock 从 cachedYaml 中提取 page_metadata 块
-//
-//	查找 "page_metadata:" 行到 "questions:" 行之间的内容
-//
-// @param cachedYaml  缓存的 YAML 模板
-// @returns           page_metadata 块字符串（包含缩进），如果未找到返回空字符串
-func extractPageMetadataBlock(cachedYaml string) string {
-	lines := strings.Split(cachedYaml, "\n")
-
-	inMetadata := false
-	var result []string
-	metadataIndent := ""
-
-	for _, line := range lines {
-		trimmed := strings.TrimSpace(line)
-
-		if strings.HasPrefix(trimmed, "page_metadata:") {
-			inMetadata = true
-			metadataIndent = line[:len(line)-len(strings.TrimLeft(line, " \t"))]
-			result = append(result, line)
-			continue
-		}
-
-		if inMetadata {
-			if strings.HasPrefix(trimmed, "questions:") || strings.HasPrefix(trimmed, "survey_page:") {
-				break
-			}
-
-			if line != "" && !strings.HasPrefix(line, "\t") && !strings.HasPrefix(line, "  ") {
-				break
-			}
-
-			if metadataIndent != "" && len(line) > 0 {
-				currentIndent := line[:len(line)-len(strings.TrimLeft(line, " \t"))]
-				if len(currentIndent) <= len(metadataIndent) {
-					break
-				}
-			}
-
-			result = append(result, line)
-		}
-	}
-
-	if len(result) == 0 {
-		return ""
-	}
-	return strings.Join(result, "\n")
-}
-
-// removePageMetadataBlock 从 yamlData 中删除 page_metadata 块（如果存在）
-// @param yamlData  AI 生成的 YAML 字符串
-// @returns         删除 page_metadata 后的 YAML 字符串
-func removePageMetadataBlock(yamlData string) string {
-	lines := strings.Split(yamlData, "\n")
-	var result []string
-	inMetadata := false
-	metadataIndent := ""
-
-	for _, line := range lines {
-		trimmed := strings.TrimSpace(line)
-
-		if strings.HasPrefix(trimmed, "page_metadata:") {
-			inMetadata = true
-			metadataIndent = line[:len(line)-len(strings.TrimLeft(line, " \t"))]
-			continue
-		}
-
-		if inMetadata {
-			if strings.HasPrefix(trimmed, "questions:") || strings.HasPrefix(trimmed, "survey_page:") {
-				inMetadata = false
-				result = append(result, line)
-				continue
-			}
-
-			if line != "" {
-				currentIndent := line[:len(line)-len(strings.TrimLeft(line, " \t"))]
-				if len(currentIndent) <= len(metadataIndent) && !strings.HasPrefix(trimmed, "has_") && !strings.HasPrefix(trimmed, "is_") {
-					inMetadata = false
-					result = append(result, line)
-					continue
-				}
-			}
-			continue
-		}
-
-		result = append(result, line)
-	}
-
-	return strings.Join(result, "\n")
-}
-
-// mergePageMetadata 将 page_metadata 插入到 yamlData 中
-//
-//	逻辑：找到 title 行，在其后插入 page_metadata
-//
-// @param yamlData         AI 生成的 YAML 字符串
-// @param pageMetadata      page_metadata 块字符串
-// @returns                合并后的 YAML 字符串
-func mergePageMetadata(yamlData, pageMetadata string) string {
-	if pageMetadata == "" {
-		return yamlData
-	}
-
-	yamlData = removePageMetadataBlock(yamlData)
-
-	lines := strings.Split(yamlData, "\n")
-	var result []string
-	titleInserted := false
-
-	for _, line := range lines {
-		result = append(result, line)
-
-		trimmed := strings.TrimSpace(line)
-		if strings.HasPrefix(trimmed, "title:") && !titleInserted {
-			metadataLines := strings.Split(pageMetadata, "\n")
-			for i, metaLine := range metadataLines {
-				if i == 0 {
-					result = append(result, "  "+strings.TrimSpace(metaLine))
-				} else {
-					result = append(result, metaLine)
-				}
-			}
-			titleInserted = true
-		}
-	}
-
-	return strings.Join(result, "\n")
-}
-
-// parseYamlPageSettings 从 yamlData 中解析 page_settings
 // @param yamlData  YAML 字符串
 // @returns         PageSettings
 func parseYamlPageSettings(yamlData string) PageSettings {
 	settings := PageSettings{}
-
 	lines := strings.Split(yamlData, "\n")
 	inMetadata := false
 
@@ -1076,7 +98,6 @@ func parseYamlPageSettings(yamlData string) PageSettings {
 			if strings.HasPrefix(trimmed, "questions:") || strings.HasPrefix(trimmed, "survey_page:") {
 				break
 			}
-
 			if strings.Contains(trimmed, "has_next_button:") {
 				settings.HasNextButton = parseYamlBool(trimmed)
 			} else if strings.Contains(trimmed, "has_submit_button:") {
@@ -1092,7 +113,7 @@ func parseYamlPageSettings(yamlData string) PageSettings {
 	return settings
 }
 
-// parseYamlBool 解析 YAML 布尔值
+// parseYamlBool 解析 YAML 内联布尔值（"key: true/false/yes/1"）
 func parseYamlBool(line string) bool {
 	parts := strings.Split(line, ":")
 	if len(parts) < 2 {
@@ -1102,15 +123,20 @@ func parseYamlBool(line string) bool {
 	return val == "true" || val == "yes" || val == "1"
 }
 
+// =============================================================================
+// 3. FinalAnswerJson 构建
+// =============================================================================
+
 // buildFinalAnswerJson 构建最终 JSON 输出
+//
 // @param answerResult  AI 生成的结果
-// @param yamlData     YAML 数据
-// @param pageSettings 页面设置
-// @param surveyID    问卷 ID
-// @param cleanHTML   清洗后的 HTML
-// @returns            FinalAnswerJson
-func buildFinalAnswerJson(answerResult *YamlAnswerResult, yamlData string, pageSettings PageSettings, surveyID string, cleanHTML string) FinalAnswerJson {
-	pageID := parseYamlPageID(yamlData)
+// @param yamlData      YAML 数据
+// @param pageSettings  页面设置
+// @param surveyID      问卷 ID
+// @param pageID        页面 ID（由调用方直接传入）
+// @param cleanHTML     清洗后的 HTML
+// @returns             FinalAnswerJson
+func buildFinalAnswerJson(answerResult *YamlAnswerResult, yamlData string, pageSettings PageSettings, surveyID string, pageID string, cleanHTML string) FinalAnswerJson {
 	isMatrixPage := detectIsMatrixPage(yamlData)
 	interactions := buildInteractions(answerResult.Interactions)
 	navButtons := buildNavButtons(pageSettings, surveyID, cleanHTML)
@@ -1126,32 +152,14 @@ func buildFinalAnswerJson(answerResult *YamlAnswerResult, yamlData string, pageS
 			},
 			Interactions: interactions,
 			NavButtons:   navButtons,
-			PageSummary:  answerResult.PageSummary, // AI 回复
+			PageSummary:  answerResult.PageSummary,
 		},
 	}
 }
 
-// parseYamlPageID 从 yamlData 中提取 page_id（fingerprint）
-func parseYamlPageID(yamlData string) string {
-	lines := strings.Split(yamlData, "\n")
-
-	for _, line := range lines {
-		trimmed := strings.TrimSpace(line)
-		if strings.HasPrefix(trimmed, "fingerprint:") {
-			parts := strings.SplitN(line, ":", 2)
-			if len(parts) == 2 {
-				return strings.TrimSpace(parts[1])
-			}
-		}
-	}
-	return ""
-}
-
-// detectIsMatrixPage 判断是否矩阵页
+// detectIsMatrixPage 判断 YAML 中是否含矩阵题型
 func detectIsMatrixPage(yamlData string) bool {
-	lines := strings.Split(yamlData, "\n")
-
-	for _, line := range lines {
+	for _, line := range strings.Split(yamlData, "\n") {
 		trimmed := strings.TrimSpace(line)
 		if strings.Contains(trimmed, "matrix_radio") || strings.Contains(trimmed, "matrix_checkbox") {
 			return true
@@ -1160,13 +168,13 @@ func detectIsMatrixPage(yamlData string) bool {
 	return false
 }
 
-// buildInteractions 构建 interactions
+// buildInteractions 将 []Interaction 转换为 []InteractionItem
 func buildInteractions(answers []Interaction) []InteractionItem {
 	result := make([]InteractionItem, 0, len(answers))
 
 	for _, ans := range answers {
 		item := InteractionItem{
-			QuestionType: ans.QuestionType, // AI 回复
+			QuestionType: ans.QuestionType,
 			Subject:      cleaner.CleanPageID(ans.Subject),
 		}
 
@@ -1195,6 +203,10 @@ func buildInteractions(answers []Interaction) []InteractionItem {
 	return result
 }
 
+// =============================================================================
+// 4. 导航按钮
+// =============================================================================
+
 // NextButtonConfig Next/Submit 按钮配置
 type NextButtonConfig struct {
 	NextPattern    string `yaml:"next_pattern"`
@@ -1217,7 +229,6 @@ const pageFingerprintsConfigPath = "configs/page-fingerprints.yaml"
 
 // loadNextButtonConfig 根据 surveyID 从 page-fingerprints.yaml 加载 next_button 配置
 func loadNextButtonConfig(surveyID string) (NextButtonConfig, error) {
-	// 读取配置文件
 	configPath := pageFingerprintsConfigPath
 	if !filepath.IsAbs(configPath) {
 		wd, err := os.Getwd()
@@ -1236,18 +247,17 @@ func loadNextButtonConfig(surveyID string) (NextButtonConfig, error) {
 		return NextButtonConfig{}, fmt.Errorf("loadNextButtonConfig: parse yaml: %w", err)
 	}
 
-	// 匹配 survey_id（忽略大小写）
 	for _, site := range cfg.Sites {
 		if strings.EqualFold(site.SurveyID, surveyID) {
 			return site.NextButton, nil
 		}
 	}
 
-	// 未找到匹配，返回默认配置
 	return NextButtonConfig{}, nil
 }
 
-// buildNavButtons 构建 nav_buttons
+// buildNavButtons 构建 nav_buttons 输出
+//
 // @param pageSettings 页面设置
 // @param surveyID     问卷 ID
 // @param cleanHTML    清洗后的 HTML 内容
@@ -1256,12 +266,9 @@ func buildNavButtons(pageSettings PageSettings, surveyID string, cleanHTML strin
 	var buttons []NavButtonItem
 	primaryButton := ""
 
-	// 从 page-fingerprints.yaml 加载 next_button 配置
 	nextButtonConfig, err := loadNextButtonConfig(surveyID)
 	if err == nil && nextButtonConfig.NextPattern != "" {
-		// 使用配置中的 next_pattern 生成 XPath
 		xpath := regexToXPath(nextButtonConfig.NextPattern)
-		// 从 HTML 中提取按钮属性
 		attrs := extractButtonAttrs(cleanHTML, xpath)
 		buttons = append(buttons, NavButtonItem{
 			Role:           "next",
@@ -1272,7 +279,6 @@ func buildNavButtons(pageSettings PageSettings, surveyID string, cleanHTML strin
 		})
 		primaryButton = "next"
 	} else if pageSettings.HasNextButton {
-		// 回退到默认逻辑
 		xpath, text, attrs := extractButtonFromHTML(cleanHTML, "next")
 		buttons = append(buttons, NavButtonItem{
 			Role:       "next",
@@ -1284,7 +290,6 @@ func buildNavButtons(pageSettings PageSettings, surveyID string, cleanHTML strin
 	}
 
 	if pageSettings.HasSubmitButton {
-		// 从 HTML 中解析 Submit 按钮
 		xpath, text, attrs := extractButtonFromHTML(cleanHTML, "submit")
 		buttons = append(buttons, NavButtonItem{
 			Role:       "submit",
@@ -1302,42 +307,30 @@ func buildNavButtons(pageSettings PageSettings, surveyID string, cleanHTML strin
 }
 
 // regexToXPath 将 JavaScript 风格的正则转换为 XPath
-// 输入: /<input[^>]*id="NextButton"[^>]*>/gi
-// 输出: //input[@id='NextButton']
 func regexToXPath(pattern string) string {
-	// 去掉 /gi 或 /g 后缀
 	cleanPattern := pattern
-	if strings.HasSuffix(cleanPattern, "/gi") {
-		cleanPattern = cleanPattern[:len(cleanPattern)-3]
-	} else if strings.HasSuffix(cleanPattern, "/g") {
-		cleanPattern = cleanPattern[:len(cleanPattern)-2]
-	} else if strings.HasSuffix(cleanPattern, "/") {
-		cleanPattern = cleanPattern[:len(cleanPattern)-1]
+	for _, suffix := range []string{"/gi", "/g", "/"} {
+		if strings.HasSuffix(cleanPattern, suffix) {
+			cleanPattern = cleanPattern[:len(cleanPattern)-len(suffix)]
+			break
+		}
 	}
-
-	// 去掉开头的 /
 	if strings.HasPrefix(cleanPattern, "/") {
 		cleanPattern = cleanPattern[1:]
 	}
 
-	// 从正则中提取标签名和属性
-	// <input[^>]*id="NextButton"[^>]*> -> //input[@id='NextButton']
 	xpath := "//"
-
-	// 提取标签名
 	tagMatch := regexp.MustCompile(`<([a-zA-Z]+)`).FindStringSubmatch(cleanPattern)
 	if len(tagMatch) >= 2 {
 		xpath += tagMatch[1]
 	} else {
-		return "//input[@id='NextButton']" // 默认
+		return "//input[@id='NextButton']"
 	}
 
-	// 提取 id 属性值
 	idMatch := regexp.MustCompile(`id=["']([^"']+)["']`).FindStringSubmatch(cleanPattern)
 	if len(idMatch) >= 2 {
 		xpath += "[@id='" + idMatch[1] + "']"
 	} else {
-		// 提取 value 属性值
 		valueMatch := regexp.MustCompile(`value=["']([^"']+)["']`).FindStringSubmatch(cleanPattern)
 		if len(valueMatch) >= 2 {
 			xpath += "[@value='" + valueMatch[1] + "']"
@@ -1351,9 +344,7 @@ func regexToXPath(pattern string) string {
 func extractButtonAttrs(html string, xpath string) map[string]string {
 	attrs := make(map[string]string)
 
-	// 简单实现：从 xpath 提取属性构建正则
-	// 例如: //input[@id='NextButton'] -> <input[^>]*id="NextButton"[^>]*>
-	rePattern := `<(` + strings.Split(xpath, "//")[1]
+	var rePattern string
 	if strings.Contains(xpath, "@id=") {
 		idMatch := regexp.MustCompile(`@id='([^']+)'`).FindStringSubmatch(xpath)
 		if len(idMatch) >= 2 {
@@ -1366,23 +357,21 @@ func extractButtonAttrs(html string, xpath string) map[string]string {
 		}
 	}
 
+	if rePattern == "" {
+		return attrs
+	}
+
 	re := regexp.MustCompile(`(?i)` + rePattern)
 	match := re.FindString(html)
 	if match != "" {
-		// 提取 type
-		typeMatch := regexp.MustCompile(`type=["']([^"']+)["']`).FindStringSubmatch(match)
-		if len(typeMatch) >= 2 {
-			attrs["type"] = typeMatch[1]
+		if m := regexp.MustCompile(`type=["']([^"']+)["']`).FindStringSubmatch(match); len(m) >= 2 {
+			attrs["type"] = m[1]
 		}
-		// 提取 id
-		idMatch := regexp.MustCompile(`id=["']([^"']+)["']`).FindStringSubmatch(match)
-		if len(idMatch) >= 2 {
-			attrs["id"] = idMatch[1]
+		if m := regexp.MustCompile(`id=["']([^"']+)["']`).FindStringSubmatch(match); len(m) >= 2 {
+			attrs["id"] = m[1]
 		}
-		// 提取 value
-		valueMatch := regexp.MustCompile(`value=["']([^"']+)["']`).FindStringSubmatch(match)
-		if len(valueMatch) >= 2 {
-			attrs["value"] = valueMatch[1]
+		if m := regexp.MustCompile(`value=["']([^"']+)["']`).FindStringSubmatch(match); len(m) >= 2 {
+			attrs["value"] = m[1]
 		}
 	}
 
@@ -1390,37 +379,23 @@ func extractButtonAttrs(html string, xpath string) map[string]string {
 }
 
 // extractButtonFromHTML 从 HTML 中提取按钮的 XPath、文本和属性
-// @param html  清洗后的 HTML
-// @param role  按钮角色 (next/submit)
-// @returns     (xpath, text, attributes)
 func extractButtonFromHTML(html string, role string) (string, string, map[string]string) {
 	attrs := make(map[string]string)
 	xpath := ""
 	text := "Next"
 
 	if role == "next" {
-		// 匹配 Next 按钮: <input ... value="Next" ...> 或 <button ...>Next</button>
-		// 优先匹配 value="Next"
-		if match, x, a, t := extractInputButton(html, "Next"); match {
-			return x, t, a
+		for _, val := range []string{"Next", "Continue", "Proceed"} {
+			if match, x, a, t := extractInputButton(html, val); match {
+				return x, t, a
+			}
 		}
-		// 备选：匹配 Continue
-		if match, x, a, t := extractInputButton(html, "Continue"); match {
-			return x, t, a
-		}
-		// 备选：匹配 Proceed
-		if match, x, a, t := extractInputButton(html, "Proceed"); match {
-			return x, t, a
-		}
-		// 默认 XPath
 		xpath = "//input[@type='submit' and @value='Next']"
 		attrs = map[string]string{"type": "submit", "value": "Next"}
 	} else if role == "submit" {
-		// 匹配 Submit 按钮
 		if match, x, a, t := extractInputButton(html, "Submit"); match {
 			return x, t, a
 		}
-		// 默认 XPath
 		xpath = "//input[@type='submit' and @value='Submit']"
 		attrs = map[string]string{"type": "submit", "value": "Submit"}
 	}
@@ -1428,9 +403,8 @@ func extractButtonFromHTML(html string, role string) (string, string, map[string
 	return xpath, text, attrs
 }
 
-// extractInputButton 提取 input 按钮
+// extractInputButton 提取 input 按钮（匹配 value="xxx"）
 func extractInputButton(html string, value string) (bool, string, map[string]string, string) {
-	// 匹配 <input ... value="Next" ...>
 	pattern := fmt.Sprintf(`<input[^>]*value=["']%s["'][^>]*>`, value)
 	re := regexp.MustCompile(`(?i)` + pattern)
 	idxs := re.FindStringIndex(html)
@@ -1439,11 +413,7 @@ func extractInputButton(html string, value string) (bool, string, map[string]str
 	}
 
 	match := html[idxs[0]:idxs[1]]
-
-	// 提取所有属性
 	attrs := extractAttributes(match)
-
-	// 构建 XPath
 	xpath := fmt.Sprintf("//input[@type='submit' and @value='%s']", value)
 
 	return true, xpath, attrs, value
@@ -1452,19 +422,18 @@ func extractInputButton(html string, value string) (bool, string, map[string]str
 // extractAttributes 从 HTML 标签中提取属性
 func extractAttributes(tag string) map[string]string {
 	attrs := make(map[string]string)
-
-	// 匹配所有属性: name="xxx" 或 name='xxx' 或 name=xxx
 	re := regexp.MustCompile(`(\w+)=["']?([^"'>]+)["']?`)
-	matches := re.FindAllStringSubmatch(tag, -1)
-
-	for _, m := range matches {
+	for _, m := range re.FindAllStringSubmatch(tag, -1) {
 		if len(m) == 3 {
 			attrs[m[1]] = m[2]
 		}
 	}
-
 	return attrs
 }
+
+// =============================================================================
+// 5. 文件存储
+// =============================================================================
 
 // saveRealtimeAnswersJson 保存答案 JSON 到文件
 // 路径: storage/logs/{surveyID}/realtime-answers/{pageID}_{timestamp}.json
@@ -1488,4 +457,133 @@ func saveRealtimeAnswersJson(basePath, surveyID, pageID string, result FinalAnsw
 	}
 
 	return filePath, nil
+}
+
+// =============================================================================
+// 6. YAML 清洗工具
+// =============================================================================
+
+// StripRecommendedAnswers 移除 interactions JSON 中的 recommended_answers 字段
+// 用于计算 interactions_md5
+func StripRecommendedAnswers(jsonStr string) string {
+	re1 := regexp.MustCompile(`,"recommended_answers":"[^"]*"|"recommended_answers":"[^"]*",`)
+	result := re1.ReplaceAllString(jsonStr, "")
+
+	re2 := regexp.MustCompile(`,"recommended_answers":\[[^\]]*\]|"recommended_answers":\[[^\]]*\],`)
+	result = re2.ReplaceAllString(result, "")
+
+	return result
+}
+
+// StripYamlHardcodedValues 将 YAML 中的硬编码值替换为 <<<FROM_HTML:xxx>>> 占位符
+func StripYamlHardcodedValues(yamlStr string) string {
+	result := yamlStr
+
+	// 1. options 数组
+	result = regexp.MustCompile(`(?m)^\s*options:\s*$\n(?:^\s*-\s*"[^"]*"\s*$\n?)+`).
+		ReplaceAllStringFunc(result, func(match string) string {
+			return extractIndentAndReplace(match, "options:", `options: "<<<FROM_HTML:options[]>>>"`)
+		})
+
+	// 2. columns 数组
+	result = regexp.MustCompile(`(?m)^\s*columns:\s*$\n(?:^\s*-\s*"[^"]*"\s*$\n?)+`).
+		ReplaceAllStringFunc(result, func(match string) string {
+			return extractIndentAndReplace(match, "columns:", `columns: "<<<FROM_HTML:columns[]>>>"`)
+		})
+
+	// 3. rows 数组
+	result = regexp.MustCompile(`(?m)^\s*rows:\s*$\n(?:^\s*-\s*"[^"]*"\s*$\n?)+`).
+		ReplaceAllStringFunc(result, func(match string) string {
+			return extractIndentAndReplace(match, "rows:", `rows: "<<<FROM_HTML:rows[]>>>"`)
+		})
+	result = regexp.MustCompile(`(?m)^\s*rows:\s*"<<<FROM_HTML:[^"]+>>>`).
+		ReplaceAllStringFunc(result, func(match string) string {
+			indent := regexp.MustCompile(`(?m)^(\s*)`).FindString(match)
+			return indent + `rows: "<<<FROM_HTML:rows[]>>>"`
+		})
+
+	// 4. title 字段
+	result = regexp.MustCompile(`(?m)^\s*(title):\s*(?:\"([^\"<]*)\"|([^<\s][^\s]*))`).
+		ReplaceAllStringFunc(result, func(match string) string {
+			indent := regexp.MustCompile(`(?m)^(\s*)`).FindString(match)
+			return indent + `title: "<<<FROM_HTML:title>>>"`
+		})
+
+	// 5. placeholder 字段
+	result = regexp.MustCompile(`(?m)^\s*(placeholder):\s*(?:\"([^\"<]*)\"|([^<\s][^\s]*))`).
+		ReplaceAllStringFunc(result, func(match string) string {
+			indent := regexp.MustCompile(`(?m)^(\s*)`).FindString(match)
+			return indent + `placeholder: "<<<FROM_HTML:placeholder>>>"`
+		})
+
+	// 6. page_metadata 布尔字段
+	result = regexp.MustCompile(`(?m)^\s*(has_next_button|has_submit_button|is_thank_you_page|is_description_page):\s*(?:\"(true|false)\"|(true|false))`).
+		ReplaceAllStringFunc(result, func(match string) string {
+			indent := regexp.MustCompile(`(?m)^(\s*)`).FindString(match)
+			fieldName := ""
+			switch {
+			case strings.Contains(match, "has_next_button"):
+				fieldName = "has_next_button"
+			case strings.Contains(match, "has_submit_button"):
+				fieldName = "has_submit_button"
+			case strings.Contains(match, "is_thank_you_page"):
+				fieldName = "is_thank_you_page"
+			case strings.Contains(match, "is_description_page"):
+				fieldName = "is_description_page"
+			}
+			return indent + fieldName + `: "<<<FROM_HTML:` + fieldName + `>>>"`
+		})
+
+	// 7. questions_type 字段
+	result = regexp.MustCompile(`(?m)^\s*(questions_type):\s*(?:\"([^\"]+)\"|(\S+))`).
+		ReplaceAllStringFunc(result, func(match string) string {
+			indent := regexp.MustCompile(`(?m)^(\s*)`).FindString(match)
+			return indent + `questions_type: "<<<FROM_HTML:questions_type>>>"`
+		})
+
+	// 8. required 字段
+	result = regexp.MustCompile(`(?m)^\s*(required):\s*(?:\"(true|false)\"|(true|false))`).
+		ReplaceAllStringFunc(result, func(match string) string {
+			indent := regexp.MustCompile(`(?m)^(\s*)`).FindString(match)
+			return indent + `required: "<<<FROM_HTML:required>>>"`
+		})
+
+	// 9. response_format 下的字段
+	result = regexp.MustCompile(`(?m)^\s*(type|orientation|option_sort):\s*(?:\"([^\"]+)\"|(\S+))`).
+		ReplaceAllStringFunc(result, func(match string) string {
+			indent := regexp.MustCompile(`(?m)^(\s*)`).FindString(match)
+			fieldName := ""
+			if strings.Contains(match, "type:") && !strings.Contains(match, "questions_type") {
+				fieldName = "type"
+			} else if strings.Contains(match, "orientation:") {
+				fieldName = "orientation"
+			} else if strings.Contains(match, "option_sort:") {
+				fieldName = "option_sort"
+			}
+			if fieldName != "" {
+				return indent + fieldName + `: "<<<FROM_HTML:` + fieldName + `>>>"`
+			}
+			return match
+		})
+
+	// 10. max_selections 字段
+	result = regexp.MustCompile(`(?m)^\s*(max_selections):\s*(?:\"?(\d+|null)\"?|(\d+|null))`).
+		ReplaceAllStringFunc(result, func(match string) string {
+			indent := regexp.MustCompile(`(?m)^(\s*)`).FindString(match)
+			return indent + `max_selections: "<<<FROM_HTML:max_selections>>>"`
+		})
+
+	return result
+}
+
+// extractIndentAndReplace 提取缩进并替换数组为占位符
+func extractIndentAndReplace(match, fieldName, replacement string) string {
+	for _, line := range strings.Split(match, "\n") {
+		if strings.Contains(line, fieldName) {
+			trimmed := strings.TrimLeft(line, " \t")
+			indent := line[:len(line)-len(trimmed)]
+			return indent + replacement
+		}
+	}
+	return replacement
 }

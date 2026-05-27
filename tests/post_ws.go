@@ -1,3 +1,21 @@
+// == WS Client 使用说明 ===
+// 用途: 向 WebSocket 服务器发送问卷页面分析请求
+// 参数说明:
+//   -session_id  会话ID，用于标识一次会话（默认: session_test）
+//            问卷页面URL（必须）
+//   -ws          WebSocket服务器地址（默认: ws://localhost:10501/ws）
+//   -html        HTML文件路径（可选，用于发送页面源码）
+// 示例:
+//   # 方式1: 指定HTML文件和URL
+//   go run . -html "E:\docs\page.html" -url "https://survey.qualtrics.com/jfe/form/SV_xxx"
+//   ...
+// 发送的消息格式:
+//   {
+//     "session_id": "session_test",
+//     "rawhtml": "<html>...</html>",
+//     ...
+//   }
+
 package main
 
 import (
@@ -34,6 +52,12 @@ type WsMessage struct {
 
 func main() {
 	flag.Parse()
+	// 参数说明:
+	fmt.Println("命令行参数说明：")
+	fmt.Println("  -session_id  会话ID，用于标识一次会话（默认: session_test）")
+	fmt.Println("  -url         问卷页面URL（必须）")
+	fmt.Println("  -ws          WebSocket服务器地址（默认: ws://localhost:10501/ws）")
+	fmt.Println("  -html        HTML文件路径（可选，用于发送页面源码）")
 
 	fmt.Println("=== WS Client ===")
 	fmt.Printf("Session ID: %s\n", *sessionID)
@@ -110,8 +134,8 @@ func main() {
 	fmt.Printf("REQUEST_ID:  %s\n", msg.RequestID)
 	fmt.Printf("TYPE:        %s\n", msg.Type)
 	fmt.Printf("SURVEY_ID:   %s\n", msg.SurveyID)
-	if len(rawHTML) > 200 {
-		fmt.Printf("RAWHTML:     [%.2f KB]\n", float64(len(rawHTML))/1024)
+	if len(msg.RawHTML) > 300 {
+		fmt.Printf("RAWHTML:     [%d 字符] %.300s...\n", len(msg.RawHTML), msg.RawHTML)
 	} else {
 		fmt.Printf("RAWHTML:     %s\n", msg.RawHTML)
 	}

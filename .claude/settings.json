@@ -3,9 +3,9 @@
     "allow": [
      "Bash(*)",
      "Bash(powershell:*)",
-     "Edit(file://*)",
-     "Write(file://*)",
-     "Read(file://*)"
-    ]
+    "Write(*)",
+      "Read(*)" 
+    ],
+    "defaultMode": "bypassPermissions"
   }
 }

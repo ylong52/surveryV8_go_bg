@@ -1,31 +1,31 @@
 package extractor
 
-// yaml_answer.go — YAML 结构 + Persona 生成推荐答案
-//   根据 YAML 结构 + HTML + Persona 调用 DeepSeek API 生成推荐答案
-//   输出格式复用 prompts.yaml 的 interactions 结构（subject + showAnswer）
+// yaml_answer.go — 步骤 4：生成推荐答案
+//   使用 YAML 占位符模板 + HTML + 人设 + 题型专属提示词 → 推荐答案 JSON
 
 import (
 	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 
-	"github.com/patrickmn/go-cache"
-	"gopkg.in/yaml.v3"
+	"survey.cli/core/database"
 )
+
+// min 返回两个整数中较小的值
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
 
 // =============================================================================
 // 1. 数据结构定义
 // =============================================================================
-
-// YamlAnswerConfig 对应 configs/yaml_structure_prompt.yaml 的答案推荐字段
-type YamlAnswerConfig struct {
-	AnswerSystemPrompt     string `yaml:"ANSWER_SYSTEM_PROMPT"`
-	AnswerUserPromptPrefix string `yaml:"ANSWER_USER_PROMPT_PREFIX"`
-	PersonaContextPrefix   string `yaml:"PERSONA_CONTEXT_PREFIX"`
-}
 
 // Interaction 单个题目的推荐答案
 type Interaction struct {
@@ -49,171 +49,134 @@ type InteractionsResponse struct {
 	PageSummary  string        `json:"page_summary"`
 }
 
-// RealtimeAnswerOnlyResult 合并后的推荐答案结果（单次AI调用）
-// 用于缓存命中时，一次性生成推荐答案
+// RealtimeAnswerOnlyResult 推荐答案结果（单次AI调用）
 type RealtimeAnswerOnlyResult struct {
 	Interactions  []Interaction   // 推荐答案列表
 	PageSummary   string          // 页面摘要
 	PageID        string          // 页面ID
-	PageSettings  PageSettings    // 页面设置（从cachedYaml解析）
-	YamlStructure string          // YAML结构（复用cachedYaml）
+	PageSettings  PageSettings    // 页面设置
+	YamlStructure string          // YAML结构
 	FinalJson     FinalAnswerJson // 最终JSON
 	Source        string          // "realtime"
+	SystemPrompt  string          // 发给AI的 system prompt
+	UserPrompt    string          // 发给AI的 user prompt
 }
 
 // PageSummaryCacheItem page_summary 缓存项
 type PageSummaryCacheItem struct {
-	PageSummary string    // 页面摘要
-	Timestamp   time.Time // 缓存时间
-	SessionID   string    // 会话ID
-	PageID      string    // 页面ID
+	PageSummary string    `json:"page_summary"`
+	Timestamp   time.Time `json:"timestamp"`
+	PageID      string    `json:"page_id"`
 }
 
+// PageSummaryCacheFile 按 survey_id 存储的缓存文件结构
+type PageSummaryCacheFile struct {
+	Items     []PageSummaryCacheItem `json:"items"`
+	UpdatedAt time.Time              `json:"updated_at"`
+}
+
+// pageSummaryCacheBasePath 缓存文件路径
+var pageSummaryCacheBasePath string
+
 // =============================================================================
-// 1.5 page_summary 持久化缓存（内存 + 文件，TTL 60分钟）
+// 1.5 page_summary 持久化缓存
 // =============================================================================
 
 const (
-	// PageSummaryCacheTTL page_summary 缓存过期时间（60分钟）
-	PageSummaryCacheTTL = 60 * time.Minute
-	// PageSummaryCacheCleanupInterval 缓存清理间隔
-	PageSummaryCacheCleanupInterval = 65 * time.Minute
-	// pageSummaryCacheFileName 缓存文件名
-	pageSummaryCacheFileName = "page_summary_cache.json"
+	PageSummaryCacheTTL      = 30 * time.Minute
+	PageSummaryCacheDir      = "page_summary_cache"
+	PageSummaryCacheMaxItems = 99
 )
 
-// pageSummaryCache page_summary 内存缓存（session_id:page_id → PageSummaryCacheItem）
-var pageSummaryCache = cache.New(PageSummaryCacheTTL, PageSummaryCacheCleanupInterval)
-
-// pageSummaryCacheBasePath 缓存文件路径（启动时初始化）
-var pageSummaryCacheBasePath string
-
-// InitPageSummaryCache 初始化 page_summary 缓存，从文件加载已有缓存
-// @param basePath 存储根目录
+// InitPageSummaryCache 初始化 page_summary 缓存（设置 basePath）
 func InitPageSummaryCache(basePath string) {
 	pageSummaryCacheBasePath = basePath
-	loadPageSummaryCacheFromFile()
 }
 
-// loadPageSummaryCacheFromFile 从文件加载缓存到内存
-func loadPageSummaryCacheFromFile() {
-	if pageSummaryCacheBasePath == "" {
-		return
-	}
-	cacheFile := filepath.Join(pageSummaryCacheBasePath, pageSummaryCacheFileName)
+// loadPageSummaryCacheFile 加载指定 survey_id 的缓存文件
+func loadPageSummaryCacheFile(surveyIDKey string) *PageSummaryCacheFile {
+	cacheDir := filepath.Join(pageSummaryCacheBasePath, PageSummaryCacheDir)
+	cacheFile := filepath.Join(cacheDir, fmt.Sprintf("%s.json", surveyIDKey))
+
 	data, err := os.ReadFile(cacheFile)
 	if err != nil {
-		// 文件不存在或读取失败，忽略
-		return
+		return nil
 	}
 
-	var items map[string]PageSummaryCacheItem
-	if err := json.Unmarshal(data, &items); err != nil {
+	var cacheData PageSummaryCacheFile
+	if err := json.Unmarshal(data, &cacheData); err != nil {
 		fmt.Printf("[PageSummaryCache] 解析缓存文件失败: %v\n", err)
-		return
+		return nil
 	}
 
-	now := time.Now()
-	loadedCount := 0
-	for key, item := range items {
-		// 检查是否过期（超过 TTL）
-		if now.Sub(item.Timestamp) > PageSummaryCacheTTL {
-			continue
-		}
-		pageSummaryCache.Set(key, item, cache.DefaultExpiration)
-		loadedCount++
+	if time.Since(cacheData.UpdatedAt) > PageSummaryCacheTTL {
+		os.Remove(cacheFile)
+		return nil
 	}
-	if loadedCount > 0 {
-		fmt.Printf("[PageSummaryCache] 从文件加载缓存: %d 条有效记录\n", loadedCount)
-	}
+
+	return &cacheData
 }
 
-// savePageSummaryCacheToFile 将内存缓存保存到文件
-func savePageSummaryCacheToFile() {
-	if pageSummaryCacheBasePath == "" {
+// savePageSummaryCacheFile 保存指定 survey_id 的缓存文件
+func savePageSummaryCacheFile(surveyIDKey string, cacheData *PageSummaryCacheFile) {
+	cacheDir := filepath.Join(pageSummaryCacheBasePath, PageSummaryCacheDir)
+	if err := os.MkdirAll(cacheDir, 0755); err != nil {
+		fmt.Printf("[PageSummaryCache] 创建缓存目录失败: %v\n", err)
 		return
 	}
 
-	// 收集所有未过期的缓存项
-	items := make(map[string]PageSummaryCacheItem)
-	for _, itemRaw := range pageSummaryCache.Items() {
-		item, ok := itemRaw.Object.(PageSummaryCacheItem)
-		if !ok {
-			continue
-		}
-		// 检查是否过期
-		if time.Now().Sub(item.Timestamp) > PageSummaryCacheTTL {
-			continue
-		}
-		key := makePageSummaryKey(item.SessionID, item.PageID)
-		items[key] = item
-	}
+	cacheFile := filepath.Join(cacheDir, fmt.Sprintf("%s.json", surveyIDKey))
+	cacheData.UpdatedAt = time.Now()
 
-	if len(items) == 0 {
-		return
-	}
-
-	data, err := json.MarshalIndent(items, "", "  ")
+	data, err := json.MarshalIndent(cacheData, "", "  ")
 	if err != nil {
 		fmt.Printf("[PageSummaryCache] 序列化缓存失败: %v\n", err)
 		return
 	}
 
-	cacheFile := filepath.Join(pageSummaryCacheBasePath, pageSummaryCacheFileName)
 	if err := os.WriteFile(cacheFile, data, 0644); err != nil {
 		fmt.Printf("[PageSummaryCache] 保存缓存文件失败: %v\n", err)
 		return
 	}
 
-	fmt.Printf("[PageSummaryCache] 保存缓存到文件: %d 条记录\n", len(items))
+	fmt.Printf("[PageSummaryCache] 保存缓存: survey_id=%s, items=%d\n", surveyIDKey, len(cacheData.Items))
 }
 
-// makePageSummaryKey 生成缓存键
-// @param sessionID 会话ID
-// @param pageID   页面ID
-// @return 缓存键格式: sessionID:pageID
-func makePageSummaryKey(sessionID, pageID string) string {
-	return sessionID + ":" + pageID
-}
+// SavePageSummaryCache 保存 page_summary 到缓存文件
+func SavePageSummaryCache(surveyIDKey string, pageID, pageSummary string) {
+	cacheData := loadPageSummaryCacheFile(surveyIDKey)
+	if cacheData == nil {
+		cacheData = &PageSummaryCacheFile{
+			Items:     make([]PageSummaryCacheItem, 0),
+			UpdatedAt: time.Now(),
+		}
+	}
 
-// SavePageSummaryCache 保存 page_summary 到缓存（自动去重）+ 持久化到文件
-// @param sessionID  会话ID
-// @param pageID    页面ID
-// @param pageSummary 页面摘要
-func SavePageSummaryCache(sessionID, pageID, pageSummary string) {
-	key := makePageSummaryKey(sessionID, pageID)
-	item := PageSummaryCacheItem{
+	cacheData.Items = append(cacheData.Items, PageSummaryCacheItem{
 		PageSummary: pageSummary,
 		Timestamp:   time.Now(),
-		SessionID:   sessionID,
 		PageID:      pageID,
-	}
-	pageSummaryCache.Set(key, item, cache.DefaultExpiration)
-	fmt.Printf("[PageSummaryCache] 保存缓存: %s (%d 字符)\n", key, len(pageSummary))
+	})
 
-	// 持久化到文件
-	savePageSummaryCacheToFile()
+	if len(cacheData.Items) > PageSummaryCacheMaxItems {
+		cacheData.Items = cacheData.Items[len(cacheData.Items)-PageSummaryCacheMaxItems:]
+	}
+
+	savePageSummaryCacheFile(surveyIDKey, cacheData)
 }
 
-// GetPageSummaryContext 获取指定 session 的答题上下文（排除当前页面）
-// @param sessionID    会话ID
-// @param currentPageID 当前页面ID（排除自身）
-// @return 上下文字符串，空则返回空字符串
-func GetPageSummaryContext(sessionID, currentPageID string) string {
+// GetPageSummaryContext 获取指定 survey 的答题上下文（排除当前页面）
+func GetPageSummaryContext(surveyIDKey string, currentPageID string) string {
+	cacheData := loadPageSummaryCacheFile(surveyIDKey)
+	if cacheData == nil || len(cacheData.Items) == 0 {
+		return ""
+	}
+
 	var contextItems []string
-
-	// 遍历缓存，收集同 session 的 page_summary
-	for _, itemRaw := range pageSummaryCache.Items() {
-		item, ok := itemRaw.Object.(PageSummaryCacheItem)
-		if !ok {
+	for _, item := range cacheData.Items {
+		if item.PageID == currentPageID {
 			continue
 		}
-
-		// 只收集同 session、非当前页面的记录
-		if item.SessionID != sessionID || item.PageID == currentPageID {
-			continue
-		}
-
 		if item.PageSummary != "" {
 			contextItems = append(contextItems, fmt.Sprintf("· %s: %s", item.PageID, item.PageSummary))
 		}
@@ -223,7 +186,6 @@ func GetPageSummaryContext(sessionID, currentPageID string) string {
 		return ""
 	}
 
-	// 拼接上下文
 	var sb strings.Builder
 	sb.WriteString("【答题上下文】（仅作背景参考）\n")
 	for _, ctx := range contextItems {
@@ -236,81 +198,46 @@ func GetPageSummaryContext(sessionID, currentPageID string) string {
 	sb.WriteString("主动忽略上下文中对\"题目N\"的冗余描述或约束。")
 
 	context := sb.String()
-	fmt.Printf("[PageSummaryCache] 获取上下文: %d 条记录, %d 字符\n", len(contextItems), len(context))
+	fmt.Printf("[PageSummaryCache] 获取上下文: survey_id=%s, items=%d, chars=%d\n", surveyIDKey, len(contextItems), len(context))
 	return context
 }
 
 // GetPageSummaryCacheStats 获取缓存统计信息
 func GetPageSummaryCacheStats() (itemCount int, hitCount int64) {
-	return pageSummaryCache.ItemCount(), 0
-}
-
-// =============================================================================
-// 2. 配置加载
-// =============================================================================
-
-// LoadYamlAnswerConfig 从 configs/yaml_structure_prompt.yaml 读取答案推荐配置
-func LoadYamlAnswerConfig() (*YamlAnswerConfig, error) {
-	cfg, err := LoadYamlStructureConfig()
+	cacheDir := filepath.Join(pageSummaryCacheBasePath, PageSummaryCacheDir)
+	entries, err := os.ReadDir(cacheDir)
 	if err != nil {
-		return nil, fmt.Errorf("LoadYamlAnswerConfig: %w", err)
+		return 0, 0
 	}
 
-	if cfg.AnswerSystemPrompt == "" {
-		return nil, fmt.Errorf("LoadYamlAnswerConfig: ANSWER_SYSTEM_PROMPT is empty")
+	totalItems := 0
+	for _, entry := range entries {
+		if entry.IsDir() || filepath.Ext(entry.Name()) != ".json" {
+			continue
+		}
+		key := strings.TrimSuffix(entry.Name(), ".json")
+		cacheData := loadPageSummaryCacheFile(key)
+		if cacheData != nil {
+			totalItems += len(cacheData.Items)
+		}
 	}
-	if cfg.AnswerUserPromptPrefix == "" {
-		return nil, fmt.Errorf("LoadYamlAnswerConfig: ANSWER_USER_PROMPT_PREFIX is empty")
-	}
-
-	return &YamlAnswerConfig{
-		AnswerSystemPrompt:     cfg.AnswerSystemPrompt,
-		AnswerUserPromptPrefix: cfg.AnswerUserPromptPrefix,
-		PersonaContextPrefix:   cfg.PersonaContextPrefix,
-	}, nil
+	return totalItems, 0
 }
 
-// LoadSemanticPersona 加载语义化人设描述
+// =============================================================================
+// 2. 人设加载
+// =============================================================================
+
+// LoadSemanticPersona 加载语义化人设描述（survey_persona.__default__.description）
 //
-//	从 configs/prompts.yaml 的 persona_generic.description 字段读取
-//	若 description 非空则返回，作为"答案题目的人设"优先使用
-//	否则返回空字符串，触发 fallback 到系统预设人设
-//
-// @returns 语义化人设描述文本，error
+// @returns 描述文本，error
 func LoadSemanticPersona() (string, error) {
-	data, err := os.ReadFile(promptsYAMLPath)
+	rec, err := database.LoadDefaultPersona()
 	if err != nil {
-		return "", fmt.Errorf("LoadSemanticPersona: read %s: %w", promptsYAMLPath, err)
+		return "", fmt.Errorf("LoadSemanticPersona: %w", err)
 	}
 
-	var raw map[string]interface{}
-	if err := yaml.Unmarshal(data, &raw); err != nil {
-		return "", fmt.Errorf("LoadSemanticPersona: parse yaml: %w", err)
-	}
-
-	// 提取 persona_generic.description
-	generic, ok := raw["persona_generic"]
-	if !ok {
-		return "", nil
-	}
-
-	genericMap, ok := generic.(map[string]interface{})
-	if !ok {
-		return "", nil
-	}
-
-	description, ok := genericMap["description"]
-	if !ok {
-		return "", nil
-	}
-
-	descStr, ok := description.(string)
-	if !ok || descStr == "" {
-		return "", nil
-	}
-
-	// 去除首尾空白
-	descStr = strings.TrimSpace(descStr)
+	descStr := strings.TrimSpace(rec.Description)
 	if descStr == "" {
 		return "", nil
 	}
@@ -320,98 +247,122 @@ func LoadSemanticPersona() (string, error) {
 }
 
 // =============================================================================
-// 3. Prompt 构建
+// 3. Prompt 构建（DB 驱动）
 // =============================================================================
 
-// BuildYamlAnswerPrompt 构建答案推荐 Prompt
-// @param persona        人设信息（由 LoadPersona() 生成）
-// @param yamlStructure  YAML 结构字符串
-// @returns              systemPrompt, userPrompt, error
-func BuildYamlAnswerPrompt(persona, yamlStructure string) (string, string, error) {
-	cfg, err := LoadYamlAnswerConfig()
+// buildAnswerSystemPrompt 从数据库组装答案推荐系统提示词
+//
+//	使用 analyze 组装顺序，qtype.* 键仅包含匹配 detectedTypes 的部分；
+//	人设追加到末尾。
+//
+// @param detectedTypes  检测到的题型列表（空时包含所有题型块）
+// @param persona        人设文本（追加到末尾）
+// @returns              系统提示词，error
+func buildAnswerSystemPrompt(detectedTypes []string, persona string) (string, error) {
+	allPrompts, err := database.LoadAllPrompts()
 	if err != nil {
-		return "", "", fmt.Errorf("BuildYamlAnswerPrompt: %w", err)
+		return "", fmt.Errorf("buildAnswerSystemPrompt: LoadAllPrompts: %w", err)
 	}
 
-	// System Prompt
-	systemPrompt := cfg.AnswerSystemPrompt
+	assemblyKeys, err := database.LoadAssemblyOrder("analyze")
+	if err != nil {
+		return "", fmt.Errorf("buildAnswerSystemPrompt: LoadAssemblyOrder: %w", err)
+	}
 
-	// User Prompt
-	var userPrompt strings.Builder
+	// 构建 detectedTypes 集合（空表示不过滤）
+	typeSet := make(map[string]bool, len(detectedTypes))
+	for _, t := range detectedTypes {
+		typeSet[strings.ToLower(t)] = true
+	}
+	filterTypes := len(typeSet) > 0
 
-	// 人设上下文
+	// system.analyze 作为前缀（与 buildPrompt 保持一致）
+	blocks := []string{allPrompts["system.analyze"]}
+
+	for _, key := range assemblyKeys {
+		if strings.HasPrefix(key, "qtype.") && filterTypes {
+			// qtype.<type> — 仅保留命中的题型
+			parts := strings.SplitN(key, ".", 3)
+			if len(parts) >= 2 && !typeSet[strings.ToLower(parts[1])] {
+				continue
+			}
+		}
+		if block := allPrompts[key]; block != "" {
+			blocks = append(blocks, block)
+		}
+	}
+
 	if persona != "" {
-		userPrompt.WriteString(cfg.PersonaContextPrefix)
-		userPrompt.WriteString(persona)
-		userPrompt.WriteString("\n\n")
+		blocks = append(blocks, "【当前受访者人设】\n"+persona)
 	}
 
-	// 用户提示前缀
-	userPrompt.WriteString(cfg.AnswerUserPromptPrefix)
-	userPrompt.WriteString("\n\n")
+	return strings.Join(blocks, "\n\n"), nil
+}
 
-	// YAML 结构
-	userPrompt.WriteString("```yaml\n")
-	userPrompt.WriteString(yamlStructure)
-	userPrompt.WriteString("\n```\n\n")
+// buildAnswerUserPrompt 组装答案推荐用户提示词
+//
+// @param answerContext  答题上下文（来自 page_summary 缓存）
+// @param yamlTemplate   YAML 占位符模板
+// @param htmlContent    清洗后 HTML
+// @returns              用户提示词字符串
+func buildAnswerUserPrompt(answerContext, yamlTemplate, htmlContent string) string {
+	var sb strings.Builder
 
-	return systemPrompt, userPrompt.String(), nil
+	if answerContext != "" {
+		sb.WriteString(answerContext)
+		sb.WriteString("\n\n")
+	}
+
+	sb.WriteString("--- 当前页面HTML（数据来源）---\n")
+	sb.WriteString("```html\n")
+	sb.WriteString(htmlContent)
+	sb.WriteString("\n```\n\n")
+
+	sb.WriteString("--- YAML模板（格式参考，禁止使用占位符文本！）---\n")
+	sb.WriteString("```yaml\n")
+	sb.WriteString(yamlTemplate)
+	sb.WriteString("\n```\n")
+
+	return sb.String()
 }
 
 // =============================================================================
-// 4. 主流程
+// 4. 响应解析
 // =============================================================================
-
-// ExtractYamlAnswers 根据 YAML 结构 + Persona 生成推荐答案
-//
-//	内部加载人设，调用 AI 生成推荐答案
-//
-// @param yamlStructure  YAML 结构字符串
-// @param surveyID       问卷 ID
-// @param pageID         页面 ID
-// @param basePath       存储根目录
-// @returns              YamlAnswerResult, error
-func ExtractYamlAnswers(yamlStructure, surveyID, pageID, basePath string) (*YamlAnswerResult, error) {
-	// 步骤 1: 加载人设
-	persona, err := LoadPersona()
-	if err != nil {
-		return nil, fmt.Errorf("ExtractYamlAnswers: LoadPersona failed: %w", err)
-	}
-
-	// 步骤 2: 构建 Prompt
-	systemPrompt, userPrompt, err := BuildYamlAnswerPrompt(persona, yamlStructure)
-	if err != nil {
-		return nil, fmt.Errorf("ExtractYamlAnswers: BuildYamlAnswerPrompt failed: %w", err)
-	}
-
-	// 步骤 3: 调用 AI
-	aiResponse, err := CallAI(surveyID, systemPrompt, userPrompt, basePath)
-	if err != nil {
-		return nil, fmt.Errorf("ExtractYamlAnswers: CallAI failed: %w", err)
-	}
-
-	// 步骤 4: 解析 AI 响应
-	interactions, pageSummary, err := parseInteractionsResponse(aiResponse)
-	if err != nil {
-		saveAnswerFailureLog(basePath, surveyID, pageID, systemPrompt, userPrompt, aiResponse, err)
-		return nil, fmt.Errorf("ExtractYamlAnswers: parse response failed: %w", err)
-	}
-
-	return &YamlAnswerResult{
-		Interactions: interactions,
-		PageSummary:  pageSummary,
-		Source:       "ai",
-	}, nil
-}
 
 // parseInteractionsResponse 解析 AI 返回的 JSON 响应
+//
+//	支持两种格式：
+//	  直接格式: {"interactions":[...],"page_summary":"..."}
+//	  data 包装: {"data":{"interactions":[...],"page_summary":"...",...}}
 func parseInteractionsResponse(content string) ([]Interaction, string, error) {
-	// 去除可能的 markdown 代码块
 	cleaned := stripMarkdownFence(content)
 
+	fmt.Println()
+	fmt.Println("=== [DEBUG] AI Raw Response ===")
+	if len(cleaned) > 1000 {
+		fmt.Printf("Length: %d chars\n", len(cleaned))
+		fmt.Printf("First 500 chars:\n%s\n...\n", cleaned[:500])
+		fmt.Printf("Last 200 chars:\n...%s\n", cleaned[len(cleaned)-200:])
+	} else {
+		fmt.Printf("Length: %d chars\n", len(cleaned))
+		fmt.Printf("Content:\n%s\n", cleaned)
+	}
+	fmt.Println("=== [DEBUG] End Response ===")
+	fmt.Println()
+
+	// 优先尝试 data 包装格式（DB output_format 要求的格式）
+	var wrapped struct {
+		Data InteractionsResponse `json:"data"`
+	}
+	if err := json.Unmarshal([]byte(cleaned), &wrapped); err == nil && len(wrapped.Data.Interactions) > 0 {
+		return wrapped.Data.Interactions, wrapped.Data.PageSummary, nil
+	}
+
+	// 备选：直接格式
 	var resp InteractionsResponse
 	if err := json.Unmarshal([]byte(cleaned), &resp); err != nil {
-		return nil, "", fmt.Errorf("json.Unmarshal failed: %w", err)
+		return nil, "", fmt.Errorf("json.Unmarshal failed: %w, content: %s", err, cleaned[:min(200, len(cleaned))])
 	}
 
 	if len(resp.Interactions) == 0 {
@@ -421,26 +372,9 @@ func parseInteractionsResponse(content string) ([]Interaction, string, error) {
 	return resp.Interactions, resp.PageSummary, nil
 }
 
-// stripMarkdownFence 去除 markdown 代码块包裹（复用 ai_caller.go 中的实现）
-
-// saveAnswerToCache 保存答案到缓存文件
-func saveAnswerToCache(cachePath string, interactions []Interaction) error {
-	cacheDir := filepath.Dir(cachePath)
-	if err := os.MkdirAll(cacheDir, 0755); err != nil {
-		return fmt.Errorf("saveAnswerToCache: mkdir %s: %w", cacheDir, err)
-	}
-
-	data, err := json.MarshalIndent(interactions, "", "  ")
-	if err != nil {
-		return fmt.Errorf("saveAnswerToCache: marshal: %w", err)
-	}
-
-	if err := os.WriteFile(cachePath, data, 0644); err != nil {
-		return fmt.Errorf("saveAnswerToCache: write: %w", err)
-	}
-
-	return nil
-}
+// =============================================================================
+// 5. 辅助方法
+// =============================================================================
 
 // saveAnswerFailureLog 保存失败日志
 func saveAnswerFailureLog(basePath, surveyID, pageID, systemPrompt, userPrompt, response string, err error) {
@@ -465,352 +399,7 @@ func saveAnswerFailureLog(basePath, surveyID, pageID, systemPrompt, userPrompt, 
 	_ = os.WriteFile(path, []byte(sb.String()), 0644)
 }
 
-// =============================================================================
-// 5. 完整提取流程（整合 YAML 结构 + 答案推荐）
-// =============================================================================
-
-// FullYamlExtractResult 完整提取结果
-type FullYamlExtractResult struct {
-	YamlContent string
-	Answers     []Interaction
-	Source      string // "cache" / "ai"
-	Meta        PageMetadata
-	CachePath   string // YAML 缓存路径
-	AnswerCache string // 答案缓存路径
-}
-
-// FullYamlExtractProcess 完整提取流程：YAML 结构 + 答案推荐
-// @param persona   人设信息（可为空）
-// @param surveyID  问卷 ID
-// @param html      清洗后的 HTML
-// @param basePath  存储根目录
-// @returns         FullYamlExtractResult, error
-func FullYamlExtractProcess(persona, surveyID, html, basePath string) (*FullYamlExtractResult, error) {
-	// 步骤 1: 提取 YAML 结构
-	yamlResult, err := ExtractYamlStructureV2(surveyID, html, basePath)
-	if err != nil {
-		return nil, fmt.Errorf("FullYamlExtractProcess: ExtractYamlStructureV2 failed: %w", err)
-	}
-
-	// 步骤 2: 生成推荐答案
-	answerResult, err := ExtractYamlAnswers(
-		yamlResult.YamlContent,
-		surveyID,
-		yamlResult.Meta.PageID,
-		basePath,
-	)
-	if err != nil {
-		return nil, fmt.Errorf("FullYamlExtractProcess: ExtractYamlAnswers failed: %w", err)
-	}
-
-	return &FullYamlExtractResult{
-		YamlContent: yamlResult.YamlContent,
-		Answers:     answerResult.Interactions,
-		Source:      yamlResult.Source,
-		Meta:        yamlResult.Meta,
-		CachePath:   yamlResult.CachePath,
-		AnswerCache: answerResult.CachePath,
-	}, nil
-}
-
-// =============================================================================
-// 6. 辅助方法
-// =============================================================================
-
-// PrintAnswerSummary 打印答案摘要
-func PrintAnswerSummary(result *YamlAnswerResult) {
-	fmt.Println()
-	fmt.Println("=== 推荐答案生成完成 ===")
-	fmt.Printf("题目数量: %d\n", len(result.Interactions))
-	fmt.Printf("来源: %s\n", result.Source)
-	fmt.Printf("PageID: %s\n", result.Meta.PageID)
-	fmt.Println()
-
-	for i, item := range result.Interactions {
-		fmt.Printf("[%d] %s\n", i+1, item.Subject)
-		if arr, ok := item.ShowAnswer.([]interface{}); ok {
-			fmt.Printf("    → %v\n", arr)
-		} else {
-			fmt.Printf("    → %v\n", item.ShowAnswer)
-		}
-	}
-	fmt.Println()
-}
-
-// =============================================================================
-// 7. 合并AI调用：GenerateRealtimeAnswerOnly（单次AI调用生成推荐答案）
-// =============================================================================
-
-// GenerateRealtimeAnswerOnly 缓存命中时，单次AI调用生成推荐答案
-//
-//	流程：提取元数据 → 解析pageSettings → 加载人设 → 构建Prompt → 调用AI → 解析响应 → 构建FinalJson
-//
-// @param cleanHTML   清洗后的实时HTML
-// @param cachedYaml  缓存的YAML模板
-// @param surveyID    问卷ID
-// @param basePath    存储根目录
-// @returns           RealtimeAnswerOnlyResult, error
-func GenerateRealtimeAnswerOnly(cleanHTML, cachedYaml, surveyID, sessionID, basePath string) (*RealtimeAnswerOnlyResult, error) {
-	// 步骤1: 提取页面元数据
-	meta, err := extractPageMetadata(surveyID, cleanHTML)
-	if err != nil {
-		return nil, fmt.Errorf("GenerateRealtimeAnswerOnly: extractPageMetadata failed: %w", err)
-	}
-
-	// 步骤2: 从cachedYaml解析pageSettings
-	pageSettings := parseYamlPageSettings(cachedYaml)
-
-	// 步骤3: 加载人设（优先级：语义化人设 > 系统预设人设）
-	fmt.Println("[GenerateRealtimeAnswerOnly] 开始加载人设...")
-
-	// 优先尝试加载语义化人设（来自 persona_generic.description）
-	semanticPersona, err := LoadSemanticPersona()
-	if err != nil {
-		fmt.Printf("[警告] LoadSemanticPersona 失败: %v，将使用系统预设人设\n", err)
-	}
-
-	var effectivePersona string
-	var personaSource string // 人设来源标识，用于日志备查
-
-	if semanticPersona != "" {
-		// 语义化人设存在，使用答案题目的人设
-		effectivePersona = semanticPersona
-		personaSource = "semantic (persona_generic.description)"
-	} else {
-		// 语义化人设为空，fallback 到系统预设人设
-		effectivePersona, err = LoadPersona()
-		if err != nil {
-			return nil, fmt.Errorf("GenerateRealtimeAnswerOnly: LoadPersona failed: %w", err)
-		}
-		personaSource = "system (persona_fixed/generic)"
-	}
-	fmt.Printf("[人设加载] 有效人设: %s\n", effectivePersona)
-	fmt.Printf("[人设加载] 完成，有效人设长度: %d 字符\n", len(effectivePersona))
-
-	// 步骤4: 获取答题上下文（从 page_summary 缓存）
-	answerContext := GetPageSummaryContext(sessionID, meta.PageID)
-
-	// 步骤5: 构建Prompt（使用 effectivePersona + answerContext）
-	systemPrompt, userPrompt, err := BuildYamlAnswerPromptWithHtml(effectivePersona, answerContext, cachedYaml, cleanHTML)
-	if err != nil {
-		return nil, fmt.Errorf("GenerateRealtimeAnswerOnly: BuildYamlAnswerPromptWithHtml failed: %w", err)
-	}
-
-	// 步骤6: 调用AI（唯一一次）
-	aiResponse, err := CallAI(surveyID, systemPrompt, userPrompt, basePath)
-	if err != nil {
-		saveAnswerFailureLog(basePath, surveyID, meta.PageID, systemPrompt, userPrompt, aiResponse, err)
-		return nil, fmt.Errorf("GenerateRealtimeAnswerOnly: CallAI failed: %w", err)
-	}
-
-	// 步骤7: 解析响应
-	interactions, pageSummary, err := parseInteractionsResponse(aiResponse)
-	if err != nil {
-		saveAnswerFailureLog(basePath, surveyID, meta.PageID, systemPrompt, userPrompt, aiResponse, err)
-		return nil, fmt.Errorf("GenerateRealtimeAnswerOnly: parse response failed: %w", err)
-	}
-
-	// 步骤8: 保存 page_summary 到缓存（按 session_id:page_id 去重）
-	if pageSummary != "" {
-		SavePageSummaryCache(sessionID, meta.PageID, pageSummary)
-	}
-
-	// 步骤9: 构建FinalJson
-	finalJson := buildFinalAnswerJson(
-		&YamlAnswerResult{
-			Interactions: interactions,
-			PageSummary:  pageSummary,
-		},
-		cachedYaml,
-		pageSettings,
-		surveyID,
-		cleanHTML,
-	)
-
-	// 步骤10: 保存JSON缓存
-	jsonPath, err := saveRealtimeAnswersJson(basePath, surveyID, meta.PageID, finalJson)
-	if err != nil {
-		fmt.Printf("[警告] saveRealtimeAnswersJson 失败: %v\n", err)
-		jsonPath = ""
-	}
-
-	// 步骤11: 记录Prompt日志（保持独立）
-	fmt.Println("[日志] 记录 Prompt 日志...")
-	writeAnswerPromptLog(basePath, surveyID, meta, personaSource, systemPrompt, userPrompt, aiResponse)
-	fmt.Printf("[日志] Prompt 日志记录完成 (来源: %s)\n", personaSource)
-
-	// 步骤12: 打印摘要
-	printRealtimeAnswerOnlyResult(meta, interactions, pageSummary, pageSettings, jsonPath)
-
-	return &RealtimeAnswerOnlyResult{
-		Interactions:  interactions,
-		PageSummary:   pageSummary,
-		PageID:        meta.PageID,
-		PageSettings:  pageSettings,
-		YamlStructure: cachedYaml,
-		FinalJson:     finalJson,
-		Source:        "realtime",
-	}, nil
-}
-
-// GenerateRealtimeAnswerOnlyWithMeta 生成推荐答案，使用已知的 meta
-// page_id 从原始 HTML 提取，不从清洗后的 HTML 提取
-// @param meta        已知的页面元数据（包含 page_id）
-// @param cleanHTML   清洗后的 HTML
-// @param cachedYaml  缓存的 YAML 模板
-// @param surveyID    问卷 ID
-// @param sessionID   会话 ID
-// @param basePath    存储根目录
-// @returns           RealtimeAnswerOnlyResult, error
-func GenerateRealtimeAnswerOnlyWithMeta(meta PageMetadata, cleanHTML, cachedYaml, surveyID, sessionID, basePath string) (*RealtimeAnswerOnlyResult, error) {
-	// 步骤2: 从cachedYaml解析pageSettings
-	pageSettings := parseYamlPageSettings(cachedYaml)
-
-	// 步骤3: 加载人设（优先级：语义化人设 > 系统预设人设）
-	fmt.Println("[GenerateRealtimeAnswerOnlyWithMeta] 开始加载人设...")
-
-	// 优先尝试加载语义化人设（来自 persona_generic.description）
-	semanticPersona, err := LoadSemanticPersona()
-	if err != nil {
-		fmt.Printf("[警告] LoadSemanticPersona 失败: %v，将使用系统预设人设\n", err)
-	}
-
-	var effectivePersona string
-	var personaSource string // 人设来源标识，用于日志备查
-
-	if semanticPersona != "" {
-		// 语义化人设存在，使用答案题目的人设
-		effectivePersona = semanticPersona
-		personaSource = "semantic (persona_generic.description)"
-	} else {
-		// 语义化人设为空，fallback 到系统预设人设
-		effectivePersona, err = LoadPersona()
-		if err != nil {
-			return nil, fmt.Errorf("GenerateRealtimeAnswerOnlyWithMeta: LoadPersona failed: %w", err)
-		}
-		personaSource = "system (persona_fixed/generic)"
-	}
-	fmt.Printf("[人设加载] 有效人设: %s\n", effectivePersona)
-	fmt.Printf("[人设加载] 完成，有效人设长度: %d 字符\n", len(effectivePersona))
-
-	// 步骤4: 获取答题上下文（从 page_summary 缓存）
-	answerContext := GetPageSummaryContext(sessionID, meta.PageID)
-
-	// 步骤5: 构建Prompt（使用 effectivePersona + answerContext）
-	systemPrompt, userPrompt, err := BuildYamlAnswerPromptWithHtml(effectivePersona, answerContext, cachedYaml, cleanHTML)
-	if err != nil {
-		return nil, fmt.Errorf("GenerateRealtimeAnswerOnlyWithMeta: BuildYamlAnswerPromptWithHtml failed: %w", err)
-	}
-
-	// 步骤6: 调用AI（唯一一次）
-	aiResponse, err := CallAI(surveyID, systemPrompt, userPrompt, basePath)
-	if err != nil {
-		saveAnswerFailureLog(basePath, surveyID, meta.PageID, systemPrompt, userPrompt, aiResponse, err)
-		return nil, fmt.Errorf("GenerateRealtimeAnswerOnlyWithMeta: CallAI failed: %w", err)
-	}
-
-	// 步骤7: 解析响应
-	interactions, pageSummary, err := parseInteractionsResponse(aiResponse)
-	if err != nil {
-		saveAnswerFailureLog(basePath, surveyID, meta.PageID, systemPrompt, userPrompt, aiResponse, err)
-		return nil, fmt.Errorf("GenerateRealtimeAnswerOnlyWithMeta: parse response failed: %w", err)
-	}
-
-	// 步骤8: 保存 page_summary 到缓存（按 session_id:page_id 去重）
-	if pageSummary != "" {
-		SavePageSummaryCache(sessionID, meta.PageID, pageSummary)
-	}
-
-	// 步骤9: 构建FinalJson
-	finalJson := buildFinalAnswerJson(
-		&YamlAnswerResult{
-			Interactions: interactions,
-			PageSummary:  pageSummary,
-		},
-		cachedYaml,
-		pageSettings,
-		surveyID,
-		cleanHTML,
-	)
-
-	// 步骤10: 保存JSON缓存
-	jsonPath, err := saveRealtimeAnswersJson(basePath, surveyID, meta.PageID, finalJson)
-	if err != nil {
-		fmt.Printf("[警告] saveRealtimeAnswersJson 失败: %v\n", err)
-		jsonPath = ""
-	}
-
-	// 步骤11: 记录Prompt日志（保持独立）
-	fmt.Println("[日志] 记录 Prompt 日志...")
-	writeAnswerPromptLog(basePath, surveyID, meta, personaSource, systemPrompt, userPrompt, aiResponse)
-	fmt.Printf("[日志] Prompt 日志记录完成 (来源: %s)\n", personaSource)
-
-	// 步骤12: 打印摘要
-	printRealtimeAnswerOnlyResult(meta, interactions, pageSummary, pageSettings, jsonPath)
-
-	return &RealtimeAnswerOnlyResult{
-		Interactions:  interactions,
-		PageSummary:   pageSummary,
-		PageID:        meta.PageID,
-		PageSettings:  pageSettings,
-		YamlStructure: cachedYaml,
-		FinalJson:     finalJson,
-		Source:        "realtime",
-	}, nil
-}
-
-// BuildYamlAnswerPromptWithHtml 构建答案推荐Prompt（包含HTML内容）
-//
-//	在 BuildYamlAnswerPrompt 基础上，追加HTML内容供AI参考
-//
-// @param persona        人设信息
-// @param yamlStructure  YAML结构字符串
-// @param htmlContent    HTML内容
-// @param answerContext  答题上下文（来自 page_summary 缓存）
-// @returns              systemPrompt, userPrompt, error
-func BuildYamlAnswerPromptWithHtml(persona, answerContext, yamlStructure, htmlContent string) (string, string, error) {
-	cfg, err := LoadYamlAnswerConfig()
-	if err != nil {
-		return "", "", fmt.Errorf("BuildYamlAnswerPromptWithHtml: %w", err)
-	}
-
-	systemPrompt := cfg.AnswerSystemPrompt
-
-	var userPrompt strings.Builder
-
-	// 1. 人设上下文
-	if persona != "" {
-		userPrompt.WriteString(cfg.PersonaContextPrefix)
-		userPrompt.WriteString(persona)
-		userPrompt.WriteString("\n\n")
-	}
-
-	// 2. 答题上下文（人设之后、YAML 之前）
-	if answerContext != "" {
-		userPrompt.WriteString(answerContext)
-		userPrompt.WriteString("\n\n")
-	}
-
-	// 3. 用户提示前缀
-	userPrompt.WriteString(cfg.AnswerUserPromptPrefix)
-	userPrompt.WriteString("\n\n")
-
-	// 4. YAML结构
-	userPrompt.WriteString("```yaml\n")
-	userPrompt.WriteString(yamlStructure)
-	userPrompt.WriteString("\n```\n\n")
-
-	// 5. HTML内容（供AI参考生成答案）
-	userPrompt.WriteString("--- 当前页面HTML ---\n")
-	userPrompt.WriteString("```html\n")
-	userPrompt.WriteString(htmlContent)
-	userPrompt.WriteString("\n```\n")
-
-	return systemPrompt, userPrompt.String(), nil
-}
-
-// writeAnswerPromptLog 记录Prompt日志
-// @param personaSource 人设来源说明，用于日志备查
+// writeAnswerPromptLog 记录 Prompt 日志
 func writeAnswerPromptLog(basePath, surveyID string, meta PageMetadata, personaSource string, systemPrompt, userPrompt, aiResponse string) {
 	logDir := filepath.Join(basePath, "logs", surveyID)
 	if err := os.MkdirAll(logDir, 0755); err != nil {
@@ -828,15 +417,12 @@ func writeAnswerPromptLog(basePath, surveyID string, meta PageMetadata, personaS
 	sb.WriteString(fmt.Sprintf("survey_id: %s\n", surveyID))
 	sb.WriteString(fmt.Sprintf("page_id: %s\n", meta.PageID))
 	sb.WriteString(fmt.Sprintf("人设来源: %s\n", personaSource))
-
 	sb.WriteString(sep + "\n")
 	sb.WriteString(fmt.Sprintf("=== System Prompt (%d字符) ===\n", len(systemPrompt)))
 	sb.WriteString(systemPrompt + "\n")
-
 	sb.WriteString(sep + "\n")
 	sb.WriteString(fmt.Sprintf("=== User Prompt (%d字符) ===\n", len(userPrompt)))
 	sb.WriteString(userPrompt + "\n")
-
 	sb.WriteString(sep + "\n")
 	sb.WriteString(fmt.Sprintf("=== AI 响应 (%d字符) ===\n", len(aiResponse)))
 	sb.WriteString(aiResponse + "\n")
@@ -850,19 +436,15 @@ func writeAnswerPromptLog(basePath, surveyID string, meta PageMetadata, personaS
 		return
 	}
 	defer f.Close()
-
-	if _, err := f.WriteString(sb.String()); err != nil {
-		fmt.Printf("[警告] writeAnswerPromptLog: write 失败: %v\n", err)
-	}
+	_, _ = f.WriteString(sb.String())
 }
 
-// printRealtimeAnswerOnlyResult 打印单次AI调用结果摘要
+// printRealtimeAnswerOnlyResult 打印推荐答案摘要
 func printRealtimeAnswerOnlyResult(meta PageMetadata, interactions []Interaction, pageSummary string, pageSettings PageSettings, jsonPath string) {
 	fmt.Println()
 	fmt.Println("=== 单次AI调用：推荐答案生成完成 ===")
 	fmt.Printf("SurveyID: %s\n", meta.SurveyID)
 	fmt.Printf("PageID: %s\n", meta.PageID)
-	fmt.Printf("Timestamp: %s\n", meta.Timestamp)
 	fmt.Printf("题目数量: %d\n", len(interactions))
 	fmt.Printf("PageSummary: %s\n", pageSummary)
 	fmt.Printf("HasNextButton: %v\n", pageSettings.HasNextButton)
@@ -884,53 +466,108 @@ func printRealtimeAnswerOnlyResult(meta PageMetadata, interactions []Interaction
 	fmt.Println()
 }
 
-// extractAnswersWithContext 生成推荐答案（带人设 + 答题上下文）
-//   用于 GenerateRealtimeYamlWithAnswers 中
-// @param yamlData      YAML 数据
-// @param surveyID      问卷ID
-// @param sessionID     会话ID
-// @param currentPageID 当前页面ID（排除自身）
-// @param basePath      存储根目录
-// @param answerContext 答题上下文（已组装好的）
-// @returns             YamlAnswerResult, error
-func extractAnswersWithContext(yamlData, surveyID, sessionID, currentPageID, basePath, answerContext string) (*YamlAnswerResult, error) {
-	// 加载人设
+// =============================================================================
+// 6. 主入口：GenerateRealtimeAnswerOnlyWithMeta
+// =============================================================================
+
+// GenerateRealtimeAnswerOnlyWithMeta 生成推荐答案，使用已知的 meta 和检测到的题型
+//
+//	步骤：加载人设 → 组装 Prompt（DB驱动）→ 调用AI → 解析 → 构建 FinalJson
+//
+// @param meta           已知页面元数据（含 page_id）
+// @param cleanHTML      清洗后 HTML
+// @param cachedYaml     YAML 占位符模板
+// @param surveyID       问卷 ID
+// @param surveyIDInt    问卷 ID（整型）
+// @param basePath       存储根目录
+// @param detectedTypes  题型列表（步骤 3 检测结果）
+// @returns              RealtimeAnswerOnlyResult, error
+func GenerateRealtimeAnswerOnlyWithMeta(meta PageMetadata, cleanHTML, cachedYaml, surveyID string, surveyIDInt int64, basePath string, detectedTypes []string) (*RealtimeAnswerOnlyResult, error) {
+	pageSettings := parseYamlPageSettings(cachedYaml)
+
+	fmt.Println("[GenerateRealtimeAnswerOnlyWithMeta] 开始加载人设...")
+
 	semanticPersona, err := LoadSemanticPersona()
+	if err != nil {
+		fmt.Printf("[警告] LoadSemanticPersona 失败: %v，将使用系统预设人设\n", err)
+	}
+
 	var effectivePersona string
+	var personaSource string
+
 	if semanticPersona != "" {
 		effectivePersona = semanticPersona
+		personaSource = "semantic (persona_generic.description)"
 	} else {
 		effectivePersona, err = LoadPersona()
 		if err != nil {
-			return nil, fmt.Errorf("extractAnswersWithContext: LoadPersona failed: %w", err)
+			return nil, fmt.Errorf("GenerateRealtimeAnswerOnlyWithMeta: LoadPersona failed: %w", err)
 		}
+		personaSource = "system (persona_fixed/generic)"
 	}
+	fmt.Printf("[人设加载] 完成，有效人设长度: %d 字符\n", len(effectivePersona))
 
-	fmt.Printf("[人设加载] 有效人设长度: %d 字符\n", len(effectivePersona))
+	surveyIDKey := strconv.FormatInt(surveyIDInt, 10)
+	answerContext := GetPageSummaryContext(surveyIDKey, meta.PageID)
 
-	// 构建 Prompt
-	systemPrompt, userPrompt, err := BuildYamlAnswerPromptWithHtml(effectivePersona, answerContext, yamlData, "")
+	// 组装系统提示词（DB 驱动，按 detectedTypes 过滤 qtype.* 块）
+	systemPrompt, err := buildAnswerSystemPrompt(detectedTypes, effectivePersona)
 	if err != nil {
-		return nil, fmt.Errorf("extractAnswersWithContext: BuildYamlAnswerPromptWithHtml failed: %w", err)
+		return nil, fmt.Errorf("GenerateRealtimeAnswerOnlyWithMeta: buildAnswerSystemPrompt failed: %w", err)
 	}
 
-	// 调用 AI
-	aiResponse, err := CallAI(surveyID, systemPrompt, userPrompt, basePath)
+	// 组装用户提示词
+	userPrompt := buildAnswerUserPrompt(answerContext, cachedYaml, cleanHTML)
+
+	// 调用 AI（JSON 验证模式）
+	aiResponse, err := CallAIWithValidation(surveyID, systemPrompt, userPrompt, basePath, true)
 	if err != nil {
-		saveAnswerFailureLog(basePath, surveyID, currentPageID, systemPrompt, userPrompt, aiResponse, err)
-		return nil, fmt.Errorf("extractAnswersWithContext: CallAI failed: %w", err)
+		saveAnswerFailureLog(basePath, surveyID, meta.PageID, systemPrompt, userPrompt, aiResponse, err)
+		return nil, fmt.Errorf("GenerateRealtimeAnswerOnlyWithMeta: CallAI failed: %w", err)
 	}
 
-	// 解析响应
 	interactions, pageSummary, err := parseInteractionsResponse(aiResponse)
 	if err != nil {
-		saveAnswerFailureLog(basePath, surveyID, currentPageID, systemPrompt, userPrompt, aiResponse, err)
-		return nil, fmt.Errorf("extractAnswersWithContext: parse response failed: %w", err)
+		saveAnswerFailureLog(basePath, surveyID, meta.PageID, systemPrompt, userPrompt, aiResponse, err)
+		return nil, fmt.Errorf("GenerateRealtimeAnswerOnlyWithMeta: parse response failed: %w", err)
 	}
 
-	return &YamlAnswerResult{
-		Interactions: interactions,
-		PageSummary:  pageSummary,
-		Source:      "ai",
+	if pageSummary != "" {
+		SavePageSummaryCache(surveyIDKey, meta.PageID, pageSummary)
+	}
+
+	finalJson := buildFinalAnswerJson(
+		&YamlAnswerResult{
+			Interactions: interactions,
+			PageSummary:  pageSummary,
+		},
+		cachedYaml,
+		pageSettings,
+		surveyID,
+		meta.PageID,
+		cleanHTML,
+	)
+
+	jsonPath, err := saveRealtimeAnswersJson(basePath, surveyID, meta.PageID, finalJson)
+	if err != nil {
+		fmt.Printf("[警告] saveRealtimeAnswersJson 失败: %v\n", err)
+		jsonPath = ""
+	}
+
+	fmt.Println("[日志] 记录 Prompt 日志...")
+	writeAnswerPromptLog(basePath, surveyID, meta, personaSource, systemPrompt, userPrompt, aiResponse)
+
+	printRealtimeAnswerOnlyResult(meta, interactions, pageSummary, pageSettings, jsonPath)
+
+	return &RealtimeAnswerOnlyResult{
+		Interactions:  interactions,
+		PageSummary:   pageSummary,
+		PageID:        meta.PageID,
+		PageSettings:  pageSettings,
+		YamlStructure: cachedYaml,
+		FinalJson:     finalJson,
+		Source:        "realtime",
+		SystemPrompt:  systemPrompt,
+		UserPrompt:    userPrompt,
 	}, nil
 }

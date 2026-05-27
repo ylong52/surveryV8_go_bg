@@ -110,8 +110,8 @@ func main() {
 	fmt.Printf("REQUEST_ID:  %s\n", msg.RequestID)
 	fmt.Printf("TYPE:        %s\n", msg.Type)
 	fmt.Printf("SURVEY_ID:   %s\n", msg.SurveyID)
-	if len(rawHTML) > 200 {
-		fmt.Printf("RAWHTML:     [%.2f KB]\n", float64(len(rawHTML))/1024)
+	if len(msg.RawHTML) > 300 {
+		fmt.Printf("RAWHTML:     [%d 字符] %.300s...\n", len(msg.RawHTML), msg.RawHTML)
 	} else {
 		fmt.Printf("RAWHTML:     %s\n", msg.RawHTML)
 	}

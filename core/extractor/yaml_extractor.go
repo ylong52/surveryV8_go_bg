@@ -1,385 +1,355 @@
 package extractor
 
-// yaml_extractor.go — 步骤 1-5：整合 Extract + CallAI + 缓存
+// yaml_extractor.go — 步骤 3: YAML 模板提取（含题型检测）
+//   命中数据库缓存则直接返回；未命中则：
+//     1. AI 检测页面题型（JSON 数组）
+//     2. 按题型加载 yaml_template，合并为占位符模板
+//     3. 返回给步骤 4 使用
 
 import (
+	"encoding/json"
 	"fmt"
-	"os"
-	"path/filepath"
 	"strings"
-	"time"
+
+	"survey.cli/core/database"
 )
 
-// YamlResult 包含步骤 1-5 的完整结果
+// YamlResult 包含步骤 3 的完整结果
 type YamlResult struct {
-	YamlContent string       // YAML内容（已去除markdown包裹）
-	CachePath   string       // 缓存路径：storage/templates/{surveyId}/{pageID}.yaml
-	Meta        PageMetadata // 页面元数据
-	YamlPrompt  YamlPrompt  // 提示词（用于日志）
-	Source      string       // 来源："cache"=命中本地模板，"ai"=AI生成
+	YamlContent   string       // YAML 占位符模板内容
+	Meta          PageMetadata // 页面元数据
+	DetectedTypes []string     // 检测到的题型列表（cache miss 时填充）
+	Source        string       // "db_cache"=命中数据库，"ai"=AI检测生成
 }
 
-// ExtractYamlStructure 执行步骤 1-5
-//   步骤1: 参数验证
-//   步骤2: 提取 PageMetadata
-//   步骤3: 组装 AI Prompt
-//   步骤4: 整理 YAML 专用提示词
-//   步骤5: 调用 AI 提取 YAML 结构
-//   步骤6: 保存 YAML 到缓存目录
-// @param surveyID  问卷ID
-// @param cleanHTML 清洗后HTML
-// @param basePath  存储根目录
-// @returns         YamlResult，或错误（错误直接返回，程序中断）
-func ExtractYamlStructure(surveyID, cleanHTML, basePath string) (*YamlResult, error) {
-	// 步骤 1-4：调用 Extract() 获取 YamlPrompt
-	result, err := Extract(surveyID, cleanHTML, basePath)
-	if err != nil {
-		return nil, fmt.Errorf("ExtractYamlStructure: Extract failed: %w", err)
+// ExtractYamlStructureWithPageID 执行步骤 3：查询或生成 YAML 占位符模板
+//
+//	命中缓存直接返回；未命中时调用 AI 检测题型后加载并合并模板
+//
+// @param surveyID     问卷 ID
+// @param surveyIDInt  问卷 ID（整型，用于数据库查询）
+// @param pageID       已知的 page_id
+// @param cleanHTML    清洗后 HTML
+// @param basePath     存储根目录
+// @returns            YamlResult，或错误
+func ExtractYamlStructureWithPageID(surveyID string, surveyIDInt int64, pageID, cleanHTML, basePath string) (*YamlResult, error) {
+	meta := PageMetadata{
+		SurveyID: surveyID,
+		PageID:   pageID,
 	}
-	yamlPrompt := result.YamlPrompt
-	meta := result.Meta
 
-	// 查找本地 YAML 模板
-	templatePath := filepath.Join(basePath, "templates", surveyID, meta.PageID+".yaml")
+	// 步骤 1：查询数据库 yaml_template 缓存
+	pageResultRepo := database.NewPageResultRepo()
+	existingYamlTemplate, err := pageResultRepo.FindYamlTemplate(surveyIDInt, pageID)
+	if err != nil {
+		fmt.Printf("[ExtractYamlStructureWithPageID] 查询 yaml_template 失败: %v\n", err)
+	}
 
-	if yamlContent, err := os.ReadFile(templatePath); err == nil {
-		// 命中本地模板，跳过 AI 调用
-		writeCacheHitLog(basePath, surveyID, meta, templatePath)
-		printCacheHitSummary(meta, templatePath, string(yamlContent))
-
+	if existingYamlTemplate != "" {
+		fmt.Printf("[ExtractYamlStructureWithPageID] 命中数据库 yaml_template\n")
+		printYamlResultSummary(meta, existingYamlTemplate, "db_cache")
 		return &YamlResult{
-			YamlContent: string(yamlContent),
-			CachePath:   templatePath,
+			YamlContent: existingYamlTemplate,
 			Meta:        meta,
-			YamlPrompt:  yamlPrompt,
-			Source:      "cache",
+			Source:      "db_cache",
 		}, nil
 	}
 
-	// 未命中模板，继续调用 AI
-	writeCacheMissLog(basePath, surveyID, meta, templatePath)
+	// 步骤 2：加载有效题型列表和检测提示词
+	fmt.Printf("[ExtractYamlStructureWithPageID] 未命中 yaml_template，执行题型检测\n")
 
-	// 写步骤5开始日志
-	writeStep5StartLog(basePath, surveyID, meta, yamlPrompt)
-
-	// 步骤 5：调用 AI 提取 YAML 结构
-	aiResponse, err := CallAI(
-		surveyID,
-		yamlPrompt.System, // 系统提示词
-		yamlPrompt.User,   // 用户提示词（含HTML）
-		basePath,
-	)
+	questionTypes, err := database.LoadQuestionTypes()
 	if err != nil {
-		// 直接返回错误，程序中断
-		return nil, fmt.Errorf("ExtractYamlStructure: CallAI failed: %w", err)
+		return nil, fmt.Errorf("ExtractYamlStructureWithPageID: LoadQuestionTypes: %w", err)
+	}
+	if len(questionTypes) == 0 {
+		questionTypes = []string{"mixed"}
 	}
 
-	// 写步骤5完成日志
-	writeStep5CompleteLog(basePath, surveyID, meta, aiResponse)
-
-	// 步骤 6：保存 YAML 到缓存目录
-	cachePath, err := saveYamlToCache(basePath, surveyID, meta.PageID, aiResponse)
+	typeDetectorPrompt, err := database.LoadTypeDetectorPrompt()
 	if err != nil {
-		return nil, fmt.Errorf("ExtractYamlStructure: saveYamlToCache failed: %w", err)
+		return nil, fmt.Errorf("ExtractYamlStructureWithPageID: LoadTypeDetectorPrompt: %w", err)
 	}
 
-	// 控制台输出摘要
-	printYamlResultSummary(meta, cachePath, aiResponse)
+	// 步骤 3：第一次 AI 调用 — 检测题型
+	detectedTypes, err := detectQuestionTypesWithAI(surveyID, cleanHTML, basePath, typeDetectorPrompt, questionTypes)
+	if err != nil {
+		fmt.Printf("[警告] detectQuestionTypesWithAI 失败: %v，降级到 mixed\n", err)
+		detectedTypes = []string{"mixed"}
+	}
+	if len(detectedTypes) == 0 {
+		detectedTypes = []string{"mixed"}
+	}
+	fmt.Printf("[题型检测] 检测到题型: %v\n", detectedTypes)
+
+	// 步骤 4：按题型加载 yaml_template 并合并
+	yamlContent, err := buildMergedYamlTemplate(detectedTypes)
+	if err != nil {
+		fmt.Printf("[警告] buildMergedYamlTemplate 失败: %v，使用 mixed 兜底模板\n", err)
+		yamlContent = GetFixedTemplate("mixed")
+	}
+
+	printYamlResultSummary(meta, yamlContent, "ai")
 
 	return &YamlResult{
-		YamlContent: aiResponse,
-		CachePath:   cachePath,
-		Meta:       meta,
-		YamlPrompt: yamlPrompt,
-		Source:     "ai",
+		YamlContent:   yamlContent,
+		Meta:          meta,
+		DetectedTypes: detectedTypes,
+		Source:        "ai",
 	}, nil
 }
 
-// ExtractYamlStructureWithPageID 执行步骤 1-5，但 page_id 已知（从原始 HTML 提取）
-// 用于 page_id 提取需要保留 class 属性的场景
-// @param surveyID  问卷ID
-// @param pageID     已知的 page_id（从原始 HTML 提取）
-// @param cleanHTML 清洗后HTML
-// @param basePath  存储根目录
-// @returns         YamlResult，或错误
-func ExtractYamlStructureWithPageID(surveyID, pageID, cleanHTML, basePath string) (*YamlResult, error) {
-	// 步骤 1-4：调用 ExtractWithPageID() 获取 YamlPrompt
-	result, err := ExtractWithPageID(surveyID, pageID, cleanHTML, basePath)
+// detectQuestionTypesWithAI 调用 AI 检测页面题型，返回 JSON 数组
+//
+// @param surveyID            问卷 ID
+// @param cleanHTML           清洗后 HTML
+// @param basePath            存储根目录
+// @param typeDetectorPrompt  system.type_detector 内容（含 {question_types} 占位符）
+// @param questionTypes       有效题型列表
+// @returns                   检测到的题型列表，error
+func detectQuestionTypesWithAI(surveyID, cleanHTML, basePath, typeDetectorPrompt string, questionTypes []string) ([]string, error) {
+	typeList := strings.Join(questionTypes, ", ")
+	systemPrompt := strings.ReplaceAll(typeDetectorPrompt, "{question_types}", typeList)
+	if strings.TrimSpace(systemPrompt) == "" {
+		systemPrompt = fmt.Sprintf(
+			"你是题型识别助手。分析HTML中的表单题目，返回题型 JSON 数组，仅使用以下有效题型: [%s]", typeList)
+	}
+
+	userPrompt := "请分析以下HTML中的题目类型，返回JSON数组（例如 [\"single\", \"matrix_radio\"]）：\n\n" + cleanHTML
+
+	aiResponse, err := CallAI(surveyID, systemPrompt, userPrompt, basePath)
 	if err != nil {
-		return nil, fmt.Errorf("ExtractYamlStructureWithPageID: ExtractWithPageID failed: %w", err)
-	}
-	yamlPrompt := result.YamlPrompt
-	meta := result.Meta
-
-	// 查找本地 YAML 模板
-	templatePath := filepath.Join(basePath, "templates", surveyID, meta.PageID+".yaml")
-
-	if yamlContent, err := os.ReadFile(templatePath); err == nil {
-		// 命中本地模板，跳过 AI 调用
-		writeCacheHitLog(basePath, surveyID, meta, templatePath)
-		printCacheHitSummary(meta, templatePath, string(yamlContent))
-
-		return &YamlResult{
-			YamlContent: string(yamlContent),
-			CachePath:   templatePath,
-			Meta:        meta,
-			YamlPrompt:  yamlPrompt,
-			Source:      "cache",
-		}, nil
+		return nil, fmt.Errorf("detectQuestionTypesWithAI: CallAI: %w", err)
 	}
 
-	// 未命中模板，继续调用 AI
-	writeCacheMissLog(basePath, surveyID, meta, templatePath)
-
-	// 写步骤5开始日志
-	writeStep5StartLog(basePath, surveyID, meta, yamlPrompt)
-
-	// 步骤 5：调用 AI 提取 YAML 结构
-	aiResponse, err := CallAI(
-		surveyID,
-		yamlPrompt.System,
-		yamlPrompt.User,
-		basePath,
-	)
-	if err != nil {
-		return nil, fmt.Errorf("ExtractYamlStructureWithPageID: CallAI failed: %w", err)
-	}
-
-	// 写步骤5完成日志
-	writeStep5CompleteLog(basePath, surveyID, meta, aiResponse)
-
-	// 步骤 6：保存 YAML 到缓存目录
-	cachePath, err := saveYamlToCache(basePath, surveyID, meta.PageID, aiResponse)
-	if err != nil {
-		return nil, fmt.Errorf("ExtractYamlStructureWithPageID: saveYamlToCache failed: %w", err)
-	}
-
-	// 控制台输出摘要
-	printYamlResultSummary(meta, cachePath, aiResponse)
-
-	return &YamlResult{
-		YamlContent: aiResponse,
-		CachePath:   cachePath,
-		Meta:       meta,
-		YamlPrompt: yamlPrompt,
-		Source:     "ai",
-	}, nil
+	return parseTypeDetectionResponse(aiResponse, questionTypes)
 }
 
-// writeStep5StartLog 写入步骤5开始日志
-func writeStep5StartLog(basePath, surveyID string, meta PageMetadata, yamlPrompt YamlPrompt) {
-	logDir := filepath.Join(basePath, "logs")
-	_ = os.MkdirAll(logDir, 0755)
+// parseTypeDetectionResponse 从 AI 响应中解析题型 JSON 数组
+//
+// @param response    AI 响应（期望含 JSON 数组如 ["matrix_radio","single"]）
+// @param validTypes  有效题型列表（用于过滤非法值）
+// @returns           解析后的有效题型列表
+func parseTypeDetectionResponse(response string, validTypes []string) ([]string, error) {
+	cleaned := stripMarkdownFence(response)
+	cleaned = strings.TrimSpace(cleaned)
 
-	date := time.Now().Format("20060102")
-	logPath := filepath.Join(logDir, fmt.Sprintf("%s_%s.log", surveyID, date))
+	start := strings.Index(cleaned, "[")
+	end := strings.LastIndex(cleaned, "]")
+	if start == -1 || end == -1 || end <= start {
+		previewLen := len(cleaned)
+		if previewLen > 200 {
+			previewLen = 200
+		}
+		return nil, fmt.Errorf("parseTypeDetectionResponse: no JSON array in: %s", cleaned[:previewLen])
+	}
 
-	sep := strings.Repeat("=", 80)
+	var types []string
+	if err := json.Unmarshal([]byte(cleaned[start:end+1]), &types); err != nil {
+		return nil, fmt.Errorf("parseTypeDetectionResponse: unmarshal: %w", err)
+	}
+
+	validSet := make(map[string]bool, len(validTypes))
+	for _, t := range validTypes {
+		validSet[strings.ToLower(t)] = true
+	}
+
+	var result []string
+	for _, t := range types {
+		t = strings.TrimSpace(strings.ToLower(t))
+		if validSet[t] || t == "unknown" || t == "mixed" {
+			result = append(result, t)
+		} else {
+			fmt.Printf("[题型检测] 忽略无效题型: %q\n", t)
+		}
+	}
+
+	if len(result) == 0 {
+		return []string{"mixed"}, nil
+	}
+	return result, nil
+}
+
+// questionEntry 单个题型的模板条目
+type questionEntry struct {
+	questionType string
+	yamlBlock    string
+}
+
+// buildMergedYamlTemplate 根据检测到的题型加载并合并 yaml_template
+//
+// @param detectedTypes  题型列表
+// @returns              合并后的 YAML 占位符模板，error
+func buildMergedYamlTemplate(detectedTypes []string) (string, error) {
+	if len(detectedTypes) == 0 {
+		return GetFixedTemplate("mixed"), nil
+	}
+
+	if len(detectedTypes) == 1 {
+		return GetFixedTemplate(detectedTypes[0]), nil
+	}
+
+	// 多题型：收集各题型的 question 块，合并到一个模板
+	var entries []questionEntry
+	var headerTemplate string
+
+	for i, qt := range detectedTypes {
+		_, yamlTmpl, err := database.LoadPromptByQuestionType(qt)
+		if err != nil || strings.TrimSpace(yamlTmpl) == "" {
+			yamlTmpl = GetFixedTemplate(qt)
+		}
+
+		if i == 0 {
+			headerTemplate = yamlTmpl
+		}
+
+		block := extractFirstQuestionBlock(yamlTmpl)
+		if block != "" {
+			entries = append(entries, questionEntry{questionType: qt, yamlBlock: block})
+		}
+	}
+
+	if len(entries) == 0 || headerTemplate == "" {
+		return GetFixedTemplate("mixed"), nil
+	}
+
+	return mergeQuestionEntries(headerTemplate, entries), nil
+}
+
+// extractFirstQuestionBlock 从 YAML 模板中提取 questions: 下的第一个 question 条目块
+//
+// @param yamlTemplate  YAML 模板字符串
+// @returns             question 条目块（含缩进），未找到返回空字符串
+func extractFirstQuestionBlock(yamlTemplate string) string {
+	lines := strings.Split(yamlTemplate, "\n")
+	inQuestions := false
+	inItem := false
+	itemIndent := ""
+	var result []string
+
+	for _, line := range lines {
+		trimmed := strings.TrimSpace(line)
+
+		if !inQuestions {
+			if strings.HasPrefix(trimmed, "questions:") {
+				inQuestions = true
+			}
+			continue
+		}
+
+		if !inItem {
+			if strings.HasPrefix(trimmed, "- ") || trimmed == "-" {
+				inItem = true
+				itemIndent = line[:len(line)-len(strings.TrimLeft(line, " \t"))]
+				result = append(result, line)
+			}
+			continue
+		}
+
+		// 同级别新条目 → 停止
+		if strings.HasPrefix(trimmed, "- ") {
+			currentIndent := line[:len(line)-len(strings.TrimLeft(line, " \t"))]
+			if currentIndent == itemIndent {
+				break
+			}
+		}
+		result = append(result, line)
+	}
+
+	return strings.Join(result, "\n")
+}
+
+// extractTemplateHeader 提取 YAML 模板头部（survey_page 到 questions: 之前）
+//
+// @param yamlTemplate  YAML 模板字符串
+// @returns             头部字符串（不含 questions: 行）
+func extractTemplateHeader(yamlTemplate string) string {
+	lines := strings.Split(yamlTemplate, "\n")
+	var result []string
+	for _, line := range lines {
+		if strings.HasPrefix(strings.TrimSpace(line), "questions:") {
+			break
+		}
+		result = append(result, line)
+	}
+	return strings.Join(result, "\n")
+}
+
+// mergeQuestionEntries 将多个 question 块合并到单个 YAML 模板中
+//
+//	每个 question 条目前添加 q_index 字段
+//
+// @param headerTemplate  第一个模板（提供 page_metadata 等头部）
+// @param entries         question 块列表
+// @returns               合并后的 YAML 模板字符串
+func mergeQuestionEntries(headerTemplate string, entries []questionEntry) string {
+	header := extractTemplateHeader(headerTemplate)
+
 	var sb strings.Builder
+	sb.WriteString(header)
+	sb.WriteString("\n  questions:")
 
-	sb.WriteString(sep + "\n")
-	sb.WriteString("【步骤 5】调用 AI 提取 YAML 结构\n")
-	sb.WriteString(sep + "\n")
-	sb.WriteString(fmt.Sprintf("时间: %s\n", time.Now().UTC().Format(time.RFC3339)))
-	sb.WriteString(fmt.Sprintf("survey_id: %s\n", surveyID))
-	sb.WriteString(fmt.Sprintf("page_id: %s\n", meta.PageID))
-	sb.WriteString(fmt.Sprintf("System Prompt: %d字符\n", len(yamlPrompt.System)))
-	sb.WriteString(fmt.Sprintf("User Prompt: %d字符\n", len(yamlPrompt.User)))
-	sb.WriteString("状态: 开始调用 AI...\n")
-	sb.WriteString(sep + "\n")
+	for i, entry := range entries {
+		lines := strings.Split(entry.yamlBlock, "\n")
+		if len(lines) == 0 {
+			continue
+		}
+		firstLine := lines[0]
+		indent := firstLine[:len(firstLine)-len(strings.TrimLeft(firstLine, " \t"))]
 
-	f, err := os.OpenFile(logPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		return
+		// 写 q_index
+		sb.WriteString(fmt.Sprintf("\n%s- q_index: %d", indent, i+1))
+
+		// 写第一行属性（去掉 "- " 前缀）
+		trimFirst := strings.TrimSpace(firstLine)
+		if strings.HasPrefix(trimFirst, "- ") {
+			rest := trimFirst[2:]
+			sb.WriteString(fmt.Sprintf("\n%s  %s", indent, rest))
+		}
+
+		// 写后续属性行
+		for _, line := range lines[1:] {
+			if strings.TrimSpace(line) != "" {
+				sb.WriteString("\n" + line)
+			}
+		}
 	}
-	defer f.Close()
-	_, _ = f.WriteString(sb.String())
+	sb.WriteString("\n")
+
+	return sb.String()
 }
 
-// writeStep5CompleteLog 写入步骤5完成日志（包含AI响应）
-func writeStep5CompleteLog(basePath, surveyID string, meta PageMetadata, aiResponse string) {
-	logDir := filepath.Join(basePath, "logs")
-	_ = os.MkdirAll(logDir, 0755)
-
-	date := time.Now().Format("20060102")
-	logPath := filepath.Join(logDir, fmt.Sprintf("%s_%s.log", surveyID, date))
-
-	sep := strings.Repeat("=", 80)
-	var sb strings.Builder
-
-	sb.WriteString(sep + "\n")
-	sb.WriteString("【步骤 5】AI 响应\n")
-	sb.WriteString(sep + "\n")
-	sb.WriteString(fmt.Sprintf("时间: %s\n", time.Now().UTC().Format(time.RFC3339)))
-	sb.WriteString(fmt.Sprintf("survey_id: %s\n", surveyID))
-	sb.WriteString(fmt.Sprintf("page_id: %s\n", meta.PageID))
-	sb.WriteString(fmt.Sprintf("YAML 长度: %d字符\n", len(aiResponse)))
-	sb.WriteString("\n" + sep + "\n")
-	sb.WriteString("=== AI 响应 (完整YAML) ===\n")
-	sb.WriteString(aiResponse + "\n")
-	sb.WriteString(sep + "\n")
-	sb.WriteString("状态: 成功\n")
-	sb.WriteString(sep + "\n")
-
-	f, err := os.OpenFile(logPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		return
-	}
-	defer f.Close()
-	_, _ = f.WriteString(sb.String())
-}
-
-// Windows 文件系统非法字符列表
-var illegalFileNameChars = []string{"*", "\"", "<", ">", "|", "?", ":", "\\", "/"}
-
-// sanitizeFileName 清理文件名中的非法字符，并截断过长名称
-// @param name 原始文件名（pageID）
-// @returns 清理后的安全文件名
-func sanitizeFileName(name string) string {
-	result := name
-
-	// 替换所有非法字符为空（移除）
-	for _, char := range illegalFileNameChars {
-		result = strings.ReplaceAll(result, char, "")
-	}
-
-	// 移除前后空白
-	result = strings.TrimSpace(result)
-
-	// 连续下划线替换为单个下划线
-	for strings.Contains(result, "__") {
-		result = strings.ReplaceAll(result, "__", "_")
-	}
-
-	// 移除首尾下划线
-	result = strings.Trim(result, "_")
-
-	// 截断到最大长度（Windows 路径限制）
-	const maxLen = 200
-	if len(result) > maxLen {
-		result = result[:maxLen]
-	}
-
-	return result
-}
-
-// saveYamlToCache 保存YAML到缓存目录
-// @param basePath  存储根目录
-// @param surveyID  问卷ID
-// @param pageID    页面ID
-// @param content   YAML内容
-// @returns         缓存路径，或错误
-func saveYamlToCache(basePath, surveyID, pageID, content string) (string, error) {
-	// 清理文件名中的非法字符
-	safePageID := sanitizeFileName(pageID)
-
-	// 构建缓存路径: storage/templates/{surveyId}/{safePageID}.yaml
-	cacheDir := filepath.Join(basePath, "templates", surveyID)
-	cachePath := filepath.Join(cacheDir, safePageID+".yaml")
-
-	// 创建目录（如果不存在）
-	if err := os.MkdirAll(cacheDir, 0755); err != nil {
-		return "", fmt.Errorf("saveYamlToCache: mkdir %s: %w", cacheDir, err)
-	}
-
-	// 写入文件
-	if err := os.WriteFile(cachePath, []byte(content), 0644); err != nil {
-		return "", fmt.Errorf("saveYamlToCache: write %s: %w", cachePath, err)
-	}
-
-	return cachePath, nil
-}
-
-// printYamlResultSummary 控制台输出YAML结果摘要
-func printYamlResultSummary(meta PageMetadata, cachePath, yamlContent string) {
+// printYamlResultSummary 控制台输出 YAML 结果摘要
+func printYamlResultSummary(meta PageMetadata, yamlContent, source string) {
 	fmt.Println()
 	fmt.Println("=== YAML 提取完成 ===")
 	fmt.Printf("SurveyID: %s\n", meta.SurveyID)
 	fmt.Printf("PageID: %s\n", meta.PageID)
-	fmt.Printf("Timestamp: %s\n", meta.Timestamp)
 	fmt.Printf("YAML长度: %d字符\n", len(yamlContent))
-	fmt.Printf("缓存路径: %s\n", cachePath)
-	fmt.Printf("来源: ai\n")
+	fmt.Printf("来源: %s\n", source)
 	fmt.Println()
 }
 
-// writeCacheHitLog 写入命中本地模板的日志
-func writeCacheHitLog(basePath, surveyID string, meta PageMetadata, templatePath string) {
-	logDir := filepath.Join(basePath, "logs")
-	_ = os.MkdirAll(logDir, 0755)
-
-	date := time.Now().Format("20060102")
-	logPath := filepath.Join(logDir, fmt.Sprintf("%s_%s.log", surveyID, date))
-
-	sep := strings.Repeat("=", 80)
-	var sb strings.Builder
-
-	sb.WriteString(sep + "\n")
-	sb.WriteString("【YAML模板查找】命中本地模板，跳过AI调用\n")
-	sb.WriteString(sep + "\n")
-	sb.WriteString(fmt.Sprintf("时间: %s\n", time.Now().UTC().Format(time.RFC3339)))
-	sb.WriteString(fmt.Sprintf("survey_id: %s\n", surveyID))
-	sb.WriteString(fmt.Sprintf("page_id: %s\n", meta.PageID))
-	sb.WriteString(fmt.Sprintf("模板路径: %s\n", templatePath))
-	sb.WriteString("来源: cache\n")
-	sb.WriteString("状态: 命中本地模板，跳过AI调用\n")
-	sb.WriteString(sep + "\n")
-
-	f, err := os.OpenFile(logPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		return
+// sanitizeFileName 清理文件名中的非法字符，并截断过长名称
+//
+// @param name  原始文件名
+// @returns     清理后的安全文件名
+func sanitizeFileName(name string) string {
+	result := name
+	for _, char := range illegalFileNameChars {
+		result = strings.ReplaceAll(result, char, "")
 	}
-	defer f.Close()
-	_, _ = f.WriteString(sb.String())
-}
-
-// writeCacheMissLog 写入未命中本地模板的日志
-func writeCacheMissLog(basePath, surveyID string, meta PageMetadata, templatePath string) {
-	logDir := filepath.Join(basePath, "logs")
-	_ = os.MkdirAll(logDir, 0755)
-
-	date := time.Now().Format("20060102")
-	logPath := filepath.Join(logDir, fmt.Sprintf("%s_%s.log", surveyID, date))
-
-	sep := strings.Repeat("=", 80)
-	var sb strings.Builder
-
-	sb.WriteString(sep + "\n")
-	sb.WriteString("【YAML模板查找】未命中本地模板，继续调用AI\n")
-	sb.WriteString(sep + "\n")
-	sb.WriteString(fmt.Sprintf("时间: %s\n", time.Now().UTC().Format(time.RFC3339)))
-	sb.WriteString(fmt.Sprintf("survey_id: %s\n", surveyID))
-	sb.WriteString(fmt.Sprintf("page_id: %s\n", meta.PageID))
-	sb.WriteString(fmt.Sprintf("查找路径: %s\n", templatePath))
-	sb.WriteString(fmt.Sprintf("!!! page_id [%s] 未命中YAML模板目录的文件!!!\n", meta.PageID))
-	sb.WriteString("来源: ai\n")
-	sb.WriteString("状态: 未命中，继续调用AI\n")
-	sb.WriteString(sep + "\n")
-
-	f, err := os.OpenFile(logPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		return
+	result = strings.TrimSpace(result)
+	for strings.Contains(result, "__") {
+		result = strings.ReplaceAll(result, "__", "_")
 	}
-	defer f.Close()
-	_, _ = f.WriteString(sb.String())
+	result = strings.Trim(result, "_")
+	const maxLen = 200
+	if len(result) > maxLen {
+		result = result[:maxLen]
+	}
+	return result
 }
 
-// printCacheHitSummary 控制台输出命中缓存的摘要
-func printCacheHitSummary(meta PageMetadata, templatePath string, yamlContent string) {
-	fmt.Println()
-	fmt.Println("=== YAML 缓存命中 ===")
-	fmt.Printf("SurveyID: %s\n", meta.SurveyID)
-	fmt.Printf("PageID: %s\n", meta.PageID)
-	fmt.Printf("Timestamp: %s\n", meta.Timestamp)
-	fmt.Printf("模板路径: %s\n", templatePath)
-	fmt.Printf("YAML长度: %d字符\n", len(yamlContent))
-	fmt.Printf("来源: cache\n")
-	fmt.Println()
-	fmt.Println("=== YAML 内容预览 ===")
-	if len(yamlContent) <= 300 {
-		fmt.Println(yamlContent)
-	} else {
-		fmt.Printf("%s...\n", yamlContent[:300])
-	}
-	fmt.Println()
-}
+// illegalFileNameChars Windows 文件系统非法字符列表
+var illegalFileNameChars = []string{"*", "\"", "<", ">", "|", "?", ":", "\\", "/"}
