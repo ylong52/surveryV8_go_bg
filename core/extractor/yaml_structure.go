@@ -1,9 +1,26 @@
 package extractor
 
-// yaml_structure.go — 输出类型定义与工具函数
-//   PageSettings / FinalAnswerJson 及相关构建工具
-//   loadNextButtonConfig 从 sites 内存缓存读取按钮配置
-
+// yaml_structure.go — YAML 解析 + 最终输出构建
+//
+//	┌─────────────────────────────────────────────────────────────────┐
+//	│                        职责说明                                   │
+//	├─────────────────────────────────────────────────────────────────┤
+//	│  1. 类型定义     → FinalAnswerJson, InteractionItem, PageSettings │
+//	│  2. YAML 解析   → parseYamlPageSettings, parseQuestionsTypeFromYaml
+//	│  3. JSON 构建   → buildFinalAnswerJson, buildInteractions       │
+//	│  4. 导航按钮    → buildNavButtons, loadNextButtonConfig         │
+//	│  5. YAML 清洗   → StripYamlHardcodedValues, StripRecommendedAnswers
+//	└─────────────────────────────────────────────────────────────────┘
+//
+//	依赖关系：
+//	  ws_server/main.go
+//	    └─ GenerateRealtimeAnswerOnlyWithMeta (yaml_answer.go)
+//	          ├─ parseYamlPageSettings       ← 本文件
+//	     	  └─ buildFinalAnswerJson        ← 本文件
+//
+//	  yaml_extractor.go
+//	      └─ parseQuestionsTypeFromYaml      ← 本文件
+//
 import (
 	"encoding/json"
 	"fmt"
@@ -127,6 +144,38 @@ func parseYamlBool(line string) bool {
 // 3. FinalAnswerJson 构建
 // =============================================================================
 
+// parseQuestionsTypeFromYaml 按题目顺序提取 YAML 中每题的 questions_type
+//
+// @param yamlData  YAML 字符串（含具体值，如 number/single）
+// @returns         按 q_index 顺序排列的题型列表（0-based）
+func parseQuestionsTypeFromYaml(yamlData string) []string {
+	var types []string
+	inQuestions := false
+
+	for _, line := range strings.Split(yamlData, "\n") {
+		trimmed := strings.TrimSpace(line)
+		if strings.HasPrefix(trimmed, "questions:") {
+			inQuestions = true
+			continue
+		}
+		if !inQuestions {
+			continue
+		}
+		if strings.HasPrefix(trimmed, "- q_index:") {
+			types = append(types, "")
+		} else if strings.HasPrefix(trimmed, "questions_type:") && len(types) > 0 {
+			parts := strings.SplitN(trimmed, ":", 2)
+			if len(parts) == 2 {
+				qt := strings.Trim(strings.TrimSpace(parts[1]), `"'`)
+				if qt != "" && !strings.HasPrefix(qt, "<<<") {
+					types[len(types)-1] = qt
+				}
+			}
+		}
+	}
+	return types
+}
+
 // buildFinalAnswerJson 构建最终 JSON 输出
 //
 // @param answerResult  AI 生成的结果
@@ -138,7 +187,8 @@ func parseYamlBool(line string) bool {
 // @returns             FinalAnswerJson
 func buildFinalAnswerJson(answerResult *YamlAnswerResult, yamlData string, pageSettings PageSettings, surveyID string, pageID string, cleanHTML string) FinalAnswerJson {
 	isMatrixPage := detectIsMatrixPage(yamlData)
-	interactions := buildInteractions(answerResult.Interactions)
+	yamlQuestionTypes := parseQuestionsTypeFromYaml(yamlData)
+	interactions := buildInteractions(answerResult.Interactions, yamlQuestionTypes)
 	navButtons := buildNavButtons(pageSettings, surveyID, cleanHTML)
 
 	return FinalAnswerJson{
@@ -169,12 +219,17 @@ func detectIsMatrixPage(yamlData string) bool {
 }
 
 // buildInteractions 将 []Interaction 转换为 []InteractionItem
-func buildInteractions(answers []Interaction) []InteractionItem {
+// yamlTypes 为从 YAML 模板解析出的题型列表，当 AI 未返回 question_type 时作为回退值
+func buildInteractions(answers []Interaction, yamlTypes []string) []InteractionItem {
 	result := make([]InteractionItem, 0, len(answers))
 
-	for _, ans := range answers {
+	for i, ans := range answers {
+		qt := ans.QuestionType
+		if qt == "" && i < len(yamlTypes) && yamlTypes[i] != "" {
+			qt = yamlTypes[i]
+		}
 		item := InteractionItem{
-			QuestionType: ans.QuestionType,
+			QuestionType: qt,
 			Subject:      cleaner.CleanPageID(ans.Subject),
 		}
 

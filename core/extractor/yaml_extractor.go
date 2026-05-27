@@ -1,11 +1,22 @@
 package extractor
 
 // yaml_extractor.go — 步骤 3: YAML 模板提取（含题型检测）
-//   命中数据库缓存则直接返回；未命中则：
-//     1. AI 检测页面题型（JSON 数组）
-//     2. 按题型加载 yaml_template，合并为占位符模板
-//     3. 返回给步骤 4 使用
-
+//
+//	┌─────────────────────────────────────────────────────────────────┐
+//	│                        数据源架构                                 │
+//	├─────────────────────────────────────────────────────────────────┤
+//	│  page_results.yaml_template  ← 首次生成后缓存（优先命中）          │
+//	│  prompts 表 yaml_template   ← 缓存未命中时加载的标准模板           │
+//	└─────────────────────────────────────────────────────────────────┘
+//
+//	流程：
+//	  1. 查询 page_results 表 → 命中则返回 cachedYaml（并解析题型）
+//	  2. 未命中 → AI 检测题型 → 调用 GetFixedTemplate 加载模板 → 合并返回
+//
+//	依赖：
+//	  - yaml_templates.go  → GetFixedTemplate 从数据库 prompts 表加载模板
+//	  - yaml_structure.go  → parseQuestionsTypeFromYaml 解析题型
+//
 import (
 	"encoding/json"
 	"fmt"
@@ -48,10 +59,16 @@ func ExtractYamlStructureWithPageID(surveyID string, surveyIDInt int64, pageID, 
 	if cachedYaml != "" {
 		fmt.Printf("[ExtractYamlStructureWithPageID] 命中数据库 yaml_template\n")
 		printYamlResultSummary(meta, cachedYaml, "db_cache")
+		// 从缓存的 YAML 模板中解析题型，确保 DetectedTypes 不为空
+		detectedTypes := parseQuestionsTypeFromYaml(cachedYaml)
+		if len(detectedTypes) == 0 {
+			detectedTypes = []string{"mixed"}
+		}
 		return &YamlResult{
-			YamlContent: cachedYaml,
-			Meta:        meta,
-			Source:      "db_cache",
+			YamlContent:   cachedYaml,
+			Meta:          meta,
+			DetectedTypes: detectedTypes,
+			Source:        "db_cache",
 		}, nil
 	}
 
