@@ -14,7 +14,6 @@ import (
 	"time"
 
 	"github.com/gorilla/websocket"
-	"gopkg.in/yaml.v3"
 
 	"survey.cli/core/cleaner"
 	"survey.cli/core/database"
@@ -148,7 +147,7 @@ func handleAnalyzeRequest(conn *websocket.Conn, msg Msg, basePath string) {
 		sendError(conn, "survey.GetOrCreate error: "+err.Error(), msg.RequestID)
 		return
 	}
-	fmt.Printf("Survey ID: %d (session_id=%s)\n", surveyRecord.ID, surveyRecord.SessionID)
+	fmt.Printf("Survey ID: %d (session_name=%s)\n", surveyRecord.ID, surveyRecord.SessionName)
 
 	// 步骤 1: 修复编码
 	fixedHTML := fixEncoding([]byte(msg.RawHTML))
@@ -437,26 +436,17 @@ func extractSurveyID(rawURL string, rawHTML string) string {
 		return ""
 	}
 
-	configPath := findConfigPath()
-	fmt.Printf("[extractSurveyID] rawURL=%q configPath=%s\n", rawURL, configPath)
+	sites := database.GetAllActiveSites()
+	fmt.Printf("[extractSurveyID] rawURL=%q sites=%d\n", rawURL, len(sites))
 
-	sites, err := loadSitesFromConfig(configPath)
-	if err != nil {
-		fmt.Printf("[extractSurveyID] loadSitesFromConfig error: %v\n", err)
-		return ""
-	}
-
-	// Step 1: URL prefix/exact match (most reliable)
 	if rawURL != "" {
-	// 清洗 URL：移除尾部非字母/数字/斜杠的字符（仅用于 YAML 匹配，不影响原始 URL）
-	// 保留 https:// 协议部分和路径中的合法字符
-	cleanedURL := regexp.MustCompile(`(https?://[^/]+[/a-zA-Z0-9_.-]*)[^a-zA-Z0-9_/.-]*$`).ReplaceAllString(rawURL, "$1")
+		cleanedURL := regexp.MustCompile(`(https?://[^/]+[/a-zA-Z0-9_.-]*)[^a-zA-Z0-9_/.-]*$`).ReplaceAllString(rawURL, "$1")
 		fmt.Printf("[extractSurveyID] cleanedURL=%q\n", cleanedURL)
-		for _, site := range sites {
-			fmt.Printf("[extractSurveyID] checking site URL=%s surveyID=%s\n", site.URL, site.SurveyID)
-			if strings.HasPrefix(cleanedURL, site.URL) || cleanedURL == site.URL {
-				fmt.Printf("[extractSurveyID] URL matched! returning %s\n", site.SurveyID)
-				return site.SurveyID
+		for _, sw := range sites {
+			fmt.Printf("[extractSurveyID] checking site URL=%s surveyName=%s\n", sw.URL, sw.SurveyName)
+			if strings.HasPrefix(cleanedURL, sw.URL) || cleanedURL == sw.URL {
+				fmt.Printf("[extractSurveyID] URL matched! returning %s\n", sw.SurveyName)
+				return sw.SurveyName
 			}
 		}
 		fmt.Printf("[extractSurveyID] URL matching failed for rawURL=%q\n", rawURL)
@@ -464,46 +454,6 @@ func extractSurveyID(rawURL string, rawHTML string) string {
 
 	fmt.Printf("[extractSurveyID] no match found, returning empty\n")
 	return ""
-}
-
-type SiteConfig struct {
-	Keyword  string `yaml:"keyword"`
-	Name     string `yaml:"name"`
-	URL      string `yaml:"url"`
-	SurveyID string `yaml:"survey_id"`
-}
-
-type FingerprintsConfig struct {
-	Sites []SiteConfig `yaml:"sites"`
-}
-
-func loadSitesFromConfig(configPath string) ([]SiteConfig, error) {
-	data, err := os.ReadFile(configPath)
-	if err != nil {
-		return nil, err
-	}
-	var cfg FingerprintsConfig
-	if err := yaml.Unmarshal(data, &cfg); err != nil {
-		return nil, err
-	}
-	return cfg.Sites, nil
-}
-
-func findConfigPath() string {
-	exePath, _ := os.Executable()
-	exeDir := filepath.Dir(exePath)
-
-	paths := []string{
-		filepath.Join(exeDir, "configs", "page-fingerprints.yaml"),
-		"configs/page-fingerprints.yaml",
-		filepath.Join(".", "configs", "page-fingerprints.yaml"),
-	}
-	for _, p := range paths {
-		if _, err := os.Stat(p); err == nil {
-			return p
-		}
-	}
-	return "configs/page-fingerprints.yaml"
 }
 
 func main() {
@@ -520,6 +470,11 @@ func main() {
 	}
 	defer database.Close()
 	fmt.Printf("数据库已初始化: %s\n", dbPath)
+
+	if err := database.InitSiteCache(); err != nil {
+		log.Fatalf("站点缓存初始化失败: %v", err)
+	}
+	fmt.Printf("站点缓存已加载: %d 个站点\n", len(database.GetAllActiveSites()))
 
 	port := os.Getenv("WS_PORT")
 	if port == "" {

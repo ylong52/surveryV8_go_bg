@@ -7,12 +7,10 @@ import (
 	"fmt"
 	"net/url"
 	"os"
-	"path/filepath"
 	"strings"
 
 	"github.com/google/uuid"
 	"github.com/gorilla/websocket"
-	"gopkg.in/yaml.v3"
 )
 
 var (
@@ -20,6 +18,7 @@ var (
 	urlStr    = flag.String("url", "https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families", "Survey URL")
 	wsURL     = flag.String("ws", "ws://localhost:10501/ws", "WebSocket server URL")
 	htmlFile  = flag.String("html", "", "HTML file path")
+	surveyID  = flag.String("survey_id", "", "Survey ID（可选，留空由服务端从 URL 自动识别）")
 )
 
 type WsMessage struct {
@@ -177,63 +176,7 @@ func main() {
 	fmt.Println(">> 客户端退出")
 }
 
-// SiteConfig 站点配置（与 page-fingerprints.yaml 结构对应）
-type SiteConfig struct {
-	Keyword  string `yaml:"keyword"`
-	Name     string `yaml:"name"`
-	URL      string `yaml:"url"`
-	SurveyID string `yaml:"survey_id"`
-}
-
-// FingerprintsConfig 配置文件结构
-type FingerprintsConfig struct {
-	Sites []SiteConfig `yaml:"sites"`
-}
-
-// loadSitesFromConfig 加载配置文件，返回站点列表
-func loadSitesFromConfig(configPath string) ([]SiteConfig, error) {
-	data, err := os.ReadFile(configPath)
-	if err != nil {
-		return nil, err
-	}
-	var cfg FingerprintsConfig
-	if err := yaml.Unmarshal(data, &cfg); err != nil {
-		return nil, err
-	}
-	return cfg.Sites, nil
-}
-
-// findConfigPath 查找配置文件路径
-func findConfigPath() string {
-	paths := []string{
-		"configs/page-fingerprints.yaml",
-		filepath.Join(".", "configs", "page-fingerprints.yaml"),
-	}
-	for _, p := range paths {
-		if _, err := os.Stat(p); err == nil {
-			return p
-		}
-	}
-	return "configs/page-fingerprints.yaml"
-}
-
-// extractSurveyID 从 URL 匹配 page-fingerprints.yaml 配置获取 survey_id
-func extractSurveyID(rawURL string) string {
-	if rawURL == "" {
-		return ""
-	}
-
-	configPath := findConfigPath()
-	sites, err := loadSitesFromConfig(configPath)
-	if err != nil {
-		return ""
-	}
-
-	// URL 前缀或精确匹配
-	for _, site := range sites {
-		if strings.HasPrefix(rawURL, site.URL) || rawURL == site.URL {
-			return site.SurveyID
-		}
-	}
-	return ""
+// extractSurveyID 返回 -survey_id 参数值（留空则由 ws_server 从 URL 自动识别）
+func extractSurveyID(_ string) string {
+	return *surveyID
 }

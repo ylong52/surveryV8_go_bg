@@ -38,18 +38,18 @@ func ExtractYamlStructureWithPageID(surveyID string, surveyIDInt int64, pageID, 
 		PageID:   pageID,
 	}
 
-	// 步骤 1：查询数据库 yaml_template 缓存
+	// 步骤 1：查询数据库 yaml_template 缓存（忽略 fingerprint，同一 survey+page 模板相同）
 	pageResultRepo := database.NewPageResultRepo()
-	existingYamlTemplate, err := pageResultRepo.FindYamlTemplate(surveyIDInt, pageID)
+	cachedYaml, err := pageResultRepo.FindYamlTemplate(surveyIDInt, pageID)
 	if err != nil {
 		fmt.Printf("[ExtractYamlStructureWithPageID] 查询 yaml_template 失败: %v\n", err)
 	}
 
-	if existingYamlTemplate != "" {
+	if cachedYaml != "" {
 		fmt.Printf("[ExtractYamlStructureWithPageID] 命中数据库 yaml_template\n")
-		printYamlResultSummary(meta, existingYamlTemplate, "db_cache")
+		printYamlResultSummary(meta, cachedYaml, "db_cache")
 		return &YamlResult{
-			YamlContent: existingYamlTemplate,
+			YamlContent: cachedYaml,
 			Meta:        meta,
 			Source:      "db_cache",
 		}, nil

@@ -2,7 +2,7 @@ package extractor
 
 // yaml_structure.go — 输出类型定义与工具函数
 //   PageSettings / FinalAnswerJson 及相关构建工具
-//   loadNextButtonConfig 从 page-fingerprints.yaml 读取按钮配置
+//   loadNextButtonConfig 从 sites 内存缓存读取按钮配置
 
 import (
 	"encoding/json"
@@ -13,8 +13,8 @@ import (
 	"strings"
 	"time"
 
-	"gopkg.in/yaml.v3"
 	"survey.cli/core/cleaner"
+	"survey.cli/core/database"
 )
 
 // =============================================================================
@@ -209,51 +209,22 @@ func buildInteractions(answers []Interaction) []InteractionItem {
 
 // NextButtonConfig Next/Submit 按钮配置
 type NextButtonConfig struct {
-	NextPattern    string `yaml:"next_pattern"`
-	WaitAfterClick int    `yaml:"wait_after_click"`
+	NextPattern    string
+	WaitAfterClick int
 }
 
-// SiteConfig 网站配置
-type SiteConfig struct {
-	Keyword    string           `yaml:"keyword"`
-	SurveyID   string           `yaml:"survey_id"`
-	NextButton NextButtonConfig `yaml:"next_button"`
-}
-
-// PageFingerprintsConfig page-fingerprints.yaml 配置结构
-type PageFingerprintsConfig struct {
-	Sites []SiteConfig `yaml:"sites"`
-}
-
-const pageFingerprintsConfigPath = "configs/page-fingerprints.yaml"
-
-// loadNextButtonConfig 根据 surveyID 从 page-fingerprints.yaml 加载 next_button 配置
+// loadNextButtonConfig 根据 surveyID 从内存缓存加载 next_button 配置
+// @param surveyID 问卷 ID
+// @returns NextButtonConfig，未找到返回空结构（不报错，由调用方兜底）
 func loadNextButtonConfig(surveyID string) (NextButtonConfig, error) {
-	configPath := pageFingerprintsConfigPath
-	if !filepath.IsAbs(configPath) {
-		wd, err := os.Getwd()
-		if err == nil {
-			configPath = filepath.Join(wd, configPath)
-		}
+	sw := database.FindSiteBySurveyName(surveyID)
+	if sw == nil || sw.Fingerprint == nil {
+		return NextButtonConfig{}, nil
 	}
-
-	data, err := os.ReadFile(configPath)
-	if err != nil {
-		return NextButtonConfig{}, fmt.Errorf("loadNextButtonConfig: read %s: %w", configPath, err)
-	}
-
-	var cfg PageFingerprintsConfig
-	if err := yaml.Unmarshal(data, &cfg); err != nil {
-		return NextButtonConfig{}, fmt.Errorf("loadNextButtonConfig: parse yaml: %w", err)
-	}
-
-	for _, site := range cfg.Sites {
-		if strings.EqualFold(site.SurveyID, surveyID) {
-			return site.NextButton, nil
-		}
-	}
-
-	return NextButtonConfig{}, nil
+	return NextButtonConfig{
+		NextPattern:    sw.Fingerprint.NextPattern,
+		WaitAfterClick: sw.Fingerprint.WaitAfterClick,
+	}, nil
 }
 
 // buildNavButtons 构建 nav_buttons 输出

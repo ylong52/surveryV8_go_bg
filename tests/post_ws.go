@@ -25,12 +25,12 @@ import (
 	"fmt"
 	"net/url"
 	"os"
-	"path/filepath"
+	"regexp"
 	"strings"
 
 	"github.com/google/uuid"
 	"github.com/gorilla/websocket"
-	"gopkg.in/yaml.v3"
+	"survey.cli/core/database"
 )
 
 var (
@@ -52,6 +52,16 @@ type WsMessage struct {
 
 func main() {
 	flag.Parse()
+
+	// 初始化数据库（用于 survey_id 查找，失败时 ws_server 会自行兜底）
+	dbPath := os.Getenv("DB_PATH")
+	if dbPath == "" {
+		dbPath = "./data/survey.db"
+	}
+	if err := database.Init(dbPath); err == nil {
+		_ = database.InitSiteCache()
+	}
+
 	// 参数说明:
 	fmt.Println("命令行参数说明：")
 	fmt.Println("  -session_id  会话ID，用于标识一次会话（默认: session_test）")
@@ -201,56 +211,15 @@ func main() {
 	fmt.Println(">> 客户端退出")
 }
 
-// SiteConfig 站点配置（与 page-fingerprints.yaml 结构对应）
-type SiteConfig struct {
-	Keyword  string `yaml:"keyword"`
-	Name     string `yaml:"name"`
-	URL      string `yaml:"url"`
-	SurveyID string `yaml:"survey_id"`
-}
-
-// FingerprintsConfig 配置文件结构
-type FingerprintsConfig struct {
-	Sites []SiteConfig `yaml:"sites"`
-}
-
-// loadSitesFromConfig 加载配置文件，返回站点列表
-func loadSitesFromConfig(configPath string) ([]SiteConfig, error) {
-	data, err := os.ReadFile(configPath)
-	if err != nil {
-		return nil, err
-	}
-	var cfg FingerprintsConfig
-	if err := yaml.Unmarshal(data, &cfg); err != nil {
-		return nil, err
-	}
-	return cfg.Sites, nil
-}
-
-// extractSurveyID 从 URL 匹配 page-fingerprints.yaml 配置获取 survey_id
+// extractSurveyID 从内存缓存按 URL 匹配获取 survey_id
 func extractSurveyID(rawURL string) string {
 	if rawURL == "" {
 		return ""
 	}
-	// 查找配置文件（相对于可执行文件或工作目录）
-	configPaths := []string{
-		"configs/page-fingerprints.yaml",
-		filepath.Join(os.Getenv("GOPATH"), "src/e-case2025-adspower-surveyV8-go-surveryV8-go-bg/configs/page-fingerprints.yaml"),
-	}
-	var sites []SiteConfig
-	for _, p := range configPaths {
-		if s, err := loadSitesFromConfig(p); err == nil {
-			sites = s
-			break
-		}
-	}
-	if len(sites) == 0 {
-		return ""
-	}
-	// URL 精确或前缀匹配
-	for _, site := range sites {
-		if strings.HasPrefix(rawURL, site.URL) || rawURL == site.URL {
-			return site.SurveyID
+	cleanedURL := regexp.MustCompile(`(https?://[^/]+[/a-zA-Z0-9_.-]*)[^a-zA-Z0-9_/.-]*$`).ReplaceAllString(rawURL, "$1")
+	for _, sw := range database.GetAllActiveSites() {
+		if strings.HasPrefix(cleanedURL, sw.URL) || cleanedURL == sw.URL {
+			return sw.SurveyName
 		}
 	}
 	return ""
