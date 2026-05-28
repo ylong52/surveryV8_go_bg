@@ -207,9 +207,6 @@ func validateJSONString(s string) error {
 // doDeepSeekRequest 发起单次 HTTP 请求到 DeepSeek /chat/completions
 // @returns content（AI 回复文本），statusCode，网络层错误
 func doDeepSeekRequest(cfg *deepSeekEnvConfig, systemPrompt, userPrompt string) (string, int, error) {
-	// 调试标志：确认函数被调用
-	fmt.Fprintf(os.Stderr, "[DEBUG] doDeepSeekRequest 被调用, prompt长度: system=%d, user=%d\n", len(systemPrompt), len(userPrompt))
-	
 	reqBody := deepSeekRequest{
 		Model: cfg.Model,
 		Messages: []deepSeekMessage{
@@ -266,15 +263,8 @@ func doDeepSeekRequest(cfg *deepSeekEnvConfig, systemPrompt, userPrompt string) 
 		return "", resp.StatusCode, nil
 	}
 
-	// 关键修复：确保响应是有效 UTF-8
-	// 处理可能的编码混乱问题（如 Windows-1252 被误解析为 UTF-8）
-	respContent := strings.ToValidUTF8(string(respBytes), "\uFFFD")
-
-	// 调试：检查是否发生了 UTF-8 修复
-	if respContent != string(respBytes) {
-		// 写入到 stderr，确保能看到
-		fmt.Fprintf(os.Stderr, "[DEBUG] AI 响应发生了 UTF-8 修复，原长度: %d, 修复后: %d\n", len(respBytes), len(respContent))
-	}
+	// 修复无效 UTF-8 序列，防止 JSON 解析失败
+	respContent := strings.ToValidUTF8(string(respBytes), "�")
 
 	var dsResp deepSeekResponse
 	if err := json.Unmarshal([]byte(respContent), &dsResp); err != nil {
@@ -284,15 +274,7 @@ func doDeepSeekRequest(cfg *deepSeekEnvConfig, systemPrompt, userPrompt string) 
 		return "", resp.StatusCode, fmt.Errorf("AI 响应为空")
 	}
 
-	// 调试：输出 AI 返回内容的前200字符
-	content := dsResp.Choices[0].Message.Content
-	if len(content) > 200 {
-		fmt.Printf("[DEBUG] AI 返回内容 (%d 字符): %s...\n", len(content), content[:200])
-	} else {
-		fmt.Printf("[DEBUG] AI 返回内容 (%d 字符): %s\n", len(content), content)
-	}
-
-	return content, resp.StatusCode, nil
+	return dsResp.Choices[0].Message.Content, resp.StatusCode, nil
 }
 
 // stripMarkdownFence 去除 AI 输出中可能存在的 ```yaml ... ``` 包裹

@@ -1,9 +1,8 @@
 {
   "permissions": {
     "allow": [
-     "Bash(*)",
-     "Bash(powershell:*)",
-    "Write(*)",
+      "Bash(*)", 
+      "Write(*)",
       "Read(*)" 
     ],
     "defaultMode": "bypassPermissions"
