@@ -30,8 +30,13 @@ func min(a, b int) int {
 // Interaction 单个题目的推荐答案
 type Interaction struct {
 	Subject      string      `yaml:"subject" json:"subject"`
-	ShowAnswer   interface{} `yaml:"showAnswer" json:"showAnswer"`     // string 或 []string
-	QuestionType string      `yaml:"questionType" json:"questionType"` // 题目类型
+	ShowAnswer   interface{} `yaml:"showAnswer" json:"showAnswer"`      // string 或 []string
+	QuestionType string      `yaml:"questionType" json:"questionType"`   // 题目类型
+	// 开放题字数限制（非 AI 返回，验证前由代码填写）
+	WordLimit WordLimit `yaml:"wordLimit" json:"wordLimit"`
+	// 开放题验证结果（非 AI 返回，验证后由 validator 填写）
+	HumansPass           *bool  `yaml:"-" json:"-"`
+	PromptSuggestionNote string `yaml:"-" json:"-"`
 }
 
 // YamlAnswerResult 推荐答案结果
@@ -534,6 +539,27 @@ func GenerateRealtimeAnswerOnlyWithMeta(meta PageMetadata, cleanHTML, cachedYaml
 
 	if pageSummary != "" {
 		SavePageSummaryCache(surveyIDKey, meta.PageID, pageSummary)
+	}
+
+		// 步骤 4b：对开放题执行迭代验证（方案 A：强制，方案 C：失败返回 humans_pass=false）
+		openTextPrompts := loadOpenTextPrompts()
+		for i := range interactions {
+			if !IsOpenTextQuestion(interactions[i]) {
+				continue
+			}
+			fmt.Printf("[OpenText] 检测到开放题 [%d]: %s\n", i+1, interactions[i].Subject)
+			finalAnswer, humanPass, note, vErr := ValidateOpenTextAnswer(
+				interactions[i].Subject, surveyID, basePath, openTextPrompts, interactions[i].WordLimit,
+			)
+		if vErr != nil {
+			fmt.Printf("[OpenText] 验证失败，保留原始答案: %v\n", vErr)
+			pass := false
+			interactions[i].HumansPass = &pass
+			continue
+		}
+		interactions[i].ShowAnswer = finalAnswer
+		interactions[i].HumansPass = &humanPass
+		interactions[i].PromptSuggestionNote = note
 	}
 
 	finalJson := buildFinalAnswerJson(

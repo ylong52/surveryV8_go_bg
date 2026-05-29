@@ -40,26 +40,26 @@ var upgrader = websocket.Upgrader{
 }
 
 type Msg struct {
-	SessionID     string `json:"session_id"`
-	RawHTML       string `json:"rawhtml"`
-	URL           string `json:"url"`
-	Type          string `json:"type"`
-	DebugMode     string `json:"debugmode"`
-	RequestID     string `json:"requestId,omitempty"`
-	ImageBase64   string `json:"image_base64,omitempty"`
-	PageID        string `json:"page_id,omitempty"`
+	SessionID     string      `json:"session_id"`
+	RawHTML       string      `json:"rawhtml"`
+	URL           string      `json:"url"`
+	Type          string      `json:"type"`
+	DebugMode     string      `json:"debugmode"`
+	RequestID     string      `json:"requestId,omitempty"`
+	ImageBase64   string      `json:"image_base64,omitempty"`
+	PageID        string      `json:"page_id,omitempty"`
 	PageResultsID interface{} `json:"page_results_id,omitempty"`
-	SurveyID      string `json:"survey_id,omitempty"` // 问卷ID（可选，优先使用）
+	SurveyID      string      `json:"survey_id,omitempty"` // 问卷ID（可选，优先使用）
 }
 
 type Response struct {
-	Code                int         `json:"code"`
-	Message             string      `json:"message"`
-	RequestID           string      `json:"requestId,omitempty"`
-	PageResultsID       int64       `json:"page_results_id,omitempty"`
-	YamlTemplateSource  string      `json:"yaml_template_source,omitempty"`
-	ElapsedSec          float64     `json:"elapsed_sec,omitempty"`
-	Data                interface{} `json:"data,omitempty"`
+	Code               int         `json:"code"`
+	Message            string      `json:"message"`
+	RequestID          string      `json:"requestId,omitempty"`
+	PageResultsID      int64       `json:"page_results_id,omitempty"`
+	YamlTemplateSource string      `json:"yaml_template_source,omitempty"`
+	ElapsedSec         float64     `json:"elapsed_sec,omitempty"`
+	Data               interface{} `json:"data,omitempty"`
 }
 
 func wsHandler(w http.ResponseWriter, r *http.Request) {
@@ -246,9 +246,9 @@ func handleAnalyzeRequest(conn *websocket.Conn, msg Msg, basePath string) {
 	pageResultRecord, err := pageResultRepo.GetOrCreate(
 		surveyRecord.ID,
 		yamlResult.Meta.PageID,
-		cleanYamlTemplate,  // 保存过滤后的占位符模板
+		cleanYamlTemplate, // 保存过滤后的占位符模板
 		answerResultJSON,
-		pageFingerprint,    // 移除 recommended_answers 后的 interactions JSON
+		pageFingerprint, // 移除 recommended_answers 后的 interactions JSON
 		pageFingerprintMD5,
 	)
 	if err != nil {
@@ -463,7 +463,7 @@ func main() {
 	// 初始化数据库
 	dbPath := os.Getenv("DB_PATH")
 	if dbPath == "" {
-		dbPath = "./data/survey.db"
+		dbPath = "./data/survey202605.db"
 	}
 	if err := database.Init(dbPath); err != nil {
 		log.Fatalf("数据库初始化失败: %v", err)

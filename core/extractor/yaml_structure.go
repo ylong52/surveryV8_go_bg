@@ -72,9 +72,11 @@ type PageMetadataOutput struct {
 
 // InteractionItem interactions 项
 type InteractionItem struct {
-	QuestionType       string      `json:"question_type"`
-	Subject            string      `json:"subject"`
-	RecommendedAnswers interface{} `json:"recommended_answers"` // string or []string
+	QuestionType         string      `json:"question_type"`
+	Subject              string      `json:"subject"`
+	RecommendedAnswers   interface{} `json:"recommended_answers"`           // string or []string
+	HumansPass           *bool       `json:"humans_pass,omitempty"`         // nil=未验证，true/false=验证结果
+	PromptSuggestionNote string      `json:"prompt_suggestion_note,omitempty"` // ai_score>40 时的改进建议
 }
 
 // DataOutput data 输出
@@ -229,8 +231,10 @@ func buildInteractions(answers []Interaction, yamlTypes []string) []InteractionI
 			qt = yamlTypes[i]
 		}
 		item := InteractionItem{
-			QuestionType: qt,
-			Subject:      cleaner.CleanPageID(ans.Subject),
+			QuestionType:         qt,
+			Subject:              cleaner.CleanPageID(ans.Subject),
+			HumansPass:           ans.HumansPass,
+			PromptSuggestionNote: ans.PromptSuggestionNote,
 		}
 
 		switch v := ans.ShowAnswer.(type) {

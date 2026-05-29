@@ -56,7 +56,7 @@ func main() {
 	// 初始化数据库（用于 survey_id 查找，失败时 ws_server 会自行兜底）
 	dbPath := os.Getenv("DB_PATH")
 	if dbPath == "" {
-		dbPath = "./data/survey.db"
+		dbPath = "./data/survey202605.db"
 	}
 	if err := database.Init(dbPath); err == nil {
 		_ = database.InitSiteCache()

@@ -19,6 +19,16 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+// anthropicCfg 对应 configs/env.yaml → anthropic 节点
+type anthropicCfg struct {
+	APIKey      string  `yaml:"api_key"`
+	BaseURL     string  `yaml:"base_url"`
+	Model       string  `yaml:"model"`
+	MaxTokens   int     `yaml:"max_tokens"`
+	Temperature float64 `yaml:"temperature"`
+	Timeout     int     `yaml:"timeout"`
+}
+
 // deepSeekEnvConfig 对应 configs/env.yaml → deepseek 节点
 type deepSeekEnvConfig struct {
 	APIKey      string  `yaml:"api_key"`
@@ -29,7 +39,8 @@ type deepSeekEnvConfig struct {
 }
 
 type envYAMLFile struct {
-	DeepSeek deepSeekEnvConfig `yaml:"deepseek"`
+	DeepSeek  deepSeekEnvConfig `yaml:"deepseek"`
+	Anthropic anthropicCfg     `yaml:"anthropic"`
 }
 
 // deepSeekRequest 对应 DeepSeek /chat/completions 请求体
@@ -280,7 +291,7 @@ func doDeepSeekRequest(cfg *deepSeekEnvConfig, systemPrompt, userPrompt string) 
 // stripMarkdownFence 去除 AI 输出中可能存在的 ```yaml ... ``` 包裹
 func stripMarkdownFence(s string) string {
 	s = strings.TrimSpace(s)
-	for _, prefix := range []string{"```yaml", "```yml", "```"} {
+	for _, prefix := range []string{"```yaml", "```yml", "```json", "```"} {
 		if strings.HasPrefix(s, prefix) {
 			s = strings.TrimPrefix(s, prefix)
 			break
@@ -358,6 +369,175 @@ func writeAILog(basePath, surveyID, model string, attempt int, status, aiRespons
 	}
 	defer f.Close()
 	_, _ = f.WriteString(sb.String())
+}
+
+// =============================================================================
+// Anthropic Claude API 支持
+// =============================================================================
+
+// loadAnthropicConfig 从 configs/env.yaml 读取 Anthropic 节点配置
+func loadAnthropicConfig() (*anthropicCfg, error) {
+	data, err := os.ReadFile(aiEnvYAMLPath)
+	if err != nil {
+		return nil, fmt.Errorf("read %s: %w", aiEnvYAMLPath, err)
+	}
+	var f envYAMLFile
+	if err := yaml.Unmarshal(data, &f); err != nil {
+		return nil, fmt.Errorf("parse %s: %w", aiEnvYAMLPath, err)
+	}
+	cfg := &f.Anthropic
+	if cfg.APIKey == "" {
+		return nil, fmt.Errorf("anthropic.api_key is empty in %s", aiEnvYAMLPath)
+	}
+	if cfg.BaseURL == "" {
+		cfg.BaseURL = "https://api.anthropic.com"
+	}
+	if cfg.Model == "" {
+		cfg.Model = "claude-sonnet-4-6"
+	}
+	if cfg.MaxTokens <= 0 {
+		cfg.MaxTokens = 1024
+	}
+	if cfg.Timeout <= 0 {
+		cfg.Timeout = 60
+	}
+	return cfg, nil
+}
+
+// callClaudeAPIInternal 调用 Anthropic Claude Messages API（非 OpenAI 兼容格式）
+//
+// @param cfg     Anthropic 配置
+// @param system  系统提示词
+// @param user    用户消息
+// @returns       AI 回复文本，或错误
+func callClaudeAPIInternal(cfg *anthropicCfg, system, user string) (string, error) {
+	type claudeMsg struct {
+		Role    string `json:"role"`
+		Content string `json:"content"`
+	}
+	type claudeReq struct {
+		Model       string      `json:"model"`
+		MaxTokens   int         `json:"max_tokens"`
+		Temperature float64     `json:"temperature"`
+		System      string      `json:"system"`
+		Messages    []claudeMsg `json:"messages"`
+	}
+
+	body, err := json.Marshal(claudeReq{
+		Model:       cfg.Model,
+		MaxTokens:   cfg.MaxTokens,
+		Temperature: cfg.Temperature,
+		System:      system,
+		Messages:    []claudeMsg{{Role: "user", Content: user}},
+	})
+	if err != nil {
+		return "", fmt.Errorf("marshal claude request: %w", err)
+	}
+
+	timeout := time.Duration(cfg.Timeout) * time.Second
+	if timeout == 0 {
+		timeout = 60 * time.Second
+	}
+	client := &http.Client{Timeout: timeout}
+
+	req, err := http.NewRequest("POST", cfg.BaseURL+"/v1/messages", bytes.NewReader(body))
+	if err != nil {
+		return "", fmt.Errorf("create claude request: %w", err)
+	}
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("x-api-key", cfg.APIKey)
+	req.Header.Set("anthropic-version", "2023-06-01")
+
+	resp, err := client.Do(req)
+	if err != nil {
+		return "", fmt.Errorf("claude HTTP 请求失败: %w", err)
+	}
+	defer resp.Body.Close()
+
+	respBytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return "", fmt.Errorf("read claude response: %w", err)
+	}
+	if resp.StatusCode != 200 {
+		return "", fmt.Errorf("claude HTTP %d: %s", resp.StatusCode, string(respBytes))
+	}
+
+	type claudeResp struct {
+		Content []struct {
+			Type string `json:"type"`
+			Text string `json:"text"`
+		} `json:"content"`
+	}
+	var result claudeResp
+	if err := json.Unmarshal(respBytes, &result); err != nil {
+		return "", fmt.Errorf("parse claude response: %w", err)
+	}
+	if len(result.Content) == 0 || result.Content[0].Text == "" {
+		return "", fmt.Errorf("claude 返回空响应")
+	}
+	return result.Content[0].Text, nil
+}
+
+// CallAIRawText 调用 DeepSeek API，返回原始文本（不验证 JSON/YAML 格式）
+//   专为开放题生成设计，temperature 可选覆盖（不传则使用 env.yaml 配置值）
+//
+// @param surveyID     问卷 ID（日志用）
+// @param systemPrompt 系统提示词
+// @param userPrompt   用户消息
+// @param basePath     存储根目录
+// @param temperature  可选温度覆盖（传入 > 0 时生效）
+// @returns            AI 回复文本，或错误
+func CallAIRawText(surveyID, systemPrompt, userPrompt, basePath string, temperature ...float64) (string, error) {
+	cfg, err := loadDeepSeekEnvConfig()
+	if err != nil {
+		return "", fmt.Errorf("CallAIRawText: load config: %w", err)
+	}
+
+	// 温度覆盖
+	if len(temperature) > 0 && temperature[0] > 0 {
+		cfgCopy := *cfg
+		cfgCopy.Temperature = temperature[0]
+		cfg = &cfgCopy
+	}
+
+	const maxRetries = 3
+	var lastErr error
+
+	for attempt := 0; attempt < maxRetries; attempt++ {
+		startReq := time.Now()
+		content, statusCode, reqErr := doDeepSeekRequest(cfg, systemPrompt, userPrompt)
+		elapsed := time.Since(startReq)
+
+		if reqErr != nil {
+			writeAILog(basePath, surveyID, cfg.Model, attempt,
+				fmt.Sprintf("网络错误(raw): %v", reqErr), "", elapsed)
+			lastErr = reqErr
+			time.Sleep(1 * time.Second)
+			continue
+		}
+		if statusCode == 401 {
+			return "", fmt.Errorf("API 认证失败")
+		}
+		if statusCode == 429 {
+			lastErr = fmt.Errorf("API 限流 (429)")
+			time.Sleep(5 * time.Second)
+			continue
+		}
+		if statusCode >= 500 {
+			lastErr = fmt.Errorf("API 服务器错误 (%d)", statusCode)
+			time.Sleep(2 * time.Second)
+			continue
+		}
+		if statusCode != 200 {
+			return "", fmt.Errorf("API 错误: HTTP %d", statusCode)
+		}
+
+		cleaned := strings.TrimSpace(stripMarkdownFence(content))
+		writeAILog(basePath, surveyID, cfg.Model, attempt, "成功(raw)", cleaned, elapsed)
+		return cleaned, nil
+	}
+
+	return "", fmt.Errorf("CallAIRawText 失败，已重试 %d 次: %w", maxRetries, lastErr)
 }
 
 // saveAIFailureLog 将失败请求完整信息保存到

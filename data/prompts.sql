@@ -403,10 +403,12 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
       questions_type: open_end
       required: "<<<FROM_HTML:required>>>"
       input_type: textarea
+      min_words: "<<<FROM_PROPERTIES:min_words>>>"
+      max_words: "<<<FROM_PROPERTIES:max_words>>>"
       placeholder: "<<<FROM_HTML:placeholder>>>"
       response_format:
         type: open_text
-', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+', 1, 1, '2026-05-27 14:38:44', '2026-05-29 15:53:00');
 INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "content", "description", "yaml_template", "version", "is_active", "created_at", "updated_at") VALUES (12, 'qtype.open_text', 'question_type', 'open_text', '
 == OPEN-ENDED TEXT (type: "open_text") ==
 
@@ -448,10 +450,12 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
       questions_type: open_text
       required: "<<<FROM_HTML:required>>>"
       input_type: text
+      min_words: "<<<FROM_PROPERTIES:min_words>>>"
+      max_words: "<<<FROM_PROPERTIES:max_words>>>"
       placeholder: "<<<FROM_HTML:placeholder>>>"
       response_format:
         type: open_text
-', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+', 1, 1, '2026-05-27 14:38:44', '2026-05-29 15:53:00');
 INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "content", "description", "yaml_template", "version", "is_active", "created_at", "updated_at") VALUES (13, 'qtype.semantic_diff', 'question_type', 'semantic_diff', '== SEMANTIC DIFFERENTIAL (type: "semantic_diff") ==
 
 【识别特征】
@@ -1573,13 +1577,13 @@ is_description_page: "<<<FROM_HTML:is_description_page>>>"
 - 只有说明文字、图片等非题目内容，无任何可交互表单元素时为 true
 - 包含：问卷说明、免责声明、隐私政策、答题指引等
 ', 'YAML提取：页面属性检测规则', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
-INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "content", "description", "yaml_template", "version", "is_active", "created_at", "updated_at") VALUES (196, 'system.type_detector', 'system', NULL, '你是一个问卷题型识别助手。
-从以下候选题型列表中，识别当前HTML页面包含哪些题型。
-
-候选列表：{question_types}
-
-规则：
-1. 只能从候选列表中选择，不得添加候选列表之外的值
-2. 页面有多个题型时全部列出
-3. 返回格式严格为JSON数组，例如：["matrix_radio"] 或 ["matrix_radio","single"]
+INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "content", "description", "yaml_template", "version", "is_active", "created_at", "updated_at") VALUES (196, 'system.type_detector', 'system', NULL, '你是一个问卷题型识别助手。
+从以下候选题型列表中，识别当前HTML页面包含哪些题型。
+
+候选列表：{question_types}
+
+规则：
+1. 只能从候选列表中选择，不得添加候选列表之外的值
+2. 页面有多个题型时全部列出
+3. 返回格式严格为JSON数组，例如：["matrix_radio"] 或 ["matrix_radio","single"]
 4. 不需要解释，只返回JSON数组', NULL, NULL, 1, 1, '2026-05-27 16:39:26', '2026-05-27 16:39:26');
