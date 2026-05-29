@@ -10,21 +10,28 @@ CREATE INDEX IF NOT EXISTS idx_survey_session_id ON survey(session_id);
 
 -- 创建 page_results 表
 CREATE TABLE IF NOT EXISTS page_results (
-    id                  INTEGER PRIMARY KEY AUTOINCREMENT,
-    survey_id           INTEGER     NOT NULL,
-    page_id             VARCHAR(128) NOT NULL,
-    yaml_template       TEXT,
-    recommend_answer    TEXT,
-    interactions        TEXT,
-    interactions_md5   VARCHAR(32)  NOT NULL,
-    screenshot_path     TEXT,
-    created_at          DATETIME    DEFAULT (datetime('now', 'localtime')),
+    id                    INTEGER PRIMARY KEY AUTOINCREMENT,
+    survey_id             INTEGER     NOT NULL,
+    page_id               VARCHAR(128) NOT NULL,
+    yaml_template         TEXT,
+    recommend_answer      TEXT,
+    page_fingerprint      TEXT,
+    page_fingerprint_md5  VARCHAR(32)  NOT NULL,
+    screenshot_path       TEXT,
+    ocr_text             TEXT,
+    ocr_json             TEXT,
+    ocr_model            VARCHAR(32),
+    ocr_verified         VARCHAR(16),
+    ocr_verified_at      DATETIME,
+    ocr_error            TEXT,
+    created_at           DATETIME    DEFAULT (datetime('now', 'localtime')),
     FOREIGN KEY (survey_id) REFERENCES survey(id),
-    UNIQUE(survey_id, page_id, interactions_md5)
+    UNIQUE(survey_id, page_id, page_fingerprint_md5)
 );
 CREATE INDEX IF NOT EXISTS idx_page_results_survey_id ON page_results(survey_id);
 CREATE INDEX IF NOT EXISTS idx_page_results_page_id ON page_results(page_id);
-CREATE INDEX IF NOT EXISTS idx_page_results_interactions_md5 ON page_results(interactions_md5);
+CREATE INDEX IF NOT EXISTS idx_page_results_page_fingerprint_md5 ON page_results(page_fingerprint_md5);
+CREATE INDEX IF NOT EXISTS idx_page_results_screenshot ON page_results(screenshot_path) WHERE screenshot_path IS NOT NULL;
 
 -- 创建 page_html_source 表
 CREATE TABLE IF NOT EXISTS page_html_source (

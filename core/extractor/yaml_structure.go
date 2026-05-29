@@ -163,7 +163,7 @@ func parseQuestionsTypeFromYaml(yamlData string) []string {
 		if !inQuestions {
 			continue
 		}
-		if strings.HasPrefix(trimmed, "- q_index:") {
+		if strings.HasPrefix(trimmed, "- q_index:") || strings.HasPrefix(trimmed, "- title:") || strings.HasPrefix(trimmed, "- subject:") {
 			types = append(types, "")
 		} else if strings.HasPrefix(trimmed, "questions_type:") && len(types) > 0 {
 			parts := strings.SplitN(trimmed, ":", 2)

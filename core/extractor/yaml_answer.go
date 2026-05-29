@@ -542,8 +542,17 @@ func GenerateRealtimeAnswerOnlyWithMeta(meta PageMetadata, cleanHTML, cachedYaml
 	}
 
 		// 步骤 4b：对开放题执行迭代验证（方案 A：强制，方案 C：失败返回 humans_pass=false）
+		// 解析 YAML 题型，防止因 AI 返回长文本而误判单选/多选题为开放题
+		yamlQuestionTypes := parseQuestionsTypeFromYaml(cachedYaml)
+		closedQuestionTypes := map[string]bool{
+			"single": true, "multi": true, "matrix_radio": true,
+			"matrix_checkbox": true, "dropdown": true, "ranking": true,
+		}
 		openTextPrompts := loadOpenTextPrompts()
 		for i := range interactions {
+			if i < len(yamlQuestionTypes) && closedQuestionTypes[yamlQuestionTypes[i]] {
+				continue // YAML 明确为封闭题型，跳过开放题流程
+			}
 			if !IsOpenTextQuestion(interactions[i]) {
 				continue
 			}

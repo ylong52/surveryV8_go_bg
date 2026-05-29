@@ -211,7 +211,7 @@ func (r *PageResultRepo) GetOrCreate(surveyID int64, pageID, yamlTemplate, recom
 // @returns yaml_template 字符串（空表示未找到）和 error
 func (r *PageResultRepo) FindYamlTemplate(surveyID int64, pageID string) (string, error) {
 	row := r.db.QueryRow(`
-		SELECT yaml_template FROM page_results 
+		SELECT yaml_template FROM page_results
 		WHERE survey_id = ? AND page_id = ? AND yaml_template IS NOT NULL AND yaml_template != ''
 		LIMIT 1
 	`, surveyID, pageID)
@@ -225,4 +225,62 @@ func (r *PageResultRepo) FindYamlTemplate(surveyID int64, pageID string) (string
 		return "", fmt.Errorf("FindYamlTemplate scan: %w", err)
 	}
 	return yamlTemplate, nil
+}
+
+// UpdateOCRResult 更新 OCR 分析结果
+// @param id page_results 主键
+// @param ocrText 原始 OCR 文字
+// @param ocrJSON 结构化 OCR JSON
+// @param ocrModel 使用的视觉模型名称
+// @param ocrVerified 比对结果：match/mismatch/unclear
+// @param ocrError OCR 调用失败错误信息（无错误传空字符串）
+// @returns error
+func (r *PageResultRepo) UpdateOCRResult(id int64, ocrText, ocrJSON, ocrModel, ocrVerified, ocrError string) error {
+	_, err := r.db.Exec(`
+		UPDATE page_results
+		   SET ocr_text = ?, ocr_json = ?, ocr_model = ?,
+		       ocr_verified = ?, ocr_verified_at = datetime('now', 'localtime'),
+		       ocr_error = ?
+		 WHERE id = ?
+	`, ocrText, ocrJSON, ocrModel, ocrVerified, ocrError, id)
+	if err != nil {
+		return fmt.Errorf("UpdateOCRResult: %w", err)
+	}
+	return nil
+}
+
+// FindByID 根据 page_results 主键查询完整记录（含 OCR 字段）
+// @param id page_results 主键
+// @returns PageResult 记录和 error
+func (r *PageResultRepo) FindByID(id int64) (*PageResult, error) {
+	row := r.db.QueryRow(`
+		SELECT id, survey_id, page_id, yaml_template, recommend_answer,
+		       page_fingerprint, page_fingerprint_md5, screenshot_path,
+		       ocr_text, ocr_json, ocr_model, ocr_verified, ocr_verified_at, ocr_error,
+		       created_at
+		  FROM page_results WHERE id = ?
+	`, id)
+
+	var p PageResult
+	var ocrText, ocrJSON, ocrModel, ocrVerified, ocrVerifiedAt, ocrError sql.NullString
+	err := row.Scan(
+		&p.ID, &p.SurveyID, &p.PageID,
+		&p.YamlTemplate, &p.RecommendAnswer,
+		&p.PageFingerprint, &p.PageFingerprintMD5, &p.ScreenshotPath,
+		&ocrText, &ocrJSON, &ocrModel, &ocrVerified, &ocrVerifiedAt, &ocrError,
+		&p.CreatedAt,
+	)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			return nil, nil
+		}
+		return nil, fmt.Errorf("FindByID scan: %w", err)
+	}
+	p.OCRText = ocrText.String
+	p.OCRJSON = ocrJSON.String
+	p.OCRModel = ocrModel.String
+	p.OCRVerified = ocrVerified.String
+	p.OCRVerifiedAt = ocrVerifiedAt.String
+	p.OCRError = ocrError.String
+	return &p, nil
 }

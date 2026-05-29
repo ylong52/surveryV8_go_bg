@@ -21,7 +21,13 @@ type PageResult struct {
 	PageFingerprint    string    `json:"page_fingerprint"`     // interactions 去除答案后的 JSON
 	PageFingerprintMD5 string    `json:"page_fingerprint_md5"` // PageFingerprint 的 MD5
 	ScreenshotPath     string    `json:"screenshot_path"`      // 截图文件路径
-	CreatedAt          time.Time `json:"created_at"`
+	OCRText           string    `json:"ocr_text"`             // 截图 OCR 原始文字
+	OCRJSON           string    `json:"ocr_json"`             // 截图 OCR 结构化 JSON
+	OCRModel          string    `json:"ocr_model"`            // OCR 视觉模型名称
+	OCRVerified       string    `json:"ocr_verified"`         // 比对结果：match/mismatch/unclear
+	OCRVerifiedAt     string    `json:"ocr_verified_at"`      // 比对时间
+	OCRError          string    `json:"ocr_error"`            // OCR 调用失败错误信息
+	CreatedAt         time.Time `json:"created_at"`
 }
 
 // PageResultPrompt AI Prompt 记录，对应 page_result_prompt 表（只新增不修改）

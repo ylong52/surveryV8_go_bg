@@ -422,6 +422,41 @@ func handleScreenshot(conn *websocket.Conn, msg Msg, basePath string) {
 	fmt.Printf("结果: UPDATE 成功，影响 page_results_id=%d\n", pageResultsID)
 	fmt.Printf("截图路径: %s\n", filePath)
 	fmt.Println()
+
+	fmt.Println("========================================")
+	fmt.Println(">>> 步骤 3: OCR 截图分析与答案比对")
+	fmt.Println("========================================")
+	// 读取完整记录（含 recommend_answer）
+	fullRecord, err := repo.FindByID(pageResultsID)
+	if err != nil {
+		fmt.Printf("警告: 读取 page_results 失败，跳过 OCR: %v\n", err)
+	} else if fullRecord == nil {
+		fmt.Printf("警告: page_results_id=%d 记录不存在，跳过 OCR\n", pageResultsID)
+	} else {
+		fmt.Printf("调用 OCR: page_results_id=%d, page_id=%q\n", pageResultsID, fullRecord.PageID)
+		ocrJSON, ocrVerified, ocrErr := extractor.OCRAndAnalyze(filePath, fullRecord.RecommendAnswer, fullRecord.PageID, basePath)
+
+		var ocrError string
+		ocrModel := "qwen-vl-plus"
+
+		if ocrErr != nil {
+			ocrError = ocrErr.Error()
+			ocrVerified = "unclear"
+			ocrJSON = ""
+			fmt.Printf("警告: OCR 失败: %v\n", ocrErr)
+		} else {
+			fmt.Printf("OCR 结果: overall=%s\n", ocrVerified)
+		}
+
+		// 写入 OCR 结果到数据库
+		if updateErr := repo.UpdateOCRResult(pageResultsID, "", ocrJSON, ocrModel, ocrVerified, ocrError); updateErr != nil {
+			fmt.Printf("警告: 更新 OCR 结果失败: %v\n", updateErr)
+		} else {
+			fmt.Printf("结果: OCR 结果已写入 page_results_id=%d\n", pageResultsID)
+		}
+	}
+	fmt.Println()
+
 	fmt.Printf(">>> 截图处理完成: %s (%d bytes)\n", filePath, len(imageData))
 }
 
