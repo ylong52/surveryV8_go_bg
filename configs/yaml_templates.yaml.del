@@ -1,0 +1,580 @@
+# ==============================================================================
+# YAML 题型固定模板
+# 每种题型对应一个标准占位符模板，由代码直接返回，不依赖 AI 生成模板
+# 所有动态值使用 <<<FROM_HTML:xxx>>> 占位符；结构字段按题型硬编码
+# ==============================================================================
+
+templates:
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 单选题
+  # ────────────────────────────────────────────────────────────────────────────
+  single: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: single
+          required: "<<<FROM_HTML:required>>>"
+          options: "<<<FROM_HTML:options[]>>>"
+          response_format:
+            type: single_select
+            option_sort: as_appearing
+            max_selections: null
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 多选题
+  # ────────────────────────────────────────────────────────────────────────────
+  multi: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: multi
+          required: "<<<FROM_HTML:required>>>"
+          options: "<<<FROM_HTML:options[]>>>"
+          response_format:
+            type: multi_select
+            option_sort: as_appearing
+            max_selections: "<<<FROM_HTML:max_selections>>>"
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 矩阵单选题
+  # ────────────────────────────────────────────────────────────────────────────
+  matrix_radio: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: matrix_radio
+          required: "<<<FROM_HTML:required>>>"
+          columns: "<<<FROM_HTML:columns[]>>>"
+          rows: "<<<FROM_HTML:rows[]>>>"
+          response_format:
+            type: single_per_row
+            orientation: horizontal
+            option_sort: as_appearing
+            max_selections: null
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 矩阵多选题
+  # ────────────────────────────────────────────────────────────────────────────
+  matrix_checkbox: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: matrix_checkbox
+          required: "<<<FROM_HTML:required>>>"
+          columns: "<<<FROM_HTML:columns[]>>>"
+          rows: "<<<FROM_HTML:rows[]>>>"
+          response_format:
+            type: multi_per_row
+            orientation: horizontal
+            option_sort: as_appearing
+            max_selections: null
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # Likert 量表（多行独立评分）
+  # ────────────────────────────────────────────────────────────────────────────
+  likert: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: likert
+          required: "<<<FROM_HTML:required>>>"
+          columns: "<<<FROM_HTML:columns[]>>>"
+          rows: "<<<FROM_HTML:rows[]>>>"
+          response_format:
+            type: single_per_row
+            orientation: horizontal
+            option_sort: as_appearing
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 语义差异量表
+  # ────────────────────────────────────────────────────────────────────────────
+  semantic_diff: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: semantic_diff
+          required: "<<<FROM_HTML:required>>>"
+          columns: "<<<FROM_HTML:columns[]>>>"
+          rows: "<<<FROM_HTML:rows[]>>>"
+          response_format:
+            type: semantic_diff
+            orientation: horizontal
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 滑动条
+  # ────────────────────────────────────────────────────────────────────────────
+  slider: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: slider
+          required: "<<<FROM_HTML:required>>>"
+          min: "<<<FROM_HTML:min>>>"
+          max: "<<<FROM_HTML:max>>>"
+          min_label: "<<<FROM_HTML:min_label>>>"
+          max_label: "<<<FROM_HTML:max_label>>>"
+          response_format:
+            type: slider
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # NPS (0-10)
+  # ────────────────────────────────────────────────────────────────────────────
+  nps: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: nps
+          required: "<<<FROM_HTML:required>>>"
+          min: "0"
+          max: "10"
+          min_label: "<<<FROM_HTML:min_label>>>"
+          max_label: "<<<FROM_HTML:max_label>>>"
+          response_format:
+            type: nps
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 卡片式量表 / 星级评分
+  # ────────────────────────────────────────────────────────────────────────────
+  likert_card: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: likert_card
+          required: "<<<FROM_HTML:required>>>"
+          options: "<<<FROM_HTML:options[]>>>"
+          response_format:
+            type: likert_scale
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 下拉选择
+  # ────────────────────────────────────────────────────────────────────────────
+  select: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: select
+          required: "<<<FROM_HTML:required>>>"
+          options: "<<<FROM_HTML:options[]>>>"
+          response_format:
+            type: single_select
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 开放文本（单行输入）
+  # ────────────────────────────────────────────────────────────────────────────
+  open_text: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: open_text
+          required: "<<<FROM_HTML:required>>>"
+          input_type: text
+          placeholder: "<<<FROM_HTML:placeholder>>>"
+          response_format:
+            type: open_text
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 开放式长文本（textarea）
+  # ────────────────────────────────────────────────────────────────────────────
+  open_end: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: open_end
+          required: "<<<FROM_HTML:required>>>"
+          input_type: textarea
+          placeholder: "<<<FROM_HTML:placeholder>>>"
+          response_format:
+            type: open_text
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 邮箱输入
+  # ────────────────────────────────────────────────────────────────────────────
+  email: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: email
+          required: "<<<FROM_HTML:required>>>"
+          placeholder: "<<<FROM_HTML:placeholder>>>"
+          response_format:
+            type: open_text
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 电话输入
+  # ────────────────────────────────────────────────────────────────────────────
+  phone: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: phone
+          required: "<<<FROM_HTML:required>>>"
+          placeholder: "<<<FROM_HTML:placeholder>>>"
+          response_format:
+            type: open_text
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 数字输入
+  # ────────────────────────────────────────────────────────────────────────────
+  number: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: number
+          required: "<<<FROM_HTML:required>>>"
+          min: "<<<FROM_HTML:min>>>"
+          max: "<<<FROM_HTML:max>>>"
+          placeholder: "<<<FROM_HTML:placeholder>>>"
+          response_format:
+            type: open_text
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 日期输入
+  # ────────────────────────────────────────────────────────────────────────────
+  date: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: date
+          required: "<<<FROM_HTML:required>>>"
+          response_format:
+            type: date
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 时间输入
+  # ────────────────────────────────────────────────────────────────────────────
+  time: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: time
+          required: "<<<FROM_HTML:required>>>"
+          response_format:
+            type: time
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 图片选择
+  # ────────────────────────────────────────────────────────────────────────────
+  image_select: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: image_select
+          required: "<<<FROM_HTML:required>>>"
+          options: "<<<FROM_HTML:options[]>>>"
+          response_format:
+            type: single_select
+            max_selections: "<<<FROM_HTML:max_selections>>>"
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 选择最 X 题 (Top/Bottom N)
+  # ────────────────────────────────────────────────────────────────────────────
+  multi_select: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: multi_select
+          required: "<<<FROM_HTML:required>>>"
+          options: "<<<FROM_HTML:options[]>>>"
+          response_format:
+            type: multi_select
+            max_selections: "<<<FROM_HTML:max_selections>>>"
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 拖拽排序
+  # ────────────────────────────────────────────────────────────────────────────
+  ranking_drag: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: ranking_drag
+          required: "<<<FROM_HTML:required>>>"
+          options: "<<<FROM_HTML:options[]>>>"
+          response_format:
+            type: ranking
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 选择排序
+  # ────────────────────────────────────────────────────────────────────────────
+  ranking_select: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: ranking_select
+          required: "<<<FROM_HTML:required>>>"
+          options: "<<<FROM_HTML:options[]>>>"
+          response_format:
+            type: ranking
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # MaxDiff / Best-Worst
+  # ────────────────────────────────────────────────────────────────────────────
+  max_diff: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: max_diff
+          required: "<<<FROM_HTML:required>>>"
+          options: "<<<FROM_HTML:options[]>>>"
+          response_format:
+            type: max_diff
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 联合分析
+  # ────────────────────────────────────────────────────────────────────────────
+  conjoint: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: conjoint
+          required: "<<<FROM_HTML:required>>>"
+          response_format:
+            type: conjoint
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 卡片拖拽分类
+  # ────────────────────────────────────────────────────────────────────────────
+  cardsort_drag: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: cardsort_drag
+          required: "<<<FROM_HTML:required>>>"
+          categories: "<<<FROM_HTML:categories[]>>>"
+          cards: "<<<FROM_HTML:cards[]>>>"
+          response_format:
+            type: cardsort
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 卡片下拉分类
+  # ────────────────────────────────────────────────────────────────────────────
+  cardsort_select: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: cardsort_select
+          required: "<<<FROM_HTML:required>>>"
+          categories: "<<<FROM_HTML:categories[]>>>"
+          cards: "<<<FROM_HTML:cards[]>>>"
+          response_format:
+            type: cardsort
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 热力图点击
+  # ────────────────────────────────────────────────────────────────────────────
+  heatmap: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: heatmap
+          required: "<<<FROM_HTML:required>>>"
+          response_format:
+            type: heatmap
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 说明页（无交互元素）
+  # ────────────────────────────────────────────────────────────────────────────
+  instruction: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "true"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: instruction
+          response_format:
+            type: instruction
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 混合题型 / 未知题型（降级兜底）
+  # ────────────────────────────────────────────────────────────────────────────
+  mixed: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: "<<<FROM_HTML:questions_type>>>"
+          required: "<<<FROM_HTML:required>>>"
+          response_format:
+            type: "<<<FROM_HTML:type>>>"
+            max_selections: null
+
+  unknown: |
+    survey_page:
+      title: "<<<FROM_HTML:title>>>"
+      page_metadata:
+        has_next_button: "<<<FROM_HTML:has_next_button>>>"
+        has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+        is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+        is_description_page: "<<<FROM_HTML:is_description_page>>>"
+      questions:
+        - title: "<<<FROM_HTML:title>>>"
+          questions_type: "<<<FROM_HTML:questions_type>>>"
+          required: "<<<FROM_HTML:required>>>"
+          response_format:
+            type: "<<<FROM_HTML:type>>>"
+            max_selections: null
