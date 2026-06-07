@@ -1,0 +1,33 @@
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "board 1 of 3 please indicate whether or not you have heard of",
+      "is_matrix_page": true
+    },
+    "interactions": [
+      {"question_type": "matrix_radio", "subject": "the real housewives of potomac", "recommended_answers": "Yes"},
+      {"question_type": "", "subject": "56 days", "recommended_answers": "No"},
+      {"question_type": "", "subject": "the ceo club", "recommended_answers": "No"},
+      {"question_type": "", "subject": "dreaming whilst black", "recommended_answers": "Yes"},
+      {"question_type": "", "subject": "black and jewish america an interwoven history", "recommended_answers": "No"},
+      {"question_type": "", "subject": "tyler perry's house of payne", "recommended_answers": "Yes"},
+      {"question_type": "", "subject": "belle collective", "recommended_answers": "No"},
+      {"question_type": "", "subject": "marshals", "recommended_answers": "No"},
+      {"question_type": "", "subject": "the traitors", "recommended_answers": "Yes"},
+      {"question_type": "", "subject": "coldwater", "recommended_answers": "No"},
+      {"question_type": "", "subject": "summer house", "recommended_answers": "Yes"},
+      {"question_type": "", "subject": "the 'burbs", "recommended_answers": "No"},
+      {"question_type": "", "subject": "beyond the gates", "recommended_answers": "Yes"},
+      {"question_type": "", "subject": "tyler perry's joe's college road trip", "recommended_answers": "No"},
+      {"question_type": "", "subject": "below deck down under", "recommended_answers": "Yes"},
+      {"question_type": "", "subject": "tell me lies", "recommended_answers": "No"},
+      {"question_type": "", "subject": "can you keep a secret", "recommended_answers": "No"},
+      {"question_type": "", "subject": "formula 1 drive to survive", "recommended_answers": "Yes"},
+      {"question_type": "", "subject": "cbs mornings", "recommended_answers": "Yes"},
+      {"question_type": "", "subject": "reality check inside america's next top model", "recommended_answers": "No"},
+      {"question_type": "", "subject": "tehran", "recommended_answers": "No"},
+      {"question_type": "", "subject": "love hip hop atlanta", "recommended_answers": "Yes"},
+      {"question_type": "", "subject": "school spirits", "recommended_answers": "No"}
+    ]
+  }
+}

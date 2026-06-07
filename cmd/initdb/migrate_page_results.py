@@ -22,7 +22,7 @@ import sqlite3
 import sys
 import os
 
-DB_PATH = "data/survey.db"
+DB_PATH = "data/survey202605.db"
 
 
 def calc_md5(data: str) -> str:

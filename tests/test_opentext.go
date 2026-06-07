@@ -278,7 +278,7 @@ func main() {
 		fatalf("配置校验失败: %v", err)
 	}
 
-	prompts := loadPrompts("data/survey.db")
+	prompts := loadPrompts("data/survey202605.db")
 	fmt.Println()
 
 	question := askQuestion()
@@ -479,7 +479,8 @@ func callClaudeAPI(apiKey, baseURL, model string, maxTokens int,
 	if timeout == 0 {
 		timeout = 60 * time.Second
 	}
-	client := &http.Client{Timeout: timeout}
+	transport := &http.Transport{}
+	client := &http.Client{Timeout: timeout, Transport: transport}
 
 	req, err := http.NewRequest("POST", baseURL+"/v1/messages", bytes.NewReader(body))
 	if err != nil {
@@ -554,7 +555,8 @@ func callChatAPI(apiKey, baseURL, model string, temperature float64,
 	if timeout == 0 {
 		timeout = 60 * time.Second
 	}
-	client := &http.Client{Timeout: timeout}
+	transport := &http.Transport{}
+	client := &http.Client{Timeout: timeout, Transport: transport}
 
 	req, err := http.NewRequest("POST", baseURL+"/chat/completions", bytes.NewReader(body))
 	if err != nil {

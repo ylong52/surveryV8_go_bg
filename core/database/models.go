@@ -66,3 +66,18 @@ type SiteFingerprint struct {
 	NextPattern          string   `json:"next_pattern"`
 	WaitAfterClick       int      `json:"wait_after_click"`
 }
+
+// UserSubmittedAnswer 用户提交的答案，对应 user_submitted_answers 表
+type UserSubmittedAnswer struct {
+	ID              int64  `json:"id"`
+	SessionID       string `json:"session_id"`
+	PageResultsID   int64  `json:"page_results_id"`  // FK → page_results.id
+	Question        string `json:"question"`         // 问题文本
+	Answer          string `json:"answer"`           // 用户提交的答案
+	InteractionType string `json:"interaction_type"` // single / matrix / multi / text
+	RowLabel        string `json:"row_label"`        // 矩阵题行文本
+	ColLabel        string `json:"col_label"`        // 矩阵题列文本
+	AnswerID        string `json:"answer_id"`        // 前端生成的 answer ID
+	Timestamp       int64  `json:"timestamp"`        // Unix ms
+	SubmittedAt     string `json:"submitted_at"`     // 提交时间
+}

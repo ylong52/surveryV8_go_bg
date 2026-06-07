@@ -1,0 +1,1732 @@
+<html lang="en-GB"><!--<![endif]--><head><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/captchafox/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/mt_captcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/hunter.js" data-ts-input="cf-turnstile-response"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/amazon_waf/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/yandex/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/lemin/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/keycaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest_v4/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/communication_helpers.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/core_helpers.js"></script>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- respview.client.meta -->
+
+
+<title>Tapestry Research</title>
+
+
+<!-- respview.css -->
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css?ad7753b880">
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.beacon.css?4ddb951d43">
+
+<!-- generated from: static/support/font-awesome-4.2.0/less/font-awesome.less, static/support/select2-4.0.1/select2.min.css, static/survey.respondent-post151.less, selfserve/2222/260216/static/theme.less, lib/steam/atm1d/v11/static/atm1d.less, lib/steam/cardsort/v7/static/cardsort.less and 0 themevars -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/less-compiled.css?a932463a8405103997a94450f6245f0e">
+
+
+<!-- extra CSS -->
+
+
+<!-- Custom CSS (specified in survey.xml) -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/Tapestry.css">
+
+<!-- respview.client.css -->
+<style>
+        table {
+        border-collapse: inherit !important; 
+        }
+        .row-col-legends-top {
+        background: #ededed;
+        position: sticky;
+        top: -16px;
+        z-index: 100;
+        }
+        .empty {
+        border: 1px solid #ccc;
+        }
+    </style>
+
+<!-- client.css -->
+<style media="screen">
+
+</style>
+
+<!-- JQuery -->
+<!--
+/s/jquery183.all.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/e2190ba850ec2bfa3e7d1567d2021910.js"></script>
+
+
+<!-- extra Logic -->
+
+
+<!-- respview.js -->
+<script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = '_?$&\')*,(;=.-~:@!';
+for (var i = 1, result = ''; i <= Math.floor(13 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((13 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script>
+
+<!--[if lte IE 8]><script src="/s/support/respond/respond-1.4.2.min.js"></script><script src="/s/support/rem-unit-polyfill/rem.min.js"></script><![endif]-->
+
+
+<!--
+/s/support/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js
+/s/common.js
+/s/respview-post132.js
+/s/survey.respondent-post143.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/6f7910d7512e9866158e9fcb02cfdd53.js"></script>
+
+
+<!-- extra JS -->
+
+
+
+
+
+
+
+<!-- respview.client.js -->
+
+
+<!-- client.javascript -->
+
+
+<script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script>
+
+<!-- extra Head -->
+
+
+<captcha-widgets></captcha-widgets></head>
+
+<body class="survey-page non-touch" data-device="">
+
+
+<div id="survey" class="survey-container">
+<div class="survey-section"><div class="page-header"></div>
+<!-- /.page-header --></div>
+<div class="survey-section">
+<div class="survey-body">
+<div class="survey-header">
+<div class="logo logo-middle">
+<img src="/survey/selfserve/2222/logo_a2a001390fe4dc2ce73e6e195e691697.png" class="logo-image" alt="Logo">
+</div>
+<!-- /.logo -->
+<div role="progressbar" aria-valuenow="24" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-top" title="progress bar - 24% complete">
+<div class="progress-box-outer" aria-hidden="true"><span class="progress-box-completed" style="width: 24%;"></span></div>
+<div class="progress-text" aria-hidden="true">24%</div>
+</div>
+<!-- /.progress-bar -->
+</div>
+<!-- /.survey-header -->
+
+<form id="primary" name="primary" method="post" action="/survey/selfserve/2222/260216" enctype="application/x-www-form-urlencoded" novalidate="">
+<input type="hidden" name="_v2_counter" value="13">
+<!-- @@XYZZY@@ -->
+<div id="question_NETWORKS1b" class="question radio label_NETWORKS1b   clearColWidths">
+<h1 title="question" class="question-text" id="question_text_NETWORKS1b">How often do you watch shows, movies, web series, videos, or clips from each of the following?</h1>
+<!-- /.question-text -->
+
+<h2 title="instructions" class="instruction-text">Please provide a response for each selection</h2>
+<!-- /.instruction-text -->
+<div class="answers answers-table">
+<div class="fir fir-checkbox" style="display: none;">
+<span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> checkbox </title>
+<path d="M15.8,0H3.9C1.8,0,0,2,0,4.1V16c0,2.2,1.8,4,3.9,4h11.8c2.2,0,4.2-1.8,4.2-4V4.1C20,2,18,0,15.8,0z M19,16 c0,1.6-1.6,3-3.2,3H3.9C2.3,19,1,17.7,1,16V4.1C1,2.5,2.3,1,3.9,1h11.8C17.4,1,19,2.5,19,4.1V16z" class="fir-base"></path>
+<path d="M19,16c0,1.6-1.6,3-3.2,3H3.9C2.3,19,1,17.7,1,16V4.1C1,2.5,2.3,1,3.9,1h11.8C17.4,1,19,2.5,19,4.1V16z" class="fir-bg"></path>
+<polygon points="9.1,16.3 2.5,11 4.1,9 8.7,12.6 15.6,3.7 17.7,5.2 " class="fir-selected"></polygon>
+</svg>
+</span>
+</div>
+<div class="fir fir-radio" style="display: none;">
+<span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</div>
+<table class="grid specifiedWidths grid-table-mode" data-settings="auto-optimize mobile-mode group-by-row table-mode ss-colWidth" data-height="" summary="This table contains form elements to answer the survey question" style="">
+<tbody>
+<tr class="row mobile-top-border-row">
+<td colspan="5" class="cell nonempty mobile-top-border-cell"></td>
+</tr><tr class="row row-col-legends row-col-legends-top colCount-4">
+<td class="cell empty empty-left empty-top unused mobile border-collapse"></td>
+<th scope="col" id="NETWORKS1b_c1" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   " style="width:150px; min-width:150px">
+<strong>Never</strong>
+</th><th scope="col" id="NETWORKS1b_c2" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   " style="width:150px; min-width:150px">
+<strong>Less than once a month</strong>
+</th><th scope="col" id="NETWORKS1b_c3" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   " style="width:150px; min-width:150px">
+<strong>Once or twice a month</strong>
+</th><th scope="col" id="NETWORKS1b_c4" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   " style="width:150px; min-width:150px">
+<strong>Once a week or more</strong>
+</th>
+
+</tr>
+</tbody>
+<tbody><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r59_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+TBS
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.36" value="0" id="ans3656.0.36" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r59_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.36"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.36" value="1" id="ans3656.1.36" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r59_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.36"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.36" value="2" id="ans3656.2.36" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r59_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.36"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.36" value="3" id="ans3656.3.36" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r59_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.36"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r10_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Logo
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.7" value="0" id="ans3656.0.7" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r10_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.7"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.7" value="1" id="ans3656.1.7" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r10_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.7"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.7" value="2" id="ans3656.2.7" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r10_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.7"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.7" value="3" id="ans3656.3.7" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r10_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.7"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r29_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Disney Channel
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.17" value="0" id="ans3656.0.17" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r29_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.17"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.17" value="1" id="ans3656.1.17" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r29_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.17"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.17" value="2" id="ans3656.2.17" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r29_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.17"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.17" value="3" id="ans3656.3.17" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r29_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.17"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r47_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Lifetime
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.29" value="0" id="ans3656.0.29" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r47_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.29"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.29" value="1" id="ans3656.1.29" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r47_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.29"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.29" value="2" id="ans3656.2.29" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r47_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.29"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.29" value="3" id="ans3656.3.29" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r47_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.29"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r15_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Adult Swim
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.10" value="0" id="ans3656.0.10" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r15_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.10"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.10" value="1" id="ans3656.1.10" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r15_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.10"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.10" value="2" id="ans3656.2.10" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r15_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.10"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.10" value="3" id="ans3656.3.10" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r15_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.10"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r5_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+MTV
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.3" value="0" id="ans3656.0.3" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r5_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.3"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.3" value="1" id="ans3656.1.3" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r5_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.3"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.3" value="2" id="ans3656.2.3" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r5_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.3"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.3" value="3" id="ans3656.3.3" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r5_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.3"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r76_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+The CW
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.49" value="0" id="ans3656.0.49" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r76_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.49"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.49" value="1" id="ans3656.1.49" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r76_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.49"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.49" value="2" id="ans3656.2.49" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r76_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.49"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.49" value="3" id="ans3656.3.49" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r76_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.49"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r18_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+BBC America
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.12" value="0" id="ans3656.0.12" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r18_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.12"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.12" value="1" id="ans3656.1.12" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r18_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.12"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.12" value="2" id="ans3656.2.12" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r18_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.12"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.12" value="3" id="ans3656.3.12" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r18_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.12"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r43_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+HGTV
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.26" value="0" id="ans3656.0.26" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r43_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.26"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.26" value="1" id="ans3656.1.26" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r43_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.26"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.26" value="2" id="ans3656.2.26" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r43_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.26"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.26" value="3" id="ans3656.3.26" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r43_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.26"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r63_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Travel Channel
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.40" value="0" id="ans3656.0.40" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r63_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.40"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.40" value="1" id="ans3656.1.40" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r63_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.40"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.40" value="2" id="ans3656.2.40" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r63_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.40"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.40" value="3" id="ans3656.3.40" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r63_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.40"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-col-legends row-col-legends-middle colCount-4">
+<td class="cell empty empty-left empty-middle unused mobile border-collapse"></td>
+<th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Never</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Less than once a month</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Once or twice a month</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Once a week or more</strong>
+</th>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r73_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+CBS
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.46" value="0" id="ans3656.0.46" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r73_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.46"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.46" value="1" id="ans3656.1.46" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r73_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.46"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.46" value="2" id="ans3656.2.46" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r73_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.46"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.46" value="3" id="ans3656.3.46" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r73_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.46"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r7_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Paramount Network
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.4" value="0" id="ans3656.0.4" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r7_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.4"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.4" value="1" id="ans3656.1.4" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r7_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.4"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.4" value="2" id="ans3656.2.4" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r7_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.4"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.4" value="3" id="ans3656.3.4" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r7_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.4"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r9_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+VH1
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.6" value="0" id="ans3656.0.6" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r9_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.6"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.6" value="1" id="ans3656.1.6" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r9_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.6"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.6" value="2" id="ans3656.2.6" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r9_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.6"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.6" value="3" id="ans3656.3.6" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r9_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.6"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r51_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+National Geographic (NatGeo)
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.31" value="0" id="ans3656.0.31" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r51_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.31"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.31" value="1" id="ans3656.1.31" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r51_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.31"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.31" value="2" id="ans3656.2.31" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r51_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.31"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.31" value="3" id="ans3656.3.31" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r51_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.31"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r22_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Bravo
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.13" value="0" id="ans3656.0.13" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r22_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.13"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.13" value="1" id="ans3656.1.13" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r22_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.13"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.13" value="2" id="ans3656.2.13" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r22_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.13"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.13" value="3" id="ans3656.3.13" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r22_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.13"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r55_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Oxygen
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.33" value="0" id="ans3656.0.33" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r55_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.33"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.33" value="1" id="ans3656.1.33" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r55_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.33"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.33" value="2" id="ans3656.2.33" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r55_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.33"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.33" value="3" id="ans3656.3.33" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r55_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.33"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r81_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Starz
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.53" value="0" id="ans3656.0.53" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r81_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.53"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.53" value="1" id="ans3656.1.53" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r81_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.53"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.53" value="2" id="ans3656.2.53" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r81_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.53"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.53" value="3" id="ans3656.3.53" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r81_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.53"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r74_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+FOX
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.47" value="0" id="ans3656.0.47" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r74_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.47"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.47" value="1" id="ans3656.1.47" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r74_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.47"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.47" value="2" id="ans3656.2.47" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r74_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.47"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.47" value="3" id="ans3656.3.47" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r74_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.47"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r54_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+OWN
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.32" value="0" id="ans3656.0.32" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r54_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.32"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.32" value="1" id="ans3656.1.32" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r54_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.32"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.32" value="2" id="ans3656.2.32" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r54_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.32"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.32" value="3" id="ans3656.3.32" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r54_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.32"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r45_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Investigation Discovery
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.28" value="0" id="ans3656.0.28" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r45_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.28"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.28" value="1" id="ans3656.1.28" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r45_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.28"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.28" value="2" id="ans3656.2.28" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r45_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.28"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.28" value="3" id="ans3656.3.28" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r45_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.28"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-col-legends row-col-legends-middle colCount-4">
+<td class="cell empty empty-left empty-middle unused mobile border-collapse"></td>
+<th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Never</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Less than once a month</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Once or twice a month</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Once a week or more</strong>
+</th>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r16_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+AMC
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.11" value="0" id="ans3656.0.11" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r16_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.11"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.11" value="1" id="ans3656.1.11" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r16_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.11"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.11" value="2" id="ans3656.2.11" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r16_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.11"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.11" value="3" id="ans3656.3.11" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r16_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.11"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r35_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Freeform
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.22" value="0" id="ans3656.0.22" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r35_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.22"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.22" value="1" id="ans3656.1.22" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r35_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.22"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.22" value="2" id="ans3656.2.22" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r35_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.22"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.22" value="3" id="ans3656.3.22" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r35_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.22"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r28_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Discovery Channel
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.16" value="0" id="ans3656.0.16" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r28_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.16"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.16" value="1" id="ans3656.1.16" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r28_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.16"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.16" value="2" id="ans3656.2.16" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r28_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.16"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.16" value="3" id="ans3656.3.16" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r28_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.16"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r44_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+History Channel
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.27" value="0" id="ans3656.0.27" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r44_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.27"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.27" value="1" id="ans3656.1.27" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r44_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.27"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.27" value="2" id="ans3656.2.27" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r44_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.27"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.27" value="3" id="ans3656.3.27" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r44_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.27"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr></tbody>
+</table>
+<!-- /.grid -->
+</div>
+<!-- /.answers -->
+</div>
+<!-- /.question --><div class="survey-buttons">
+<input type="submit" name="continue" id="btn_continue" class="button continue" value="Next »" onclick="var i = document.createElement('input'); i.setAttribute('type', 'hidden');i.setAttribute('value', '1');i.setAttribute('name', '__has_javascript');document.forms.primary.appendChild(i);">
+
+</div>
+<!-- #surveyButtons --><input type="hidden" name="state" value="20b1f1f9-300f-4b01-993b-7864f518f2bc">
+<input type="hidden" name="start_time" value="1779790607">
+<input type="hidden" name="_ptime" value="0">
+<script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ps5fh8nu9d2ar01q", "39ndzswygjdx5x5z");}, 100); });
+</script>
+</form>
+
+
+</div>
+<!-- /.survey-body -->
+</div>
+<div class="survey-section"><div class="footer"><div style="width: 100%; height: 60px; background-color: #221b4f;" jstcache="0"><br jstcache="0"><center jstcache="0">       <a target="_blank" jstcache="0">          <img src="/survey/selfserve/2222/260216/Footer.png?2326399e4b" style="background-color: #221b4f;" jstcache="0" width="150px" height="38px">       </a>    </center></div></div>
+<!-- /.footer -->
+<input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33">
+        <input type="hidden" id="SurveyID" name="SurveyID" value="220821">
+        <input type="hidden" id="PanelistID" name="PanelistID" value="ps5fh8nu9d2ar01q">
+        <input type="hidden" id="LangCode" name="LangCode" value="EN">
+        <input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults">
+        <input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults">
+        <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+        <input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0">
+
+        <script> function getQSTimeoutMs(){return 5000;} </script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qualityscore.js"></script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qslib1.0.js"></script></div>
+</div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1779790609178">
+<div id="detectBreakpoint"></div>
+<!-- /.survey-container -->
+
+
+</body></html>

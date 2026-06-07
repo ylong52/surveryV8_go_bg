@@ -1,0 +1,15 @@
+{
+  "items": [
+    {
+      "page_summary": "The respondent selects their racial background from a list of options, choosing Asian/Asian-American and White/Caucasian.",
+      "timestamp": "2026-06-04T09:40:55.0896959+08:00",
+      "page_id": "what is your racial background"
+    },
+    {
+      "page_summary": "The respondent indicates moderate agreement with being sophisticated, strong agreement with being elegant, neutrality about being funny, follows the instruction to select 'Agree slightly' for a specific item, and slightly disagrees with being edgy.",
+      "timestamp": "2026-06-04T09:41:10.1749905+08:00",
+      "page_id": "how much do you agree or disagree that each of the words below describe you"
+    }
+  ],
+  "updated_at": "2026-06-04T09:41:10.1749905+08:00"
+}

@@ -8,7 +8,7 @@ prompts 表种子数据生成器（SQLite 版）
 使用方式:
     python seed_prompts.py            # 输出 SQL 到 stdout
     python seed_prompts.py -o out.sql # 输出 SQL 到文件
-    python seed_prompts.py --run       # 直接执行到 data/survey.db
+    python seed_prompts.py --run       # 直接执行到 data/survey202605.db
 
 数据库实际表结构（survey.db prompts 表）:
     id          INTEGER PRIMARY KEY AUTOINCREMENT  (自动生成，不能手动指定)
@@ -771,7 +771,7 @@ def generate_upsert_sql(rec: dict) -> str:
 def main():
     parser = argparse.ArgumentParser(description="生成 prompts 表种子数据 SQL（SQLite UPSERT）")
     parser.add_argument("-o", "--output", help="输出文件路径（默认 stdout）")
-    parser.add_argument("--run", action="store_true", help="直接执行到 data/survey.db")
+    parser.add_argument("--run", action="store_true", help="直接执行到 data/survey202605.db")
     parser.add_argument("--dry-run", action="store_true", help="仅打印记录数和分组")
     args = parser.parse_args()
 

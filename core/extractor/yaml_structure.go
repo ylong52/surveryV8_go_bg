@@ -493,14 +493,25 @@ func saveRealtimeAnswersJson(basePath, surveyID, pageID string, result FinalAnsw
 // 6. YAML 清洗工具
 // =============================================================================
 
-// StripRecommendedAnswers 移除 interactions JSON 中的 recommended_answers 字段
-// 用于计算 interactions_md5
+// StripRecommendedAnswers 移除 interactions JSON 中仅用于答题/验证的字段：
+// recommended_answers、humans_pass、prompt_suggestion_note
+// 用于生成 page_fingerprint（仅保留题目结构标识字段）
 func StripRecommendedAnswers(jsonStr string) string {
+	// recommended_answers: 字符串值
 	re1 := regexp.MustCompile(`,"recommended_answers":"[^"]*"|"recommended_answers":"[^"]*",`)
 	result := re1.ReplaceAllString(jsonStr, "")
 
+	// recommended_answers: 数组值
 	re2 := regexp.MustCompile(`,"recommended_answers":\[[^\]]*\]|"recommended_answers":\[[^\]]*\],`)
 	result = re2.ReplaceAllString(result, "")
+
+	// humans_pass: boolean (true/false/null)
+	re3 := regexp.MustCompile(`,"humans_pass":(true|false|null)|"humans_pass":(true|false|null),`)
+	result = re3.ReplaceAllString(result, "")
+
+	// prompt_suggestion_note: 字符串值
+	re4 := regexp.MustCompile(`,"prompt_suggestion_note":"[^"]*"|"prompt_suggestion_note":"[^"]*",`)
+	result = re4.ReplaceAllString(result, "")
 
 	return result
 }

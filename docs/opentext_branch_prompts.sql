@@ -14,7 +14,7 @@
 --   └─────────────────────────────────────────────────────────┘
 --
 -- 执行方式（在项目根目录运行）:
---   sqlite3 data/survey.db < docs/opentext_branch_prompts.sql
+--   sqlite3 data/survey202605.db < docs/opentext_branch_prompts.sql
 --
 -- 注意: id=196/197/198，确认 prompts 表当前最大 id 后再执行。
 --   查询当前最大 id: SELECT MAX(id) FROM prompts;

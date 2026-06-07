@@ -174,6 +174,24 @@ func LoadPromptByQuestionType(questionType string) (content, yamlTemplate string
 	return c.String, t.String, nil
 }
 
+// LoadPromptByKey 根据 prompt_key 加载单条提示词内容
+// @param promptKey  提示词 key
+// @returns          content，为空或不存在返回 ""
+func LoadPromptByKey(promptKey string) (string, error) {
+	var content string
+	err := GetDB().QueryRow(
+		`SELECT content FROM prompts WHERE prompt_key=? AND is_active=1 LIMIT 1`,
+		promptKey,
+	).Scan(&content)
+	if err == sql.ErrNoRows {
+		return "", nil
+	}
+	if err != nil {
+		return "", fmt.Errorf("LoadPromptByKey(%s): %w", promptKey, err)
+	}
+	return content, nil
+}
+
 // LoadTypeDetectorPrompt 加载 system.type_detector 提示词内容
 // @returns  提示词字符串（含 {question_types} 占位符），error
 func LoadTypeDetectorPrompt() (string, error) {

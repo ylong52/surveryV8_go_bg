@@ -249,6 +249,52 @@ func (r *PageResultRepo) UpdateOCRResult(id int64, ocrText, ocrJSON, ocrModel, o
 	return nil
 }
 
+// FindAllFieldsBySurveyID 查询指定 survey 的所有页面结果，包含全部 OCR 字段
+// @param surveyID survey 表主键
+// @returns PageResult 列表（含 OCR 字段）和 error
+func (r *PageResultRepo) FindAllFieldsBySurveyID(surveyID int64) ([]PageResult, error) {
+	rows, err := r.db.Query(`
+		SELECT id, survey_id, page_id, yaml_template, recommend_answer,
+		       page_fingerprint, page_fingerprint_md5, screenshot_path,
+		       ocr_text, ocr_json, ocr_model, ocr_verified, ocr_verified_at, ocr_error,
+		       created_at
+		  FROM page_results WHERE survey_id = ?
+		 ORDER BY id ASC
+	`, surveyID)
+	if err != nil {
+		return nil, fmt.Errorf("FindAllFieldsBySurveyID query: %w", err)
+	}
+	defer rows.Close()
+
+	var results []PageResult
+	for rows.Next() {
+		var p PageResult
+		var screenshotPath, ocrText, ocrJSON, ocrModel, ocrVerified, ocrVerifiedAt, ocrError sql.NullString
+		err := rows.Scan(
+			&p.ID, &p.SurveyID, &p.PageID,
+			&p.YamlTemplate, &p.RecommendAnswer,
+			&p.PageFingerprint, &p.PageFingerprintMD5, &screenshotPath,
+			&ocrText, &ocrJSON, &ocrModel, &ocrVerified, &ocrVerifiedAt, &ocrError,
+			&p.CreatedAt,
+		)
+		if err != nil {
+			return nil, fmt.Errorf("FindAllFieldsBySurveyID scan: %w", err)
+		}
+		p.ScreenshotPath = screenshotPath.String
+		p.OCRText = ocrText.String
+		p.OCRJSON = ocrJSON.String
+		p.OCRModel = ocrModel.String
+		p.OCRVerified = ocrVerified.String
+		p.OCRVerifiedAt = ocrVerifiedAt.String
+		p.OCRError = ocrError.String
+		results = append(results, p)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, fmt.Errorf("FindAllFieldsBySurveyID rows: %w", err)
+	}
+	return results, nil
+}
+
 // FindByID 根据 page_results 主键查询完整记录（含 OCR 字段）
 // @param id page_results 主键
 // @returns PageResult 记录和 error

@@ -216,16 +216,10 @@ func loadOpenTextPrompts() *OpenTextPrompts {
 
 // IsOpenTextQuestion 判断 Interaction 是否为需要人工化验证的开放题
 //
-//	主判断：QuestionType 含 "open"（覆盖 open_text / open_end）
-//	兜底：showAnswer 为字符串且长度 > 50（捕获未来新题型）
+// 仅依赖 QuestionType 字段（含 "open" 即视为开放题）。
+// 调用方需保证 QuestionType 已明确设置，不在此做类型推断。
 func IsOpenTextQuestion(interaction Interaction) bool {
-	if strings.Contains(strings.ToLower(interaction.QuestionType), "open") {
-		return true
-	}
-	if s, ok := interaction.ShowAnswer.(string); ok && len(s) > 50 {
-		return true
-	}
-	return false
+	return strings.Contains(strings.ToLower(interaction.QuestionType), "open")
 }
 
 // =============================================================================

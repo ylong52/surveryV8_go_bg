@@ -1,0 +1,55 @@
+{
+  "items": [
+    {
+      "page_summary": "The respondent provides their age as a number and selects their gender from the given options.",
+      "timestamp": "2026-06-04T12:22:16.1843049+08:00",
+      "page_id": "what is your age"
+    },
+    {
+      "page_summary": "The respondent selects their country of residence from a list of options, choosing United States.",
+      "timestamp": "2026-06-04T12:22:36.9032842+08:00",
+      "page_id": "what is your current country of residence"
+    },
+    {
+      "page_summary": "The respondent provides their zip code as a text input.",
+      "timestamp": "2026-06-04T12:23:00.0010229+08:00",
+      "page_id": "what is your zip code"
+    },
+    {
+      "page_summary": "The respondent selected common weekend activities, avoiding extreme or unlikely options.",
+      "timestamp": "2026-06-04T12:23:10.1800939+08:00",
+      "page_id": "which if any of the following have you done over the past weekend"
+    },
+    {
+      "page_summary": "The respondent indicates they are not Spanish, Hispanic, or Latinx.",
+      "timestamp": "2026-06-04T12:23:50.9262394+08:00",
+      "page_id": "are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an"
+    },
+    {
+      "page_summary": "The respondent selects their racial background, choosing White/Caucasian and Asian/Asian-American as their racial identities.",
+      "timestamp": "2026-06-04T12:24:02.1423101+08:00",
+      "page_id": "what is your racial background"
+    },
+    {
+      "page_summary": "The respondent moderately agrees with being described as sophisticated and funny, is neutral about being elegant, slightly disagrees with being edgy, and follows the instruction to select 'Agree slightly' for the attention check item.",
+      "timestamp": "2026-06-04T12:24:21.0366622+08:00",
+      "page_id": "how much do you agree or disagree that each of the words below describe you"
+    },
+    {
+      "page_summary": "The respondent indicates they do not have any children under 18 living in their household.",
+      "timestamp": "2026-06-04T12:28:12.7583559+08:00",
+      "page_id": "do you have any children under 18 years old living in your household"
+    },
+    {
+      "page_summary": "The respondent watches a variety of TV networks with moderate frequency, favoring Discovery Channel, HGTV, NBC, CBS, HBO, and National Geographic at least once a week, while rarely or never watching ABC, TV Land, Trevi1, E!, Hallmark Channel, Logo, CMT, and Nickelodeon.",
+      "timestamp": "2026-06-04T12:28:32.6982052+08:00",
+      "page_id": "how often do you watch shows movies web series videos or clips from each of the following"
+    },
+    {
+      "page_summary": "The respondent watches most listed networks rarely or never, with occasional weekly viewing of USA Network, History Channel, Comedy Central, TBS, and FOX.",
+      "timestamp": "2026-06-04T12:29:38.8943685+08:00",
+      "page_id": "how often do you watch shows movies web series videos or clips from each of the following"
+    }
+  ],
+  "updated_at": "2026-06-04T12:29:38.8944198+08:00"
+}

@@ -1,0 +1,35 @@
+{
+  "items": [
+    {
+      "page_summary": "The respondent provided their age as 35 and selected Female as their gender.",
+      "timestamp": "2026-06-03T17:54:22.1921497+08:00",
+      "page_id": "what is your age"
+    },
+    {
+      "page_summary": "The respondent indicates their current country of residence is the United States.",
+      "timestamp": "2026-06-03T17:54:48.6290689+08:00",
+      "page_id": "what is your current country of residence"
+    },
+    {
+      "page_summary": "The respondent is asked to provide their zip code, indicating a focus on geographic location within the United States.",
+      "timestamp": "2026-06-03T17:55:02.0736007+08:00",
+      "page_id": "what is your zip code"
+    },
+    {
+      "page_summary": "The respondent selected typical weekend activities like watching TV, visiting a flea market, and playing poker, avoiding extreme or uncommon options.",
+      "timestamp": "2026-06-03T17:55:30.1176885+08:00",
+      "page_id": "which if any of the following have you done over the past weekend"
+    },
+    {
+      "page_summary": "The respondent indicates they are not Spanish, Hispanic, or Latinx.",
+      "timestamp": "2026-06-03T17:55:50.4207368+08:00",
+      "page_id": "are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an"
+    },
+    {
+      "page_summary": "The respondent identifies as White/Caucasian and Asian/Asian-American, indicating a multiracial background.",
+      "timestamp": "2026-06-03T17:56:11.7098102+08:00",
+      "page_id": "what is your racial background"
+    }
+  ],
+  "updated_at": "2026-06-03T17:56:11.7099714+08:00"
+}

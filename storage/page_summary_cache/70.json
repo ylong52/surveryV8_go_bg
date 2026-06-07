@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "page_summary": "The respondent indicates they are not Spanish, Hispanic, or Latinx.",
+      "timestamp": "2026-06-04T09:54:49.9212265+08:00",
+      "page_id": "are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an"
+    },
+    {
+      "page_summary": "The respondent indicates they are not Spanish, Hispanic, or Latinx.",
+      "timestamp": "2026-06-04T09:54:55.4365468+08:00",
+      "page_id": "are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an"
+    },
+    {
+      "page_summary": "The respondent selects their racial background from a list of options, indicating they are Black/African-American and White/Caucasian.",
+      "timestamp": "2026-06-04T09:55:09.2316769+08:00",
+      "page_id": "what is your racial background"
+    },
+    {
+      "page_summary": "The respondent moderately agrees with the self-descriptive words, selecting 'Agree slightly' for Sophisticated and the attention check item, 'Neither agree nor disagree' for Elegant, 'Agree strongly' for Funny, and 'Disagree slightly' for Edgy.",
+      "timestamp": "2026-06-04T09:55:27.4672364+08:00",
+      "page_id": "how much do you agree or disagree that each of the words below describe you"
+    }
+  ],
+  "updated_at": "2026-06-04T09:55:27.4677552+08:00"
+}

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人设冲突分析报告</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body,{delimiters:[{left:'$$$$',right:'$$$$',display:true},{left:'$',right:'$',display:false}],trust:true});"></script>
+<style>
+:root {
+  --bg:       #1e1e2e;
+  --surface:  #262637;
+  --border:   #3d3d5c;
+  --accent:   #89b4fa;
+  --green:    #a6e3a1;
+  --red:      #f38ba8;
+  --yellow:   #f9e2af;
+  --purple:   #cba6f7;
+  --cyan:     #94e2d5;
+  --text:     #cdd6f4;
+  --muted:    #6c7086;
+  --font:     'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.7;
+  padding: 32px 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+h1 { font-size: 1.8em; color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 24px; }
+h2 { font-size: 1.35em; color: var(--purple); margin: 28px 0 14px; padding-left: 10px; border-left: 4px solid var(--purple); }
+h3 { font-size: 1.1em;  color: var(--cyan);  margin: 20px 0 10px; }
+p  { margin-bottom: 12px; }
+ul, ol { padding-left: 28px; margin-bottom: 14px; }
+li { margin-bottom: 6px; }
+strong { color: var(--yellow); font-weight: 600; }
+em   { color: var(--cyan); font-style: normal; font-weight: 500; }
+blockquote {
+  border-left: 4px solid var(--border);
+  padding: 10px 16px;
+  margin: 14px 0;
+  background: var(--surface);
+  border-radius: 0 6px 6px 0;
+  color: var(--muted);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.92em;
+}
+th {
+  background: var(--surface);
+  color: var(--accent);
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+  font-weight: 600;
+}
+td {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  vertical-align: top;
+}
+tr:nth-child(even) td { background: rgba(38,38,55,0.5); }
+tr.conflict-row td { background: rgba(243,139,168,0.15) !important; color: #f38ba8 !important; }
+tr.conflict-row td:first-child { color: #f38ba8 !important; font-weight: 600; }
+hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+code {
+  background: var(--surface);
+  color: var(--green);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace;
+  font-size: 0.88em;
+}
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+}
+pre code { background: none; padding: 0; color: var(--text); }
+.math-block { text-align: center; margin: 18px 0; overflow-x: auto; }
+.math-inline { padding: 0 2px; }
+</style>
+</head>
+<body>
+<h1>问卷人设一致性分析报告</h1>
+<p><strong>Session:</strong> sess<em>1780151723739</em>j5kgc</p>
+<p><strong>Survey:</strong> selfserve<em>2222</em>2600216</p>
+<p><strong>生成时间:</strong> 2026-05-30</p>
+<hr>
+<h1>第一章：基本信息</h1>
+<table>
+  <tr><th>字段</th><th>值</th></tr>
+  <tr><td>------</td><td>-----</td></tr>
+  <tr><td>Session 名称</td><td>sess<em>1780151723739</em>j5kgc</td></tr>
+  <tr><td>问卷名称</td><td>selfserve<em>2222</em>2600216</td></tr>
+  <tr><td>问卷 URL</td><td>https://surveys.tapestryresearch.com/survey/selfserve/2222/260216#</td></tr>
+  <tr><td>创建时间</td><td>2026-05-30 22:36:08</td></tr>
+  <tr><td>页面总数（= 总题数）</td><td>24</td></tr>
+  <tr><td>Session ID</td><td>46</td></tr>
+  <tr><td>忽略题数 N1（有推荐答案但 OCR 完全缺失）</td><td>0</td></tr>
+  <tr><td>OCR 缺失题数 N2（有推荐答案但用户选择无法识别）</td><td>0</td></tr>
+  <tr><td>有效已答题数 N3（推荐答案与用户实际选择均存在）</td><td>24</td></tr>
+  <tr><td>答题开始时间</td><td>2026-05-30 22:36:11</td></tr>
+  <tr><td>答题结束时间</td><td>2026-05-30 22:58:10</td></tr>
+  <tr><td>答题总时长</td><td>21m 59s</td></tr>
+  <tr><td>整体得分</td><td>10</td></tr>
+  <tr><td>纯有效得分</td><td>10</td></tr>
+  <tr><td>系统结论</td><td>用户遵循度高，整体执行力强</td></tr>
+</table>
+<blockquote>⚠️ <strong>数据质量提示：</strong> 尽管 session<em>info 中 N1=0、N2=0、N3=24，但在 page</em>results 中实际存在 3 条 <code>ocr<em>not</em>found</code> 记录（px152、px162、px166）及多条 <code>ocr<em>verified: mismatch</code> 记录，以及 3 条 <code>followed</em>recommendation: false</code> 记录（px161、px163、px164）。本报告将以 page<em>results 原始数据为准进行详细分析，session</em>info 中的汇总字段可能存在统计口径差异。</blockquote>
+<hr>
+<h1>第二章：系统人设 vs 用户人设对比表</h1>
+<blockquote>📌 说明：<code>system<em>persona</code> 仅提供了 <code>has</em>children: false</code> 和通用描述，其余维度依据问卷推荐答案（recommended<em>answer）进行推断。<code>user</em>persona</code> 字段存在明显的数据异常（见下表冲突说明）。</blockquote>
+<table>
+  <tr><th>维度</th><th>系统预设值（推荐答案）</th><th>用户实际值（user_persona）</th><th>冲突类型</th><th>冲突说明</th></tr>
+  <tr><td>------</td><td>----------------------</td><td>--------------------------</td><td>----------</td><td>----------</td></tr>
+  <tr class="conflict-row"><td>年龄（age）</td><td>35</td><td>"Yes"</td><td><strong>硬冲突</strong></td><td>user_persona.age 字段值为 "Yes"，应为数字（35），字段值错误，疑似数据录入异常或字段映射错误</td></tr>
+  <tr><td>性别（gender）</td><td>未指定</td><td>Female</td><td>无冲突</td><td>系统未预设性别，用户填写 Female，无矛盾</td></tr>
+  <tr class="conflict-row"><td>国家（country）</td><td>United States</td><td>"Never"</td><td><strong>硬冲突</strong></td><td>user_persona.country 字段值为 "Never"，应为国家名称（United States），字段值严重错误，疑似字段错位</td></tr>
+  <tr><td>邮编（zip）</td><td>10001</td><td>"10001"</td><td>无冲突</td><td>完全一致</td></tr>
+  <tr><td>西班牙裔（hispanic）</td><td>No</td><td>"No"</td><td>无冲突</td><td>完全一致</td></tr>
+  <tr class="conflict-row"><td>种族（race）</td><td>White/Caucasian, Asian/Asian-American</td><td>["White/Caucasian, Asian/Asian-American", "Somewhat Agree"]</td><td><strong>软冲突</strong></td><td>race 字段为数组，第一项正确，但第二项混入了 "Somewhat Agree"（属于态度量表答案），疑似数据解析时字段串行污染</td></tr>
+  <tr><td>子女（children）</td><td>No（system<em>persona.has</em>children: false）</td><td>"No"</td><td>无冲突</td><td>完全一致</td></tr>
+  <tr><td>收入（income）</td><td>未指定</td><td>未提供</td><td>无冲突</td><td>双方均未设定，无矛盾</td></tr>
+  <tr><td>婚姻（marital）</td><td>未指定</td><td>未提供</td><td>无冲突</td><td>双方均未设定，无矛盾</td></tr>
+  <tr><td>教育（education）</td><td>未指定</td><td>未提供</td><td>无冲突</td><td>双方均未设定，无矛盾</td></tr>
+  <tr><td>职业（occupation）</td><td>未指定</td><td>未提供</td><td>无冲突</td><td>双方均未设定，无矛盾</td></tr>
+  <tr><td>周末活动（weekend activities）</td><td>Watched TV, Visited a flea market, Went skiing</td><td>["Went skiing, Watched TV, Visited a flea market"]</td><td>无冲突</td><td>内容完全一致，仅顺序不同</td></tr>
+  <tr><td>媒体频率（media frequency）</td><td>多项 Never / 特定频率</td><td>未在 user_persona 中单独列出</td><td>无冲突</td><td>user<em>persona 未单独记录媒体频率字段，以 page</em>results 为准</td></tr>
+  <tr><td>自我描述（self description）</td><td>Agree slightly（sophisticated）</td><td>未在 user_persona 中列出</td><td>无冲突</td><td>user_persona 未记录该字段，OCR 缺失无法比对</td></tr>
+</table>
+<h3>第二章小结</h3>
+<p>user<em>persona 数据存在 <strong>2 处硬冲突</strong>（age、country 字段值明显错误）和 <strong>1 处软冲突</strong>（race 数组混入无关值），强烈建议检查 user</em>persona 的数据采集与字段映射逻辑。</p>
+<hr>
+<h1>第三章：逐题分析</h1>
+<table>
+  <tr><th>序号</th><th>px</th><th>页面ID（简化）</th><th>题型</th><th>推荐答案</th><th>用户实际(OCR)</th><th>人设相关性</th><th>是否跟随</th><th>冲突类型</th><th>问题说明</th></tr>
+  <tr><td>px------</td><td>----</td><td>--------------</td><td>------</td><td>----------</td><td>--------------</td><td>-----------</td><td>---------</td><td>---------</td><td>---------</td></tr>
+  <tr><td>px1</td><td>146</td><td>what is your age</td><td>number</td><td>35</td><td>35</td><td>关键</td><td>是</td><td>自动</td><td>-</td></tr>
+  <tr><td>px2</td><td>147</td><td>what is your current country of residence</td><td>single</td><td>United States</td><td>United States</td><td>关键</td><td>是</td><td>自动</td><td>-</td></tr>
+  <tr><td>px3</td><td>148</td><td>what is your zip code</td><td>open_text</td><td>10001</td><td>10001</td><td>关键</td><td>是</td><td>自动</td><td>-</td></tr>
+  <tr><td>px4</td><td>149</td><td>which if any of the following have you done over the past weekend</td><td>multi</td><td>Watched TV, Visited a flea market, Went skiing</td><td>Went skiing, Watched TV, Visited a flea market</td><td>无关</td><td>是</td><td>自动</td><td>-</td></tr>
+  <tr><td>px5</td><td>150</td><td>are you spanish hispanic or latinx...</td><td>single</td><td>No</td><td>No</td><td>关键</td><td>是</td><td>自动</td><td>-</td></tr>
+  <tr><td>px6</td><td>151</td><td>what is your racial background</td><td>multi_select</td><td>White/Caucasian, Asian/Asian-American</td><td>White/Caucasian, Asian/Asian-American</td><td>关键</td><td>是</td><td>自动</td><td>-</td></tr>
+  <tr><td>px7</td><td>152</td><td>how much do you agree or disagree... (sophisticated)</td><td>cardsort_drag</td><td>Agree slightly</td><td>（空）</td><td>无关</td><td>跳过</td><td>缺失</td><td>截图路径存在但OCR数据不可用，无法验证用户是否按推荐作答</td></tr>
+  <tr><td>px8</td><td>153</td><td>do you have any children under 18...</td><td>single</td><td>No</td><td>No</td><td>关键</td><td>是</td><td>自动</td><td>-</td></tr>
+  <tr><td>px9</td><td>154</td><td>how often do you watch... (telemundo)</td><td>matrix_row</td><td>Never</td><td>Never</td><td>无关</td><td>是</td><td>自动</td><td>-</td></tr>
+  <tr><td>px10</td><td>155</td><td>how often do you watch... (smithsonian channel)</td><td>matrix_row</td><td>Never</td><td>Never</td><td>无关</td><td>是</td><td>自动</td><td>-</td></tr>
+  <tr><td>px11</td><td>156</td><td>how often do you stream... (tubi)</td><td>matrix_row</td><td>Never</td><td>Never</td><td>无关</td><td>是</td><td>自动</td><td>-</td></tr>
+  <tr><td>px12</td><td>157</td><td>do you have paid cable or satellite tv...</td><td>single</td><td>Yes, I have this in my household</td><td>Yes, I have this in my household</td><td>无关</td><td>是</td><td>自动</td><td>-</td></tr>
+  <tr><td>px13</td><td>158</td><td>you mentioned that you watch showtime...</td><td>single</td><td>A subscription through my cable/satellite/telco provider</td><td>A subscription through my cable/satellite/telco provider</td><td>无关</td><td>是</td><td>自动</td><td>-</td></tr>
+  <tr><td>px14</td><td>159</td><td>in a typical week about how many hours do you watch any kind of tv video content...</td><td>number</td><td>10</td><td>10</td><td>无关</td><td>是</td><td>自动</td><td>-</td></tr>
+  <tr><td>px15</td><td>160</td><td>thinking about tv content you watch just on a tv...</td><td>number</td><td>5</td><td>5</td><td>无关</td><td>是</td><td>自动</td><td>-</td></tr>
+  <tr><td>px16</td><td>161</td><td>which of the following social networking sites do you visit at least monthly</td><td>multi</td><td>Instagram, YouTube, Reddit</td><td>instagram, Reddit</td><td>无关</td><td>否</td><td>自动</td><td>用户漏选 YouTube，实际选择与推荐答案不一致</td></tr>
+  <tr><td>px17</td><td>162</td><td>board 1 of 4... (reflects my political social point of view)</td><td>matrix_row</td><td>Somewhat Agree</td><td>（空）</td><td>无关</td><td>跳过</td><td>缺失</td><td>截图路径存在但OCR数据不可用，无法验证用户是否按推荐作答</td></tr>
+  <tr><td>px18</td><td>163</td><td>board 2 of 4... (features characters people thinking fast)</td><td>matrix_row</td><td>Somewhat Agree</td><td>Strongly Disagree</td><td>无关</td><td>否</td><td>自动</td><td>用户选择与推荐答案方向相反（Somewhat Agree → Strongly Disagree），偏差显著</td></tr>
+  <tr><td>px19</td><td>164</td><td>board 3 of 4... (features characters people that become better over time)</td><td>matrix_row</td><td>Somewhat Agree</td><td>Strongly Disagree</td><td>无关</td><td>否</td><td>自动</td><td>用户选择与推荐答案方向相反（Somewhat Agree → Strongly Disagree），偏差显著</td></tr>
+  <tr><td>px20</td><td>165</td><td>board 4 of 4... (makes me feel better about the life i have)</td><td>matrix_row</td><td>Somewhat Agree</td><td>Somewhat Agree</td><td>无关</td><td>是</td><td>自动</td><td>-</td></tr>
+  <tr><td>px21</td><td>166</td><td>please tell us how often you watch... (home food reality shows)</td><td>matrix_row</td><td>Once a week or more</td><td>（空）</td><td>无关</td><td>跳过</td><td>缺失</td><td>截图路径存在但OCR数据不可用，无法验证用户是否按推荐作答</td></tr>
+  <tr><td>px22</td><td>167</td><td>board 1 of 3... (the real housewives of potomac)</td><td>matrix_row</td><td>Yes</td><td>Yes</td><td>无关</td><td>是</td><td>自动</td><td>-</td></tr>
+  <tr><td>px23</td><td>168</td><td>board 2 of 3... (girl taken)</td><td>matrix_row</td><td>No</td><td>No</td><td>无关</td><td>是</td><td>自动</td><td>-</td></tr>
+  <tr><td>px24</td><td>169</td><td>board 3 of 3... (glitter gold ice dancing)</td><td>matrix_row</td><td>No</td><td>No</td><td>无关</td><td>是</td><td>自动</td><td>-</td></tr>
+</table>
+<hr>
+<h1>第四章：冲突原因分析</h1>
+<h2>1. 硬冲突（系统人设与用户实际答题存在直接矛盾）</h2>
+<p>本次 session 在 page_results 层面未发现涉及人设关键维度的硬冲突（年龄、国籍、邮编、种族、子女等关键题均完全跟随推荐答案）。</p>
+<p>但在 <strong>user_persona 数据层面</strong>，存在 2 处严重硬冲突：</p>
+<h3>硬冲突 1：user_persona.age 字段值异常</h3>
+<table>
+  <tr><th>项目</th><th>内容</th></tr>
+  <tr><td>------</td><td>------</td></tr>
+  <tr><td>冲突项</td><td>年龄（age）</td></tr>
+  <tr><td>系统预设</td><td>35（数字型）</td></tr>
+  <tr><td>user_persona 记录值</td><td>"Yes"（字符串）</td></tr>
+  <tr><td>偏差程度</td><td>严重——字段类型与语义完全错误</td></tr>
+  <tr><td>可能原因</td><td>① user_persona 构建时字段映射错误，将某个布尔型问题的答案（如"是否同意"）写入了 age 字段；② 数据解析管道中字段顺序错位；③ 前端表单提交时字段名称冲突导致覆盖</td></tr>
+</table>
+<h3>硬冲突 2：user_persona.country 字段值异常</h3>
+<table>
+  <tr><th>项目</th><th>内容</th></tr>
+  <tr><td>------</td><td>------</td></tr>
+  <tr><td>冲突项</td><td>国家（country）</td></tr>
+  <tr><td>系统预设</td><td>United States</td></tr>
+  <tr><td>user_persona 记录值</td><td>"Never"（字符串）</td></tr>
+  <tr><td>偏差程度</td><td>严重——"Never" 是频率量表选项，与国家名称毫无关联</td></tr>
+  <tr><td>可能原因</td><td>① user_persona 构建时字段错位，将媒体频率题（如 Telemundo/Smithsonian 的 "Never"）的答案写入了 country 字段；② 数据库 INSERT 语句中列顺序与值顺序不匹配；③ JSON 解析时 key-value 对应关系错乱</td></tr>
+</table>
+<hr>
+<h2>2. 软冲突（存在不一致但程度较轻）</h2>
+<h3>软冲突 1：user_persona.race 数组污染（px151 相关）</h3>
+<p>race 字段应仅包含种族选项，但数组中混入了 "Somewhat Agree"（态度量表答案）。实际答题（px151）完全正确，问题出在 user_persona 的数据聚合阶段。</p>
+<h3>软冲突 2：社交媒体题漏选（px161）</h3>
+<table>
+  <tr><th>项目</th><th>内容</th></tr>
+  <tr><td>------</td><td>------</td></tr>
+  <tr><td>题目</td><td>每月至少访问的社交网络平台</td></tr>
+  <tr><td>推荐答案</td><td>Instagram, YouTube, Reddit（3项）</td></tr>
+  <tr><td>用户实际</td><td>instagram, Reddit（2项，漏选 YouTube）</td></tr>
+  <tr><td>偏差程度</td><td>轻度——漏选1项，其余2项正确</td></tr>
+  <tr><td>可能原因</td><td>① 用户操作疏忽，未注意到 YouTube 选项；② OCR 识别时 YouTube 的勾选状态未被</td></tr>
+</table>
+
+</body>
+</html>

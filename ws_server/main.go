@@ -11,6 +11,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/gorilla/websocket"
@@ -39,6 +40,95 @@ var upgrader = websocket.Upgrader{
 	},
 }
 
+// AI 事件日志配置
+var (
+	aiEventLogDir  = "storage/logs/events"          // AI 事件日志目录
+	aiEventLogFile *os.File                          // 当前日志文件句柄
+	aiEventLogMu   sync.Mutex                        // 写入锁
+)
+
+// initAILogger 初始化 AI 事件日志文件（每天一个文件）
+func initAILogger() error {
+	aiEventLogMu.Lock()
+	defer aiEventLogMu.Unlock()
+
+	// 确保目录存在
+	if err := os.MkdirAll(aiEventLogDir, 0755); err != nil {
+		return fmt.Errorf("mkdir ai log dir failed: %w", err)
+	}
+
+	// 生成当天的文件名
+	logFileName := fmt.Sprintf("sys_%s.log", time.Now().Format("20060102"))
+	logFilePath := filepath.Join(aiEventLogDir, logFileName)
+
+	// 检查是否需要切换文件（检查当前文件是否属于今天）
+	if aiEventLogFile != nil {
+		currentPath := aiEventLogFile.Name()
+		if filepath.Base(currentPath) == logFileName {
+			// 仍是今天的文件，无需切换
+			return nil
+		}
+		// 关闭旧文件
+		aiEventLogFile.Close()
+		aiEventLogFile = nil
+	}
+
+	// 打开或创建当天的日志文件
+	file, err := os.OpenFile(logFilePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		return fmt.Errorf("open ai log file failed: %w", err)
+	}
+	aiEventLogFile = file
+	fmt.Printf("[AILogger] log file: %s\n", logFilePath)
+	return nil
+}
+
+// writeAILog 向 AI 事件日志写入紧凑格式的日志（无多余换行和空格）
+// 格式: {timestamp}|{event_type}|{session_id}|{data}
+func writeAILog(eventType, sessionID string, data map[string]interface{}) {
+	aiEventLogMu.Lock()
+	defer aiEventLogMu.Unlock()
+
+	// 检查并切换日志文件
+	if aiEventLogFile == nil {
+		if err := initAILogger(); err != nil {
+			log.Printf("[AILogger] init failed: %v", err)
+			return
+		}
+	} else {
+		// 检查日期是否变化
+		logFileName := fmt.Sprintf("sys_%s.log", time.Now().Format("20060102"))
+		if filepath.Base(aiEventLogFile.Name()) != logFileName {
+			if err := initAILogger(); err != nil {
+				log.Printf("[AILogger] switch log file failed: %v", err)
+				return
+			}
+		}
+	}
+
+	// 序列化为紧凑 JSON（无空格）
+	dataBytes, _ := json.Marshal(data)
+	// 移除多余的空白字符进一步压缩
+	compactData := strings.ReplaceAll(string(dataBytes), "\n", "")
+	compactData = strings.ReplaceAll(compactData, "\r", "")
+	compactData = strings.Join(strings.Fields(compactData), "")
+
+	// 格式: {timestamp}|{event_type}|{session_id}|{compact_json}
+	logLine := fmt.Sprintf("%s|%s|%s|%s\n",
+		time.Now().Format("2006-01-02 15:04:05.000"),
+		eventType,
+		sessionID,
+		compactData,
+	)
+
+	if _, err := aiEventLogFile.WriteString(logLine); err != nil {
+		log.Printf("[AILogger] write failed: %v", err)
+	}
+	if err := aiEventLogFile.Sync(); err != nil {
+		log.Printf("[AILogger] sync failed: %v", err)
+	}
+}
+
 type Msg struct {
 	SessionID     string      `json:"session_id"`
 	RawHTML       string      `json:"rawhtml"`
@@ -50,6 +140,25 @@ type Msg struct {
 	PageID        string      `json:"page_id,omitempty"`
 	PageResultsID interface{} `json:"page_results_id,omitempty"`
 	SurveyID      string      `json:"survey_id,omitempty"` // 问卷ID（可选，优先使用）
+	Pages        []PageAnswers `json:"pages,omitempty"`    // upload_answers 请求中的页面答案列表
+}
+
+// PageAnswers upload_answers 请求中单个页面的答案
+type PageAnswers struct {
+	PageResultsID int64   `json:"page_results_id"`
+	Answers       []Answer `json:"answers"`
+}
+
+// Answer 单个答案数据
+type Answer struct {
+	ID              string `json:"id"`
+	Question       string `json:"question"`
+	Answer         string `json:"answer"`
+	InteractionType string `json:"interactionType"`
+	RowLabel       string `json:"rowLabel,omitempty"`
+	ColLabel       string `json:"colLabel,omitempty"`
+	Timestamp      int64  `json:"timestamp"`
+	SessionID      string `json:"sessionId,omitempty"`
 }
 
 type Response struct {
@@ -106,6 +215,8 @@ func wsHandler(w http.ResponseWriter, r *http.Request) {
 			handleSubmit(conn, msg, basePath)
 		case "screenshot":
 			handleScreenshot(conn, msg, basePath)
+		case "upload_answers":
+			handleUploadAnswers(conn, msg)
 		default:
 			log.Printf("[wsHandler] unknown type=%q, msg=%s", msg.Type, string(message))
 			sendError(conn, "unknown type: "+msg.Type, msg.RequestID)
@@ -136,6 +247,14 @@ func handleAnalyzeRequest(conn *websocket.Conn, msg Msg, basePath string) {
 	fmt.Printf("SurveyID:  %s\n", surveyID)
 	fmt.Printf("RawHTML长度: %d 字符\n", len(msg.RawHTML))
 	fmt.Println()
+
+	// AI 事件日志：analyze_request 请求开始
+	writeAILog("analyze_start", msg.SessionID, map[string]interface{}{
+		"request_id": msg.RequestID,
+		"survey_id":  surveyID,
+		"url":        msg.URL,
+		"html_len":   len(msg.RawHTML),
+	})
 
 	// 步骤 0: 数据库 - 提取/创建 survey 记录
 	fmt.Println("========================================")
@@ -340,9 +459,27 @@ func handleAnalyzeRequest(conn *websocket.Conn, msg Msg, basePath string) {
 
 	fmt.Printf(">>> 完成: session=%s, page_id=%s, source=%s, elapsed=%.2fs\n",
 		msg.SessionID, yamlResult.Meta.PageID, yamlResult.Source, elapsed.Seconds())
+
+	// AI 事件日志：analyze_request 完成
+	writeAILog("analyze_done", msg.SessionID, map[string]interface{}{
+		"request_id":    msg.RequestID,
+		"survey_id":     surveyID,
+		"page_id":       yamlResult.Meta.PageID,
+		"source":        yamlResult.Source,
+		"page_results_id": pageResultsID,
+		"interactions":  len(answerResult.Interactions),
+		"elapsed_sec":   elapsed.Seconds(),
+	})
 }
 
 func handleSubmit(conn *websocket.Conn, msg Msg, basePath string) {
+	// AI 事件日志：submit 请求
+	writeAILog("submit", msg.SessionID, map[string]interface{}{
+		"page_id":        msg.PageID,
+		"page_results_id": msg.PageResultsID,
+		"url":            msg.URL,
+	})
+
 	resp := Response{
 		Code:      200,
 		Message:   "success",
@@ -383,6 +520,14 @@ func handleScreenshot(conn *websocket.Conn, msg Msg, basePath string) {
 		log.Fatalf("handleScreenshot: invalid page_results_id=%q for session=%s: %v", pageResultsIDStr, msg.SessionID, err)
 	}
 
+	// AI 事件日志：截图请求
+	writeAILog("screenshot_recv", msg.SessionID, map[string]interface{}{
+		"page_results_id": pageResultsID,
+		"url":            msg.URL,
+		"page_id":        msg.PageID,
+		"image_size":     len(msg.ImageBase64),
+	})
+
 	fmt.Println("========================================")
 	fmt.Println(">>> 步骤 1: 保存截图文件")
 	fmt.Println("========================================")
@@ -409,6 +554,13 @@ func handleScreenshot(conn *websocket.Conn, msg Msg, basePath string) {
 	}
 	fmt.Printf("结果: 文件写入成功\n")
 	fmt.Println()
+
+	// AI 事件日志：截图文件已保存
+	writeAILog("screenshot_saved", msg.SessionID, map[string]interface{}{
+		"page_results_id": pageResultsID,
+		"file_path":       filePath,
+		"file_size":       len(imageData),
+	})
 
 	fmt.Println("========================================")
 	fmt.Println(">>> 步骤 2: 回写数据库 screenshot_path")
@@ -454,10 +606,113 @@ func handleScreenshot(conn *websocket.Conn, msg Msg, basePath string) {
 		} else {
 			fmt.Printf("结果: OCR 结果已写入 page_results_id=%d\n", pageResultsID)
 		}
+
+		// AI 事件日志：OCR 分析完成
+		writeAILog("screenshot_ocr_done", msg.SessionID, map[string]interface{}{
+			"page_results_id": pageResultsID,
+			"page_id":        fullRecord.PageID,
+			"ocr_verified":   ocrVerified,
+			"ocr_error":      ocrError,
+		})
 	}
 	fmt.Println()
 
 	fmt.Printf(">>> 截图处理完成: %s (%d bytes)\n", filePath, len(imageData))
+}
+
+// handleUploadAnswers 处理用户提交答案请求
+// 前端格式: { type: 'upload_answers', session_id: 'xxx', pages: [{ page_results_id: 1, answers: [...] }, ...] }
+func handleUploadAnswers(conn *websocket.Conn, msg Msg) {
+	fmt.Println("========================================")
+	fmt.Println(">>> 接收 upload_answers 请求")
+	fmt.Println("========================================")
+	fmt.Printf("SessionID: %s\n", msg.SessionID)
+	fmt.Printf("Pages数量: %d\n", len(msg.Pages))
+
+	if msg.SessionID == "" {
+		sendError(conn, "session_id is required", "")
+		return
+	}
+
+	if len(msg.Pages) == 0 {
+		sendError(conn, "pages is required and cannot be empty", "")
+		return
+	}
+
+	repo := database.NewUserSubmittedAnswerRepo()
+	totalSaved := 0
+	totalErrors := 0
+
+	// 遍历每个页面
+	for _, page := range msg.Pages {
+		if page.PageResultsID <= 0 {
+			fmt.Printf("警告: page_results_id 无效=%d，跳过该页面\n", page.PageResultsID)
+			totalErrors++
+			continue
+		}
+
+		// 验证 page_results_id 是否存在
+		pageResultRepo := database.NewPageResultRepo()
+		existingPage, err := pageResultRepo.FindByID(page.PageResultsID)
+		if err != nil {
+			fmt.Printf("警告: page_results_id=%d 查询失败: %v\n", page.PageResultsID, err)
+			totalErrors++
+			continue
+		}
+		if existingPage == nil {
+			fmt.Printf("警告: page_results_id=%d 不存在，跳过该页面\n", page.PageResultsID)
+			totalErrors++
+			continue
+		}
+
+		// 遍历该页面的每个答案
+		for _, ans := range page.Answers {
+			userAnswer := &database.UserSubmittedAnswer{
+				SessionID:       msg.SessionID,
+				PageResultsID:   page.PageResultsID,
+				Question:        ans.Question,
+				Answer:          ans.Answer,
+				InteractionType: ans.InteractionType,
+				RowLabel:        ans.RowLabel,
+				ColLabel:        ans.ColLabel,
+				AnswerID:        ans.ID,
+				Timestamp:       ans.Timestamp,
+			}
+
+			if err := repo.Upsert(userAnswer); err != nil {
+				fmt.Printf("警告: 保存答案失败 (page=%d, question=%q): %v\n", page.PageResultsID, ans.Question, err)
+				totalErrors++
+			} else {
+				totalSaved++
+			}
+		}
+	}
+
+	fmt.Printf("结果: 成功保存 %d 条，失败 %d 条\n", totalSaved, totalErrors)
+	fmt.Println()
+
+	// AI 事件日志
+	writeAILog("upload_answers", msg.SessionID, map[string]interface{}{
+		"pages_count": len(msg.Pages),
+		"saved":       totalSaved,
+		"errors":      totalErrors,
+	})
+
+	// 返回响应
+	resp := Response{
+		Code:    200,
+		Message: "success",
+		Data: map[string]interface{}{
+			"session_id":  msg.SessionID,
+			"saved":       totalSaved,
+			"errors":      totalErrors,
+			"pages_count": len(msg.Pages),
+		},
+	}
+	respBytes, _ := json.Marshal(resp)
+	if err := conn.WriteMessage(websocket.TextMessage, respBytes); err != nil {
+		log.Printf("write error: %v", err)
+	}
 }
 
 func sendError(conn *websocket.Conn, errMsg string, requestID string) {
@@ -510,6 +765,13 @@ func main() {
 		log.Fatalf("站点缓存初始化失败: %v", err)
 	}
 	fmt.Printf("站点缓存已加载: %d 个站点\n", len(database.GetAllActiveSites()))
+
+	extractor.InitOCRPrompts()
+
+	// 初始化 AI 事件日志
+	if err := initAILogger(); err != nil {
+		log.Fatalf("AI 事件日志初始化失败: %v", err)
+	}
 
 	port := os.Getenv("WS_PORT")
 	if port == "" {

@@ -1,0 +1,913 @@
+<html lang="en-GB"><!--<![endif]--><head><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/captchafox/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/mt_captcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/hunter.js" data-ts-input="cf-turnstile-response"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/amazon_waf/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/yandex/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/lemin/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/keycaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest_v4/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/communication_helpers.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/core_helpers.js"></script>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- respview.client.meta -->
+
+
+<title>Tapestry Research</title>
+
+
+<!-- respview.css -->
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css?ad7753b880">
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.beacon.css?4ddb951d43">
+
+<!-- generated from: static/support/font-awesome-4.2.0/less/font-awesome.less, static/support/select2-4.0.1/select2.min.css, static/survey.respondent-post151.less, selfserve/2222/260216/static/theme.less, lib/steam/atm1d/v11/static/atm1d.less, lib/steam/cardsort/v7/static/cardsort.less and 0 themevars -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/less-compiled.css?a932463a8405103997a94450f6245f0e">
+
+
+<!-- extra CSS -->
+<!-- lib/steam/cardsort/v7/styles.xml -->
+  <link rel="stylesheet" href="/s/support/fontawesome/css/font-awesome.css?2dedbce405">
+
+<!--[if IE 7]>
+  <link rel='stylesheet' href='/s/support/fontawesome/css/font-awesome-ie7.css?059a69441a' />
+<![endif]-->
+
+  <link rel="stylesheet" href="/survey/lib/steam/cardsort/v7/cardsort.css?f697411ffe">
+
+  <link rel="stylesheet" href="/survey/lib/steam/cardsort/v7/cardsort_desktop.css?c5779a8ab6">
+
+
+<!-- Custom CSS (specified in survey.xml) -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/Tapestry.css">
+
+<!-- respview.client.css -->
+<style>
+        table {
+        border-collapse: inherit !important; 
+        }
+        .row-col-legends-top {
+        background: #ededed;
+        position: sticky;
+        top: -16px;
+        z-index: 100;
+        }
+        .empty {
+        border: 1px solid #ccc;
+        }
+    </style>
+
+<!-- client.css -->
+<style media="screen">
+
+</style>
+
+<!-- JQuery -->
+<!--
+/s/jquery183.all.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/e2190ba850ec2bfa3e7d1567d2021910.js"></script>
+
+
+<!-- extra Logic -->
+
+
+<!-- respview.js -->
+<script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = '_?$&\')*,(;=.-~:@!';
+for (var i = 1, result = ''; i <= Math.floor(8 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((8 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script>
+
+<!--[if lte IE 8]><script src="/s/support/respond/respond-1.4.2.min.js"></script><script src="/s/support/rem-unit-polyfill/rem.min.js"></script><![endif]-->
+
+
+<!--
+/s/support/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js
+/s/common.js
+/s/respview-post132.js
+/s/survey.respondent-post143.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/6f7910d7512e9866158e9fcb02cfdd53.js"></script>
+
+
+<!-- extra JS -->
+<!-- lib/steam/cardsort/v7/styles.xml -->
+
+  <script src="/survey/lib/steam/cardsort/v7/cardsort.js?d389abd6a6"></script>
+
+
+
+
+
+
+<!-- respview.client.js -->
+
+
+<!-- client.javascript -->
+
+
+<script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script>
+
+<!-- extra Head -->
+    <link href="/survey/selfserve/2222/260216/cardsort.css" rel="stylesheet" type="text/css">
+
+<captcha-widgets></captcha-widgets></head>
+
+<body class="survey-page non-touch" data-device="">
+
+
+<div id="survey" class="survey-container">
+<div class="survey-section"><div class="page-header"></div>
+<!-- /.page-header --></div>
+<div class="survey-section">
+<div class="survey-body">
+<div class="survey-header">
+<div class="logo logo-middle">
+<img src="/survey/selfserve/2222/logo_a2a001390fe4dc2ce73e6e195e691697.png" class="logo-image" alt="Logo">
+</div>
+<!-- /.logo -->
+<div role="progressbar" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-top" title="progress bar - 16% complete">
+<div class="progress-box-outer" aria-hidden="true"><span class="progress-box-completed" style="width: 16%;"></span></div>
+<div class="progress-text" aria-hidden="true">16%</div>
+</div>
+<!-- /.progress-bar -->
+</div>
+<!-- /.survey-header -->
+
+<form id="primary" name="primary" method="post" action="/survey/selfserve/2222/260216" enctype="application/x-www-form-urlencoded" novalidate="">
+<input type="hidden" name="_v2_counter" value="8">
+<!-- @@XYZZY@@ -->
+<style type="text/css">
+    #question_QC3 .answers-table,.question-source {
+        display: none;
+    }
+    /* cardsort top-level container */
+    .sq-cardsort-QC3.sq-cardsort-desktop {
+    }
+    /* all cards */
+    .sq-cardsort-QC3 .sq-cardsort-card-item {
+        font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+        /* bug #21065 fix - limit the width of the card if max-width is specified */
+    }
+    /* each individual card */
+
+
+
+
+
+    /* disabled card */
+    .sq-cardsort-QC3 .sq-cardsort-card.sq-cardsort-state-disabled .sq-cardsort-card-item {
+        
+    }
+    /* hovered card */
+    .sq-cardsort-QC3 .sq-cardsort-card.sq-cardsort-state-hovered .sq-cardsort-card-item {
+        
+    }
+    /* selected card */
+    .sq-cardsort-QC3 .sq-cardsort-card.sq-cardsort-state-selected .sq-cardsort-card-item {
+        
+    }
+    /* card in bucket contents view */
+    /* bug 13492 fix starts here */
+    .sq-cardsort-QC3 .sq-cardsort-contents-overlay .sq-cardsort-card {
+        /* bug #20850 - use theme colors */
+        /*background-color: #cdcdcd;*/
+        min-height: 48px;
+        height: auto !important;
+        height: 48px;
+        text-align: left;
+    }
+    .sq-cardsort-QC3 .sq-cardsort-contents-overlay .sq-cardsort-card-item { /* this line is not part of the bug 13492 fix */
+        /* bug #20850 - use theme colors */
+        /*color: #000000;*/
+        display: block;
+        min-height: 48px;
+        height: auto !important;
+        height: 48px;
+        text-align: left;
+        width: auto;
+         /* this line is not part of the bug 13492 fix */
+    }
+    .sq-cardsort-QC3 .sq-cardsort-contents-overlay .sq-cardsort-card-legend {
+        display: inline-block;
+        height: auto;
+        line-height: normal;
+        margin-left: 50px; 
+        min-height: auto;
+        text-align: left;
+    }
+    /* bug 13492 fix ends here */
+
+    /* buckets container */
+    .sq-cardsort-QC3.sq-cardsort-desktop .sq-cardsort-buckets {
+    }
+    /* all buckets */
+    .sq-cardsort-QC3 .sq-cardsort-bucket {
+        /* bug #20850 - use theme colors */
+        /*background-color: #cdcdcd;*/
+        /*color: #000000;*/
+        width: 15%;
+        /* bug #21065 fix - limit the width of the bucket if max-width is specified */
+    }
+    .sq-cardsort-QC3 .sq-cardsort-bucket-item {
+        margin-right: 5px;
+    }
+    /* each individual bucket */
+
+
+
+
+
+    /* disabled bucket */
+    .sq-cardsort-QC3 .sq-cardsort-bucket.sq-cardsort-state-disabled {
+        /* bug #20850 - use theme colors */
+        /*background-color: #8d8d8d;*/
+        /*color: #404040;*/
+        
+    }
+    /* hovered bucket */
+    .sq-cardsort-QC3 .sq-cardsort-bucket.sq-cardsort-state-hovered {
+        /* bug #20850 - use theme colors */
+        /*background-color: #49c0b8;*/
+        /*color: #000000;*/
+        
+    }
+    /* selected bucket */
+    .sq-cardsort-QC3 .sq-cardsort-bucket.sq-cardsort-state-selected {
+        /* bug #20850 - use theme colors */
+        /*background-color: #49c0b8;*/
+        /*color: #000000;*/
+        
+    }
+    /* card counter on bucket */
+    .sq-cardsort-QC3 .sq-cardsort-bucket-count {
+        /* bug #20850 - use theme colors */
+        /*color: #cdcdcd;*/
+        
+        display: none;
+    }
+    /* disabled card counter on bucket */
+    .sq-cardsort-QC3 .sq-cardsort-bucket-count.sq-cardsort-state-disabled {
+        /* bug #20850 - use theme colors */
+        /*color: #8d8d8d;*/
+        
+    }
+    /* hovered card counter on bucket */
+    .sq-cardsort-QC3 .sq-cardsort-bucket-count.sq-cardsort-state-hovered {
+        /* bug #20850 - use theme colors */
+        /*color: #49c0b8;*/
+        
+    }
+    /* progress indicator */
+    .sq-cardsort-QC3 .sq-cardsort-progress {
+        ;
+    }
+    /* navigation (previous, next) buttons */
+    .sq-cardsort-QC3 .sq-cardsort-previous,.sq-cardsort-QC3 .sq-cardsort-next {
+        /* bug #20850 - use theme colors */
+        /*background-color: #cdcdcd;*/
+        /*color: #000000;*/
+        ;
+    }
+    /* disabled navigation (previous, next) buttons */
+    .sq-cardsort-QC3 .sq-cardsort-previous.sq-cardsort-state-disabled,.sq-cardsort-QC3 .sq-cardsort-next.sq-cardsort-state-disabled {
+        /* bug #20850 - use theme colors */
+        /*background-color: #8d8d8d;*/
+        /*color: #404040;*/
+        
+    }
+    /* hovered navigation (previous, next) buttons */
+    .sq-cardsort-QC3 .sq-cardsort-previous.sq-cardsort-state-hovered,.sq-cardsort-QC3 .sq-cardsort-next.sq-cardsort-state-hovered {
+        /* bug #20850 - use theme colors */
+        /*background-color: #49c0b8;*/
+        /*color: #000000;*/
+        
+    }
+    /* completion message */
+    .sq-cardsort-QC3 .sq-cardsort-completion-item {
+        
+    }
+    </style>
+
+    <script type="text/javascript">
+    (function($) {
+        var setupOptions = {
+ "displayCounter": false,
+ "buttonNextHTML": "<span style=\"font-family: Century Gothic;\">Next</span> <i class=\"fa-icon-chevron-right\"></i>",
+ "bucketSelectCSS": {},
+ "cardDisableCSS": {},
+ "contentsCardCSS": {},
+ "cardCSS": {
+  "font-family": "'Century Gothic', CenturyGothic, AppleGothic, sans-serif"
+ },
+ "completionHTML": "<i>Click the \">>\" button to proceed.</i>",
+ "buttonPreviousHTML": "<i class=\"fa-icon-chevron-left\"></i><span style=\"font-family: Century Gothic;\"> Prev</span>",
+ "animationDuration": 500,
+ "wrapBuckets": true,
+ "bucketCountCSS": {},
+ "iconButtonCSS": {},
+ "progressCSS": {},
+ "completionCSS": {},
+ "displayProgress": true,
+ "iconButtonHoverCSS": {},
+ "iconButtonDisableCSS": {},
+ "dragAndDrop": true,
+ "bucketMaxWidth": "",
+ "cardHoverCSS": {},
+ "bucketHoverCSS": {},
+ "bucketCountDisableCSS": {},
+ "cardMaxWidth": "",
+ "cardSelectCSS": {},
+ "bucketCountHoverCSS": {},
+ "bucketDisableCSS": {},
+ "themeFile": "cardsort.css",
+ "bucketsPerRow": 0,
+ "automaticAdvance": true,
+ "bucketCSS": {
+  "width": "15%"
+ },
+ "displayNavigation": true
+};
+        $.extend(setupOptions, {
+            // bug 16635: add autoadvance and drag and drop begin
+            automaticAdvance: 1,
+            dragAndDrop: 1,
+            // bug 16635: add autoadvance and drag and drop end
+            debug: false,
+            deviceClass: "desktop",
+            grouping: "rows",
+            infiniteScroll: 0,
+            label: "QC3",
+            style: "cardsort",
+            type: "radio",
+            uniformBucketSize: 1,
+            uniformCardSize: 1
+        });
+        $ (function() {
+            Survey.question.cardsort.setup(setupOptions);
+        });
+    })(jQuery);
+    </script>
+<div id="question_QC3" class="question radio label_QC3  ">
+<h1 title="question" class="question-text" id="question_text_QC3">How much do you agree or disagree that each of the words below describe you?</h1>
+<!-- /.question-text -->
+
+<h2 title="instructions" class="instruction-text">Please select an answer</h2>
+<!-- /.instruction-text -->
+<!-- assign sq-cardsort-mobile class if mobile device -->
+    <!-- assign sq-cardsort-desktop class if not mobile device -->
+    <div class="sq-cardsort sq-cardsort-QC3 sq-cardsort-desktop">
+      <div class="sq-cardsort-body">
+        <div class="sq-cardsort-cards-view">
+          <ul class="sq-cardsort-cards" style="display: block; width: 331px;">
+            <li atleast="1" atmost="1" class="sq-cardsort-card sq-cardsort-card-r1 ui-draggable" index="0" style="display: inline-block;">
+              <span class="sq-cardsort-card-remove sq-cardsort-card-remove-r1 sq-cardsort-icon-button"><i class="fa-icon-ban-circle"></i></span>
+              <div class="sq-cardsort-card-item sq-cardsort-card-item-r1" index="0" style="height: 83px; width: 331px;"><p class="sq-cardsort-card-legend sq-cardsort-card-legend-left" style="margin-bottom: 21px; margin-top: 21px;">
+        Sophisticated
+    </p></div>
+            </li>
+            <li atleast="1" atmost="1" class="sq-cardsort-card sq-cardsort-card-r2 ui-draggable" index="1" style="display: none;">
+              <span class="sq-cardsort-card-remove sq-cardsort-card-remove-r2 sq-cardsort-icon-button"><i class="fa-icon-ban-circle"></i></span>
+              <div class="sq-cardsort-card-item sq-cardsort-card-item-r2" index="1" style="height: 83px; width: 331px;"><p class="sq-cardsort-card-legend sq-cardsort-card-legend-left" style="margin-bottom: 21px; margin-top: 21px;">
+        Elegant
+    </p></div>
+            </li>
+            <li atleast="1" atmost="1" class="sq-cardsort-card sq-cardsort-card-r3 ui-draggable" index="2" style="display: none;">
+              <span class="sq-cardsort-card-remove sq-cardsort-card-remove-r3 sq-cardsort-icon-button"><i class="fa-icon-ban-circle"></i></span>
+              <div class="sq-cardsort-card-item sq-cardsort-card-item-r3" index="2" style="height: 83px; width: 331px;"><p class="sq-cardsort-card-legend sq-cardsort-card-legend-left" style="margin-bottom: 21px; margin-top: 21px;">
+        Funny
+    </p></div>
+            </li>
+            <li atleast="1" atmost="1" class="sq-cardsort-card sq-cardsort-card-r4 ui-draggable" index="3" style="display: none;">
+              <span class="sq-cardsort-card-remove sq-cardsort-card-remove-r4 sq-cardsort-icon-button"><i class="fa-icon-ban-circle"></i></span>
+              <div class="sq-cardsort-card-item sq-cardsort-card-item-r4" index="3" style="height: 83px; width: 331px;"><p class="sq-cardsort-card-legend sq-cardsort-card-legend-left" style="margin-bottom: 10px; margin-top: 10px;">
+        Select “Agree slightly” for this item
+    </p></div>
+            </li>
+            <li atleast="1" atmost="1" class="sq-cardsort-card sq-cardsort-card-r5 ui-draggable" index="4" style="display: none;">
+              <span class="sq-cardsort-card-remove sq-cardsort-card-remove-r5 sq-cardsort-icon-button"><i class="fa-icon-ban-circle"></i></span>
+              <div class="sq-cardsort-card-item sq-cardsort-card-item-r5" index="4" style="height: 83px; width: 331px;"><p class="sq-cardsort-card-legend sq-cardsort-card-legend-left" style="margin-bottom: 21px; margin-top: 21px;">
+        Edgy
+    </p></div>
+            </li>
+            <!-- completion message - not actually a card -->
+            <li class="sq-cardsort-completion">
+              <div class="sq-cardsort-completion-item" aria-live="assertive"><i>Click the "&gt;&gt;" button to proceed.</i></div>
+            </li>
+          </ul>
+          <span class="sq-cardsort-progress">1/5</span>
+          <span class="sq-cardsort-icon-button sq-cardsort-previous sq-cardsort-state-disabled" disabled="disabled"><i class="fa-icon-chevron-left"></i><span style="font-family: Century Gothic;"> Prev</span></span>
+          <span class="sq-cardsort-icon-button sq-cardsort-next sq-cardsort-state-disabled" disabled="disabled"><span style="font-family: Century Gothic;">Next</span> <i class="fa-icon-chevron-right"></i></span>
+        </div>
+        <div class="sq-cardsort-buckets-view">
+          <ul class="sq-cardsort-buckets">
+            <li class="sq-cardsort-bucket sq-cardsort-bucket-c1 ui-droppable" index="0" style="display: inline-block; height: 52.7778px; width: 160.778px;">
+              <div class="sq-cardsort-bucket-item sq-cardsort-bucket-item-c1" index="0" style="margin-bottom: 13px; margin-top: 13px;"><p class="sq-cardsort-bucket-legend sq-cardsort-bucket-legend-top">
+Agree strongly
+<div class="force-width" style="width:12px"></div></p></div>
+              <span class="sq-cardsort-bucket-count sq-cardsort-bucket-count-c1 sq-cardsort-icon-button sq-cardsort-state-disabled">0</span>
+            </li>
+            <li class="sq-cardsort-bucket sq-cardsort-bucket-c2 ui-droppable" index="1" style="display: inline-block; height: 52.7778px; width: 160.778px;">
+              <div class="sq-cardsort-bucket-item sq-cardsort-bucket-item-c2" index="1" style="margin-bottom: 13px; margin-top: 13px;"><p class="sq-cardsort-bucket-legend sq-cardsort-bucket-legend-top">
+Agree slightly
+<div class="force-width" style="width:12px"></div></p></div>
+              <span class="sq-cardsort-bucket-count sq-cardsort-bucket-count-c2 sq-cardsort-icon-button sq-cardsort-state-disabled">0</span>
+            </li>
+            <li class="sq-cardsort-bucket sq-cardsort-bucket-c3 ui-droppable" index="2" style="display: inline-block; height: 52.7778px; width: 160.778px;">
+              <div class="sq-cardsort-bucket-item sq-cardsort-bucket-item-c3" index="2" style="margin-bottom: 6px; margin-top: 6px;"><p class="sq-cardsort-bucket-legend sq-cardsort-bucket-legend-top">
+Neither agree nor disagree
+<div class="force-width" style="width:12px"></div></p></div>
+              <span class="sq-cardsort-bucket-count sq-cardsort-bucket-count-c3 sq-cardsort-icon-button sq-cardsort-state-disabled">0</span>
+            </li>
+            <li class="sq-cardsort-bucket sq-cardsort-bucket-c4 ui-droppable" index="3" style="display: inline-block; height: 52.7778px; width: 160.778px;">
+              <div class="sq-cardsort-bucket-item sq-cardsort-bucket-item-c4" index="3" style="margin-bottom: 13px; margin-top: 13px;"><p class="sq-cardsort-bucket-legend sq-cardsort-bucket-legend-top">
+Disagree slightly
+<div class="force-width" style="width:12px"></div></p></div>
+              <span class="sq-cardsort-bucket-count sq-cardsort-bucket-count-c4 sq-cardsort-icon-button sq-cardsort-state-disabled">0</span>
+            </li>
+            <li class="sq-cardsort-bucket sq-cardsort-bucket-c5 ui-droppable" index="4" style="display: inline-block; height: 52.7778px; width: 160.778px;">
+              <div class="sq-cardsort-bucket-item sq-cardsort-bucket-item-c5" index="4" style="margin-bottom: 13px; margin-top: 13px;"><p class="sq-cardsort-bucket-legend sq-cardsort-bucket-legend-top">
+Disagree strongly
+<div class="force-width" style="width:12px"></div></p></div>
+              <span class="sq-cardsort-bucket-count sq-cardsort-bucket-count-c5 sq-cardsort-icon-button sq-cardsort-state-disabled">0</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- used to diplay the contents of a bucket -->
+      <div class="sq-cardsort-contents-overlay">
+        <div class="sq-cardsort-contents-bg"></div>
+        <span class="sq-cardsort-icon-button sq-cardsort-contents-close"><i class="fa-icon-remove"></i></span>
+        <div class="sq-cardsort-contents-view">
+          <div class="sq-cardsort-contents-title"></div>
+          <ul class="sq-cardsort-contents-cards"></ul>
+        </div>
+      </div>
+      <!-- used to diplay the contents of a bucket -->
+    </div>
+<div class="answers answers-table">
+<div class="fir fir-checkbox" style="display: none;">
+<span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> checkbox </title>
+<path d="M15.8,0H3.9C1.8,0,0,2,0,4.1V16c0,2.2,1.8,4,3.9,4h11.8c2.2,0,4.2-1.8,4.2-4V4.1C20,2,18,0,15.8,0z M19,16 c0,1.6-1.6,3-3.2,3H3.9C2.3,19,1,17.7,1,16V4.1C1,2.5,2.3,1,3.9,1h11.8C17.4,1,19,2.5,19,4.1V16z" class="fir-base"></path>
+<path d="M19,16c0,1.6-1.6,3-3.2,3H3.9C2.3,19,1,17.7,1,16V4.1C1,2.5,2.3,1,3.9,1h11.8C17.4,1,19,2.5,19,4.1V16z" class="fir-bg"></path>
+<polygon points="9.1,16.3 2.5,11 4.1,9 8.7,12.6 15.6,3.7 17.7,5.2 " class="fir-selected"></polygon>
+</svg>
+</span>
+</div>
+<div class="fir fir-radio" style="display: none;">
+<span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</div>
+<table class="grid setWidth grid-table-mode" data-settings="force-desktop mobile-mode group-by-row table-mode" data-height="" summary="This table contains form elements to answer the survey question">
+<tbody><tr class="row row-col-legends row-col-legends-top colCount-5">
+<td class="cell empty empty-left empty-top unused mobile border-collapse"></td>
+<th scope="col" id="QC3_c1" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   ">
+Agree strongly
+<div class="force-width" style="width:12px"></div></th><th scope="col" id="QC3_c2" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   ">
+Agree slightly
+<div class="force-width" style="width:12px"></div></th><th scope="col" id="QC3_c3" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   ">
+Neither agree nor disagree
+<div class="force-width" style="width:12px"></div></th><th scope="col" id="QC3_c4" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   ">
+Disagree slightly
+<div class="force-width" style="width:12px"></div></th><th scope="col" id="QC3_c5" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   ">
+Disagree strongly
+<div class="force-width" style="width:12px"></div></th>
+
+</tr>
+</tbody>
+<tbody><tr class="row row-elements even colCount-5">
+<th scope="row" id="QC3_r1_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+        Sophisticated
+    </th>
+<td headers="QC3_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.0" value="0" id="ans53217.0.0" class="input radio fir-hidden" aria-labelledby="QC3_r1_left QC3_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.0.0">Agree strongly</label> </span>
+</span>
+</td><td headers="QC3_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.0" value="1" id="ans53217.1.0" class="input radio fir-hidden" aria-labelledby="QC3_r1_left QC3_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.1.0">Agree slightly</label> </span>
+</span>
+</td><td headers="QC3_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.0" value="2" id="ans53217.2.0" class="input radio fir-hidden" aria-labelledby="QC3_r1_left QC3_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.2.0">Neither agree nor disagree</label> </span>
+</span>
+</td><td headers="QC3_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.0" value="3" id="ans53217.3.0" class="input radio fir-hidden" aria-labelledby="QC3_r1_left QC3_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.3.0">Disagree slightly</label> </span>
+</span>
+</td><td headers="QC3_c5" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.0" value="4" id="ans53217.4.0" class="input radio fir-hidden" aria-labelledby="QC3_r1_left QC3_c5"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.4.0">Disagree strongly</label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-5">
+<th scope="row" id="QC3_r2_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+        Elegant
+    </th>
+<td headers="QC3_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.1" value="0" id="ans53217.0.1" class="input radio fir-hidden" aria-labelledby="QC3_r2_left QC3_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.0.1">Agree strongly</label> </span>
+</span>
+</td><td headers="QC3_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.1" value="1" id="ans53217.1.1" class="input radio fir-hidden" aria-labelledby="QC3_r2_left QC3_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.1.1">Agree slightly</label> </span>
+</span>
+</td><td headers="QC3_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.1" value="2" id="ans53217.2.1" class="input radio fir-hidden" aria-labelledby="QC3_r2_left QC3_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.2.1">Neither agree nor disagree</label> </span>
+</span>
+</td><td headers="QC3_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.1" value="3" id="ans53217.3.1" class="input radio fir-hidden" aria-labelledby="QC3_r2_left QC3_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.3.1">Disagree slightly</label> </span>
+</span>
+</td><td headers="QC3_c5" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.1" value="4" id="ans53217.4.1" class="input radio fir-hidden" aria-labelledby="QC3_r2_left QC3_c5"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.4.1">Disagree strongly</label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-5">
+<th scope="row" id="QC3_r3_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+        Funny
+    </th>
+<td headers="QC3_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.2" value="0" id="ans53217.0.2" class="input radio fir-hidden" aria-labelledby="QC3_r3_left QC3_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.0.2">Agree strongly</label> </span>
+</span>
+</td><td headers="QC3_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.2" value="1" id="ans53217.1.2" class="input radio fir-hidden" aria-labelledby="QC3_r3_left QC3_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.1.2">Agree slightly</label> </span>
+</span>
+</td><td headers="QC3_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.2" value="2" id="ans53217.2.2" class="input radio fir-hidden" aria-labelledby="QC3_r3_left QC3_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.2.2">Neither agree nor disagree</label> </span>
+</span>
+</td><td headers="QC3_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.2" value="3" id="ans53217.3.2" class="input radio fir-hidden" aria-labelledby="QC3_r3_left QC3_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.3.2">Disagree slightly</label> </span>
+</span>
+</td><td headers="QC3_c5" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.2" value="4" id="ans53217.4.2" class="input radio fir-hidden" aria-labelledby="QC3_r3_left QC3_c5"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.4.2">Disagree strongly</label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-5">
+<th scope="row" id="QC3_r4_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+        Select “Agree slightly” for this item
+    </th>
+<td headers="QC3_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.3" value="0" id="ans53217.0.3" class="input radio fir-hidden" aria-labelledby="QC3_r4_left QC3_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.0.3">Agree strongly</label> </span>
+</span>
+</td><td headers="QC3_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.3" value="1" id="ans53217.1.3" class="input radio fir-hidden" aria-labelledby="QC3_r4_left QC3_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.1.3">Agree slightly</label> </span>
+</span>
+</td><td headers="QC3_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.3" value="2" id="ans53217.2.3" class="input radio fir-hidden" aria-labelledby="QC3_r4_left QC3_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.2.3">Neither agree nor disagree</label> </span>
+</span>
+</td><td headers="QC3_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.3" value="3" id="ans53217.3.3" class="input radio fir-hidden" aria-labelledby="QC3_r4_left QC3_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.3.3">Disagree slightly</label> </span>
+</span>
+</td><td headers="QC3_c5" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.3" value="4" id="ans53217.4.3" class="input radio fir-hidden" aria-labelledby="QC3_r4_left QC3_c5"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.4.3">Disagree strongly</label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-5">
+<th scope="row" id="QC3_r5_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+        Edgy
+    </th>
+<td headers="QC3_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.4" value="0" id="ans53217.0.4" class="input radio fir-hidden" aria-labelledby="QC3_r5_left QC3_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.0.4">Agree strongly</label> </span>
+</span>
+</td><td headers="QC3_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.4" value="1" id="ans53217.1.4" class="input radio fir-hidden" aria-labelledby="QC3_r5_left QC3_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.1.4">Agree slightly</label> </span>
+</span>
+</td><td headers="QC3_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.4" value="2" id="ans53217.2.4" class="input radio fir-hidden" aria-labelledby="QC3_r5_left QC3_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.2.4">Neither agree nor disagree</label> </span>
+</span>
+</td><td headers="QC3_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.4" value="3" id="ans53217.3.4" class="input radio fir-hidden" aria-labelledby="QC3_r5_left QC3_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.3.4">Disagree slightly</label> </span>
+</span>
+</td><td headers="QC3_c5" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.4" value="4" id="ans53217.4.4" class="input radio fir-hidden" aria-labelledby="QC3_r5_left QC3_c5"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.4.4">Disagree strongly</label> </span>
+</span>
+</td>
+
+</tr></tbody>
+</table>
+<!-- /.grid -->
+</div>
+<!-- /.answers -->
+</div>
+<!-- /.question --><div class="survey-buttons">
+<input type="submit" name="continue" id="btn_continue" class="button continue" value="Next »" onclick="var i = document.createElement('input'); i.setAttribute('type', 'hidden');i.setAttribute('value', '1');i.setAttribute('name', '__has_javascript');document.forms.primary.appendChild(i);">
+
+</div>
+<!-- #surveyButtons --><input type="hidden" name="state" value="82e5cb79-ee6b-4385-8fd2-532cc2958330">
+<input type="hidden" name="start_time" value="1780109114">
+<input type="hidden" name="_ptime" value="0">
+<script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "nb3zm6n05zhru1vp", "2e32qje8q1xt1e7a");}, 100); });
+</script>
+</form>
+
+
+</div>
+<!-- /.survey-body -->
+</div>
+<div class="survey-section"><div class="footer"><div style="width: 100%; height: 60px; background-color: #221b4f;" jstcache="0"><br jstcache="0"><center jstcache="0">       <a target="_blank" jstcache="0">          <img src="/survey/selfserve/2222/260216/Footer.png?2326399e4b" style="background-color: #221b4f;" jstcache="0" width="150px" height="38px">       </a>    </center></div></div>
+<!-- /.footer -->
+<input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33">
+        <input type="hidden" id="SurveyID" name="SurveyID" value="220821">
+        <input type="hidden" id="PanelistID" name="PanelistID" value="nb3zm6n05zhru1vp">
+        <input type="hidden" id="LangCode" name="LangCode" value="EN">
+        <input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults">
+        <input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults">
+        <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+        <input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0">
+
+        <script> function getQSTimeoutMs(){return 5000;} </script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qualityscore.js"></script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qslib1.0.js"></script></div>
+</div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780109119229">
+<div id="detectBreakpoint"></div>
+<!-- /.survey-container -->
+
+
+</body></html>

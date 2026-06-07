@@ -1,0 +1,273 @@
+400: 
+401: 	fmt.Printf("\n%s\n", sep)
+402: 	fmt.Printf("  �?全部完成，共处理 %d 个文件\n", len(validFiles))
+403: 	fmt.Printf("%s\n", sep)
+404: }
+405: 
+406: func showUsage() {
+407: 	fmt.Println()
+408: 	fmt.Println("══════════════════════════════════════════════════════════════")
+409: 	fmt.Println("  💡 使用方式�?)
+410: 	fmt.Println()
+411: 	fmt.Println("    # 单张图片（使用默认题目清单）")
+412: 	fmt.Println("    go run tests/test_ocr.go image.png")
+413: 	fmt.Println()
+414: 	fmt.Println("    # 单张图片 + recommend_answer.json")
+415: 	fmt.Println("    go run tests/test_ocr.go image.png recommend.json")
+416: 	fmt.Println()
+417: 	fmt.Println("    # 多张图片 + recommend_answer.json（json 放在最后）")
+418: 	fmt.Println("    go run tests/test_ocr.go img1.png img2.png recommend.json")
+419: 	fmt.Println()
+420: 	fmt.Println("  ⚠️  recommend_answer.json 中不会传 recommended_answers 给模�?)
+421: 	fmt.Println("     �?subject �?question_type 用于题目匹配�?)
+422: 	fmt.Println()
+423: 	fmt.Println("══════════════════════════════════════════════════════════════")
+424: }
+425: 
+426: // =============================================================================
+427: // 分步函数
+428: // =============================================================================
+429: 
+430: func banner() {
+431: 	fmt.Println()
+432: 	fmt.Println("╔══════════════════════════════════════════════════════════════╗")
+433: 	fmt.Println("�?         截图 OCR 识别  �? tests/test_ocr.go           �?)
+434: 	fmt.Printf("�?   精细化提示词  ·  %-10s  ·  CLI 拖入图片      ║\n", anthropicCfg.Model)
+435: 	fmt.Println("╚══════════════════════════════════════════════════════════════╝")
+436: }
+437: 
+438: func loadConfig() {
+439: 	yamlPath := "configs/env.yaml"
+440: 	data, err := os.ReadFile(yamlPath)
+441: 	if err != nil {
+442: 		fmt.Printf("[警告] 读取 %s 失败，使用硬编码默认�? %v\n", yamlPath, err)
+443: 	} else {
+444: 		var yml map[string]interface{}
+445: 		if err := yaml.Unmarshal(data, &yml); err == nil {
+446: 			// volces 配置
+447: 			if vv, ok := yml["volces_vision"].(map[string]interface{}); ok {
+448: 				if m, ok := vv["model"].(string); ok && m != "" {
+449: 					volcesCfg.Model = m
+450: 				}
+451: 				if key, ok := vv["api_key"].(string); ok && key != "" {
+452: 					volcesanthropicCfg.APIKey = key
+453: 				}
+454: 				if url, ok := vv["base_url"].(string); ok && url != "" {
+455: 					volcesanthropicCfg.BaseURL = url
+456: 				}
+457: 				if t, ok := vv["temperature"].(float64); ok {
+458: 					volcesCfg.Temperature = t
+459: 				}
+460: 				if to, ok := vv["timeout"].(int); ok && to > 0 {
+461: 					volcesanthropicCfg.Timeout = to
+462: 				}
+463: 			}
+464: 			// anthropic 配置
+465: 			if av, ok := yml["anthropic"].(map[string]interface{}); ok {
+466: 				if m, ok := av["model"].(string); ok && m != "" {
+467: 					anthropicCfg.Model = m
+468: 				}
+469: 				if key, ok := av["api_key"].(string); ok && key != "" {
+470: 					anthropicanthropicCfg.APIKey = key
+471: 				}
+472: 				if url, ok := av["base_url"].(string); ok && url != "" {
+473: 					anthropicanthropicCfg.BaseURL = url
+474: 				}
+475: 				if mt, ok := av["max_tokens"].(int); ok && mt > 0 {
+476: 					anthropicCfg.MaxTokens = mt
+477: 				}
+478: 				if t, ok := av["temperature"].(float64); ok {
+479: 					anthropicCfg.Temperature = t
+480: 				}
+481: 				if to, ok := av["timeout"].(int); ok && to > 0 {
+482: 					anthropicanthropicCfg.Timeout = to
+483: 				}
+484: 			}
+485: 		}
+486: 	}
+487: 	fmt.Printf("\n[volces]   模型=%s | temperature=%.1f | timeout=%ds\n",
+488: 		volcesCfg.Model, volcesCfg.Temperature, volcesanthropicCfg.Timeout)
+489: 	fmt.Printf("[anthropic] 模型=%s | max_tokens=%d | temperature=%.1f | timeout=%ds\n",
+490: 		anthropicCfg.Model, anthropicCfg.MaxTokens, anthropicCfg.Temperature, anthropicanthropicCfg.Timeout)
+491: }
+492: 
+493: func loadPrompts() (string, string) {
+494: 	prompt, err := loadOCRSystemPrompt()
+495: 	if err != nil {
+496: 		fmt.Printf("[错误] 加载 ocr.system 失败: %v\n", err)
+497: 		os.Exit(1)
+498: 	}
+499: 	fmt.Printf("[提示词] ocr.system 已加载（%d 字符）\n", len(prompt))
+500: 
+575: 			QuestionType: it.QuestionType,
+576: 			// RecommendedAnswer 完全不提�?
+577: 		})
+578: 	}
+579: 
+580: 	pageHint := ""
+581: 	if wrapper.Data.PageMetadata.PageID != "" {
+582: 		pageHint = wrapper.Data.PageMetadata.PageID
+583: 	}
+584: 
+585: 	tag := "普�?
+586: 	if isMatrix {
+587: 		tag = "矩阵"
+588: 	}
+589: 	summary := fmt.Sprintf("%s (%s, %d �?", jsonPath, tag, len(items))
+590: 	fmt.Printf("[题目] �?%s 加载 %d 道题目（recommended_answers 已排除）\n", jsonPath, len(items))
+591: 	if pageHint != "" {
+592: 		fmt.Printf("[页面] page_id=%s\n", pageHint)
+593: 	}
+594: 
+595: 	return items, isMatrix, summary
+650: 	}
+651: 	fmt.Printf("┌─ User Prompt�?s）────────────────────────────────────\n", modeLabel)
+652: 	for _, line := range strings.Split(userPrompt, "\n") {
+653: 		fmt.Printf("  %s\n", line)
+654: 	}
+655: 	fmt.Println("└──────────────────────────────────────────────────────────────")
+656: 
+657: 	// ── 3. 调用 API ─────────────────────────────────────────
+658: 	fmt.Println()
+659: 	fmt.Printf("[调用] %s API�?s�?..\n", anthropicCfg.Model, map[bool]string{true: "矩阵模式", false: "普通模�?}[isMatrix])
+660: 	start := time.Now()
+661: 	result, err := callAnthropicVL(activeSystem, userPrompt, imageBase64, mimeType)
+662: 	elapsed := time.Since(start)
+663: 
+664: 	if err != nil {
+665: 		fmt.Printf("[错误] OCR 失败: %v\n", err)
+106: // Anthropic Vision API（支持图�?OCR�?
+107: // =============================================================================
+108: 
+109: func callAnthropicVL(systemPrompt, userPrompt, imageBase64, mimeType string) (string, error) {
+110: 	// Anthropic 不支�?system message，将 system prompt 拼入 user prompt
+111: 	combinedUserPrompt := systemPrompt + "\n\n" + userPrompt
+112: 
+113: 	type imgSource struct {
+114: 		Type      string `json:"type"`
+115: 		MediaType string `json:"media_type"`
+116: 		Data      string `json:"data"`
+117: 	}
+118: 	type contentPart struct {
+119: 		Type   string     `json:"type"`
+120: 		Text   string     `json:"text,omitempty"`
+121: 		Source *imgSource `json:"source,omitempty"`
+122: 	}
+123: 
+124: 	reqBody := map[string]interface{}{
+125: 		"model": anthropicCfg.Model,
+126: 		"messages": []map[string]interface{}{
+127: 			{
+128: 				"role":    "user",
+129: 				"content": []contentPart{
+130: 					{Type: "text", Text: combinedUserPrompt},
+131: 					{
+132: 						Type: "image",
+133: 						Source: &imgSource{
+134: 							Type:      "base64",
+135: 							MediaType: mimeType,
+136: 							Data:      imageBase64,
+137: 						},
+138: 					},
+139: 				},
+140: 			},
+141: 		},
+142: 		"max_tokens":  anthropicCfg.MaxTokens,
+143: 		"temperature": anthropicCfg.Temperature,
+144: 	}
+145: 
+146: 	bodyBytes, err := json.Marshal(reqBody)
+147: 	if err != nil {
+148: 		return "", fmt.Errorf("marshal: %w", err)
+149: 	}
+150: 
+151: 	client := &http.Client{Timeout: time.Duration(anthropicanthropicCfg.Timeout) * time.Second}
+152: 	req, _ := http.NewRequest("POST", anthropicanthropicCfg.BaseURL+"/v1/messages", bytes.NewReader(bodyBytes))
+153: 	req.Header.Set("Content-Type", "application/json")
+154: 	req.Header.Set("x-api-key", anthropicanthropicCfg.APIKey)
+155: 	req.Header.Set("anthropic-version", "2023-06-01")
+156: 
+157: 	resp, err := client.Do(req)
+158: 	if err != nil {
+159: 		return "", fmt.Errorf("HTTP: %w", err)
+160: 	}
+161: 	defer resp.Body.Close()
+162: 
+163: 	respBytes, _ := io.ReadAll(resp.Body)
+164: 	if resp.StatusCode != 200 {
+165: 		return "", fmt.Errorf("HTTP %d: %s", resp.StatusCode, string(respBytes))
+166: 	}
+167: 
+168: 	var result struct {
+169: 		Content []struct {
+170: 			Type string `json:"type"`
+171: 			Text string `json:"text"`
+172: 		} `json:"content"`
+173: 	}
+174: 	if err := json.Unmarshal(respBytes, &result); err != nil {
+175: 		return "", fmt.Errorf("parse: %w", err)
+176: 	}
+177: 	if len(result.Content) == 0 {
+178: 		return "", fmt.Errorf("empty response from Anthropic")
+179: 	}
+180: 
+181: 	content := result.Content[0].Text
+182: 	// 剥离 markdown 代码�?
+183: 	if idx := strings.Index(content, "]<]image[>["); idx != -1 {
+184: 		content = strings.TrimSpace(content[idx+len("]<]image[>["):])
+185: 	}
+186: 	content = strings.TrimPrefix(content, "```json")
+187: 	content = strings.TrimPrefix(content, "```")
+188: 	content = strings.TrimSuffix(content, "```")
+189: 	return strings.TrimSpace(content), nil
+190: }
+191: 
+192: // =============================================================================
+193: // Parse AI Response
+194: // =============================================================================
+195: 
+196: func parseAIResponse(content string) (string, error) {
+197: 	// 去掉AI思考过程（如果有）
+198: 	if idx := strings.Index(content, "<think>"); idx != -1 {
+199: 		content = strings.TrimSpace(content[idx+len("<think>"):])
+200: 	}
+1: //go:build ignore
+2: 
+3: package main
+4: 
+5: // tests/test_ocr.go �?截图 OCR 识别测试（精细化提示�?+ CLI 拖入图片�?
+6: //
+7: // 使用方式（任选一种）�?
+8: //   go run tests/test_ocr.go image.png
+9: //   go run tests/test_ocr.go image.png recommend_answer.json
+10: //   go run tests/test_ocr.go img1.png img2.png recommend_answer.json
+11: //   # 直接拖入文件�?
+12: //   go run tests/test_ocr.go "C:\path\to\image.png"
+13: //
+14: // recommend_answer.json 来源：page_results.recommend_answer 字段
+15: //   - 只提�?subject + question_type，绝不将 recommended_answers 传给模型
+16: 
+17: import (
+18: 	"bytes"
+19: 	"database/sql"
+20: 	"encoding/base64"
+21: 	"encoding/json"
+22: 	"fmt"
+23: 	"io"
+24: 	"net/http"
+25: 	"os"
+26: 	"strings"
+27: 	"time"
+28: 
+29: 	_ "modernc.org/sqlite"
+30: 	"gopkg.in/yaml.v3"
+31: )
+32: 
+33: // =============================================================================
+34: // 配置
+35: // =============================================================================
+36: 
+37: var volcesCfg = struct {
+38: 	APIKey      string
+39: 	BaseURL     string
+40: 	Model       string

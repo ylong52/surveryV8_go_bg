@@ -1,0 +1,30 @@
+{
+  "items": [
+    {
+      "page_summary": "The respondent identifies as Asian/Asian-American and White/Caucasian, indicating a multiracial background.",
+      "timestamp": "2026-06-03T17:23:35.8919724+08:00",
+      "page_id": "what is your racial background"
+    },
+    {
+      "page_summary": "The respondent moderately agrees with being sophisticated and elegant, is neutral about being funny, and slightly disagrees with being edgy, while following the instruction to select 'Agree slightly' for the designated item.",
+      "timestamp": "2026-06-03T17:24:00.5800505+08:00",
+      "page_id": "how much do you agree or disagree that each of the words below describe you"
+    },
+    {
+      "page_summary": "The respondent has children under 18 living in their household.",
+      "timestamp": "2026-06-03T17:24:31.7380633+08:00",
+      "page_id": "do you have any children under 18 years old living in your household"
+    },
+    {
+      "page_summary": "The respondent confirms being the parent or guardian of the children in their household.",
+      "timestamp": "2026-06-03T17:24:47.3358426+08:00",
+      "page_id": "are you the parent or guardian of any of those children"
+    },
+    {
+      "page_summary": "The respondent has children under 18 living in their household and is providing their ages and genders.",
+      "timestamp": "2026-06-03T17:25:16.7780352+08:00",
+      "page_id": "please can you let us know the age and gender of the child or children under age 18 who live with yo"
+    }
+  ],
+  "updated_at": "2026-06-03T17:25:16.7780352+08:00"
+}

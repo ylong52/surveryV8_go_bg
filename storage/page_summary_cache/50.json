@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "page_summary": "The respondent indicates they have paid cable or satellite TV in their household.",
+      "timestamp": "2026-05-31T22:02:57.5574289+08:00",
+      "page_id": "do you have paid cable or satellite tv e g comcast xfinity optimum dish directv verizon fios etc in"
+    },
+    {
+      "page_summary": "The respondent indicates they watch Showtime most frequently through a subscription via their cable/satellite/telco provider.",
+      "timestamp": "2026-05-31T22:03:09.3489666+08:00",
+      "page_id": "you mentioned that you watch showtime which of the following ways do you watch most frequently"
+    },
+    {
+      "page_summary": "The respondent reports watching about 10 hours of TV/video content per week across all platforms.",
+      "timestamp": "2026-05-31T22:03:24.6991188+08:00",
+      "page_id": "in a typical week about how many hours do you watch any kind of tv video content i e shows videos cl"
+    }
+  ],
+  "updated_at": "2026-05-31T22:03:24.6991188+08:00"
+}

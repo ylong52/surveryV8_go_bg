@@ -550,9 +550,23 @@ func GenerateRealtimeAnswerOnlyWithMeta(meta PageMetadata, cleanHTML, cachedYaml
 		}
 		openTextPrompts := loadOpenTextPrompts()
 		for i := range interactions {
-			if i < len(yamlQuestionTypes) && closedQuestionTypes[yamlQuestionTypes[i]] {
-				continue // YAML 明确为封闭题型，跳过开放题流程
+			yamlType := ""
+			if i < len(yamlQuestionTypes) {
+				yamlType = yamlQuestionTypes[i]
 			}
+
+			// YAML 明确为封闭题型，跳过
+			if closedQuestionTypes[yamlType] {
+				continue
+			}
+
+			// YAML 未解析/空 且 AI 也未返回 questionType → 题型不明，不进入开放题流程
+			if yamlType == "" && interactions[i].QuestionType == "" {
+				fmt.Printf("[OpenText] 跳过 question[%d] %q: YAML questions_type 占位符未解析且 AI 未返回 questionType，无法确定题型\n",
+					i+1, interactions[i].Subject)
+				continue
+			}
+
 			if !IsOpenTextQuestion(interactions[i]) {
 				continue
 			}

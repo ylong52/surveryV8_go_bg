@@ -88,14 +88,21 @@ func ExtractYamlStructureWithPageID(surveyID string, surveyIDInt int64, pageID, 
 		return nil, fmt.Errorf("ExtractYamlStructureWithPageID: LoadTypeDetectorPrompt: %w", err)
 	}
 
-	// 步骤 3：第一次 AI 调用 — 检测题型
-	detectedTypes, err := detectQuestionTypesWithAI(surveyID, cleanHTML, basePath, typeDetectorPrompt, questionTypes)
-	if err != nil {
-		fmt.Printf("[警告] detectQuestionTypesWithAI 失败: %v，降级到 mixed\n", err)
-		detectedTypes = []string{"mixed"}
-	}
-	if len(detectedTypes) == 0 {
-		detectedTypes = []string{"mixed"}
+	// 步骤 3a：HTML 特征预检测（优先于 AI，避免 cardsort 被误判为 matrix_radio）
+	detectedTypes := detectByHTMLSignature(cleanHTML)
+	if len(detectedTypes) > 0 {
+		fmt.Printf("[题型检测] HTML特征命中题型: %v（跳过AI）\n", detectedTypes)
+	} else {
+		// 步骤 3b：AI 检测题型
+		var err error
+		detectedTypes, err = detectQuestionTypesWithAI(surveyID, cleanHTML, basePath, typeDetectorPrompt, questionTypes)
+		if err != nil {
+			fmt.Printf("[警告] detectQuestionTypesWithAI 失败: %v，降级到 mixed\n", err)
+			detectedTypes = []string{"mixed"}
+		}
+		if len(detectedTypes) == 0 {
+			detectedTypes = []string{"mixed"}
+		}
 	}
 	fmt.Printf("[题型检测] 检测到题型: %v\n", detectedTypes)
 
@@ -185,6 +192,22 @@ func parseTypeDetectionResponse(response string, validTypes []string) ([]string,
 		return []string{"mixed"}, nil
 	}
 	return result, nil
+}
+
+// detectByHTMLSignature 根据 HTML 特征预检测题型，无需 AI。
+// 目前覆盖 cardsort_drag / cardsort_select，以避免其被误判为 matrix_radio。
+// @param html  清洗后的 HTML 字符串
+// @returns     命中的题型列表（未命中返回 nil，交由 AI 继续检测）
+func detectByHTMLSignature(html string) []string {
+	// cardsort 特征：存在 sq-cardsort 容器元素
+	if strings.Contains(html, "sq-cardsort") || strings.Contains(html, "Survey.question.cardsort") {
+		// dragAndDrop:1 或 "dragAndDrop":true → cardsort_drag
+		if strings.Contains(html, "dragAndDrop: 1") || strings.Contains(html, `"dragAndDrop": true`) {
+			return []string{"cardsort_drag"}
+		}
+		return []string{"cardsort_select"}
+	}
+	return nil
 }
 
 // questionEntry 单个题型的模板条目

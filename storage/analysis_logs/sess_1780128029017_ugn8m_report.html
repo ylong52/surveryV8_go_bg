@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人设冲突分析报告</title>
+<style>
+:root {
+  --bg:       #1e1e2e;
+  --surface:  #262637;
+  --border:   #3d3d5c;
+  --accent:   #89b4fa;
+  --green:    #a6e3a1;
+  --red:      #f38ba8;
+  --yellow:   #f9e2af;
+  --purple:   #cba6f7;
+  --cyan:     #94e2d5;
+  --text:     #cdd6f4;
+  --muted:    #6c7086;
+  --font:     'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.7;
+  padding: 32px 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+h1 { font-size: 1.8em; color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 24px; }
+h2 { font-size: 1.35em; color: var(--purple); margin: 28px 0 14px; padding-left: 10px; border-left: 4px solid var(--purple); }
+h3 { font-size: 1.1em;  color: var(--cyan);  margin: 20px 0 10px; }
+p  { margin-bottom: 12px; }
+ul, ol { padding-left: 28px; margin-bottom: 14px; }
+li { margin-bottom: 6px; }
+strong { color: var(--yellow); font-weight: 600; }
+em   { color: var(--cyan); font-style: normal; font-weight: 500; }
+blockquote {
+  border-left: 4px solid var(--border);
+  padding: 10px 16px;
+  margin: 14px 0;
+  background: var(--surface);
+  border-radius: 0 6px 6px 0;
+  color: var(--muted);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.92em;
+}
+th {
+  background: var(--surface);
+  color: var(--accent);
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+  font-weight: 600;
+}
+td {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  vertical-align: top;
+}
+tr:nth-child(even) td { background: rgba(38,38,55,0.5); }
+hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+code {
+  background: var(--surface);
+  color: var(--green);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace;
+  font-size: 0.88em;
+}
+pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 16px 0;
+}
+pre code { background: none; padding: 0; color: var(--text); }
+</style>
+</head>
+<body>
+<h1>人设一致性分析报告</h1>
+<p><strong>Session:</strong> sess<em>1780128029017</em>ugn8m</p>
+<p><strong>Survey:</strong> selfserve<em>2222</em>2600216</p>
+<p><strong>分析时间:</strong> 2026-05-30</p>
+<p><strong>总题数:</strong> 5题（含OCR缺失题）</p>
+<hr>
+<h2>一、逐题分析</h2>
+<table>
+  <tr><th>序号</th><th>页面ID</th><th>题型</th><th>推荐答案</th><th>用户实际(OCR)</th><th>是否跟随</th><th>冲突类型</th><th>问题说明</th></tr>
+  <tr><td>------</td><td>--------</td><td>------</td><td>---------</td><td>-------------</td><td>---------</td><td>---------</td><td>---------</td></tr>
+  <tr><td>1</td><td>what is your age</td><td>number</td><td>35</td><td>35</td><td>✅ 是</td><td>无冲突</td><td>年龄完全匹配，OCR验证通过</td></tr>
+  <tr><td>2</td><td>what is your gender</td><td>single</td><td>Female</td><td>Female</td><td>✅ 是</td><td>无冲突</td><td>性别完全匹配，code_exact验证通过</td></tr>
+  <tr><td>3</td><td>what is your current country of residence</td><td>single</td><td>United States</td><td>（空）</td><td>❓ 未知</td><td>缺失冲突</td><td>OCR数据缺失，无法验证实际作答，仅有推荐答案记录</td></tr>
+  <tr><td>4</td><td>what is your zip code</td><td>open_text</td><td>10001</td><td>10001</td><td>✅ 是</td><td>无冲突</td><td>邮编完全匹配，char_similarity验证通过</td></tr>
+  <tr><td>5</td><td>which if any of the following have you done over the past weekend</td><td>multi</td><td>Watched TV, Visited a flea market, Played poker</td><td>（空）</td><td>❓ 未知</td><td>缺失冲突</td><td>OCR数据缺失，无法验证实际作答，仅有推荐答案记录</td></tr>
+</table>
+<blockquote><strong>备注：</strong> 本Session无内嵌校验题（boinks/trevi1），无Cardsort题型，无矩阵题，不涉及相关排除规则。</blockquote>
+<hr>
+<h2>二、系统人设 vs 用户人设对比表</h2>
+<table>
+  <tr><th>维度</th><th>系统人设（预设）</th><th>用户人设（实际答题）</th><th>冲突类型</th><th>冲突说明</th></tr>
+  <tr><td>------</td><td>--------------</td><td>------------------</td><td>---------</td><td>---------</td></tr>
+  <tr><td>人设描述</td><td>A typical survey respondent answering questions honestly</td><td>—</td><td>无冲突</td><td>通用描述性人设，无具体字段可比对</td></tr>
+  <tr><td>是否有子女</td><td>false（无子女）</td><td>未涉及（问卷无相关题目）</td><td>缺失冲突</td><td>系统人设定义了has_children=false，但本次问卷未出现对应题目，无法验证</td></tr>
+  <tr><td>年龄</td><td>未预设（系统人设未定义）</td><td>35</td><td>无冲突</td><td>用户答题确认年龄为35，与user_persona一致</td></tr>
+  <tr><td>性别</td><td>未预设（系统人设未定义）</td><td>Female</td><td>无冲突</td><td>用户答题确认性别为Female，与user_persona一致</td></tr>
+  <tr><td>居住国家</td><td>未预设（系统人设未定义）</td><td>United States（推断）</td><td>缺失冲突</td><td>OCR缺失，实际作答无法验证，仅依赖推荐答案推断</td></tr>
+  <tr><td>邮政编码</td><td>未预设（系统人设未定义）</td><td>10001</td><td>无冲突</td><td>用户答题确认邮编为10001，与user_persona一致</td></tr>
+  <tr><td>周末活动</td><td>未预设（系统人设未定义）</td><td>Watched TV / Visited a flea market / Played poker（推断）</td><td>缺失冲突</td><td>OCR缺失，实际作答无法验证，仅依赖推荐答案推断</td></tr>
+</table>
+<hr>
+<h2>三、冲突统计汇总</h2>
+<table>
+  <tr><th>冲突类型</th><th>题项数</th><th>占比</th></tr>
+  <tr><td>---------</td><td>--------</td><td>------</td></tr>
+  <tr><td>硬冲突</td><td>0</td><td>0.0%</td></tr>
+  <tr><td>软冲突</td><td>0</td><td>0.0%</td></tr>
+  <tr><td>缺失冲突</td><td>2</td><td>40.0%</td></tr>
+  <tr><td>无冲突</td><td>3</td><td>60.0%</td></tr>
+  <tr><td><strong>合计</strong></td><td><strong>5</strong></td><td><strong>100%</strong></td></tr>
+</table>
+<blockquote><strong>统计口径说明：</strong> 总题项数为5（已排除内嵌校验题，本Session无此类题目）。缺失冲突题项为第3题（居住国家）和第5题（周末活动），均因OCR数据缺失导致。</blockquote>
+<hr>
+<h2>四、人设一致性评分</h2>
+<p>$$\text{人设一致性得分} = \frac{\text{无冲突题项数}}{\text{总题项数}} \times 100 = \frac{3}{5} \times 100 = \mathbf{60.0\%}$$</p>
+<table>
+  <tr><th>评级</th><th>得分区间</th><th>本次得分</th><th>结论</th></tr>
+  <tr><td>------</td><td>---------</td><td>---------</td><td>------</td></tr>
+  <tr><td>优秀</td><td>90%~100%</td><td>—</td><td>—</td></tr>
+  <tr><td>良好</td><td>70%~89%</td><td>—</td><td>—</td></tr>
+  <tr><td>⚠️ <strong>警告</strong></td><td><strong>50%~69%</strong></td><td><strong>60.0%</strong></td><td><strong>存在较多缺失冲突，需人工复查</strong></td></tr>
+  <tr><td>异常</td><td>50%以下</td><td>—</td><td>—</td></tr>
+</table>
+<blockquote><strong>⚠️ 警告级别：</strong> 得分60%，主要由2道题OCR数据缺失驱动，而非真实人设偏差。建议人工核查截图原始数据后重新评估。</blockquote>
+<hr>
+<h2>五、问题根源分析</h2>
+<h3>硬冲突分析</h3>
+<blockquote><strong>本Session无硬冲突。</strong> 所有可验证题目（年龄、性别、邮编）均与推荐答案完全一致，事实型字段无矛盾。</blockquote>
+<hr>
+<h3>软冲突分析</h3>
+<blockquote><strong>本Session无软冲突。</strong> 无行为/偏好类题目产生偏差（周末活动题因OCR缺失归入缺失冲突，而非软冲突）。</blockquote>
+<hr>
+<h3>缺失冲突分析</h3>
+<h4>缺失冲突 #1 — 居住国家（第3题）</h4>
+<table>
+  <tr><th>项目</th><th>内容</th></tr>
+  <tr><td>------</td><td>------</td></tr>
+  <tr><td><strong>题目</strong></td><td>What is your current country of residence</td></tr>
+  <tr><td><strong>题型</strong></td><td>single</td></tr>
+  <tr><td><strong>推荐答案</strong></td><td>United States</td></tr>
+  <tr><td><strong>用户实际答案</strong></td><td>空（OCR数据缺失）</td></tr>
+  <tr><td><strong>截图路径</strong></td><td>无记录</td></tr>
+  <tr><td><strong>技术备注</strong></td><td>OCR数据缺失，仅有推荐答案</td></tr>
+  <tr><td><strong>可能原因</strong></td><td>① 截图未成功保存；② 页面加载异常导致OCR未触发；③ 答题系统在该页面发生跳转或超时</td></tr>
+  <tr><td><strong>风险评估</strong></td><td>中等风险。居住国家为资格筛选关键字段，若实际未选择"United States"，可能导致后续题目逻辑分支错误</td></tr>
+  <tr><td><strong>处理建议</strong></td><td>人工查阅原始截图（若存在）或服务端日志，确认实际提交值</td></tr>
+</table>
+<h4>缺失冲突 #2 — 周末活动（第5题）</h4>
+<table>
+  <tr><th>项目</th><th>内容</th></tr>
+  <tr><td>------</td><td>------</td></tr>
+  <tr><td><strong>题目</strong></td><td>Which if any of the following have you done over the past weekend</td></tr>
+  <tr><td><strong>题型</strong></td><td>multi（多选）</td></tr>
+  <tr><td><strong>推荐答案</strong></td><td>Watched TV, Visited a flea market, Played poker</td></tr>
+  <tr><td><strong>用户实际答案</strong></td><td>空（OCR数据缺失）</td></tr>
+  <tr><td><strong>截图路径</strong></td><td>无记录</td></tr>
+  <tr><td><strong>技术备注</strong></td><td>OCR数据缺失，仅有推荐答案</td></tr>
+  <tr><td><strong>可能原因</strong></td><td>① 多选题复选框布局导致OCR识别失败；② 截图时机问题（提交前截图）；③ 与第3题同批次技术故障</td></tr>
+  <tr><td><strong>风险评估</strong></td><td>低至中等风险。周末活动为行为偏好题，通常不影响问卷逻辑分支，但影响数据质量</td></tr>
+  <tr><td><strong>处理建议</strong></td><td>检查多选题OCR识别模块，确认是否存在系统性识别盲区</td></tr>
+</table>
+<hr>
+<h2>六、综合建议</h2>
+<h3>针对人设设计的建议</h3>
+<table>
+  <tr><th>优先级</th><th>问题</th><th>建议</th></tr>
+  <tr><td>--------</td><td>------</td><td>------</td></tr>
+  <tr><td>🔴 高</td><td>系统人设字段（has_children）与问卷题目无对应关系</td><td>建议在系统人设设计阶段，严格对齐问卷题目列表，确保每个人设字段都有对应的问卷题目可验证；或明确标注"该字段本次问卷不涉及"</td></tr>
+  <tr><td>🟡 中</td><td>系统人设描述过于通用（"A typical survey respondent"）</td><td>建议补充具体的人口统计学预设值（如年龄范围、性别、地区偏好），以便与用户实际答题进行精确比对，提升人设一致性分析的有效性</td></tr>
+  <tr><td>🟢 低</td><td>user_persona中周末活动字段格式为逗号分隔字符串</td><td>建议将多选题答案统一存储为数组格式（如 <code>[&quot;Watched TV&quot;, &quot;Visited a flea market&quot;, &quot;Played poker&quot;]</code>），便于后续冲突检测逻辑处理</td></tr>
+</table>
+<h3>针对答题系统的建议</h3>
+<table>
+  <tr><th>优先级</th><th>问题</th><th>建议</th></tr>
+  <tr><td>--------</td><td>------</td><td>------</td></tr>
+  <tr><td>🔴 高</td><td>第3题（居住国家）和第5题（周末活动）均出现OCR数据缺失且无截图记录</td><td>建议排查截图保存管道，确认是否存在特定页面类型（如下拉选择、多选题）的截图触发失败问题；增加截图保存失败的告警机制</td></tr>
+  <tr><td>🔴 高</td><td>OCR缺失导致人设一致性得分虚低（60%），触发警告级别</td><td>建议在评分逻辑中区分"技术性缺失"与"真实人设偏差"，对OCR缺失题目单独统计，避免技术问题污染人设一致性评分</td></tr>
+  <tr><td>🟡 中</td><td>多选题（multi类型）OCR识别疑似存在系统性盲区</td><td>建议针对多选题复选框布局优化OCR识别策略，或引入备用验证机制（如DOM状态读取）作为OCR的补充</td></tr>
+  <tr><td>🟢 低</td><td>page<em>id与subject字段在第2题出现不一致（page</em>id="what is your age"，subject="what is your gender"）</td><td>建议统一page<em>id的命名规范，确保page</em>id与实际题目内容对应，避免数据追溯时产生混淆</td></tr>
+</table>
+<hr>
+<h2>七、禁止行为检查清单</h2>
+<table>
+  <tr><th>检查项</th><th>状态</th><th>说明</th></tr>
+  <tr><td>--------</td><td>------</td><td>------</td></tr>
+  <tr><td>❌ 发现人设冲突时中断答题流程（应记录并继续）</td><td>✅ <strong>未违反</strong></td><td>本报告对所有冲突均记录并继续分析，未建议中断</td></tr>
+  <tr><td>❌ 用系统人设覆盖用户实际答题结果</td><td>✅ <strong>未违反</strong></td><td>用户人设以实际答题为准（年龄35、性别Female、邮编10001），未被系统人设覆盖</td></tr>
+  <tr><td>❌ 将列映射偏移导致的冲突归类为「受访者真实偏好」</td><td>✅ <strong>未违反</strong></td><td>本Session无矩阵题，不涉及列偏移问题</td></tr>
+  <tr><td>❌ 将内嵌校验题纳入人设一致性评分</td><td>✅ <strong>未违反</strong></td><td>本Session无boinks/trevi1校验题，不涉及此问题</td></tr>
+  <tr><td>❌ Cardsort题型依赖OCR进行结果验证</td><td>✅ <strong>未违反</strong></td><td>本Session无Cardsort题型，不涉及此问题</td></tr>
+  <tr><td>❌ 人设一致性得分低于50%时不标记Session为异常</td><td>✅ <strong>未违反</strong></td><td>本Session得分60%，处于警告级别（非异常），已正确标记；若低于50%将标记为异常</td></tr>
+</table>
+<hr>
+<p><strong>报告生成完毕</strong></p>
+<p><em>本次Session整体表现：可验证题目100%跟随推荐答案，无硬冲突，无软冲突。评分偏低（60%）完全由技术性OCR缺失驱动，建议人工核查后重新评估真实一致性水平。</em></p>
+
+</body>
+</html>

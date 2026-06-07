@@ -1,0 +1,4 @@
+[setProjectRoot] current dir: E:\case2025\adspower\surveyV8_go\surveryV8_go_bg\ws_server
+[setProjectRoot] go.mod found in cwd, no change needed
+数据库已初始化: E:\case2025\adspower\surveyV8_go\surveryV8_go_bg\data\survey.db
+WS server running on :10507

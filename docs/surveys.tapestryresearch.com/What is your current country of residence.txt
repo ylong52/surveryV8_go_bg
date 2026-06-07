@@ -1,0 +1,287 @@
+<html lang="en-GB"><!--<![endif]--><head><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/captchafox/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/mt_captcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/hunter.js" data-ts-input="cf-turnstile-response"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/amazon_waf/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/yandex/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/lemin/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/keycaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest_v4/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/communication_helpers.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/core_helpers.js"></script>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- respview.client.meta -->
+
+
+<title>Tapestry Research</title>
+
+
+<!-- respview.css -->
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css?ad7753b880">
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.beacon.css?4ddb951d43">
+
+<!-- generated from: static/support/font-awesome-4.2.0/less/font-awesome.less, static/support/select2-4.0.1/select2.min.css, static/survey.respondent-post151.less, selfserve/2222/260216/static/theme.less, lib/steam/atm1d/v11/static/atm1d.less, lib/steam/cardsort/v7/static/cardsort.less and 0 themevars -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/less-compiled.css?a932463a8405103997a94450f6245f0e">
+
+
+<!-- extra CSS -->
+
+
+<!-- Custom CSS (specified in survey.xml) -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/Tapestry.css">
+
+<!-- respview.client.css -->
+<style>
+        table {
+        border-collapse: inherit !important; 
+        }
+        .row-col-legends-top {
+        background: #ededed;
+        position: sticky;
+        top: -16px;
+        z-index: 100;
+        }
+        .empty {
+        border: 1px solid #ccc;
+        }
+    </style>
+
+<!-- client.css -->
+<style media="screen">
+
+</style>
+
+<!-- JQuery -->
+<!--
+/s/jquery183.all.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/e2190ba850ec2bfa3e7d1567d2021910.js"></script><captcha-widgets></captcha-widgets>
+
+
+<!-- extra Logic -->
+
+
+<!-- respview.js -->
+<script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = '_?$&\')*,(;=.-~:@!';
+for (var i = 1, result = ''; i <= Math.floor(3 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((3 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script>
+
+<!--[if lte IE 8]><script src="/s/support/respond/respond-1.4.2.min.js"></script><script src="/s/support/rem-unit-polyfill/rem.min.js"></script><![endif]-->
+
+
+<!--
+/s/support/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js
+/s/common.js
+/s/respview-post132.js
+/s/survey.respondent-post143.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/6f7910d7512e9866158e9fcb02cfdd53.js"></script>
+
+
+<!-- extra JS -->
+<!-- lib/steam/atm1d/v11/styles.xml -->
+  <script src="/survey/lib/steam/atm1d/v11/atm1d.js?e84439618b"></script>
+
+
+
+
+
+
+<!-- respview.client.js -->
+
+
+<!-- client.javascript -->
+
+
+<script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script>
+
+<!-- extra Head -->
+<style>
+
+        #question_S3 .atm1d_vertical .answers > div {
+                text-align: left;
+            }
+
+        #question_S3 .atm1d_vertical .answers > div > div,
+        #question_S3 :not(.atm1d_vertical) .answers{
+            justify-content: flex-start;
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        #question_S3 .atm1d label {
+            max-height: none;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        #question_S3 .atm1d_vertical label {
+            min-width: 75%;
+            text-align: left;
+        }
+
+        #question_S3 .atm1d_horizontal label {
+            min-height: 0;
+        }
+
+        @media (min-width: 768px) {
+            #question_S3 .atm1d_vertical .answers > div {
+                    text-align: left;
+            }
+            #question_S3 .atm1d_vertical .answers > div > div,
+            #question_S3 :not(.atm1d_vertical) .answers {
+                justify-content: flex-start;
+                margin-left: 0;
+                margin-right: auto;
+            }
+
+            #question_S3 .atm1d label {
+                max-height: none;
+                max-width: 100%;
+                text-align: center;
+            }
+
+            #question_S3 .atm1d_vertical label {
+                min-width: 280px;
+                text-align: left;
+            }
+
+            #question_S3 .atm1d_horizontal label {
+                min-height: 0;
+            }
+        }
+        </style>
+
+</head>
+
+<body class="survey-page non-touch" data-device="">
+
+
+<div id="survey" class="survey-container">
+<div class="survey-section"><div class="page-header"></div>
+<!-- /.page-header --></div>
+<div class="survey-section">
+<div class="survey-body">
+<div class="survey-header">
+<div class="logo logo-middle">
+<img src="/survey/selfserve/2222/logo_a2a001390fe4dc2ce73e6e195e691697.png" class="logo-image" alt="Logo">
+</div>
+<!-- /.logo -->
+<div role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-top" title="progress bar - 3% complete">
+<div class="progress-box-outer" aria-hidden="true"><span class="progress-box-completed" style="width: 3%;"></span></div>
+<div class="progress-text" aria-hidden="true">3%</div>
+</div>
+<!-- /.progress-bar -->
+</div>
+<!-- /.survey-header -->
+
+<form id="primary" name="primary" method="post" action="/survey/selfserve/2222/260216" enctype="application/x-www-form-urlencoded" novalidate="">
+<input type="hidden" name="_v2_counter" value="3">
+<!-- @@XYZZY@@ -->
+<div id="question_S3" class="question radio label_S3   noRows noCols" role="radiogroup">
+<fieldset class="atm1d atm1d_vertical" data-view-mode="vertical" data-num-cols="">
+            <legend>
+<h1 title="question" class="question-text" id="question_text_S3">What is your current country of residence?</h1>
+<!-- /.question-text -->
+
+<h2 title="instructions" class="instruction-text">Please select an answer</h2>
+<!-- /.instruction-text -->
+</legend>
+<div class="answers answers-list">
+        <div class="">
+            <input type="radio" name="ans508.0.0" value="0" id="ans508.0.0" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans508.0.0" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>Canada</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="radio" name="ans508.0.0" value="1" id="ans508.0.1" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans508.0.1" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>Mexico</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="radio" name="ans508.0.0" value="2" id="ans508.0.2" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans508.0.2" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>United States</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="radio" name="ans508.0.0" value="3" id="ans508.0.3" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans508.0.3" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>Other</span>
+                </span>
+            </label>
+            </div>
+            
+        </div><!-- /.grid -->
+</div>
+<!-- /.answers -->
+</fieldset>
+</div>
+<!-- /.question --><div class="survey-buttons">
+<input type="submit" name="continue" id="btn_continue" class="button continue" value="Next »" onclick="var i = document.createElement('input'); i.setAttribute('type', 'hidden');i.setAttribute('value', '1');i.setAttribute('name', '__has_javascript');document.forms.primary.appendChild(i);">
+
+</div>
+<!-- #surveyButtons --><input type="hidden" name="state" value="37aa9092-4319-4a37-9508-07e53c189daa">
+<input type="hidden" name="start_time" value="1779890249">
+<input type="hidden" name="_ptime" value="0">
+<script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "hb019je449xvgdgj", "c95cje0d1w9cy4gh");}, 100); });
+</script>
+</form>
+
+
+</div>
+<!-- /.survey-body -->
+</div>
+<div class="survey-section"><div class="footer"><div style="width: 100%; height: 60px; background-color: #221b4f;" jstcache="0"><br jstcache="0"><center jstcache="0">       <a target="_blank" jstcache="0">          <img src="/survey/selfserve/2222/260216/Footer.png?2326399e4b" style="background-color: #221b4f;" jstcache="0" width="150px" height="38px">       </a>    </center></div></div>
+<!-- /.footer -->
+<input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33">
+        <input type="hidden" id="SurveyID" name="SurveyID" value="220821">
+        <input type="hidden" id="PanelistID" name="PanelistID" value="hb019je449xvgdgj">
+        <input type="hidden" id="LangCode" name="LangCode" value="EN">
+        <input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults">
+        <input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults">
+        <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+        <input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0">
+
+        <script> function getQSTimeoutMs(){return 5000;} </script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qualityscore.js"></script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qslib1.0.js"></script></div>
+</div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1779890253770">
+<div id="detectBreakpoint"></div>
+<!-- /.survey-container -->
+
+
+</body></html>

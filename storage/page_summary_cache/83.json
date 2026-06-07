@@ -1,0 +1,55 @@
+{
+  "items": [
+    {
+      "page_summary": "The respondent provided their age as 35 and selected Female as their gender.",
+      "timestamp": "2026-06-04T17:29:45.6928157+08:00",
+      "page_id": "what is your age"
+    },
+    {
+      "page_summary": "The respondent indicates they currently reside in the United States.",
+      "timestamp": "2026-06-04T17:30:05.1232211+08:00",
+      "page_id": "what is your current country of residence"
+    },
+    {
+      "page_summary": "The respondent provided a zip code, indicating their location within the United States.",
+      "timestamp": "2026-06-04T17:30:21.4138274+08:00",
+      "page_id": "what is your zip code"
+    },
+    {
+      "page_summary": "The respondent selected common weekend activities like watching TV, visiting a flea market, and playing poker, indicating a preference for casual and social leisure activities.",
+      "timestamp": "2026-06-04T17:30:56.0401304+08:00",
+      "page_id": "which if any of the following have you done over the past weekend"
+    },
+    {
+      "page_summary": "The respondent indicates they are not Spanish, Hispanic, or Latinx.",
+      "timestamp": "2026-06-04T17:32:53.8703115+08:00",
+      "page_id": "are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an"
+    },
+    {
+      "page_summary": "The respondent identifies as White/Caucasian and Asian/Asian-American, indicating a multiracial background.",
+      "timestamp": "2026-06-04T17:33:03.8239089+08:00",
+      "page_id": "what is your racial background"
+    },
+    {
+      "page_summary": "The respondent generally agrees that the words Sophisticated, Elegant, and Funny describe them, follows the instruction to select 'Agree slightly' for the specified item, and is neutral about being Edgy.",
+      "timestamp": "2026-06-04T17:33:19.96412+08:00",
+      "page_id": "how much do you agree or disagree that each of the words below describe you"
+    },
+    {
+      "page_summary": "The respondent does not have any children under 18 living in their household.",
+      "timestamp": "2026-06-04T17:33:59.5584482+08:00",
+      "page_id": "do you have any children under 18 years old living in your household"
+    },
+    {
+      "page_summary": "The respondent watches HBO, Discovery Channel, ABC, History Channel, and TV Land at least once a week, while they never watch Cartoon Network, WE tv, BET, Telemundo, Boinks!, TV One, Logo, or Disney Channel.",
+      "timestamp": "2026-06-04T17:34:54.7911572+08:00",
+      "page_id": "how often do you watch shows movies web series videos or clips from each of the following"
+    },
+    {
+      "page_summary": "The respondent watches FOX, TLC, HGTV, USA Network, MTV, TBS, TNT, CBS, and Investigation Discovery at least once a week; watches E!, Lifetime, A\u0026E, FX, National Geographic, Starz, and Showtime once or twice a month; watches Travel Channel, Syfy, FXX, CMT, and BBC America less than once a month; and never watches Trevi1, OWN, Hallmark Channel, Pop, or Nickelodeon.",
+      "timestamp": "2026-06-04T17:35:34.4234212+08:00",
+      "page_id": "how often do you watch shows movies web series videos or clips from each of the following"
+    }
+  ],
+  "updated_at": "2026-06-04T17:35:34.4234212+08:00"
+}

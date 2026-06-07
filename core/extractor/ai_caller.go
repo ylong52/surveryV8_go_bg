@@ -438,7 +438,8 @@ func callClaudeAPIInternal(cfg *anthropicCfg, system, user string) (string, erro
 	if timeout == 0 {
 		timeout = 60 * time.Second
 	}
-	client := &http.Client{Timeout: timeout}
+	transport := &http.Transport{}
+	client := &http.Client{Timeout: timeout, Transport: transport}
 
 	req, err := http.NewRequest("POST", cfg.BaseURL+"/v1/messages", bytes.NewReader(body))
 	if err != nil {
@@ -476,6 +477,18 @@ func callClaudeAPIInternal(cfg *anthropicCfg, system, user string) (string, erro
 		return "", fmt.Errorf("claude 返回空响应")
 	}
 	return result.Content[0].Text, nil
+}
+
+// CallClaudeAPI 调用 Anthropic Claude API（公开包装器，供其他包使用）
+// @param system  系统提示词
+// @param user    用户消息
+// @returns       AI 回复文本，或错误
+func CallClaudeAPI(system, user string) (string, error) {
+	cfg, err := loadAnthropicConfig()
+	if err != nil {
+		return "", fmt.Errorf("CallClaudeAPI: load config: %w", err)
+	}
+	return callClaudeAPIInternal(cfg, system, user)
 }
 
 // CallAIRawText 调用 DeepSeek API，返回原始文本（不验证 JSON/YAML 格式）

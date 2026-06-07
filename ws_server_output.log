@@ -1,0 +1,287 @@
+Starting ws_server at 2026/05/24 ���� 14:49:12.54 
+WS server running on :10501
+
+========================================
+            接收到的原始数据
+========================================
+SessionID: session_test
+RequestID: ad668fe2-3475-4780-86cf-9cfcf4432653
+URL:       https://survey.qualtrics.com/jfe/form/SV_3BHtJkfaEOEDj5c
+SurveyID:  SV_3BHtJkfaEOEDj5c
+RawHTML长度: 44282 字符
+
+========================================
+>>> 步骤 2: 提取 page_id（使用原始 HTML）
+========================================
+PageID:    which type s of insurance do you currently have select all that apply
+
+========================================
+>>> 步骤 3: 提取 YAML 结构
+========================================
+
+=== YAML Prompt 已整理 ===
+SurveyID: SV_3BHtJkfaEOEDj5c
+PageID: which type s of insurance do you currently have select all that apply
+Timestamp: 2026-05-24T06:49:17Z
+System Prompt: 3175字符
+User Prompt: 31299字符
+HTML: 31153字符
+
+=== System Prompt (完整) ===
+你是一个问卷YAML结构提取助手。
+请严格从HTML中提取所有题目信息，100%来源于文件，不得添加修改。
+
+【题型识别规则】
+选择类: single/multi/select/image
+文本类: open_text/email/phone/number/date/time/open_end
+矩阵类: matrix_radio/matrix_checkbox
+量表类: likert/semantic_diff/slider/nps/likert_card
+排序类: multi_select/ranking_drag/ranking_select
+分类类: cardsort_drag/cardsort_select
+特殊类: image_select/heatmap/max_diff/conjoint
+其他类: mixed/instruction/unknown
+
+【多题页面处理规则】
+- 每个fieldset是一道题
+- 统一收录到questions列表
+- 示例YAML结构:
+  survey_page:
+    fingerprint: "题目1 | 题目2"
+    title: "页面标题"
+    page_metadata:
+      has_next_button: true
+      has_submit_button: false
+      is_thank_you_page: false
+      is_description_page: false
+    questions:
+      - title: "题目文本"
+        questions_type: "single"
+        ...
+
+【字段提取规则】
+- title: 题目文本（去除题号和星号）
+- questions_type: 从32枚举中选择（不是type）
+- required: true/false
+- 各类题型额外字段（见题型差异化输出）
+
+【题型差异化输出】
+single/multi/select/image → choices, columns
+matrix_radio/checkbox → columns, rows
+likert → columns, rows
+slider/nps → min, max, min_label, max_label
+ranking_drag/select → rank_items
+cardsort_drag/select → cards, categories
+open_text/email → input_type, placeholder
+
+【response_format字段】
+- type: single_select/single_per_row/multi_select/matrix等
+- orientation: 方向（horizontal/vertical/null）
+- option_sort: 排序方式（as_appearing/random/null）
+- max_selections: 多选上限（数字/null）
+
+【页面属性检测规则】
+从HTML内容中识别以下页面属性：
+
+has_next_button: true
+- 当HTML中存在"Next"、"下一页"、"Continue"、"下一步"等导航按钮时为true
+- 否则为false
+
+has_submit_button: true
+- 当HTML中存在"Submit"、"提交"、"Finish"、"完成"等提交按钮时为true
+- 否则为false
+
+is_thank_you_page: true
+- 当页面内容包含"Thank you"、"谢谢"、"感谢"、"提交成功"等感谢信息时为true
+- 通常出现在问卷最后或提交后
+
+is_description_page: true
+- 当页面没有任何题目（无fieldset、无input、无select）时为true
+- 只有说明文字、图片等非题目内容，无任何可交互表单元素时为true
+- 包含：问卷说明、免责声明、隐私政策、答题指引等
+
+【严格禁止】
+- 遗漏题目
+- 使用枚举外type
+- 凭空添加选项
+- 修改原始文本
+- 改变选项顺序
+- 主观猜测题型
+
+【输出格式】
+- 直接输出YAML，不要markdown包裹
+- 不要任何解释文字
+- 不要```yaml代码块
+- 重要：题目类型字段必须命名为 questions_type，不是 type
+
+【页面属性输出】
+每个survey_page的YAML必须包含page_metadata节点：
+- has_next_button: true/false (是否有"下一页"按钮)
+- has_submit_button: true/false (是否有"提交"按钮)
+- is_thank_you_page: true/false (是否是感谢页)
+- is_description_page: true/false (是否是无题目说明页，仅有说明文字无表单输入)
+
+
+=== User Prompt (完整) ===
+【页面信息】
+survey_id: SV_3BHtJkfaEOEDj5c
+page_id: which type s of insurance do you currently have select all that apply
+
+【HTML内容】
+<html><head><meta><meta><meta name="apple-mobile-web-app-capable"><meta name="mobile-web-app-capable"><title>Qualtrics Survey | Qualtrics Experience Management</title><link><link><meta name="description"><meta name="robots"><meta id="meta-viewport" name="viewport"><meta><meta><script>(function(w) {
+ 'use strict';
+ if (w.history && w.history.replaceState) {
+ var path = w.location.pathname;
+ var jfePathRegex = /^\/jfe\d+\//;
+
+ if (jfePathRegex.test(path)) {
+ w.history.replaceState(null, null, w.location.href.replace(path, path.replace(jfePathRegex, '/jfe/')));
+ }
+ }
+})(window);
+</script><link><link type="image/x-icon"><script>Qualtrics.SurveyEngine.addOnload(Qualtrics.uniformLabelHeight);</script><script>
+//TM6 Question Text Cell Padding
+	//JFE
+	Page.on('ready:imagesLoaded',function() {
+		var t = jQuery(".QuestionText table");
+	 for (i=0; i<t.length; for><script>
+//Wrapping up those pesky SE labels like Christmas
+jQuery(window).load(function() {
+		if (jQuery("div").hasClass("JFE") == false) {
+	 var mcs = jQuery(".Skin .MC span.LabelWrapper");
+			for (i = 0; i < mcs.length; i++) {
+				mcs.eq(i).find("label").wrapInner("<span></span>");
+			}
+	};
+});
+</script><script>
+	Page.on('ready:imagesLoaded',function() {
+	if (jQuery(".ProgressBarContainer label").length != 0 && jQuery(".SystemEndOfSurvey").length == 0){
+jQuery("#ProgressBar").addClass("verbose");
+	}
+	});
+</script></head><body id="SurveyEngineBody"><noscript><div>Javascript is required to load this page.</div></noscript><script type="text/javascript">
+ window.QSettings = {
+ 
+ jfeVersion: "0097b0734d590c1d5e5f7e541604b68fd2047950",
+ publicPath: "/jfe/static/dist/",
+ cbs: [], bootstrapSkin: null, ab: false,
+ getPT: function(cb) {
+ if (this.pt !== undefined) {
+ cb(this.success, this.pt);
+ } else {
+ this.cbs.push(cb);
+ }
+ },
+ setPT: function(s, pt) {
+ this.success = s;
+ this.pt = pt;
+ if (this.cbs.length) {
+ for (var i = 0; i < this.cbs.length; i++) {
+ this.cbs[i](s, pt);
+ }
+ }
+ }
+ };
+ </script><script>(()=>{"use strict";var e,r,t,a,d,o={},c={};function f(e){var r=c[e];if(void 0!==r)return r.exports;var t=c[e]={id:e,loaded:!1,exports:{}};return o[e].call(t.exports,t,t.exports,f),t.loaded=!0,t.exports}f.m=o,e=[],f.O=(r,t,a,d)=>{if(!t){var o=1/0;for(l=0;l<e.length;l++){for(var[t,a,d]=e[l],c=!0,n=0;n<t.length;n++)(!1&d||o>=d)&&Object.keys(f.O).every(e=>f.O[e](t[n]))?t.splice(n--,1):(c=!1,d<o&&(o=d));if(c){e.splice(l--,1);var>0&&e[l-1][2]>d;l--)e[l]=e[l-1];e[l]=[t,a,d]},f.n=e=>{var r=e&&e.__esModule?()=>e.default:()=>e;return f.d(r,{a:r}),r},t=Object.getPrototypeOf?e=>Object.getPrototypeOf(e):e=>e.__proto__,f.t=function(e,a){if(1&a&&(e=this(e)),8&a)return e;if("object"==typeof e&&e){if(4&a&&e.__esModule)return e;if(16&a&&"function"==typeof e.then)return e}var d=Object.create(null);f.r(d);var o={};r=r||[null,t({}),t([]),t(t)];for(var c=2&a&&e;"object"==typeof c&&!~r.indexOf(c);c=t(c))Object.getOwnPropertyNames(c).forEach(r=>o[r]=()=>e[r]);return o.default=()=>e,f.d(d,o),d},f.d=(e,r)=>{for(var t in r)f.o(r,t)&&!f.o(e,t)&&Object.defineProperty(e,t,{enumerable:!0,get:r[t]})},f.f={},f.e=e=>Promise.all(Object.keys(f.f).reduce((r,t)=>(f.f[t](e,r),r),[])),f.u=e=>"c/"+{196:"vendors~recaptchav3",233:"db",438:"vendors~mockForm",686:"default~cs~dd~hl~hotspot~matrix~mc~pgr~ro~sbs~slider~ss~te",821:"barrel-roll",905:"ss",939:"bf",1044:"matrix",1075:"mc",1192:"meta",1205:"timing",1365:"hmap",1543:"recaptchav3",1778:"slide",1801:"fade",2042:"jsApi",2091:"advance-button-template",2292:"hotspot",2436:"slider",2552:"vendors~scoring~cs~matrix",2562:"flip",2603:"mockForm",2801:"fancybox",3432:"mp",3749:"vendors~mockForm~response-summary~fileupload~recaptchav3",4522:"scoring",4863:"dd",5330:"fileupload",5674:"pgr",5837:"vendors~cs~slider",5957:"response-summary",6023:"vendors~fileupload",6198:"te",6218:"ro",6246:"focus-handler",6255:"captcha",6500:"default~hl~hotspot~matrix",6507:"prototype",7211:"sbs",7529:"cs",7685:"preview",7719:"default~hmap~pgr~ro~te~timing",8095:"default~cs~slider",8393:"draw",8606:"default~captcha~cs~db~dd~draw~fileupload~hmap~hl~hotspot~matrix~mc~meta~pgr~ro~sbs~slider~ss~te~timing",9679:"toc",9811:"hl"}[e]+"."+{196:"7e147b3daf3d7ad5c2a8",233:"106a1e7bc9613636c66b",438:"a7a57d5b73a227f5aa1d",686:"827480b415cfecdb879c",821:"c1244f19d3f2544d41f8",905:"20b50afc76c627a6d6ee",939:"2356f7072599a135eb11",1044:"a0abc0268c69f2c83cd5",1075:"964d8ec574bff3af3036",1192:"cfc700e0ca644d9fb213",1205:"4c569736fafbdff7c2eb",1365:"ff9461a22aab28c09f63",1543:"a7826776ee0db039373c",1778:"aa26d0582f38b8fb8f52",1801:"65cf4bc0ecda9adb4bdb",2042:"53c7028c91bc2d5f66cb",2091:"a26d65f1908aca76cff6",2292:"3f93111134e2dff503b7",2436:"ba7309a3fce598276267",2552:"ec2c903e7dee439f39da",2562:"1742d24ddaf32f4ad625",2603:"7840d4e3ce3b1c0b9f4d",2801:"126b2b91f0b2eaad3cd1",3432:"32526502e32463622edb",3749:"b0c6bf04d6283d3a6b32",4522:"abff990e1bc85af3e29f",4863:"e696b5e103271c53d75b",5330:"41a799dd2d3d5248c77e",5674:"851ddab5b00fed8ce11f",5837:"90eb8d7bc652cb5dd40b",5957:"572d691dfac1b054e694",6023:"aa0937dfc51aace33b5c",6198:"f8bf3e174c8227b6d3e1",6218:"8d50c70f58aa3e470a55",6246:"c2463fd83dd78f7f1e70",6255:"a5a2589b55f941f09ec6",6500:"acc579d2764b8eb0fafa",6507:"faac4bfe7ddff6595b2e",7211:"ebe203d2f8f3d2dedb71",7529:"c26dea51488797575028",7685:"0e565251c94b7a149ca1",7719:"f90ee594e2bafae6deeb",8095:"105a42959af8f46e4a6b",8393:"3f00868e4b94a7c60925",8606:"fbc16139244ecaab2353",9679:"1224f6655c2cc8d282c1",9811:"0fb1c0c24d8ee406c55b"}[e]+".min.js",f.miniCssF=e=>"fancybox.0bb59945b9873f54214a.min.css",f.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||new Function("return this")()}catch(e){if("object"==typeof window)return window}}(),f.o=(e,r)=>Object.prototype.hasOwnProperty.call(e,r),a={},d="javascriptformengine:",f.l=(e,r,t,o)=>{if(a[e])a[e].push(r);else{var c,n;if(void 0!==t)for(var i=document.getElementsByTagName("script"),l=0;l<i.length;l++){var>{c.onerror=c.onload=null,clearTimeout(u);var d=a[e];if(delete a[e],c.parentNode&&c.parentNode.removeChild(c),d&&d.forEach(e=>e(t)),r)return r(t)},u=setTimeout(b.bind(null,void 0,{type:"timeout",target:c}),12e4);c.onerror=b.bind(null,c.onerror),c.onload=b.bind(null,c.onload),n&&document.head.appendChild(c)}},f.r=e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},f.nmd=e=>(e.paths=[],e.children||(e.children=[]),e),f.p="",(()=>{if("undefined"!=typeof document){var e=e=>new Promise((r,t)=>{var a=f.miniCssF(e),d=f.p+a;if(((e,r)=>{for(var t=document.getElementsByTagName("link"),a=0;a<t.length;a++){var>{var o=document.createElement("link");o.rel="stylesheet",o.type="text/css",f.nc&&(o.nonce=f.nc),o.onerror=o.onload=t=>{if(o.onerror=o.onload=null,"load"===t.type)a();else{var c=t&&t.type,f=t&&t.target&&t.target.href||r,n=new Error("Loading CSS chunk "+e+" failed.\n("+c+": "+f+")");n.name="ChunkLoadError",n.code="CSS_CHUNK_LOAD_FAILED",n.type=c,n.request=f,o.parentNode&&o.parentNode.removeChild(o),d(n)}},o.href=r,t?t.parentNode.insertBefore(o,t.nextSibling):document.head.appendChild(o)})(e,d,null,r,t)}),r={3454:0};f.f.miniCss=(t,a)=>{r[t]?a.push(r[t]):0!==r[t]&&{2801:1}[t]&&a.push(r[t]=e(t).then(()=>{r[t]=0},e=>{throw delete r[t],e}))}}})(),(()=>{var e={3454:0};f.f.j=(r,t)=>{var a=f.o(e,r)?e[r]:void 0;if(0!==a)if(a)t.push(a[2]);else if(3454!=r){var d=new Promise((t,d)=>a=e[r]=[t,d]);t.push(a[2]=d);var o=f.p+f.u(r),c=new Error;f.l(o,t=>{if(f.o(e,r)&&(0!==(a=e[r])&&(e[r]=void 0),a)){var d=t&&("load"===t.type?"missing":t.type),o=t&&t.target&&t.target.src;c.message="Loading chunk "+r+" failed.\n("+d+": "+o+")",c.name="ChunkLoadError",c.type=d,c.request=o,a[1](c)}},"chunk-"+r,r)}else e[r]=0},f.O.j=r=>0===e[r];var r=(r,t)=>{var a,d,[o,c,n]=t,i=0;if(o.some(r=>0!==e[r])){for(a in c)f.o(c,a)&&(f.m[a]=c[a]);if(n)var l=n(f)}for(r&&r(t);i<o.length;i++)d=o[i],f.o(e,d)&&e[d]&&e[d][0](),e[d]=0;return><script></script><script></script><link><link id="rtlStyles" type="text/css"><div id="polite-announcement">You are on the next page&nbsp;</div><div id="assertive-announcement" role="alert"></div><script type="text/javascript">
+ (function () {
+ var o = {};
+ try {
+ Object.defineProperty(o,'compat',{value:true,writable:true,enumerable:true,configurable:true});
+ } catch (e) {};
+ if (o.compat !== true || document.addEventListener === undefined) {
+ window.location.pathname = '/jfe/incompatibleBrowser';
+ }
+
+ var fv = document.createElement('link');
+ fv.rel = 'apple-touch-icon';
+ fv.href = "/brand-management/apple-touch-icon";
+ document.getElementsByTagName('head')[0].appendChild(fv);
+ })();
+ QSettings.ab = false;
+ document.title = "Qualtrics Survey | Qualtrics Experience Management";
+ 
+ (function(s) {
+ QSettings.bootstrapSkin = s;
+ var sp = document.getElementById('skinPrefetch');
+ if (sp) {
+ sp.innerHTML = s;
+ }
+ })("\n<meta name=\"HandheldFriendly\"/>\n<meta name = \"viewport\"/>\n<div>\n\t<div id=\"Overlay\"></div>\n\t<div id=\"Wrapper\">\n\t\t<div>\n\t\t\t<div id='LogoContainer'>\n\t\t\t\t<div id='Logo'></div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<div id='HeaderContainer'>\n\t\t\t\t\n\t\t\t\t<div id='Header'>{~Header~}</div>\n\t\t\t</div>\n\t\t\t<div id='SkinContent'>\n\t\t\t\t<div id='Questions'>{~Question~}</div>\n\t\t\t\t<div id='Buttons'>{~Buttons~}</div>\n\t\t\t</div>\n\t\t\t<div id='ProgressBar'>{~ProgressBar~}</div>\n\t\t</div>\n\t\t<div id='Footer'>{~Footer~}</div>\n\t\t\n\t\t<div id='PushStickyFooter'></div>\n\t</div>\n\t<div id=\"Plug\"><a>{~Plug~}</a></div>\n</div>\n<script>Qualtrics.SurveyEngine.addOnload(Qualtrics.uniformLabelHeight);<\/script>\n\n<script>\n//TM6 Question Text Cell Padding\n\t//JFE\n\tPage.on('ready:imagesLoaded',function() {\n\t\tvar t = jQuery(\".QuestionText table\");\n\t for (i=0; i<t.length; for>\n<script>\n//Wrapping up those pesky SE labels like Christmas\njQuery(window).load(function() {\n\t\tif (jQuery(\"div\").hasClass(\"JFE\") == false) {\n\t var mcs = jQuery(\".Skin .MC span.LabelWrapper\");\n\t\t\tfor (i = 0; i < mcs.length; i++) {\n\t\t\t\tmcs.eq(i).find(\"label\").wrapInner(\"<span></span>\");\n\t\t\t}\n\t};\n});\n<\/script>\n<script>\n\tPage.on('ready:imagesLoaded',function() {\n\tif (jQuery(\".ProgressBarContainer label\").length != 0 && jQuery(\".SystemEndOfSurvey\").length == 0){\njQuery(\"#ProgressBar\").addClass(\"verbose\");\n\t}\n\t});\n<\/script>\n\n\n");
+ 
+ 
+ (function() {
+ var fv = document.createElement('link');
+ fv.type = 'image/x-icon';
+ fv.rel = 'icon';
+ fv.href = "https://farmers.qualtrics.com/brand-management/brand-assets/farmers/favicon.ico";
+ document.getElementsByTagName('head')[0].appendChild(fv);
+ }());
+ 
+ 
+ </script><script type="text/javascript">
+ (function(appData) {
+ if (appData && typeof appData === 'object' && '__jfefeRenderDocument' in appData) {
+ var doc = appData.__jfefeRenderDocument
+
+ if (doc === 'incompatible') {
+ window.location = '/jfe/incompatibleBrowser';
+ return
+ }
+
+ window.addEventListener('load', function() {
+ // farewell jfe
+ delete window.QSettings
+ delete window.webpackJsonp
+ delete window.jQuery
+ delete window.ErrorWatcher
+ delete window.onLoadCaptcha
+ delete window.experimental
+ delete window.Page
+
+ var keys = Object.keys(window);
+ for (let i in keys) {
+ var name = keys[i];
+ if (name.indexOf('jQuery') === 0) {
+ delete window[name];
+ break;
+ }
+ }
+
+ document.open();
+ document.write(doc);
+ document.close();
+ })
+ } else {
+ // prevent document.write from replacing the entire page
+ window.document.write = function() {
+ log.error('document.write is not allowed and has been disabled.');
+ };
+
+ QSettings.setPT(true, appData);
+ }
+ })({"FormSessionID":"FS_9NdSOUWJBSMEsGR","QuestionIDs":["QID3"],"QuestionDefinitions":{"QID3":{"ChoiceOrder":["1","2","3","4","5"],"Choices":{"1":{"Display":"Iâm solely responsible for making all insurance decisions"},"2":{"Display":"Iâm primarily responsible, but I consult with at least one other"},"3":{"Display":"I share responsibility equally with someone else"},"4":{"Display":"Iâm involved in research and information gathering, but someone else makes the final decision"},"5":{"Display":"I have little to no involvement in insurance decisions"}},"Configuration":{"QuestionDescriptionOption":"SpecifyLabel"},"DataExportTag":"S3","DataVisibility":{"Hidden":false,"Private":false},"GradingData":[],"Language":{"EN":{"Choices":{"1":{"Display":"Iâm solely responsible for making all insurance decisions"},"2":{"Display":"Iâm primarily responsible, but I consult with at least one other"},"3":{"Display":"I share responsibility equally with someone else"},"4":{"Display":"Iâm involved in research and information gathering, but someone else makes the final decision"},"5":{"Display":"I have little to no involvement in insurance decisions"}},"QuestionText":"Which of the following statements best describes your role in making decisions about home, auto or life insurance for your household?<br><i>(Select one) </i><br>"}},"NextAnswerId":1,"NextChoiceId":6,"QuestionID":"QID3","QuestionType":"MC","Selector":"SAVR","SubSelector":"TX","SurveyLanguage":"EN","Validation":{"Settings":{"ForceResponse":"ON","Type":"None"}}}},"NextButton":true,"PreviousButton":false,"Count":1,"Skipped":0,"NotDisplayed":0,"LanguageSelector":null,"Messages":{"PoweredByQualtrics":"Powered by Qualtrics","PoweredByQualtricsLabel":"Powered by Qualtrics: Learn more about Qualtrics in a new tab","A11yNextPage":"You are on the next page","A11yPageLoaded":"Page Loaded","A11yPageLoading":"Page is loading","A11yPrevPage":"You are on the previous page","FailedToReachServer":"We were unable to connect to our servers. Please check your internet connection and try again.","ConnectionError":"Connection Error","IPDLError":"Sorry, an unexpected error occurred.","Retry":"Retry","Cancel":"Cancel","Language":"Language","Done":"Done","AutoAdvanceLabel":"or press Enter","DecimalSeparator":"Please exclude commas and if necessary use a point as a decimal separator.","IE11Body":"You are using an unsupported browser. Qualtrics surveys will no longer load in Internet Explorer 11 after March 15, 2024.","BipolarPreference":"Select this answer if you prefer %1 over %2 by %3 points.","BipolarNoPreference":"Select this answer if you have no preference between %1 and %2.","Blank":"Blank","CaptchaRequired":"Answering the captcha is required to proceed","MCMSB_Instructions":"To select multiple options in a row, click and drag your mouse or hold down Shift when selecting. To select non-sequential options, hold down Control (on a PC) or Command (on a Mac) when clicking. To deselect an option, hold down Control or Command and click on a selected option.","MLDND_Instructions":"Drag and drop each item from the list into a bucket.","PGR_Instructions":"Drag and drop items into groups. Within each group, rank items by dragging and dropping them into place.","ROSB_Instructions":"Select items and then rank them by clicking the arrows to move each item up and down."},"IsPageMessage":false,"ErrorCode":null,"PageMessageTranslations":{},"CurrentLanguage":"EN","FallbackLanguage":"EN","QuestionRuntimes":{"QID3":{"Highlight":false,"ID":"QID3","Type":"MC","Selector":"SAVR","SubSelector":"TX","ErrorMsg":null,"TerminalAuthError":false,"Valid":false,"MobileFirst":false,"QuestionTypePluginProperties":null,"CurrentMultiPageQuestionIndex":0,"Displayed":true,"PreValidation":{"Settings":{"ForceResponse":"ON","Type":"None"}},"Choices":{"1":{"ID":"1","RecodeValue":"1","VariableName":"1","Text":"","Display":"Iâm solely responsible for making all insurance decisions","InputWidth":null,"Exclusive":false,"Selected":false,"Password":false,"TextEntry":false,"TextEntrySize":"Small","TextEntryLength":null,"InputHeight":null,"Error":null,"ErrorMsg":null,"PDPErrorMsg":null,"PDPError":null,"Displayed":true},"2":{"ID":"2","RecodeValue":"2","VariableName":"2","Text":"","Display":"Iâm primarily responsible, but I consult with at least one other","InputWidth":null,"Exclusive":false,"Selected":false,"Password":false,"TextEntry":false,"TextEntrySize":"Small","TextEntryLength":null,"InputHeight":null,"Error":null,"ErrorMsg":null,"PDPErrorMsg":null,"PDPError":null,"Displayed":true},"3":{"ID":"3","RecodeValue":"3","VariableName":"3","Text":"","Display":"I share responsibility equally with someone else","InputWidth":null,"Exclusive":false,"Selected":false,"Password":false,"TextEntry":false,"TextEntrySize":"Small","TextEntryLength":null,"InputHeight":null,"Error":null,"ErrorMsg":null,"PDPErrorMsg":null,"PDPError":null,"Displayed":true},"4":{"ID":"4","RecodeValue":"4","VariableName":"4","Text":"","Display":"Iâm involved in research and information gathering, but someone else makes the final decision","InputWidth":null,"Exclusive":false,"Selected":false,"Password":false,"TextEntry":false,"TextEntrySize":"Small","TextEntryLength":null,"InputHeight":null,"Error":null,"ErrorMsg":null,"PDPErrorMsg":null,"PDPError":null,"Displayed":true},"5":{"ID":"5","RecodeValue":"5","VariableName":"5","Text":"","Display":"I have little to no involvement in insurance decisions","InputWidth":null,"Exclusive":false,"Selected":false,"Password":false,"TextEntry":false,"TextEntrySize":"Small","TextEntryLength":null,"InputHeight":null,"Error":null,"ErrorMsg":null,"PDPErrorMsg":null,"PDPError":null,"Displayed":true}},"ChoiceOrder":["1","2","3","4","5"],"ChoiceTextPosition":"Left","Selected":null,"IsAutoAuthFailure":false,"ErrorSeverity":null,"PDPErrorMsg":null,"PDPError":null,"QuestionText":"Which of the following statements best describes your role in making decisions about home, auto or life insurance for your household?<br><i>(Select one) </i><br>","Skipped":false,"ExistingChoices":{},"ProcessedDisplayChoiceOrder":["1","2","3","4","5"],"ChoiceOrderSetup":true,"Active":true,"IsResponseSummary":false,"SeparatorDisplayed":true,"Response":null}},"IsEOS":false,"FailedValidation":false,"PDPValidationFailureQuestionIDs":[],"BlockID":"BL_3aTFjfj0qJv5OBM","FormTitle":"Qualtrics Survey | Qualtrics Experience Management","SurveyMetaDescription":"The most powerful, simple and trusted way to gather experience data. Start your journey to experience management and try a free account today.","TableOfContents":null,"UseTableOfContents":false,"SM":{"BaseServiceURL":"https://farmers.qualtrics.com","SurveyVersionID":"9223370258339174339","IsBrandEncrypted":false,"JFEVersionID":"81b9064e1b825d9c78ad9566b38ea8d9b57b72c2","BrandDataCenterURL":"https://pdx1.qualtrics.com","XSRFToken":"hnI6JAxGYGAR8cwJyDFpXA","StartDate":"2026-05-24 02:14:26","StartDateRaw":1779588866635,"BrandID":"farmers","SurveyID":"SV_3BHtJkfaEOEDj5c","BrowserName":"Chrome","BrowserVersion":"148.0.0.0","OS":"Windows NT 10.0","UserAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36","LastUserAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36","QueryString":"","IP":"103.151.173.100","URL":"https://survey.qualtrics.com/jfe/form/SV_3BHtJkfaEOEDj5c","BaseHostURL":"https://survey.qualtrics.com","ProxyURL":"https://survey.qualtrics.com/jfe/form/SV_3BHtJkfaEOEDj5c/start","JFEDataCenter":"spoke9","dataCenterPath":"jfe9","IsPreview":false,"LinkType":"anonymous","geoIPLocation":{"IPAddress":"103.151.173.100","City":"","CountryName":"Japan","CountryCode":"JP","Region":"28","RegionName":"HyÅgo","PostalCode":"","Latitude":34.6922,"Longitude":135.1816,"MetroCode":0,"Private":false},"geoIPV2Enabled":true,"EDFromRequest":["ED"],"FormSessionID":"FS_9NdSOUWJBSMEsGR","SeenQuestionSequence":["QID39","QID20","QID1","QID2"],"EndDate":"2026-05-24 04:22:48","EndDateRaw":1779596568515,"Progress":14,"Resolution":"3072x1728","FlashVersion":-1,"JavaSupport":0,"IsIncognito":false,"Fingerprint":{"local":{"id":"41719a1f-0150-450b-983f-6b925286ef36"},"screen":{"width":3072,"height":1728,"availWidth":3072,"availHeight":1680,"availTop":0,"availLeft":0,"isExtended":true,"pixelDepth":32},"gpu":{"wgslLanguageFeatures":["packed_4x8_integer_dot_product","subgroup_uniformity","linear_indexing","subgroup_id","readonly_and_readwrite_storage_textures","unrestricted_pointer_parameters","texture_and_sampler_let","pointer_composite_access","uniform_buffer_standard_layout"],"preferredCanvasFormat":"bgra8unorm","adapter":{"features":["depth32float-stencil8","rg11b10ufloat-renderable","texture-formats-tier1","bgra8unorm-storage","texture-compression-bc","dual-source-blending","core-features-and-limits","float32-filterable","indirect-first-instance","float32-blendable","depth-clip-control","texture-compression-bc-sliced-3d","shader-f16","texture-formats-tier2","timestamp-query","clip-distances","primitive-index","texture-component-swizzle","subgroups"],"limits":{"maxTextureDimension1D":16384,"maxTextureDimension2D":16384,"maxTextureDimension3D":2048,"maxTextureArrayLayers":2048,"maxBindGroups":4,"maxBindGroupsPlusVertexBuffers":24,"maxBindingsPerBindGroup":1000,"maxDynamicUniformBuffersPerPipelineLayout":10,"maxDynamicStorageBuffersPerPipelineLayout":8,"maxSampledTexturesPerShaderStage":48,"maxSamplersPerShaderStage":16,"maxStorageBuffersPerShaderStage":16,"maxStorageTexturesPerShaderStage":8,"maxUniformBuffersPerShaderStage":12,"maxUniformBufferBindingSize":65536,"maxStorageBufferBindingSize":2147483644,"minUniformBufferOffsetAlignment":256,"minStorageBufferOffsetAlignment":256,"maxVertexBuffers":8,"maxBufferSize":2147483648,"maxVertexAttributes":30,"maxVertexBufferArrayStride":2048,"maxInterStageShaderVariables":28,"maxColorAttachments":8,"maxColorAttachmentBytesPerSample":128,"maxComputeWorkgroupStorageSize":32768,"maxComputeInvocationsPerWorkgroup":1024,"maxComputeWorkgroupSizeX":1024,"maxComputeWorkgroupSizeY":1024,"maxComputeWorkgroupSizeZ":64,"maxComputeWorkgroupsPerDimension":65535,"maxStorageBuffersInFragmentStage":16,"maxStorageTexturesInFragmentStage":8,"maxStorageBuffersInVertexStage":16,"maxStorageTexturesInVertexStage":8},"info":{"architecture":"ampere","description":"","device":"","vendor":"nvidia"}}},"navigator":{"cookieEnabled":true,"language":"zh-CN","languages":["zh-CN","zh"],"maxTouchPoints":0,"hardwareConcurrency":20,"pdfViewerEnabled":true,"webdriver":false,"deviceMemory":32,"keyboard":{"size":48},"userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36","userAgentData":{"architecture":"x86","bitness":"64","mobile":false,"model":"","platform":"Windows","platformVersion":"20.0.0","wow64":false,"fullVersionList":[{"brand":"Chromium","version":"148.0.7778.179"},{"brand":"Google Chrome","version":"148.0.7778.179"},{"brand":"Not/A)Brand","version":"99.0.0.0"}]}},"dateTime":{"formatOptions":{"calendar":"gregory","day":"numeric","locale":"zh-CN","month":"numeric","numberingSystem":"latn","timeZone":"Asia/Shanghai","year":"numeric"}},"canvas":{"text":"5d62d558a90e611ca3f06bd06acc48c3c6b48495be22f0b32a8691e0b19214a0","emoji":"f8bbc2c007fb285fde03ee58f6bb750b1126894c6d7c1c1c8f66d8da4306d9a3","languages":"b63605b1d6270f764e76356e8b680857dc1cbb097610eb0bca8fa1bd942ace90","blending":"c8b5ea2780bf69740cd445ee8e4688a9c82a8a706649ebeb9e5b5e6fb99de33d"}},"QuestionAnalytics":{"QID1":{"KeystrokeCount":4,"PasteCount":0,"ElapsedSeconds":6.036}}},"ED":{"SID":"SV_3BHtJkfaEOEDj5c","SurveyID":"SV_3BHtJkfaEOEDj5c","Q_Language":"EN","Q_URL":"https://survey.qualtrics.com/jfe/form/SV_3BHtJkfaEOEDj5c","UserAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36","Q_CHL":"anonymous","Q_LastModified":1778515600,"Q_TotalDuration":7701},"PostToStartED":{},"FormRuntime":null,"RuntimePayload":null,"TransactionID":13,"ReplacesOutdated":false,"EOSRedirectURL":null,"RedirectURL":null,"SaveOnPageUnload":true,"ProgressPercent":14,"ProgressBarText":"Survey Completion","ProgressAccessibleText":"Current Progress","FormOptions":{"ActiveResponseSet":"RS_9TZE16zYtc92Dfo","AnonymizeResponse":"No","AutoConfirmStart":false,"AvailableLanguages":{"EN":{}},"BackButton":false,"BallotBoxStuffingPrevention":true,"BallotBoxStuffingPreventionBehavior":"DefaultMessage","CollectGeoLocation":false,"ConfirmStart":false,"CustomStyles":{"customCSS":""},"DetectDuplicateRespondents":true,"DetectDuplicateRespondentsDuration":"+30 days","EOSRedirectURL":null,"EmailThankYou":false,"Favicon":"https://farmers.qualtrics.com/brand-management/brand-assets/farmers/favicon.ico","InactiveSurvey":"DefaultMessage","NewScoring":1,"NextButton":{"Display":"â’"},"NoIndex":"Yes","PageTransition":"None","PartialData":"+1 week","PartialDataCloseAfter":"LastActivity","PartialDeletion":null,"PreviousButton":{"Display":"â"},"ProgressBarDisplay":"None","SaveAndContinue":true,"SecureResponseFiles":true,"ShowExportTags":false,"Skin":"qualtrics.base:null:null","SkinBaseCss":"/jfe/themes/templated-skins/qualtrics.base:null:null/version-1774552243900-37135f/stylesheet.css","SkinLibrary":"farmers","SkinOptions":{"AnyDeviceSupport":true,"BrandingOnly":{"css":"","footer":"","header":"","html":""},"FallbackSkin":false,"HideRequiredAsterisk":false,"LayoutSpacing":0.5,"Logo":"","LogoBanner":false,"LogoPosition":"left","MCButtonChoices":false,"NPSMobileVertical":false,"ProgressBarPosition":"top","QuestionDisplayWidth":"default","QuestionsContainer":false,"Version":3},"SkinType":"templated","SurveyCreationDate":"2026-04-27 18:29:18","SurveyExpiration":"None","SurveyExpirationDate":"0000-00-00 00:00:00","SurveyLanguage":"EN","SurveyMetaDescription":"The most powerful, simple and trusted way to gather experience data. Start your journey to experience management and try a free account today.","SurveyName":"RTB Testing - May 2026","SurveyProtection":"PublicSurvey","SurveyStartDate":"0000-00-00 00:00:00","SurveyTermination":"DefaultMessage","SurveyTimezone":"America/Mexico_City","SurveyTitle":"Qualtrics Survey | Qualtrics Experience Management","Language":"EN","Languages":null,"DefaultLanguages":{"AR":"Ø§ÙØ¹Ø±Ø¨ÙØ©","ASM":"à¦à¦¸à¦®à§à¦¯à¦¼à¦¾","AZ-AZ":"AzÉrbaycan dili","BEL":"Ð‘ÐµÐ»Ð°ÑÑÑÐºÐ°Ñ","BG":"Ð‘ÑÐ»Ð³Ð°ÑÑÐºÐ¸","BS":"Bosanski","BN":"à¦¬à¦¾à¦à¦²à¦¾","CA":"CatalÃ ","CEB":"Bisaya","CKB":"ÙÙØ±Ø¯Ù","CS":"ÄeÅ¡tina","CY":"Cymraeg","DA":"Dansk","DE":"Deutsch","EL":"ÎÎ»Î»Î·Î½Î¹ÎºÎ¬","EN":"English","EN-GB":"English (United Kingdom)","EN_GB":"English (Great Britain)","EO":"Esperanto","ES":"EspaÃ±ol (AmÃ©rica Latina)","ES-ES":"EspaÃ±ol","ET":"Eesti","FA":"ÙØ§Ø±Ø³Û","FI":"Suomi","FR":"FranÃ§ais","FR-CA":"FranÃ§ais (Canada)","GU":"àª—à«àªàª°àª¾àª¤à« ","HE":"×¢×‘×¨××ª","HI":"à¤¹à¤¿à¤¨à¥à¤¦à¥","HIL":"Hiligaynon","HR":"Hrvatski","HU":"Magyar","HYE":"ÕÕ¡ÕµÕ¥ÖÕ¥Õ¶","ID":"Bahasa Indonesia","ISL":"Ãslenska","IT":"Italiano","JA":"æ—¥æ¬èª","KAN":"à²à²¨à³à²¨à²¡","KAT":"á¥áá á—á£áá","KAZ":"ÒÐ°Ð·Ð°Ò","KM":"á—á¶áá¶áá’ááá","KO":"íêµ­ì–´","LV":"LatvieÅ¡u","LT":"LietuviÅ³","MAL":"à´®à´²à´¯à´¾à´³à´","MAR":"à¤®à¤°à¤¾à¤ à¥","MK":"MÐ°ÐºÐµÐ´Ð¾Ð½ÑÐºÐ¸","MN":"ÐÐ¾Ð½Ð³Ð¾Ð»","MS":"Bahasa Malaysia","MY":"áá¼á”áºáá¬áá¬áá¬","NE":"à¤¨à¥à¤ªà¤¾à¤²à¥","NL":"Nederlands","NO":"Norsk","ORI":"à¬“à¬¡à¬¼à¬¿à¬ à¬­à¬¾à¬·à¬¾","PA-IN":"à¨ªà©°à¨à¨¾à¨¬à© (à¨—à©à¨°à¨®à©à¨–à©)","PL":"Polski","PT":"PortuguÃªs","PT-BR":"PortuguÃªs (Brasil)","RI-GI":"Rigi","RO":"RomÃ¢nÄ","RU":"Ð ÑÑÑÐºÐ¸Ð¹","SIN":"à·à·’à¶à·à¶½","SK":"SlovenÄina","SL":"SlovenÅ¡Äina","SO":"Somali","SQI":"Shqip","SR":"Srpski","SR-ME":"Crnogorski","SV":"Svenska","SW":"Kiswahili","TA":"à®¤à®®à®¿à®´à¯","TEL":"à°¤à±à°²à±à°—à±","TGL":"Tagalog","TH":"à¸ à¸²à¸©à¸²à¹à¸—à¸¢","TR":"TÏrkÃ§e","UK":"Ð£ÐºÑÐ°Ñ—Ð½ÑÑÐºÐ°","UR":"Ø§Ø±Ø¯Ù","VI":"Tiáº¿ng Viá»t","ZH-S":"ç®ä½“ä¸­æ–","ZH-T":"ç¹é«”ä¸­æ–","Q_DEV":"Developer"},"ConfirmOnStartEnabled":false,"ThemeURL":"//au1.qualtrics.com/WRQualtricsShared/"},"Header":"","HeaderMessages":{},"Footer":"","FooterMessages":{},"HasJavaScript":true,"IsSystemMessage":false,"FeatureFlags":{"LogAllRumMetrics":false,"STX_HubRace":false,"STS_SpokeHubRoutingSim":false,"makeStartRequest":false,"verboseFrontendLogs":false,"JFE_BlockPrototypeJS":false},"TransformData":{},"AllowJavaScript":true,"TOCWarnPrevious":false,"NextButtonAriaLabel":"Next","PreviousButtonAriaLabel":"Previous","BrandType":"Corporate","TranslationUnavailable":false,"FilteredEDKeys":[],"CookieActions":{"Set":[],"Clear":[]}})
+ </script><div id="P_1779596584946"><div><form id="Page" name="Page"><meta name="HandheldFriendly"><meta name="viewport"><div><div id="Overlay"></div><div id="Wrapper"><div><div id="LogoContainer"><div id="Logo"></div></div><div id="HeaderContainer"><div id="Header" role="banner"></div></div><div id="SkinContent"><div id="Questions" role="main"><div id="QID5Separator"></div><div id="QID5"><div id="QR~QID5~VALIDATION" role="alert"></div><div id="QR~QID5~SDPVALIDATION" role="alert"></div><div><div><fieldset><legend><div>Which type(s) of insurance do you currently have? <br><i>(Select all that apply) </i><br></div></legend><div><ul><li><input type="checkbox" name="QR~QID5~1" id="QR~QID5~1" value="Selected"><label for="QR~QID5~1"></label><span><label for="QR~QID5~1" id="QID5-1-label"><span>Homeowners</span></label></span><div></div></li><li><input type="checkbox" name="QR~QID5~3" id="QR~QID5~3" value="Selected"><label for="QR~QID5~3"></label><span><label for="QR~QID5~3" id="QID5-3-label"><span>Auto</span></label></span><div></div></li><li><input type="checkbox" name="QR~QID5~2" id="QR~QID5~2" value="Selected"><label for="QR~QID5~2"></label><span><label for="QR~QID5~2" id="QID5-2-label"><span>Renters</span></label></span><div></div></li><li><input type="checkbox" name="QR~QID5~4" id="QR~QID5~4" value="Selected"><label for="QR~QID5~4"></label><span><label for="QR~QID5~4" id="QID5-4-label"><span>Life</span></label></span><div></div></li><li><input type="checkbox" name="QR~QID5~5" id="QR~QID5~5" value="Selected"><label for="QR~QID5~5"></label><span><label for="QR~QID5~5" id="QID5-5-label"><span>I donât have any of these</span></label></span><div></div></li></ul><div></div></div></fieldset></div></div></div></div><div id="Buttons" role="navigation"><input id="NextButton" type="button" name="NextButton" value="â’"></div></div><div id="ProgressBar"></div></div><div id="Footer" role="contentinfo"></div><div id="PushStickyFooter"></div></div><div id="Plug"><a>Powered by Qualtrics</a></div></div></form></div></div></body></html>
+
+=== HTML预览 (前300字符) ===
+<html><head><meta><meta><meta name="apple-mobile-web-app-capable"><meta name="mobile-web-app-capable"><title>Qualtrics Survey | Qualtrics Experience Management</title><link><link><meta name="description"><meta name="robots"><meta id="meta-viewport" name="viewport"><meta><meta><script>(function(w) {...
+[DEBUG] doDeepSeekRequest 被调用, prompt长度: system=3175, user=31299
+[DEBUG] AI 返回内容 (727 字符): survey_page:
+  fingerprint: "Which type(s) of insurance do you currently have?"
+  title: "Which type(s) of insurance do you currently have?"
+  page_metadata:
+    has_next_button: true
+    has_submit_b...
+[DEBUG] doDeepSeekRequest 被调用, prompt长度: system=3175, user=31299
+[DEBUG] AI 返回内容 (727 字符): survey_page:
+  fingerprint: "Which type(s) of insurance do you currently have?"
+  title: "Which type(s) of insurance do you currently have?"
+  page_metadata:
+    has_next_button: true
+    has_submit_b...
+[DEBUG] doDeepSeekRequest 被调用, prompt长度: system=3175, user=31299
+[DEBUG] AI 返回内容 (727 字符): survey_page:
+  fingerprint: "Which type(s) of insurance do you currently have?"
+  title: "Which type(s) of insurance do you currently have?"
+  page_metadata:
+    has_next_button: true
+    has_submit_b...

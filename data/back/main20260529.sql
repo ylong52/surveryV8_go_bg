@@ -1,0 +1,16222 @@
+/*
+ Navicat Premium Dump SQL
+
+ Source Server         : survey202605
+ Source Server Type    : SQLite
+ Source Server Version : 3045000 (3.45.0)
+ Source Schema         : main
+
+ Target Server Type    : SQLite
+ Target Server Version : 3045000 (3.45.0)
+ File Encoding         : 65001
+
+ Date: 29/05/2026 22:56:17
+*/
+
+PRAGMA foreign_keys = false;
+
+-- ----------------------------
+-- Table structure for _page_html_source_old_20260528
+-- ----------------------------
+DROP TABLE IF EXISTS "_page_html_source_old_20260528";
+CREATE TABLE "_page_html_source_old_20260528" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+  "page_results_id" INTEGER NOT NULL,
+  "raw_html_md5" VARCHAR(32) NOT NULL,
+  "raw_html" TEXT NOT NULL,
+  "clean_html" TEXT,
+  "created_at" DATETIME DEFAULT (datetime('now', 'localtime')),
+  FOREIGN KEY ("page_results_id") REFERENCES "page_results_old" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION,
+  UNIQUE ("raw_html_md5" ASC)
+);
+
+-- ----------------------------
+-- Records of _page_html_source_old_20260528
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for page_html_source
+-- ----------------------------
+DROP TABLE IF EXISTS "page_html_source";
+CREATE TABLE "page_html_source" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+  "page_results_id" INTEGER NOT NULL,
+  "raw_html_md5" VARCHAR(32) NOT NULL,
+  "raw_html" TEXT NOT NULL,
+  "clean_html" TEXT,
+  "created_at" DATETIME DEFAULT (datetime('now', 'localtime')),
+  UNIQUE ("raw_html_md5" ASC)
+);
+
+-- ----------------------------
+-- Records of page_html_source
+-- ----------------------------
+INSERT INTO "page_html_source" VALUES (134, 91, '8d95614119273468d8e1e0e4a4b321f2', '<html class="sg-survey " xmlns="http://www.w3.org/1999/xhtml" lang="en-us"><head>
+<!--
+=========================================================================================
+DO NOT COPY HTML SOURCE TO EMBED SURVEY.  Go to the "Share" tab to distribute your survey.
+=========================================================================================
+-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="cache-control" content="no-cache, no-store">
+<meta http-equiv="Pragma" content="no-cache">
+<meta name="Generator" content="Alchemer; http://survey.alchemer.com">
+<meta name="description" content="Macalester 2026- prospective families.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimal-ui">
+<meta property="og:type" content="website">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="">
+<title>Macalester 2026- prospective families</title>
+<meta name="robots" content="NOINDEX,NOFOLLOW">
+<style type="text/css" media="all">
+.sg-hide { display: none; }
+
+.sg-error-message {display: none;} 
+
+.sg-access-helper {display: block; position: absolute !important; margin-left: -999em; width: 100em;}
+
+.sg-screenreader-only {position: absolute;border: 0;height: 0;margin: 0;overflow: hidden;padding: 0;}
+</style>
+<link type="text/css" rel="stylesheet" media="all" href="//www.surveygizmo.com/2026.05.06.01/runtimejs/dist/survey/css/jscal.css"><link type="text/css" rel="stylesheet" media="all" href="//www.surveygizmo.com/2026.05.06.01/runtimejs/dist/survey/css/survey2.css"><link type="text/css" rel="stylesheet" media="all" href="//www.surveygizmo.com/2026.05.06.01/runtimethemes/default/runtime/css/sg-icon-font.css"><style type="text/css" media="all">html{font-size:14px;}.sg-body{font-family:Montserrat;font-size:14px;font-weight:400;color:#2c3e50;background-color:rgba(255,255,255,1.00);}.sg-header{color:#354050;background-color:rgba(255,255,255,1.00);}.sg-wrapper{background-color:#ffffff;}.sg-survey-form{width:100%;}.sg-content{width:960px;}.sg-gdpr-modal-close, .sg-page-title{color:#2c3e50;}.sg-question{border-bottom:1px solid #e9ebed;border-top-color:#ffffff;border-right-color:#2c3e50;}.sg-question-title{font-weight:bold;}.sg-input-text, .sg-input-menu, .sg-input-essay, .sg-question input[type="text"], .sg-question input[type="number"], .sg-question input[type="password"], .sg-question textarea{background-color:transparent;border:2px solid #aab1b9;}.sg-question input[type="text"]:focus, .sg-question input[type="number"]:focus, .sg-question input[type="password"]:focus, .sg-question textarea:focus{border-color:#354050;border-width:4px;outline:0;}.sg-replace-icons input[type=radio]:focus-within + label , .sg-replace-icons input[type=checkbox].sg-input-checkbox:focus-within + label , .sg-image-box:focus-within , .rangeslider__handle:focus , .sg-star-box .sg-star-sr-target:focus , .sg-input-menu:focus , span.ui-slider-handle:focus , .sg-cs-cards:focus , .cs-card:focus , .sg-texthighlighter-text span:focus , .DynarchCalendar-bottomBar-today:focus{outline:#354050 auto 5px;}.sg-image-wrapper img{object-fit:cover;}.rangeslider__handle{background:#354050;}.DynarchCalendar-day.sgcal-selected{background-color:#354050;}ul.ui-autocomplete{font-family:Montserrat;font-size:14px;font-weight:400;color:#2c3e50;background-color:#ffffff !important;}::-webkit-input-placeholder{color:#aab1b9;}:-moz-placeholder{color:#aab1b9;}::-moz-placeholder{color:#aab1b9;}:-ms-input-placeholder{color:#aab1b9;}.sg-button, .sg-file-field input[type="button"], .sg-next-button, .sg-back-button, .sg-submit-button, .sg-browse-btn, .sg-configurator-btn, .sg-add-another-button{color:#ffffff !important;background-color:#354050;}.sg-button:hover, .sg-button:focus, .sg-button:active, .sg-file-field input[type="button"]:hover, .sg-file-field input[type="button"]:focus, .sg-file-field input[type="button"]:active, .sg-next-button:hover, .sg-next-button:focus, .sg-next-button:active, .sg-back-button:hover, .sg-back-button:focus, .sg-back-button:active, .sg-submit-button:hover, .sg-submit-button:focus, .sg-submit-button:active, .sg-configurator-btn:hover, .sg-configurator-btn:focus, .sg-configurator-btn:active, .sg-browse-btn:hover, .sg-browse-btn:focus, .sg-browse-btn:active, .sg-add-another-button:hover, .sg-add-another-button:focus, .sg-add-another-button:active{color:#ffffff !important;background-color:#1f2630;}.sg-button:focus, .sg-file-field input[type="button"]:focus, .sg-next-button:focus, .sg-submit-button:focus, .sg-back-button:focus, .sg-configurator-btn:focus, .sg-browse-btn:focus, .sg-input-file:focus + .sg-browse-btn, .sg-add-another-button:focus{border:4px solid #2f3e50;}.sg-type-table .sg-table{border-color:#b5bbc1;}.sg-type-table .sg-table thead th, .sg-type-table .sg-table thead td.sg-mock-th, .sg-type-table .sg-table tbody th, .sg-type-table thead th.sg-column-header, .sg-type-table .sg-table tbody td, .sg-type-table thead th.sg-column-header, .sg-type-table .sg-table thead th.sg-column-subheader, .sg-type-table tbody td.sg-group-first-cell, .sg-rtl .sg-type-table td, .sg-type-table thead th.sg-column-subheader-1, .sg-rtl .sg-type-table thead th, .sg-rtl .sg-type-table thead th.sg-column-header, .sg-rtl .sg-type-table thead th.sg-column-subheader-1, .sg-rtl .sg-type-table tbody td.sg-group-first-cell{border-color:#e9ebed;}.sg-type-portal .sg-table{border-color:#b5bbc1;}.sg-type-portal .sg-table thead th{border-color:#a4a9b0;background-color:#cccfd3;color:#354050;}.sg-type-portal .sg-table tbody th{border-color:#e9ebed;}.sg-type-portal .sg-table tbody td{border-color:#e9ebed;}.sg-type-portal .sg-table .sg-odd-row th{background-color:#ffffff;}.sg-type-portal .sg-table .sg-odd-row td{background-color:#fafbfb;}.sg-type-portal .sg-table .sg-even-row th{background-color:#f8f9f9;}.sg-type-portal .sg-table .sg-even-row td{background-color:#eeeff1;}.sg-rank-dragdrop .sg-rank-origin{background-color:#f4f5f6;}.sg-rank-dragdrop .sg-rank-target{background-color:#e9ebed;}.sg-rank-dragdrop .sg-rank-target, .sg-rank-dragdrop .sg-rank-origin{border-color:#e9ebed;}.sg-rank-dragdrop .sg-rank-instructions{color:#b5bbc1;}.sg-rank-dragdrop ul.ui-sortable li div{color:#606e7b;}.sg-rank-dragdrop ul.ui-sortable li{background-color:#e0e2e4;border-color:#717984;}.sg-type-cardsort .sg-cs-left, .sg-type-cardsort .sg-cs-top{background-color:#f4f5f6;}.sg-type-cardsort .sg-cs-bucket{background-color:#e9ebed;}.sg-type-cardsort ul.sg-cs-cards, .sg-type-cardsort .sg-target-cs .sg-cs-bucket-lbl{border-color:#e9ebed;}.sg-type-cardsort .sg-cs-bucket, .sg-type-cardsort .sg-cs-bucket-lbl{border-color:#d4d8dc;}.sg-type-cardsort ul.sg-cs-buckets .cs-card, .sg-type-cardsort ul.sg-cs-cards .cs-card{border-color:#e9ebed;background-color:#e0e2e4;}.sg-type-cardsort .cs-empty::after{color:#aab1b9;}.sg-type-cardsort .sg-cs-target-one .sg-cs-bucket::after, .sg-type-cardsort .sg-cs-buckets-open:empty::after{color:#959ea7;}.sg-type-cardsort .sg-add-bucket{background-color:#f4f5f6;border-color:#e9ebed;}.sg-type-cardsort .sg-add-bucket.ui-state-hover, .sg-type-cardsort ul.sg-cs-buckets.ui-state-hover{background-color:#c2c5ca;}.sg-type-file .sg-file-desc{border-color:#aab1b9;background-color:#e9ebed;}.sg-type-file .sg-file-prefix, .sg-type-file .sg-file-size{color:#959ea7;}.sg-progress-bar-inner{background-color:#354050;}.sg-progress-bar-text{color:#ffffff !important;background-color:#354050;}.sg-progress-bar-background{background-color:#bfc5ca;border-left:1px solid #ffffff !important;}.sg-body .sg-powered-by div, .sg-body .sg-powered-by a{color:#161f28;}.sg-result-bar{background-color:#bfc5ca;}.DynarchCalendar{background-color:#cccfd3;color:#2c3e50;border:1px solid #959ea7;}.DynarchCalendar-body, .DynarchCalendar-menu{background-color:#f4f5f6;color:#2c3e50;}.DynarchCalendar{border-color:#354050;background:#FFF;}.DynarchCalendar, .DynarchCalendar table{color:#2C3E50;}.DynarchCalendar-body, .DynarchCalendar-menu{background:#fff;}.DynarchCalendar-menu{background:#FFF;}.DynarchCalendar-dayNames .DynarchCalendar-weekend{color:#95A5A6;}.DynarchCalendar-weekend{color:#34495E;}.DynarchCalendar-day-othermonth, .DynarchCalendar-day-othermonth.DynarchCalendar-weekend{color:#BDC3C7;}.DynarchCalendar-focused .DynarchCalendar-hover-week .DynarchCalendar-day{color:inherit;}.DynarchCalendar-day-today{color:#354050;}.DynarchCalendar-day-selected{background-color:#ECF0F1;color:#2C3E50 !important;border-color:#354050;}.sg-snc-bar, body:not(.sg-mobile) .sg-snc-lang-list{font-family:Montserrat;border-bottom:1px solid #cccccc;background:#4c4c4c;}body:not(.sg-mobile) .sg-snc-lang-list{border-left:1px solid #cccccc;border-right:1px solid #cccccc;}body:not(.sg-mobile) .sg-lang-fixed-at-bottom .sg-snc-lang-list, body:not(.sg-mobile) .sg-snc-at-bottom .sg-snc-lang-list{border-bottom:none;border-top:1px solid #cccccc;}.sg-snc-trigger, .sg-snc-bar a{color:#ffffff;}body:not(.sg-high-contrast-mode) .sg-snc-trigger .sg-toolbar-icon{fill:#ffffff;}#sg-snc-box{color:#ffffff;}.sg-snc-buttons input, .sg-snc-buttons button{font-family:Montserrat;}.sg-language-list ul{background-color:#ffffff;}.sg-language-list li{border-color:#ffffff;}.sg-language-list a{color:#2c3e50;}.sg-snc-lang-list li:hover{background-color:#ffffff;}.sg-snc-lang-list li:hover a{color:#191919;}.sg-table thead .sg-required-icon{color:#354050;}.sg-table tbody .sg-required-icon{color:#b22238;}.sg-slider-rows, .sg-slider-row, .sg-slider-gridline{border-color:#b5bbc1;}.sg-slider-container .ui-slider-horizontal, .sg-slider .sg-single-slider, .sg-slider-mobile .sg-mobile-slider-bar{background:#4b5a6a;}.sg-slider-container .ui-slider-horizontal-blank, .sg-slider .ui-slider-horizontal-blank, .sg-slider .ui-slider-vertical-blank, .sg-slider-mobile .ui-slider-horizontal-blank, .sg-slider-mobile .ui-slider-vertical-blank{background:#caced3;}.sg-slider .sg-slider-bubble-horizontal, .sg-slider .sg-slider-bubble-vertical{background:#354050;color:#ffffff !important;}.sg-slider .sg-slider-bubble-horizontal .sg-dink div{border-top-color:#354050;}.sg-slider .sg-slider-bubble-vertical .sg-dink div{border-right-color:#354050;}.sg-body .ui-slider .ui-slider-handle, .sg-body .ui-slider .ui-slider-handle:hover{background:#354050;}.sg-conjoint-table > tbody > tr > td, .sg-conjoint-table > tfoot > tr > td, .sg-conjoint-table > tfoot td, .sg-conjoint-table > tfoot th{border-color:#e9ebed}.sg-survey .sg-mobile-optimized .sg-question.sg-type-conjoint_new .sg-question-options .sg-conjoint-table > tbody > tr, .sg-survey .sg-mobile-optimized .sg-question.sg-type-conjoint_new .sg-question-options .sg-conjoint-table > tbody > tr > td:first-child{border-color:#2c3e50;}.sg-conjoint-table.mobile table th, .conjoint-attribute-title{color:#aab1b9;}.sg-conjoint-text-remaining{color:#aab1b9;}.sg-survey body.sg-mobile-optimized .sg-type-table-radio .sg-question-options label, .sg-survey body.sg-mobile-optimized .sg-type-table-card-sort-closed .sg-question-options label, .sg-survey body.sg-mobile-optimized .sg-type-table-card-sort .sg-question-options label, .sg-survey body.sg-mobile-optimized .sg-type-table-matrix .sg-question-options .sg-mobilize-label label, .sg-survey body.sg-mobile-optimized .sg-type-table-checkbox .sg-question-options label, .sg-survey body.sg-mobile-optimized .sg-question.sg-type-radio .sg-question-options label, .sg-survey body.sg-mobile-optimized .sg-question.sg-type-checkbox .sg-question-options label, .sg-survey body.sg-mobile-optimized .sg-question.sg-type-rank-table .sg-question-options th label, .sg-survey body.sg-mobile-optimized .sg-question.sg-type-rank-table .sg-question-options td label{color:#2c3e50;background-color:#ffffff;border-color:#2c3e50;}.sg-survey body.sg-mobile-optimized .sg-question.sg-type-conjoint_new .sg-question-options .sg-conjoint-table > tbody > tr{border-color:#2c3e50;}.sg-survey body.sg-mobile-optimized .sg-question.sg-type-conjoint_new .sg-question-options .sg-conjoint-table > tbody > tr.selected, .sg-survey body.sg-mobile-optimized .sg-question.sg-type-conjoint_new .sg-question-options .sg-conjoint-table > tbody > tr > td.selected{color:#ffffff;background-color:#2c3e50;}.sg-survey body.sg-mobile-optimized .sg-question.sg-type-slider .sg-question-options label, .sg-survey body.sg-mobile-optimized .sg-question.sg-type-slider .sg-question-options input[type=checkbox]:checked+label, .sg-survey body.sg-mobile-optimized .sg-question.sg-type-multi-slider .sg-question-options label, .sg-survey body.sg-mobile-optimized .sg-question.sg-type-multi-slider .sg-question-options input[type=checkbox]:checked+label{color:#2c3e50;background:none;}.sg-survey body.sg-mobile-optimized .sg-question .sg-question-options input[type=radio]:checked + label, .sg-survey body.sg-mobile-optimized .sg-question .sg-question-options input[type=radio]:checked + .sg-mobilize-label label, .sg-survey body.sg-mobile-optimized .sg-question .sg-question-options input[type=checkbox]:checked + .sg-mobilize-label label, .sg-survey body.sg-mobile-optimized .sg-question .sg-question-options input[type=checkbox]:checked+label{color:#ffffff;background-color:#2c3e50;}.sg-survey body.sg-mobile-optimized .sg-question.sg-type-rank-table input[type=radio]:checked + label, .sg-survey body.sg-mobile-optimized .sg-question.sg-type-rank-table input[type=checkbox]:checked + label{background-color:#2c3e50;color:#ffffff;}.table360 tr th{background-color:#cccfd3;}:root{--accent-primary:#354050;--gray-secondary:#2c3e50;--tertiary:#ffffff;--accent-text:#ffffff !important;--accent-1:color-mix(in srgb, var(--accent-primary), var(--tertiary) 99%);--accent-5:color-mix(in srgb, var(--accent-primary), var(--tertiary) 95%);--accent-10:color-mix(in srgb, var(--accent-primary), var(--tertiary) 90%);--accent-20:color-mix(in srgb, var(--accent-primary), var(--tertiary) 80%);--accent-30:color-mix(in srgb, var(--accent-primary), var(--tertiary) 70%);--accent-40:color-mix(in srgb, var(--accent-primary), var(--tertiary) 60%);--accent-50:color-mix(in srgb, var(--accent-primary), var(--tertiary) 50%);--accent-60:color-mix(in srgb, var(--accent-primary), var(--tertiary) 40%);--accent-70:color-mix(in srgb, var(--accent-primary), var(--tertiary) 30%);--accent-80:color-mix(in srgb, var(--accent-primary), var(--tertiary) 20%);--accent-90:color-mix(in srgb, var(--accent-primary), var(--tertiary) 10%);--gray-light-5:color-mix(in srgb, var(--gray-secondary), var(--tertiary) 95%);--gray-light-10:color-mix(in srgb, var(--gray-secondary), var(--tertiary) 90%);--gray-light-20:color-mix(in srgb, var(--gray-secondary), var(--tertiary) 80%);--gray-light-30:color-mix(in srgb, var(--gray-secondary), var(--tertiary) 70%);--gray-light-40:color-mix(in srgb, var(--gray-secondary), var(--tertiary) 60%);--gray-light-50:color-mix(in srgb, var(--gray-secondary), var(--tertiary) 50%);--gray-light-60:color-mix(in srgb, var(--gray-secondary), var(--tertiary) 40%);--gray-light-70:color-mix(in srgb, var(--gray-secondary), var(--tertiary) 30%);--gray-light-80:color-mix(in srgb, var(--gray-secondary), var(--tertiary) 20%);--gray-light-90:color-mix(in srgb, var(--gray-secondary), var(--tertiary) 10%);}</style>
+<style type="text/css" media="all">.sg-progress-bar,.sg-progress-bar-inner{height:6px}.sg-survey .sg-body.sg-int-virtual-page .sg-progress-bar,.sg-survey .sg-mobile-optimized .sg-progress-bar{bottom:60px;margin:0;left:0;width:100vw}.sg-progress-bar-text{display:none;font-size:1px}.sg-survey .sg-body.sg-int-virtual-page .sg-progress-bar-background,.sg-survey .sg-mobile-optimized .sg-progress-bar-background{width:100%}.sg-progress-bar-background{background-color:#f9f9fb;border-left:none}.sg-survey .sg-body.sg-int-virtual-page .sg-button-bar .sg-back-button,.sg-survey .sg-body.sg-int-virtual-page .sg-button-bar .sg-next-button,.sg-survey .sg-body.sg-int-virtual-page .sg-button-bar .sg-submit-button,.sg-survey .sg-button,.sg-survey .sg-mobile-optimized .sg-button-bar .sg-back-button,.sg-survey .sg-mobile-optimized .sg-button-bar .sg-next-button,.sg-survey .sg-mobile-optimized .sg-button-bar .sg-submit-button{margin:0;border:1px solid #97a5ba;width:100%}.sg-survey .sg-body.sg-int-virtual-page .sg-wrapper,.sg-survey .sg-mobile-optimized .sg-wrapper{height:100%;overflow-y:hidden}.sg-survey .sg-mobile-optimized .sg-content{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;overflow-y:scroll}.sg-survey .sg-content{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}@media only screen and (max-width:768px){.sg-int-virtual-page .sg-question-set{-webkit-perspective:none;perspective:none;height:100%!important}.sg-question.sg-page-current{height:-webkit-max-content!important;height:-moz-max-content!important;height:max-content!important}}.sg-int-virtual-page .sg-question-set>.sg-question.sg-page-current.sg-page-rotateSlideOutNext{display:none}.sg-survey .sg-mobile-optimized .sg-header{z-index:999;width:100%;margin-left:0;margin-right:0}.sg-survey .sg-mobile-optimized .sg-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:8px;margin-left:0;margin-right:0;max-width:90%!important}.sg-survey .sg-body.sg-int-virtual-page .sg-button-bar,.sg-survey .sg-mobile-optimized .sg-button-bar{display:-webkit-box;display:-ms-flexbox;display:flex}.sg-button-bar{-webkit-box-align:center;-ms-flex-align:center;align-items:center;grid-gap:12px}.sg-survey .sg-button{font-family:Montserrat;font-size:14px}.sg-survey .sg-body.sg-int-virtual-page .sg-button-bar .sg-back-button:hover,.sg-survey .sg-body.sg-int-virtual-page .sg-button-bar .sg-next-button:hover,.sg-survey .sg-body.sg-int-virtual-page .sg-button-bar .sg-submit-button:hover,.sg-survey .sg-mobile-optimized .sg-button-bar .sg-back-button:hover,.sg-survey .sg-mobile-optimized .sg-button-bar .sg-next-button:hover,.sg-survey .sg-mobile-optimized .sg-button-bar .sg-submit-button:hover{background-color:var(--accent-primary)!important}.sg-survey .sg-mobile-optimized .sg-footer .sg-button-bar input{border-radius:4px}.sg-body .sg-title{font-size:18px!important;float:left}.sg-survey .sg-header{float:left;width:100%}.sg-survey .sg-mobile-optimized .sg-header-hook-1{margin-left:0;margin-right:0;height:68px}.sg-header{-webkit-box-shadow:0 0 10px 1px rgba(50,50,50,.2);box-shadow:0 0 10px 1px rgba(50,50,50,.2);padding:8px 16px}.sg-header-image{max-height:none;max-width:none;height:auto;width:auto;margin:inherit;float:left}.sg-survey .sg-mobile-optimized .sg-question input[type=number],.sg-survey .sg-mobile-optimized .sg-question input[type=text],.sg-survey .sg-mobile-optimized .sg-question input[type=date],.sg-survey .sg-mobile-optimized .sg-question input[type=email]{height:54px}@media only screen and (max-width:600px){.sg-body .sg-title{font-size:14px!important}.sg-header-image{max-height:none}}.sg-survey body .sg-wrapper{overflow:hidden}.sg-mobile-optimized .sg-page-description,.sg-page-description{padding:20px;font-size:14px;margin:0 0 1.6em;background-color:#f9f9fb;border-radius:8px;color:#49586e}.sg-header .sg-title{padding:20px}.sg-other{border:none}.sg-question-title,.sg-question-title label,.sg-wrapper{font-family:Montserrat;font-size:16px}.sg-question-title{font-size:16px}.sg-instructions{font-size:14px}.sg-input-essay,.sg-input-menu,.sg-input-text,.sg-question input[type=number],.sg-question input[type=password],.sg-question input[type=text],.sg-question textarea,.sg-survey .sg-mobile-optimized .sg-question.sg-type-cardsort .sg-mobile-ocs .sg-list label,.sg-survey .sg-mobile-optimized .sg-question.sg-type-checkbox .sg-question-options label,.sg-survey .sg-mobile-optimized .sg-question.sg-type-radio .sg-question-options label,.sg-survey .sg-mobile-optimized .sg-question.sg-type-rank-table .sg-question-options td label,.sg-survey .sg-mobile-optimized .sg-question.sg-type-rank-table .sg-question-options th label,.sg-survey .sg-mobile-optimized .sg-type-table-card-sort .sg-question-options label,.sg-survey .sg-mobile-optimized .sg-type-table-card-sort-closed .sg-question-options label,.sg-survey .sg-mobile-optimized .sg-type-table-checkbox .sg-question-options label,.sg-survey .sg-mobile-optimized .sg-type-table-matrix .sg-question-options .sg-mobilize-label label,.sg-survey .sg-mobile-optimized .sg-type-table-radio .sg-question-options label{border-width:1px}.sg-question input[type=text]:focus{border-color:#31827f;border-width:3px}.sg-survey .sg-mobile-optimized .sg-question input[type=number],.sg-survey .sg-mobile-optimized .sg-question input[type=password],.sg-survey .sg-mobile-optimized .sg-question input[type=text],.sg-survey .sg-mobile-optimized .sg-question input[type=date],.sg-survey .sg-mobile-optimized .sg-question input[type=email],.sg-survey .sg-mobile-optimized .sg-question textarea,.sg-survey .sg-mobile-optimized .sg-survey .sg-mobile-optimized .sg-table input[type=text]{border:1px solid #b5bfce;border-radius:8px}.sg-survey .sg-mobile-optimized .sg-input.sg-input-menu{padding:16px;border:1px solid #b5bfcc;border-radius:8px;color:#354050}.sg-survey body.sg-mobile-optimized .sg-type-table-radio .sg-question-options label{border-color:#b5bfcc;padding:16px;border-radius:8px}.sg-survey body.sg-mobile-optimized .sg-question.sg-type-radio .sg-question-options label{border:1px solid #b5bfce;border-radius:8px;padding:16px}.sg-survey .sg-mobile-optimized:not(.sg-rtl) input[type=radio]+.sg-mobilize-label label:before,.sg-survey .sg-mobile-optimized:not(.sg-rtl) input[type=radio]+label:before{display:none}.sg-survey .sg-mobile-optimized ul.sg-list input[type=checkbox]:checked~label.sg-other input[type=text]{padding:0 8px;border-width:1px;margin:0}.sg-survey .sg-mobile-optimized:not(.sg-rtl) input[type=checkbox]+label:before{font-size:1.4em}.sg-survey body.sg-mobile-optimized .sg-question .sg-question-options input[type=checkbox]:checked+label{border-color:#5d718d;background-color:#d4dae3;color:#354050}.sg-survey body.sg-mobile-optimized .sg-question.sg-type-checkbox .sg-question-options label .sg-int-virtual-page .sg-question-set{margin-top:24px}.sg-survey .sg-mobile-optimized .sg-question.sg-type-checkbox .sg-question-options label,.sg-survey body.sg-mobile-optimized .sg-question.sg-type-checkbox .sg-question-options label{border-color:#b5bfce;border-radius:8px;padding:16px 16px 16px 40px}.sg-survey .sg-mobile-optimized:not(.sg-rtl) input[type=checkbox]+.sg-mobilize-label label:before,.sg-survey .sg-mobile-optimized:not(.sg-rtl) input[type=checkbox]+label:before{display:-webkit-box;display:-ms-flexbox;display:flex}.sg-survey body.sg-mobile-optimized .sg-type-table-checkbox .sg-question-options label{border-color:#b5bfcc;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;border-radius:8px;height:54px}.sg-survey .sg-mobile-optimized .sg-question .sg-question-options table[class^=sg-] .sg-even-row th{font-size:medium!important}.sg-survey .sg-mobile-optimized .sg-type-rank-table .sg-question-options table[class^=sg-] tr.sg-empty-row:not(.sg-rank-row-disabled):after{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;height:52px;border-radius:8px}.sg-survey .sg-mobile-optimized .sg-question .sg-question-options .sg-rank-table label:not(.hide){display:-webkit-box!important;display:-ms-flexbox!important;display:flex!important;height:auto;border-radius:8px}.sg-survey .sg-mobile-optimized .sg-question.sg-type-rank-table td label.sg-rank-control-label{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;height:52px!important}.sg-survey body.sg-mobile-optimized .sg-question.sg-type-rank-table .sg-question-options th label{border-color:#d4dae3}.sg-survey .sg-mobile-optimized .sg-type-rank-table .sg-question-options table[class^=sg-] tr.sg-empty-row:not(.sg-rank-row-disabled):after{border:1px solid #d4dae3}.sg-survey .sg-mobile-optimized .sg-slider .sg-slider-label{font-size:12px}.sg-mobile-optimized .sg-slider-element-horizontal .sg-slider{padding:2em 0 .5em}.sg-survey body.sg-mobile-optimized .sg-question.sg-type-slider .sg-question-options label{display:-webkit-box;display:-ms-flexbox;display:flex;grid-gap:4px;font-size:12px;padding:12px 12px 12px 0}.sg-slider .sg-slider-label-center-horizontal-text{padding-top:0}.sg-slider .sg-slider-label-center-horizontal{padding-top:32px}.sg-slider .sg-single-slider{background:#e4e7ed}.sg-body .ui-slider-horizontal{height:8px;margin-top:5px}.sg-body .ui-slider-horizontal .ui-slider-handle{top:-.5em!important;margin-left:-.5em!important;height:1.5em!important;width:1.5em!important;border:5px solid #f9f9fb;-webkit-box-shadow:0 0 10px rgba(68,68,68,.376),0 0 1px rgba(68,68,68,.251);box-shadow:0 0 10px rgba(68,68,68,.376),0 0 1px rgba(68,68,68,.251);-webkit-transition:border ease-in-out .2s,-webkit-box-shadow ease-in-out .2s;transition:border ease-in-out .2s,-webkit-box-shadow ease-in-out .2s;transition:border ease-in-out .2s,box-shadow ease-in-out .2s;transition:border ease-in-out .2s,box-shadow ease-in-out .2s,-webkit-box-shadow ease-in-out .2s}.sg-body .ui-slider .ui-slider-handle:hover{border:6px solid #f9f9fb;-webkit-box-shadow:0 0 5px rgba(68,68,68,.376),0 0 1px rgba(68,68,68,.251);box-shadow:0 0 5px rgba(68,68,68,.376),0 0 1px rgba(68,68,68,.251)}.sg-slider-na{margin:0}.sg-slider-bubble-horizontal{top:-3em;left:-.8em!important;padding:.4em .7em;border-radius:4px;background:#444!important}.sg-slider-bubble-horizontal .sg-dink{top:95%;border-top-color:#444!important}.sg-slider .sg-slider-bubble-horizontal .sg-dink div{border-top-color:#444!important}@media only screen and (max-width:600px){.sg-mobile-optimized .sg-question .sg-question-options table[class^=sg-] tr:not(.sg-hide){display:-webkit-box;display:-ms-flexbox;display:flex;width:100%;-webkit-box-orient:vertical!important;-webkit-box-direction:normal!important;-ms-flex-direction:column!important;flex-direction:column!important;text-align:center}.sg-survey .sg-mobile-optimized .sg-question.sg-type-nps .sg-question-options table[class^=sg-] tr td label{height:46px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}}.sg-survey .sg-mobile-optimized .sg-question.sg-type-nps .sg-question-options table[class^=sg-] tr td label{min-height:46px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.sg-heatmap-tip{background:0 0;opacity:0;transition:opacity .4s ease-out,opacity .4s ease-out;-webkit-transition:opacity .4s ease-out,opacity .4s ease-out}@media only screen and (max-width:800px){.sg-heatmap-tip .sg-heatmap-tip-inner{-webkit-box-shadow:3px 3px 20px -2px rgba(0,0,0,.2);box-shadow:3px 3px 20px -2px rgba(0,0,0,.2);min-width:160px;background:0 0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;height:-webkit-max-content;height:-moz-max-content;height:max-content;border-radius:12px;padding:16px;width:80%;left:10%;top:10%!important}}.sg-heatmap-tip .sg-heatmap-tip-inner{-webkit-box-shadow:3px 3px 20px -2px rgba(0,0,0,.2);box-shadow:3px 3px 20px -2px rgba(0,0,0,.2);min-width:160px;background:rgba(255,255,255,.8);display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;height:-webkit-max-content;height:-moz-max-content;height:max-content;border-radius:12px;padding:16px}.sg-heatmap-tip.active{opacity:1;left:0;right:0}.sg-heatmap-choices li label{padding:16px}.sg-heatmap-choices li input[type=radio]+label{color:#354050;border:1px solid #97a5ba;border-radius:8px;background-color:#fffaa}.sg-survey body.sg-mobile-optimized .sg-question .sg-question-options input[type=radio]:checked+label{color:#354050;border-color:#97a5ba;background-color:#d4dae3}.sg-heatmap-choices{margin:4px 0 0!important}.sg-heatmap-tip-inner legend{width:auto;display:contents;font-size:18px}.sg-survey .sg-mobile-optimized .sg-question textarea{background-color:#fffaa;border:1px solid #97a5ba}.sg-heatmap-buttons{display:-webkit-box;display:-ms-flexbox;display:flex;gap:8px}a.sg-heatmap-dot-save.sg-button{color:#fff;border-color:#354050}a.sg-heatmap-dot-save.sg-button:hover{background-color:#5d718d!important}.sg-imageselect-item{min-width:120px!important;width:33%}.sg-type-imageselect .sg-image-box{aspect-ratio:1/1;border-radius:8px;border:2px solid #d4dae3;display:-webkit-box;display:-ms-flexbox;display:flex;overflow:hidden;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.sg-wrapper img{vertical-align:middle;max-width:100%}.sg-type-imageselect .sg-image-box .sg-image-wrapper{height:100%}.sg-type-imageselect .sg-image-box label{width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;height:100%}.sg-type-imageselect .sg-caption{background:#354050}.rangeslider,.sg-slider-container .ui-slider-horizontal-blank{background:#e4e7ed}@media only screen and (max-width:1000px){.sg-imageselect-item{width:50%}}@media only screen and (max-width:400px){.sg-imageselect-item{width:100%}}.rangeslider--horizontal{height:8px}.rangeslider__handle{-webkit-box-shadow:0 0 10px #44460,0 0 1px #44440;box-shadow:0 0 10px #44460,0 0 1px #44440;height:1.5em!important;width:1.5em!important;border:5px solid #f9f9fb}.sg-add-another-button:focus,.sg-back-button:focus,.sg-browse-btn:focus,.sg-button,.sg-button:focus,.sg-configurator-btn:focus,.sg-file-field input[type=button]:focus,.sg-input-file:focus+.sg-browse-btn,.sg-next-button:focus,.sg-submit-button:focus{border-radius:4px;border-width:1px}.rangeslider--horizontal .rangeslider__handle{top:-.8em}@-webkit-keyframes rotateSlideOutNext{0%{position:fixed}25%{opacity:.5;-webkit-transform:translateZ(0)}100%,75%{opacity:.5;-webkit-transform:translateZ(0) translateX(-200%)}}@keyframes rotateSlideOutNext{0%{position:fixed;height:0}25%{opacity:.5;-webkit-transform:translateZ(0);transform:translateZ(0)}100%,75%{opacity:.5;-webkit-transform:translateZ(0) translateX(-200%);transform:translateZ(0) translateX(-200%)}}@-webkit-keyframes rotateSlideInNext{0%,25%{position:fixed;opacity:.5;-webkit-transform:translateZ(0) translateX(200%)}75%{opacity:.5;-webkit-transform:translateZ(0)}100%{opacity:1;-webkit-transform:translateZ(0) translateX(0)}}@keyframes rotateSlideInNext{0%,25%{position:relative;opacity:.5;-webkit-transform:translateZ(0) translateX(200%);transform:translateZ(0) translateX(200%)}75%{opacity:.5;-webkit-transform:translateZ(0);transform:translateZ(0)}100%{opacity:1;-webkit-transform:translateZ(0) translateX(0);transform:translateZ(0) translateX(0)}}@-webkit-keyframes rotateSlideOutPrev{0%{position:fixed}25%{opacity:.5;-webkit-transform:translateZ(0)}100%,75%{opacity:.5;-webkit-transform:translateZ(0) translateX(200%)}}@keyframes rotateSlideOutPrev{0%{position:fixed}25%{opacity:.5;-webkit-transform:translateZ(0);transform:translateZ(0)}100%,75%{opacity:.5;-webkit-transform:translateZ(0) translateX(200%);transform:translateZ(0) translateX(200%)}}@-webkit-keyframes rotateSlideInPrev{0%,25%{position:fixed;opacity:.5;-webkit-transform:translateZ(0) translateX(-200%)}75%{opacity:.5;-webkit-transform:translateZ(0)}100%{opacity:1;-webkit-transform:translateZ(0) translateX(0)}}@keyframes rotateSlideInPrev{0%,25%{position:fixed;opacity:.5;-webkit-transform:translateZ(0) translateX(-200%);transform:translateZ(0) translateX(-200%)}75%{opacity:.5;-webkit-transform:translateZ(0);transform:translateZ(0)}100%{opacity:1;-webkit-transform:translateZ(0) translateX(0);transform:translateZ(0) translateX(0)}}.sg-mobile-optimized.sg-int-virtual-page .sg-question .sg-question-options table.sg-table tr.sg-mobile-table-row-current,.sg-mobile-optimized.sg-int-virtual-page .sg-question-set>.sg-question.sg-type-textbox,.sg-mobile-optimized.sg-int-virtual-page .sg-question:not(.sg-type-textbox),.sg-survey .sg-mobile-optimized.sg-int-virtual-page .sg-question .sg-question-options table[class^=sg-],.sg-survey .sg-mobile-optimized.sg-int-virtual-page .sg-question .sg-question-options table[class^=sg-] tbody,.sg-survey .sg-mobile-optimized.sg-int-virtual-page .sg-question .sg-question-options table[class^=sg-] tr.sg-mobile-table-row-current{position:static;clear:none}.sg-mobile-optimized.sg-int-virtual-page .sg-group-item fieldset.sg-question .sg-question-options table[class^=sg-] tr:not(.sg-hide),.sg-mobile-optimized.sg-int-virtual-page .sg-question.sg-type-group.sg-page-current,.sg-mobile-optimized.sg-int-virtual-page .sg-question.sg-type-multimenu .sg-question-options table[class^=sg-] tr:not(.sg-hide),.sg-mobile-optimized.sg-int-virtual-page .sg-type-group-contact .sg-group-item .sg-question .sg-question-options table[class^=sg-] tr:not(.sg-hide),.sg-mobile-optimized.sg-int-virtual-page .sg-type-group-contact .sg-group-item .sg-question:not(.sg-type-textbox),.sg-mobile-optimized.sg-int-virtual-page .sg-type-group-contact .sg-group-item fieldset.sg-question:not(.sg-type-textbox),.sg-survey .sg-mobile-optimized.sg-int-virtual-page .sg-group-item .sg-question .sg-question-options table[class^=sg-],.sg-survey .sg-mobile-optimized.sg-int-virtual-page .sg-group-item .sg-question .sg-question-options table[class^=sg-] tbody{position:relative}.sg-mobile-optimized.sg-int-virtual-page .sg-question .sg-question-options .sg-rank-table .sg-table,.sg-mobile-optimized.sg-int-virtual-page .sg-question .sg-question-options .sg-rank-table .sg-table tbody,.sg-mobile-optimized.sg-int-virtual-page .sg-question .sg-question-options .sg-rank-table .sg-table tr:not(.sg-hide){position:relative!important}.sg-survey .sg-mobile-optimized.sg-int-virtual-page .sg-type-group-custom .sg-question{position:relative}.sg-image-wrapper img{-o-object-fit:cover;object-fit:cover;width:100%;height:100%}.sg-survey .sg-body.sg-int-virtual-page .sg-footer,.sg-survey .sg-mobile-optimized .sg-footer{background:var(--gray-light-5);opacity:100%;-webkit-box-shadow:0 -1px 12px #222;box-shadow:0 -1px 12px #222;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;height:auto;padding:16px 0 10px}.sg-button-bar{display:-webkit-box;display:-ms-flexbox;display:flex;gap:12px;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.sg-survey .sg-body.sg-int-virtual-page .sg-button-bar,.sg-survey .sg-mobile-optimized .sg-button-bar{margin:0 16px;width:100%}.sg-survey .sg-body.sg-int-virtual-page .sg-button-bar input,.sg-survey .sg-button-bar input{background-color:var(--accent-1);border:1px solid var(--gray-light-30);border-radius:4px;color:var(--gray-secondary)!important;margin:0!important;width:100%!important}.sg-survey .sg-body.sg-int-virtual-page .sg-button-bar input:hover,.sg-survey .sg-button-bar input:hover{background-color:var(--accent-primary);border:1px solid var(--accent-primary);border-radius:4px;color:var(--accent-text)!important}.sg-survey .sg-body.sg-int-virtual-page .sg-progress-bar,.sg-survey .sg-progress-bar{top:10px;height:6px;left:0;margin:0;width:100%}.sg-survey .sg-body.sg-int-virtual-page .sg-progress-bar-text,.sg-survey .sg-mobile-optimized .sg-progress-bar-text{display:none;font-size:1px}.sg-survey .sg-body.sg-int-virtual-page .sg-progress-bar-background,.sg-survey .sg-progress-bar-background{background-color:var(--gray-light-5);border-left:0!important;border-radius:0;width:100%}.sg-survey .sg-body.sg-int-virtual-page .sg-progress-bar-inner,.sg-survey .sg-progress-bar-inner{height:6px}.sg-page-description{background-color:var(--gray-light-5);border-radius:4px;margin:0 0 16px;padding:16px}.sg-survey .sg-mobile-optimized .sg-control-text-after,.sg-survey .sg-mobile-optimized .sg-control-text-before{display:inline-block;margin:4px 0}.sg-body h1.sg-title{font-family:Montserrat, sans-serif;font-weight:400;font-size:18px;}.sg-body .sg-page-title{font-family:Montserrat, sans-serif;font-weight:400;font-size:16px;}.sg-wrapper, .sg-question-title, .sg-question-title label{font-family:Montserrat;font-weight:400;font-size:14px;}.sg-powered-by{display:none;}h1.sg-title{text-align:left;}.sg-page-title{text-align:left;}.sg-header-image{0 auto 0 0}img.sg-header-image{max-width:100%;display:block;}</style>
+<script type="text/javascript">debugMode = false;</script><script type="text/javascript" src="//www.surveygizmo.com/2026.05.06.01/runtimejs/dist/survey/js/survey.js"></script><!-- Write your custom HTML here -->
+
+<noscript><link href="//app.alchemer.com/runtimethemes/default/runtime/css/nojs.css" rel="stylesheet" type="text/css"></noscript>
+<link href="//fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet" type="text/css"></head><body class="sg-body sg-page-9 sg-pageid-8 sg-webkit sg-ltr  sg-replace-icons " id="sgbody-8809865"><noscript><div id="no-js-warning"><p>We''ve detected that Javascript is not enabled. It is required for an optimal survey taking experience.<br /> Please check your browser''s settings and make sure Javascript is turned on. <a href=''http://www.enable-javascript.com/'' target=''_blank'' >Learn how to enable Javascript.</a></p></div></noscript><div class="sg-skipnav-container">
+						<a id="sg-skipnav" class="sg-screenreader-only" href="#sg-skipnav-target">Skip survey header</a>
+					</div><form action="/s3/8809865/Macalester-2026-prospective-families" method="post" enctype="multipart/form-data" class="sg-survey-form" id="sg_FormFor8809865" novalidate="">
+<div class="sg-hidden-inputs"><input type="hidden" name="sg_navchoice" id="sg_navchoice" value=""><input type="hidden" name="sg_currentpageid" id="sg_currentpageid" value="8"><input type="hidden" name="sg_surveyident" id="sg_surveyident" value="8809865"><input type="hidden" name="sg_sessionid" id="sg_sessionid" value="1779075353_6a0a8919bd6278.18448386"><input type="hidden" name="sg_high_contrast" id="sg_high_contrast" value="false"><input type="hidden" name="sg_cint_panelist" id="sg_cint_panelist" value=""><input type="hidden" name="sg_interactionlevel" id="sg_interactionlevel" value="8"><input type="hidden" name="sg_interactionlevel_sig" id="sg_interactionlevel_sig" value="origin-8"><input type="hidden" name="sg67379785d54db6a072207bad4a9b408a" id="sg67379785d54db6a072207bad4a9b408a" value="3468931755"><script>window["Fingerprint"] && (document.getElementById("sg67379785d54db6a072207bad4a9b408a").value = new Fingerprint({canvas: true}).get());</script></div>  <div class="sg-wrapper">
+<div class="sg-header">
+<div class="sg-header-hook-1"></div>
+<img class="sg-header-image" src="//app.alchemer.com/public/images/spacer.gif" alt="">
+
+<h1 class="sg-title" tabindex="0"><span>Macalester 2026- prospective families</span></h1>
+
+
+<div class="sg-header-hook-2"></div>
+</div>
+<div class="sg-content" id="sg-skipnav-target">
+<div class="sg-content-hook-1"></div>
+
+
+     
+
+<div class="sg-question-set">		<div id="sgE-8809865-8-14-box" class="sg-question sg-type-essay  sg-required">
+			<input type="hidden" id="sgE-8809865-8-14-meta" name="sgE-8809865-8-14-meta" value="hidden=false&amp;required=true">
+		<input type="hidden" id="sgE-8809865-8-14-time" name="sgE-8809865-8-14-time" value="">
+						<div class="sg-question-title">
+						<label for="sgE-8809865-8-14-element">
+		<span class="sg-question-number">8.</span> Outside of financial aid, what is most important to you when considering a college or university? <strong class="sg-required-icon">*<span class="sg-screenreader-only">This question is required.</span></strong>	</label>
+				</div>
+							<div class="sg-question-options ">
+			<textarea id="sgE-8809865-8-14-element" name="sgE-8809865-8-14" class="sg-input sg-input-essay" cols="40" rows="5"></textarea>				</div>
+
+				</div>
+	</div>
+
+<div class="sg-content-hook-2"></div>
+
+<div class="sg-footer">        
+<div class="sg-footer-hook-1"></div>
+
+<div class="sg-button-bar"><input type="submit" class="sg-button sg-next-button" id="sg_NextButton" name="sGizmoNextButton" onclick="$SG(''sg_navchoice'').value=''sGizmoNextButton'';return(true);" aria-label="Next" value="Next"><input type="submit" class="sg-button sg-back-button" id="sg_BackButton" formnovalidate="" name="sGizmoBackButton" onclick="$SG(''sg_navchoice'').value=''sGizmoBackButton'';return(true);" aria-label="Back" value="Back"></div>
+<div class="sg-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="21"><div class="sg-progress-bar-text">21%</div><div class="sg-progress-bar-background"><div class="sg-progress-bar-inner" style="width:21%;"></div></div></div>
+
+
+<div class="sg-footer-hook-2"></div>
+</div>
+
+</div>
+
+</div></form><script type="text/javascript">SGAPI.surveyData[''8809865''] = {    "id": 8809865,    "current_domain": "survey.alchemer.com",    "customer_id": 668272,    "key": "8FIOGZVS6NIABAI1WWB2PKKG6YUJ3T",    "rtl": false,    "session": "1779075353_6a0a8919bd6278.18448386",    "progess": "17.948717948718",    "progress": 17.94871794871794890013916301541030406951904296875,    "minstep": "2.5641025641026",    "ispreview": "false",    "ismobile": "false",    "language": "English",    "page_direction": -1,    "currency_glyph": "$",    "title": "Macalester 2026- prospective families",    "options": {        "forward_only": false,        "file_session_download": true,        "is_kiosk": false,        "dynamic_number": false    },    "currentpage": 8,    "pages": {        "p8": {            "id": 8,            "title": "(untitled)",            "hidden": false,            "haserrors": false,            "shuffled": false,            "xnumberselected": false,            "piped": false,            "pipevalue": "",            "number": 9,            "options": {}        }    },    "messages": {        "min_number": ":value is less than :min",        "max_number": ":value is more than :max",        "minimum_response": "You must select at least :min checkbox(es). You have only selected :value checkbox(es).",        "minimum_response_rank": "You must rank at least :min option(s). You have only ranked :value option(s).",        "minimum_rows_required": "You must answer at least :min rows of the table. You have only answered :value row(s).",        "required": "This question is required",        "save_n_continue_match": "Email address fields must match.",        "save_n_continue_invalid": "Invalid Email address.",        "save_n_continue_send_error": "Please try again. There was a problem sending your email.",        "uploading_file": "Uploading...",        "deleting_file": "Deleting...",        "file_prefix": "File:",        "no_file_specified": "No file specified",        "upload_error": "Error: Please try again",        "invalid_file_type": "Error: File type not allowed",        "invalid_file_size": "Error: File size is too large",        "max_words": "Words used: :value out of :max.",        "max_characters": "Characters used: :value out of :max.",        "too_many_words": "You have typed more words than allowed (:wordcount of :limit words)",        "too_many_characters": "You have typed more characters than allowed (:charactercount of :limit characters)",        "min_words": "Words used: :value (minimum :min).",        "min_characters": "Characters used: :value (minimum :min).",        "not_enough_words": "You have typed fewer words than required (:minwordcount of :minimum words)",        "back_button": "Back",        "next_button": "Next",        "not_enough_characters": "You have typed fewer characters than required (:mincharactercount of :minimum characters)",        "invalid_email": "\":value\" is not a valid email address",        "invalid_percent": ":value must be a percent",        "invalid_min_date": "Date must be after or equal to :min",        "invalid_max_date": "Date must be before or equal to :max",        "must_be_positive_whole_number": "Please supply a positive whole number (no decimals)",        "must_be_whole_number": "Please supply a whole number (no decimals)",        "selectone": "-- Please Select --",        "invalid_number": ":value must be a number",        "page_timer_warning": "This page has an initial time limit of",        "page_timer_prompt": "Would you like to disable all future page timer notifications?",        "page_timer_expired": "Time limit expired. Submitting page."    },    "questions": {        "14": {            "id": 14,            "title": "Outside of financial aid, what is most important to you when considering a college or university?",            "type": "ESSAY",            "Runtime": {                "Hidden": false,                "Required": true,                "Rendered": true,                "HasErrors": false,                "Errors": [],                "Answered": false,                "Number": "8.",                "PipePrototype": false,                "Piped": false,                "PipedValue": null,                "Data": {                    "atoms": []                }            },            "properties": {                "required": true,                "hidden": false,                "cols": 40,                "rows": 5,                "cssclass": "sg-essay",                "map_key": "essay",                "alldepends": [],                "option_sort": "NONE",                "validation_control": "",                "labels_right": true,                "inline-edit": true,                "newpipeorder": true,                "show_title": false,                "question_description": {                    "English": ""                },                "question_description_above": false,                "soft-required": false,                "required-when": false,                "disabled": false,                "pro-services-lock": false,                "include_page_titles": "false",                "include_page_numbers": "false",                "include_question_numbers": "false",                "alert_emails": [],                "noclean": "",                "save_logic_data": "false",                "messages": {                    "inputmask": [],                    "r_extreme_label": [],                    "l_extreme_label": [],                    "center_label": [],                    "right_label": [],                    "left_label": [],                    "na_text": [],                    "th_content": [],                    "conjoint_best_label": [],                    "conjoint_worst_label": [],                    "conjoint_none_label": [],                    "conjoint_card_label": [],                    "conjoint_error_label": [],                    "maxdiff_best_label": [],                    "maxdiff_worst_label": [],                    "maxdiff_attribute_label": [],                    "maxdiff_of": [],                    "maxdiff_sets_message": []                },                "orientation": "VERT",                "date_format": "us",                "min_date": "",                "max_date": "",                "col_sort": "NONE",                "dhtml_hidden": false,                "hide_all_after_until_value": false,                "hide_after_response": false,                "comments": false,                "require_comments": false,                "admin_question": false,                "require_admin_question": false,                "sentiment_analysis": false,                "custom_css": "",                "size": "",                "break_after": false,                "has_showhide_deps": false,                "url": "http:\/\/",                "lastmodified": 1776645398            },            "page": "p8"        }    }};
+S8809865 = new SGSurvey(SGAPI.surveyData[''8809865''], false);
+S8809865.InitPage(8);
+$SG(document).ready(function(){SG_init_page();});</script></body></html>', '<html><head><meta><meta><meta><meta><meta name="Generator"><meta name="description"><meta name="viewport"><meta><meta><meta><meta><title>Macalester 2026- prospective families</title><meta name="robots"><link type="text/css"><link type="text/css"><link type="text/css"><script type="text/javascript">debugMode = false;</script><script type="text/javascript"></script><noscript><link type="text/css"></noscript><link type="text/css"></head><body id="sgbody-8809865"><noscript><div id="no-js-warning"><p>We''ve detected that Javascript is not enabled. It is required for an optimal survey taking experience.<br/> Please check your browser''s settings and make sure Javascript is turned on. <a>Learn how to enable Javascript.</a></p></div></noscript><div><a id="sg-skipnav">Skip survey header</a></div><form id="sg_FormFor8809865"><div><input type="hidden" name="sg_navchoice" id="sg_navchoice" value=""><input type="hidden" name="sg_currentpageid" id="sg_currentpageid" value="8"><input type="hidden" name="sg_surveyident" id="sg_surveyident" value="8809865"><input type="hidden" name="sg_sessionid" id="sg_sessionid" value="1779075353_6a0a8919bd6278.18448386"><input type="hidden" name="sg_high_contrast" id="sg_high_contrast" value="false"><input type="hidden" name="sg_cint_panelist" id="sg_cint_panelist" value=""><input type="hidden" name="sg_interactionlevel" id="sg_interactionlevel" value="8"><input type="hidden" name="sg_interactionlevel_sig" id="sg_interactionlevel_sig" value="origin-8"><input type="hidden" name="sg67379785d54db6a072207bad4a9b408a" id="sg67379785d54db6a072207bad4a9b408a" value="3468931755"><script>window["Fingerprint"] && (document.getElementById("sg67379785d54db6a072207bad4a9b408a").value = new Fingerprint({canvas: true}).get());</script></div><div><div><div></div><img><h1><span>Macalester 2026- prospective families</span></h1><div></div></div><div id="sg-skipnav-target"><div></div><div><div id="sgE-8809865-8-14-box"><input type="hidden" id="sgE-8809865-8-14-meta" name="sgE-8809865-8-14-meta" value="hidden=false&amp;required=true"><input type="hidden" id="sgE-8809865-8-14-time" name="sgE-8809865-8-14-time" value=""><div><label for="sgE-8809865-8-14-element"><span>8.</span> Outside of financial aid, what is most important to you when considering a college or university? <strong>*<span>This question is required.</span></strong></label></div><div><textarea id="sgE-8809865-8-14-element" name="sgE-8809865-8-14"></textarea></div></div></div><div></div><div><div></div><div><input type="submit" id="sg_NextButton" name="sGizmoNextButton" value="Next"><input type="submit" id="sg_BackButton" name="sGizmoBackButton" value="Back"></div><div role="progressbar"><div>21%</div><div><div></div></div></div><div></div></div></div></div></form><script type="text/javascript">SGAPI.surveyData[''8809865''] = { "id": 8809865, "current_domain": "survey.alchemer.com", "customer_id": 668272, "key": "8FIOGZVS6NIABAI1WWB2PKKG6YUJ3T", "rtl": false, "session": "1779075353_6a0a8919bd6278.18448386", "progess": "17.948717948718", "progress": 17.94871794871794890013916301541030406951904296875, "minstep": "2.5641025641026", "ispreview": "false", "ismobile": "false", "language": "English", "page_direction": -1, "currency_glyph": "$", "title": "Macalester 2026- prospective families", "options": { "forward_only": false, "file_session_download": true, "is_kiosk": false, "dynamic_number": false }, "currentpage": 8, "pages": { "p8": { "id": 8, "title": "(untitled)", "hidden": false, "haserrors": false, "shuffled": false, "xnumberselected": false, "piped": false, "pipevalue": "", "number": 9, "options": {} } }, "messages": { "min_number": ":value is less than :min", "max_number": ":value is more than :max", "minimum_response": "You must select at least :min checkbox(es). You have only selected :value checkbox(es).", "minimum_response_rank": "You must rank at least :min option(s). You have only ranked :value option(s).", "minimum_rows_required": "You must answer at least :min rows of the table. You have only answered :value row(s).", "required": "This question is required", "save_n_continue_match": "Email address fields must match.", "save_n_continue_invalid": "Invalid Email address.", "save_n_continue_send_error": "Please try again. There was a problem sending your email.", "uploading_file": "Uploading...", "deleting_file": "Deleting...", "file_prefix": "File:", "no_file_specified": "No file specified", "upload_error": "Error: Please try again", "invalid_file_type": "Error: File type not allowed", "invalid_file_size": "Error: File size is too large", "max_words": "Words used: :value out of :max.", "max_characters": "Characters used: :value out of :max.", "too_many_words": "You have typed more words than allowed (:wordcount of :limit words)", "too_many_characters": "You have typed more characters than allowed (:charactercount of :limit characters)", "min_words": "Words used: :value (minimum :min).", "min_characters": "Characters used: :value (minimum :min).", "not_enough_words": "You have typed fewer words than required (:minwordcount of :minimum words)", "back_button": "Back", "next_button": "Next", "not_enough_characters": "You have typed fewer characters than required (:mincharactercount of :minimum characters)", "invalid_email": "\":value\" is not a valid email address", "invalid_percent": ":value must be a percent", "invalid_min_date": "Date must be after or equal to :min", "invalid_max_date": "Date must be before or equal to :max", "must_be_positive_whole_number": "Please supply a positive whole number (no decimals)", "must_be_whole_number": "Please supply a whole number (no decimals)", "selectone": "-- Please Select --", "invalid_number": ":value must be a number", "page_timer_warning": "This page has an initial time limit of", "page_timer_prompt": "Would you like to disable all future page timer notifications?", "page_timer_expired": "Time limit expired. Submitting page." }, "questions": { "14": { "id": 14, "title": "Outside of financial aid, what is most important to you when considering a college or university?", "type": "ESSAY", "Runtime": { "Hidden": false, "Required": true, "Rendered": true, "HasErrors": false, "Errors": [], "Answered": false, "Number": "8.", "PipePrototype": false, "Piped": false, "PipedValue": null, "Data": { "atoms": [] } }, "properties": { "required": true, "hidden": false, "cols": 40, "rows": 5, "cssclass": "sg-essay", "map_key": "essay", "alldepends": [], "option_sort": "NONE", "validation_control": "", "labels_right": true, "inline-edit": true, "newpipeorder": true, "show_title": false, "question_description": { "English": "" }, "question_description_above": false, "soft-required": false, "required-when": false, "disabled": false, "pro-services-lock": false, "include_page_titles": "false", "include_page_numbers": "false", "include_question_numbers": "false", "alert_emails": [], "noclean": "", "save_logic_data": "false", "messages": { "inputmask": [], "r_extreme_label": [], "l_extreme_label": [], "center_label": [], "right_label": [], "left_label": [], "na_text": [], "th_content": [], "conjoint_best_label": [], "conjoint_worst_label": [], "conjoint_none_label": [], "conjoint_card_label": [], "conjoint_error_label": [], "maxdiff_best_label": [], "maxdiff_worst_label": [], "maxdiff_attribute_label": [], "maxdiff_of": [], "maxdiff_sets_message": [] }, "orientation": "VERT", "date_format": "us", "min_date": "", "max_date": "", "col_sort": "NONE", "dhtml_hidden": false, "hide_all_after_until_value": false, "hide_after_response": false, "comments": false, "require_comments": false, "admin_question": false, "require_admin_question": false, "sentiment_analysis": false, "custom_css": "", "size": "", "break_after": false, "has_showhide_deps": false, "url": "http:\/\/", "lastmodified": 1776645398 }, "page": "p8" } }};
+S8809865 = new SGSurvey(SGAPI.surveyData[''8809865''], false);
+S8809865.InitPage(8);
+$SG(document).ready(function(){SG_init_page();});</script></body></html>', '2026-05-29 14:36:25');
+INSERT INTO "page_html_source" VALUES (135, 101, '0b4fa0fc251c6154cc70cad8c0031dbd', '<html lang="en-GB"><!--<![endif]--><head><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/captchafox/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/mt_captcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/hunter.js" data-ts-input="cf-turnstile-response"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/amazon_waf/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/yandex/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/lemin/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/keycaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest_v4/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/communication_helpers.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/core_helpers.js"></script>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- respview.client.meta -->
+
+
+<title>Tapestry Research</title>
+
+
+<!-- respview.css -->
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css?ad7753b880">
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.beacon.css?4ddb951d43">
+
+<!-- generated from: static/support/font-awesome-4.2.0/less/font-awesome.less, static/support/select2-4.0.1/select2.min.css, static/survey.respondent-post151.less, selfserve/2222/260216/static/theme.less, lib/steam/atm1d/v11/static/atm1d.less, lib/steam/cardsort/v7/static/cardsort.less and 0 themevars -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/less-compiled.css?a932463a8405103997a94450f6245f0e">
+
+
+<!-- extra CSS -->
+
+
+<!-- Custom CSS (specified in survey.xml) -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/Tapestry.css">
+
+<!-- respview.client.css -->
+<style>
+        table {
+        border-collapse: inherit !important; 
+        }
+        .row-col-legends-top {
+        background: #ededed;
+        position: sticky;
+        top: -16px;
+        z-index: 100;
+        }
+        .empty {
+        border: 1px solid #ccc;
+        }
+    </style>
+
+<!-- client.css -->
+<style media="screen">
+
+</style>
+
+<!-- JQuery -->
+<!--
+/s/jquery183.all.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/e2190ba850ec2bfa3e7d1567d2021910.js"></script>
+
+
+<!-- extra Logic -->
+
+
+<!-- respview.js -->
+<script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(2 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((2 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script>
+
+<!--[if lte IE 8]><script src="/s/support/respond/respond-1.4.2.min.js"></script><script src="/s/support/rem-unit-polyfill/rem.min.js"></script><![endif]-->
+
+
+<!--
+/s/support/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js
+/s/common.js
+/s/respview-post132.js
+/s/survey.respondent-post143.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/6f7910d7512e9866158e9fcb02cfdd53.js"></script>
+
+
+<!-- extra JS -->
+<!-- lib/steam/atm1d/v11/styles.xml -->
+  <script src="/survey/lib/steam/atm1d/v11/atm1d.js?e84439618b"></script>
+
+
+
+
+
+
+<!-- respview.client.js -->
+
+
+<!-- client.javascript -->
+
+
+<script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script>
+
+<!-- extra Head -->
+<style>
+
+        #question_STD_GENDER .atm1d_vertical .answers > div {
+                text-align: left;
+            }
+
+        #question_STD_GENDER .atm1d_vertical .answers > div > div,
+        #question_STD_GENDER :not(.atm1d_vertical) .answers{
+            justify-content: flex-start;
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        #question_STD_GENDER .atm1d label {
+            max-height: none;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        #question_STD_GENDER .atm1d_vertical label {
+            min-width: 75%;
+            text-align: left;
+        }
+
+        #question_STD_GENDER .atm1d_horizontal label {
+            min-height: 0;
+        }
+
+        @media (min-width: 768px) {
+            #question_STD_GENDER .atm1d_vertical .answers > div {
+                    text-align: left;
+            }
+            #question_STD_GENDER .atm1d_vertical .answers > div > div,
+            #question_STD_GENDER :not(.atm1d_vertical) .answers {
+                justify-content: flex-start;
+                margin-left: 0;
+                margin-right: auto;
+            }
+
+            #question_STD_GENDER .atm1d label {
+                max-height: none;
+                max-width: 100%;
+                text-align: center;
+            }
+
+            #question_STD_GENDER .atm1d_vertical label {
+                min-width: 280px;
+                text-align: left;
+            }
+
+            #question_STD_GENDER .atm1d_horizontal label {
+                min-height: 0;
+            }
+        }
+        </style>
+
+<captcha-widgets></captcha-widgets></head>
+
+<body class="survey-page non-touch" data-device="">
+
+
+<div id="survey" class="survey-container">
+<div class="survey-section"><div class="page-header"></div>
+<!-- /.page-header --></div>
+<div class="survey-section">
+<div class="survey-body">
+<div class="survey-header">
+<div class="logo logo-middle">
+<img src="/survey/selfserve/2222/logo_a2a001390fe4dc2ce73e6e195e691697.png" class="logo-image" alt="Logo">
+</div>
+<!-- /.logo -->
+<div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-top" title="progress bar - 0% complete">
+<div class="progress-box-outer" aria-hidden="true"><span class="progress-box-completed" style="width: 0%;"></span></div>
+<div class="progress-text" aria-hidden="true">0%</div>
+</div>
+<!-- /.progress-bar -->
+</div>
+<!-- /.survey-header -->
+
+<form id="primary" name="primary" method="post" action="/survey/selfserve/2222/260216" enctype="application/x-www-form-urlencoded" novalidate="">
+<input type="hidden" name="_v2_counter" value="2">
+<!-- @@XYZZY@@ -->
+<div id="question_STD_AGE" class="question number label_STD_AGE   noRows noCols">
+<h1 title="question" class="question-text" id="question_text_STD_AGE">What is your age?</h1>
+<!-- /.question-text -->
+
+<h2 title="instructions" class="instruction-text">Please enter a number</h2>
+<!-- /.instruction-text -->
+<div class="answers answers-list">
+<div class="fir fir-checkbox" style="display: none;">
+<span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> checkbox </title>
+<path d="M15.8,0H3.9C1.8,0,0,2,0,4.1V16c0,2.2,1.8,4,3.9,4h11.8c2.2,0,4.2-1.8,4.2-4V4.1C20,2,18,0,15.8,0z M19,16 c0,1.6-1.6,3-3.2,3H3.9C2.3,19,1,17.7,1,16V4.1C1,2.5,2.3,1,3.9,1h11.8C17.4,1,19,2.5,19,4.1V16z" class="fir-base"></path>
+<path d="M19,16c0,1.6-1.6,3-3.2,3H3.9C2.3,19,1,17.7,1,16V4.1C1,2.5,2.3,1,3.9,1h11.8C17.4,1,19,2.5,19,4.1V16z" class="fir-bg"></path>
+<polygon points="9.1,16.3 2.5,11 4.1,9 8.7,12.6 15.6,3.7 17.7,5.2 " class="fir-selected"></polygon>
+</svg>
+</span>
+</div>
+<div class="fir fir-radio" style="display: none;">
+<span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</div><div class="element even  groupingRows OneColumnEl    ">
+
+<style>
+input[id=''ans68.0.0''] {
+width: calc(40px + 7px * 25)
+}
+</style>
+<input type="number" name="ans68.0.0" id="ans68.0.0" value="" class="input text-input" aria-labelledby="question_text_STD_AGE">
+
+</div><!-- /.grid -->
+</div>
+<!-- /.answers -->
+</div>
+<!-- /.question --><div id="question_STD_GENDER" class="question radio label_STD_GENDER   noRows noCols" role="radiogroup">
+<fieldset class="atm1d atm1d_tiled" data-view-mode="tiled" data-num-cols="">
+            <legend>
+<h1 title="question" class="question-text" id="question_text_STD_GENDER">What is your gender?</h1>
+<!-- /.question-text -->
+
+<h2 title="instructions" class="instruction-text">Please select an answer</h2>
+<!-- /.instruction-text -->
+</legend>
+<div class="answers answers-list">
+        <div class="">
+            <input type="radio" name="ans72.0.0" value="0" id="ans72.0.0" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans72.0.0" class="showInput_0" style="width: 118.222px; height: 43.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>Male</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="radio" name="ans72.0.0" value="1" id="ans72.0.1" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans72.0.1" class="showInput_0" style="width: 118.222px; height: 43.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>Female</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="radio" name="ans72.0.0" value="2" id="ans72.0.2" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans72.0.2" class="showInput_0" style="width: 118.222px; height: 43.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>Other</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="radio" name="ans72.0.0" value="3" id="ans72.0.3" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans72.0.3" class="showInput_0" style="width: 118.222px; height: 43.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>Non-Binary</span>
+                </span>
+            </label>
+            </div>
+            
+        </div><!-- /.grid -->
+</div>
+<!-- /.answers -->
+</fieldset>
+</div>
+<!-- /.question --><div id="comment_Imperium_html" class="html comment label_Imperium_html None">
+<h1 class="comment-text"><input type="hidden" id="GeoCodes" name="GeoCodes" value="1, US"></h1>
+</div>
+<!-- /.comment --><div class="survey-buttons">
+<input type="submit" name="continue" id="btn_continue" class="button continue" value="Next »" onclick="var i = document.createElement(''input''); i.setAttribute(''type'', ''hidden'');i.setAttribute(''value'', ''1'');i.setAttribute(''name'', ''__has_javascript'');document.forms.primary.appendChild(i);">
+
+</div>
+<!-- #surveyButtons --><input type="hidden" name="state" value="cb93f36d-0dcc-4f32-b58c-02a69ffe7539">
+<input type="hidden" name="start_time" value="1779890132">
+<input type="hidden" name="_ptime" value="0">
+<script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "hb019je449xvgdgj", "19j1cz1kpas653xg");}, 100); });
+</script>
+<input type="text" id="rvid_32048" style="height:0!important;width:0!important;border:0!important;padding:0!important;" tabindex="-1"><script language="Javascript2.2">jsver = 2.2;</script><script language="Javascript2.1">jsver = 2.1;</script><script language="Javascript2">jsver = 2;</script><script language="Javascript1.9">jsver = 1.9;</script><script language="Javascript1.8">jsver = 1.8;</script><script language="Javascript1.7">jsver = 1.7;</script><script language="Javascript1.6">jsver = 1.6;</script><script language="Javascript1.5">jsver = 1.5;</script><script language="Javascript1.4">jsver = 1.4;</script><script language="Javascript1.3">jsver = 1.3;</script><script language="Javascript1.2">jsver = 1.2;</script><script language="Javascript1.1">jsver = 1.1;</script></form>
+
+
+</div>
+<!-- /.survey-body -->
+</div>
+<div class="survey-section"><div class="footer"><div style="width: 100%; height: 60px; background-color: #221b4f;" jstcache="0"><br jstcache="0"><center jstcache="0">       <a target="_blank" jstcache="0">          <img src="/survey/selfserve/2222/260216/Footer.png?2326399e4b" style="background-color: #221b4f;" jstcache="0" width="150px" height="38px">       </a>    </center></div></div>
+<!-- /.footer -->
+<input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33">
+        <input type="hidden" id="SurveyID" name="SurveyID" value="220821">
+        <input type="hidden" id="PanelistID" name="PanelistID" value="hb019je449xvgdgj">
+        <input type="hidden" id="LangCode" name="LangCode" value="EN">
+        <input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults">
+        <input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults">
+        <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+        <input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0">
+
+        <script> function getQSTimeoutMs(){return 5000;} </script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qualityscore.js"></script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qslib1.0.js"></script></div>
+</div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1779890135756">
+<div id="detectBreakpoint"></div>
+<!-- /.survey-container -->
+
+
+</body></html>', '<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robots"><meta name="viewport"><title>Tapestry Research</title><link><link><link><link><script></script><script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(2 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((2 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script><script></script><script></script><script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script><captcha-widgets></captcha-widgets></head><body><div id="survey"><div><div></div></div><div><div><div><div><img></div><div role="progressbar"><div><span></span></div><div>0%</div></div></div><form id="primary" name="primary"><input type="hidden" name="_v2_counter" value="2"><div id="question_STD_AGE"><h1 id="question_text_STD_AGE">What is your age?</h1><h2>Please enter a number</h2><div><div><span></span></div><div><span></span></div><div><input type="number" name="ans68.0.0" id="ans68.0.0" value=""></div></div></div><div id="question_STD_GENDER" role="radiogroup"><fieldset><legend><h1 id="question_text_STD_GENDER">What is your gender?</h1><h2>Please select an answer</h2></legend><div><div><input type="radio" name="ans72.0.0" value="0" id="ans72.0.0"><div><label for="ans72.0.0"><i></i><i></i><span><span>Male</span></span></label></div></div><div><input type="radio" name="ans72.0.0" value="1" id="ans72.0.1"><div><label for="ans72.0.1"><i></i><i></i><span><span>Female</span></span></label></div></div><div><input type="radio" name="ans72.0.0" value="2" id="ans72.0.2"><div><label for="ans72.0.2"><i></i><i></i><span><span>Other</span></span></label></div></div><div><input type="radio" name="ans72.0.0" value="3" id="ans72.0.3"><div><label for="ans72.0.3"><i></i><i></i><span><span>Non-Binary</span></span></label></div></div></div></fieldset></div><div id="comment_Imperium_html"><h1><input type="hidden" id="GeoCodes" name="GeoCodes" value="1, US"></h1></div><div><input type="submit" name="continue" id="btn_continue" value="Next »"></div><input type="hidden" name="state" value="cb93f36d-0dcc-4f32-b58c-02a69ffe7539"><input type="hidden" name="start_time" value="1779890132"><input type="hidden" name="_ptime" value="0"><script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "hb019je449xvgdgj", "19j1cz1kpas653xg");}, 100); });
+</script><input type="text" id="rvid_32048"><script>jsver = 2.2;</script><script>jsver = 2.1;</script><script>jsver = 2;</script><script>jsver = 1.9;</script><script>jsver = 1.8;</script><script>jsver = 1.7;</script><script>jsver = 1.6;</script><script>jsver = 1.5;</script><script>jsver = 1.4;</script><script>jsver = 1.3;</script><script>jsver = 1.2;</script><script>jsver = 1.1;</script></form></div></div><div><div><div><br><center><a><img></a></center></div></div><input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33"><input type="hidden" id="SurveyID" name="SurveyID" value="220821"><input type="hidden" id="PanelistID" name="PanelistID" value="hb019je449xvgdgj"><input type="hidden" id="LangCode" name="LangCode" value="EN"><input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults"><input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults"><input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0"><input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0"><script> function getQSTimeoutMs(){return 5000;} </script><script type="text/javascript"></script><script type="text/javascript"></script></div></div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1779890135756"><div id="detectBreakpoint"></div></body></html>', '2026-05-29 21:39:06');
+INSERT INTO "page_html_source" VALUES (136, 102, '94221de3ea113834e665735ecbdf0b55', '<html lang="en-GB"><!--<![endif]--><head><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/captchafox/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/mt_captcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/hunter.js" data-ts-input="cf-turnstile-response"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/amazon_waf/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/yandex/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/lemin/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/keycaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest_v4/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/communication_helpers.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/core_helpers.js"></script>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- respview.client.meta -->
+
+
+<title>Tapestry Research</title>
+
+
+<!-- respview.css -->
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css?ad7753b880">
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.beacon.css?4ddb951d43">
+
+<!-- generated from: static/support/font-awesome-4.2.0/less/font-awesome.less, static/support/select2-4.0.1/select2.min.css, static/survey.respondent-post151.less, selfserve/2222/260216/static/theme.less, lib/steam/atm1d/v11/static/atm1d.less, lib/steam/cardsort/v7/static/cardsort.less and 0 themevars -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/less-compiled.css?a932463a8405103997a94450f6245f0e">
+
+
+<!-- extra CSS -->
+
+
+<!-- Custom CSS (specified in survey.xml) -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/Tapestry.css">
+
+<!-- respview.client.css -->
+<style>
+        table {
+        border-collapse: inherit !important; 
+        }
+        .row-col-legends-top {
+        background: #ededed;
+        position: sticky;
+        top: -16px;
+        z-index: 100;
+        }
+        .empty {
+        border: 1px solid #ccc;
+        }
+    </style>
+
+<!-- client.css -->
+<style media="screen">
+
+</style>
+
+<!-- JQuery -->
+<!--
+/s/jquery183.all.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/e2190ba850ec2bfa3e7d1567d2021910.js"></script><captcha-widgets></captcha-widgets>
+
+
+<!-- extra Logic -->
+
+
+<!-- respview.js -->
+<script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(2 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((2 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script>
+
+<!--[if lte IE 8]><script src="/s/support/respond/respond-1.4.2.min.js"></script><script src="/s/support/rem-unit-polyfill/rem.min.js"></script><![endif]-->
+
+
+<!--
+/s/support/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js
+/s/common.js
+/s/respview-post132.js
+/s/survey.respondent-post143.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/6f7910d7512e9866158e9fcb02cfdd53.js"></script>
+
+
+<!-- extra JS -->
+<!-- lib/steam/atm1d/v11/styles.xml -->
+  <script src="/survey/lib/steam/atm1d/v11/atm1d.js?e84439618b"></script>
+
+
+
+
+
+
+<!-- respview.client.js -->
+
+
+<!-- client.javascript -->
+
+
+<script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script>
+
+<!-- extra Head -->
+<style>
+
+        #question_STD_GENDER .atm1d_vertical .answers > div {
+                text-align: left;
+            }
+
+        #question_STD_GENDER .atm1d_vertical .answers > div > div,
+        #question_STD_GENDER :not(.atm1d_vertical) .answers{
+            justify-content: flex-start;
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        #question_STD_GENDER .atm1d label {
+            max-height: none;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        #question_STD_GENDER .atm1d_vertical label {
+            min-width: 75%;
+            text-align: left;
+        }
+
+        #question_STD_GENDER .atm1d_horizontal label {
+            min-height: 0;
+        }
+
+        @media (min-width: 768px) {
+            #question_STD_GENDER .atm1d_vertical .answers > div {
+                    text-align: left;
+            }
+            #question_STD_GENDER .atm1d_vertical .answers > div > div,
+            #question_STD_GENDER :not(.atm1d_vertical) .answers {
+                justify-content: flex-start;
+                margin-left: 0;
+                margin-right: auto;
+            }
+
+            #question_STD_GENDER .atm1d label {
+                max-height: none;
+                max-width: 100%;
+                text-align: center;
+            }
+
+            #question_STD_GENDER .atm1d_vertical label {
+                min-width: 280px;
+                text-align: left;
+            }
+
+            #question_STD_GENDER .atm1d_horizontal label {
+                min-height: 0;
+            }
+        }
+        </style>
+
+</head>
+
+<body class="survey-page non-touch" data-device="">
+
+
+<div id="survey" class="survey-container">
+<div class="survey-section"><div class="page-header"></div>
+<!-- /.page-header --></div>
+<div class="survey-section">
+<div class="survey-body">
+<div class="survey-header">
+<div class="logo logo-middle">
+<img src="/survey/selfserve/2222/logo_a2a001390fe4dc2ce73e6e195e691697.png" class="logo-image" alt="Logo">
+</div>
+<!-- /.logo -->
+<div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-top" title="progress bar - 0% complete">
+<div class="progress-box-outer" aria-hidden="true"><span class="progress-box-completed" style="width: 0%;"></span></div>
+<div class="progress-text" aria-hidden="true">0%</div>
+</div>
+<!-- /.progress-bar -->
+</div>
+<!-- /.survey-header -->
+
+<form id="primary" name="primary" method="post" action="/survey/selfserve/2222/260216" enctype="application/x-www-form-urlencoded" novalidate="">
+<input type="hidden" name="_v2_counter" value="2">
+<!-- @@XYZZY@@ -->
+<div id="question_STD_AGE" class="question number label_STD_AGE   noRows noCols">
+<h1 title="question" class="question-text" id="question_text_STD_AGE">What is your age?</h1>
+<!-- /.question-text -->
+
+<h2 title="instructions" class="instruction-text">Please enter a number</h2>
+<!-- /.instruction-text -->
+<div class="answers answers-list">
+<div class="fir fir-checkbox" style="display: none;">
+<span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> checkbox </title>
+<path d="M15.8,0H3.9C1.8,0,0,2,0,4.1V16c0,2.2,1.8,4,3.9,4h11.8c2.2,0,4.2-1.8,4.2-4V4.1C20,2,18,0,15.8,0z M19,16 c0,1.6-1.6,3-3.2,3H3.9C2.3,19,1,17.7,1,16V4.1C1,2.5,2.3,1,3.9,1h11.8C17.4,1,19,2.5,19,4.1V16z" class="fir-base"></path>
+<path d="M19,16c0,1.6-1.6,3-3.2,3H3.9C2.3,19,1,17.7,1,16V4.1C1,2.5,2.3,1,3.9,1h11.8C17.4,1,19,2.5,19,4.1V16z" class="fir-bg"></path>
+<polygon points="9.1,16.3 2.5,11 4.1,9 8.7,12.6 15.6,3.7 17.7,5.2 " class="fir-selected"></polygon>
+</svg>
+</span>
+</div>
+<div class="fir fir-radio" style="display: none;">
+<span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</div><div class="element even  groupingRows OneColumnEl    ">
+
+<style>
+input[id=''ans68.0.0''] {
+width: calc(40px + 7px * 25)
+}
+</style>
+<input type="number" name="ans68.0.0" id="ans68.0.0" value="" class="input text-input" aria-labelledby="question_text_STD_AGE">
+
+</div><!-- /.grid -->
+</div>
+<!-- /.answers -->
+</div>
+<!-- /.question --><div id="question_STD_GENDER" class="question radio label_STD_GENDER   noRows noCols" role="radiogroup">
+<fieldset class="atm1d atm1d_tiled" data-view-mode="tiled" data-num-cols="">
+            <legend>
+<h1 title="question" class="question-text" id="question_text_STD_GENDER">What is your gender?</h1>
+<!-- /.question-text -->
+
+<h2 title="instructions" class="instruction-text">Please select an answer</h2>
+<!-- /.instruction-text -->
+</legend>
+<div class="answers answers-list">
+        <div class="">
+            <input type="radio" name="ans72.0.0" value="0" id="ans72.0.0" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans72.0.0" class="showInput_0" style="width: 118.222px; height: 43.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>Male</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="radio" name="ans72.0.0" value="1" id="ans72.0.1" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans72.0.1" class="showInput_0" style="width: 118.222px; height: 43.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>Female</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="radio" name="ans72.0.0" value="2" id="ans72.0.2" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans72.0.2" class="showInput_0" style="width: 118.222px; height: 43.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>Other</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="radio" name="ans72.0.0" value="3" id="ans72.0.3" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans72.0.3" class="showInput_0" style="width: 118.222px; height: 43.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>Non-Binary</span>
+                </span>
+            </label>
+            </div>
+            
+        </div><!-- /.grid -->
+</div>
+<!-- /.answers -->
+</fieldset>
+</div>
+<!-- /.question --><div id="comment_Imperium_html" class="html comment label_Imperium_html None">
+<h1 class="comment-text"><input type="hidden" id="GeoCodes" name="GeoCodes" value="1, US"></h1>
+</div>
+<!-- /.comment --><div class="survey-buttons">
+<input type="submit" name="continue" id="btn_continue" class="button continue" value="Next »" onclick="var i = document.createElement(''input''); i.setAttribute(''type'', ''hidden'');i.setAttribute(''value'', ''1'');i.setAttribute(''name'', ''__has_javascript'');document.forms.primary.appendChild(i);">
+
+</div>
+<!-- #surveyButtons --><input type="hidden" name="state" value="1558d9d7-dd90-43b0-9b4c-f0e1caf83adf">
+<input type="hidden" name="start_time" value="1780061954">
+<input type="hidden" name="_ptime" value="0">
+<script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "b6bk7seted9wnnm8");}, 100); });
+</script>
+<input type="text" id="rvid_780786" style="height:0!important;width:0!important;border:0!important;padding:0!important;" tabindex="-1"><script language="Javascript2.2">jsver = 2.2;</script><script language="Javascript2.1">jsver = 2.1;</script><script language="Javascript2">jsver = 2;</script><script language="Javascript1.9">jsver = 1.9;</script><script language="Javascript1.8">jsver = 1.8;</script><script language="Javascript1.7">jsver = 1.7;</script><script language="Javascript1.6">jsver = 1.6;</script><script language="Javascript1.5">jsver = 1.5;</script><script language="Javascript1.4">jsver = 1.4;</script><script language="Javascript1.3">jsver = 1.3;</script><script language="Javascript1.2">jsver = 1.2;</script><script language="Javascript1.1">jsver = 1.1;</script></form>
+
+
+</div>
+<!-- /.survey-body -->
+</div>
+<div class="survey-section"><div class="footer"><div style="width: 100%; height: 60px; background-color: #221b4f;" jstcache="0"><br jstcache="0"><center jstcache="0">       <a target="_blank" jstcache="0">          <img src="/survey/selfserve/2222/260216/Footer.png?2326399e4b" style="background-color: #221b4f;" jstcache="0" width="150px" height="38px">       </a>    </center></div></div>
+<!-- /.footer -->
+<input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33">
+        <input type="hidden" id="SurveyID" name="SurveyID" value="220821">
+        <input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs">
+        <input type="hidden" id="LangCode" name="LangCode" value="EN">
+        <input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults">
+        <input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults">
+        <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+        <input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0">
+
+        <script> function getQSTimeoutMs(){return 5000;} </script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qualityscore.js"></script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qslib1.0.js"></script></div>
+</div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780061960493">
+<div id="detectBreakpoint"></div>
+<!-- /.survey-container -->
+
+
+</body></html>', '<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robots"><meta name="viewport"><title>Tapestry Research</title><link><link><link><link><script></script><captcha-widgets></captcha-widgets><script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(2 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((2 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script><script></script><script></script><script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script></head><body><div id="survey"><div><div></div></div><div><div><div><div><img></div><div role="progressbar"><div><span></span></div><div>0%</div></div></div><form id="primary" name="primary"><input type="hidden" name="_v2_counter" value="2"><div id="question_STD_AGE"><h1 id="question_text_STD_AGE">What is your age?</h1><h2>Please enter a number</h2><div><div><span></span></div><div><span></span></div><div><input type="number" name="ans68.0.0" id="ans68.0.0" value=""></div></div></div><div id="question_STD_GENDER" role="radiogroup"><fieldset><legend><h1 id="question_text_STD_GENDER">What is your gender?</h1><h2>Please select an answer</h2></legend><div><div><input type="radio" name="ans72.0.0" value="0" id="ans72.0.0"><div><label for="ans72.0.0"><i></i><i></i><span><span>Male</span></span></label></div></div><div><input type="radio" name="ans72.0.0" value="1" id="ans72.0.1"><div><label for="ans72.0.1"><i></i><i></i><span><span>Female</span></span></label></div></div><div><input type="radio" name="ans72.0.0" value="2" id="ans72.0.2"><div><label for="ans72.0.2"><i></i><i></i><span><span>Other</span></span></label></div></div><div><input type="radio" name="ans72.0.0" value="3" id="ans72.0.3"><div><label for="ans72.0.3"><i></i><i></i><span><span>Non-Binary</span></span></label></div></div></div></fieldset></div><div id="comment_Imperium_html"><h1><input type="hidden" id="GeoCodes" name="GeoCodes" value="1, US"></h1></div><div><input type="submit" name="continue" id="btn_continue" value="Next »"></div><input type="hidden" name="state" value="1558d9d7-dd90-43b0-9b4c-f0e1caf83adf"><input type="hidden" name="start_time" value="1780061954"><input type="hidden" name="_ptime" value="0"><script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "b6bk7seted9wnnm8");}, 100); });
+</script><input type="text" id="rvid_780786"><script>jsver = 2.2;</script><script>jsver = 2.1;</script><script>jsver = 2;</script><script>jsver = 1.9;</script><script>jsver = 1.8;</script><script>jsver = 1.7;</script><script>jsver = 1.6;</script><script>jsver = 1.5;</script><script>jsver = 1.4;</script><script>jsver = 1.3;</script><script>jsver = 1.2;</script><script>jsver = 1.1;</script></form></div></div><div><div><div><br><center><a><img></a></center></div></div><input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33"><input type="hidden" id="SurveyID" name="SurveyID" value="220821"><input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs"><input type="hidden" id="LangCode" name="LangCode" value="EN"><input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults"><input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults"><input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0"><input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0"><script> function getQSTimeoutMs(){return 5000;} </script><script type="text/javascript"></script><script type="text/javascript"></script></div></div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780061960493"><div id="detectBreakpoint"></div></body></html>', '2026-05-29 21:39:24');
+INSERT INTO "page_html_source" VALUES (137, 103, '021443301134e5be95a9a7eaf9f409d6', '<html lang="en-GB"><!--<![endif]--><head><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/captchafox/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/mt_captcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/hunter.js" data-ts-input="cf-turnstile-response"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/amazon_waf/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/yandex/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/lemin/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/keycaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest_v4/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/communication_helpers.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/core_helpers.js"></script>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- respview.client.meta -->
+
+
+<title>Tapestry Research</title>
+
+
+<!-- respview.css -->
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css?ad7753b880">
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.beacon.css?4ddb951d43">
+
+<!-- generated from: static/support/font-awesome-4.2.0/less/font-awesome.less, static/support/select2-4.0.1/select2.min.css, static/survey.respondent-post151.less, selfserve/2222/260216/static/theme.less, lib/steam/atm1d/v11/static/atm1d.less, lib/steam/cardsort/v7/static/cardsort.less and 0 themevars -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/less-compiled.css?a932463a8405103997a94450f6245f0e">
+
+
+<!-- extra CSS -->
+
+
+<!-- Custom CSS (specified in survey.xml) -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/Tapestry.css">
+
+<!-- respview.client.css -->
+<style>
+        table {
+        border-collapse: inherit !important; 
+        }
+        .row-col-legends-top {
+        background: #ededed;
+        position: sticky;
+        top: -16px;
+        z-index: 100;
+        }
+        .empty {
+        border: 1px solid #ccc;
+        }
+    </style>
+
+<!-- client.css -->
+<style media="screen">
+
+</style>
+
+<!-- JQuery -->
+<!--
+/s/jquery183.all.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/e2190ba850ec2bfa3e7d1567d2021910.js"></script><captcha-widgets></captcha-widgets>
+
+
+<!-- extra Logic -->
+
+
+<!-- respview.js -->
+<script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(3 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((3 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script>
+
+<!--[if lte IE 8]><script src="/s/support/respond/respond-1.4.2.min.js"></script><script src="/s/support/rem-unit-polyfill/rem.min.js"></script><![endif]-->
+
+
+<!--
+/s/support/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js
+/s/common.js
+/s/respview-post132.js
+/s/survey.respondent-post143.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/6f7910d7512e9866158e9fcb02cfdd53.js"></script>
+
+
+<!-- extra JS -->
+<!-- lib/steam/atm1d/v11/styles.xml -->
+  <script src="/survey/lib/steam/atm1d/v11/atm1d.js?e84439618b"></script>
+
+
+
+
+
+
+<!-- respview.client.js -->
+
+
+<!-- client.javascript -->
+
+
+<script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script>
+
+<!-- extra Head -->
+<style>
+
+        #question_S3 .atm1d_vertical .answers > div {
+                text-align: left;
+            }
+
+        #question_S3 .atm1d_vertical .answers > div > div,
+        #question_S3 :not(.atm1d_vertical) .answers{
+            justify-content: flex-start;
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        #question_S3 .atm1d label {
+            max-height: none;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        #question_S3 .atm1d_vertical label {
+            min-width: 75%;
+            text-align: left;
+        }
+
+        #question_S3 .atm1d_horizontal label {
+            min-height: 0;
+        }
+
+        @media (min-width: 768px) {
+            #question_S3 .atm1d_vertical .answers > div {
+                    text-align: left;
+            }
+            #question_S3 .atm1d_vertical .answers > div > div,
+            #question_S3 :not(.atm1d_vertical) .answers {
+                justify-content: flex-start;
+                margin-left: 0;
+                margin-right: auto;
+            }
+
+            #question_S3 .atm1d label {
+                max-height: none;
+                max-width: 100%;
+                text-align: center;
+            }
+
+            #question_S3 .atm1d_vertical label {
+                min-width: 280px;
+                text-align: left;
+            }
+
+            #question_S3 .atm1d_horizontal label {
+                min-height: 0;
+            }
+        }
+        </style>
+
+</head>
+
+<body class="survey-page non-touch" data-device="">
+
+
+<div id="survey" class="survey-container">
+<div class="survey-section"><div class="page-header"></div>
+<!-- /.page-header --></div>
+<div class="survey-section">
+<div class="survey-body">
+<div class="survey-header">
+<div class="logo logo-middle">
+<img src="/survey/selfserve/2222/logo_a2a001390fe4dc2ce73e6e195e691697.png" class="logo-image" alt="Logo">
+</div>
+<!-- /.logo -->
+<div role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-top" title="progress bar - 3% complete">
+<div class="progress-box-outer" aria-hidden="true"><span class="progress-box-completed" style="width: 3%;"></span></div>
+<div class="progress-text" aria-hidden="true">3%</div>
+</div>
+<!-- /.progress-bar -->
+</div>
+<!-- /.survey-header -->
+
+<form id="primary" name="primary" method="post" action="/survey/selfserve/2222/260216" enctype="application/x-www-form-urlencoded" novalidate="">
+<input type="hidden" name="_v2_counter" value="3">
+<!-- @@XYZZY@@ -->
+<div id="question_S3" class="question radio label_S3   noRows noCols" role="radiogroup">
+<fieldset class="atm1d atm1d_vertical" data-view-mode="vertical" data-num-cols="">
+            <legend>
+<h1 title="question" class="question-text" id="question_text_S3">What is your current country of residence?</h1>
+<!-- /.question-text -->
+
+<h2 title="instructions" class="instruction-text">Please select an answer</h2>
+<!-- /.instruction-text -->
+</legend>
+<div class="answers answers-list">
+        <div class="">
+            <input type="radio" name="ans508.0.0" value="0" id="ans508.0.0" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans508.0.0" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>Canada</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="radio" name="ans508.0.0" value="1" id="ans508.0.1" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans508.0.1" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>Mexico</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="radio" name="ans508.0.0" value="2" id="ans508.0.2" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans508.0.2" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>United States</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="radio" name="ans508.0.0" value="3" id="ans508.0.3" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans508.0.3" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>Other</span>
+                </span>
+            </label>
+            </div>
+            
+        </div><!-- /.grid -->
+</div>
+<!-- /.answers -->
+</fieldset>
+</div>
+<!-- /.question --><div class="survey-buttons">
+<input type="submit" name="continue" id="btn_continue" class="button continue" value="Next »" onclick="var i = document.createElement(''input''); i.setAttribute(''type'', ''hidden'');i.setAttribute(''value'', ''1'');i.setAttribute(''name'', ''__has_javascript'');document.forms.primary.appendChild(i);">
+
+</div>
+<!-- #surveyButtons --><input type="hidden" name="state" value="79885ecd-4b55-4057-9b9c-7c92477a318d">
+<input type="hidden" name="start_time" value="1780061968">
+<input type="hidden" name="_ptime" value="0">
+<script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "2zfnnebffmw5eatv");}, 100); });
+</script>
+</form>
+
+
+</div>
+<!-- /.survey-body -->
+</div>
+<div class="survey-section"><div class="footer"><div style="width: 100%; height: 60px; background-color: #221b4f;" jstcache="0"><br jstcache="0"><center jstcache="0">       <a target="_blank" jstcache="0">          <img src="/survey/selfserve/2222/260216/Footer.png?2326399e4b" style="background-color: #221b4f;" jstcache="0" width="150px" height="38px">       </a>    </center></div></div>
+<!-- /.footer -->
+<input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33">
+        <input type="hidden" id="SurveyID" name="SurveyID" value="220821">
+        <input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs">
+        <input type="hidden" id="LangCode" name="LangCode" value="EN">
+        <input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults">
+        <input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults">
+        <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+        <input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0">
+
+        <script> function getQSTimeoutMs(){return 5000;} </script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qualityscore.js"></script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qslib1.0.js"></script></div>
+</div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780061974499">
+<div id="detectBreakpoint"></div>
+<!-- /.survey-container -->
+
+
+</body></html>', '<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robots"><meta name="viewport"><title>Tapestry Research</title><link><link><link><link><script></script><captcha-widgets></captcha-widgets><script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(3 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((3 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script><script></script><script></script><script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script></head><body><div id="survey"><div><div></div></div><div><div><div><div><img></div><div role="progressbar"><div><span></span></div><div>3%</div></div></div><form id="primary" name="primary"><input type="hidden" name="_v2_counter" value="3"><div id="question_S3" role="radiogroup"><fieldset><legend><h1 id="question_text_S3">What is your current country of residence?</h1><h2>Please select an answer</h2></legend><div><div><input type="radio" name="ans508.0.0" value="0" id="ans508.0.0"><div><label for="ans508.0.0"><i></i><i></i><span><span>Canada</span></span></label></div></div><div><input type="radio" name="ans508.0.0" value="1" id="ans508.0.1"><div><label for="ans508.0.1"><i></i><i></i><span><span>Mexico</span></span></label></div></div><div><input type="radio" name="ans508.0.0" value="2" id="ans508.0.2"><div><label for="ans508.0.2"><i></i><i></i><span><span>United States</span></span></label></div></div><div><input type="radio" name="ans508.0.0" value="3" id="ans508.0.3"><div><label for="ans508.0.3"><i></i><i></i><span><span>Other</span></span></label></div></div></div></fieldset></div><div><input type="submit" name="continue" id="btn_continue" value="Next »"></div><input type="hidden" name="state" value="79885ecd-4b55-4057-9b9c-7c92477a318d"><input type="hidden" name="start_time" value="1780061968"><input type="hidden" name="_ptime" value="0"><script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "2zfnnebffmw5eatv");}, 100); });
+</script></form></div></div><div><div><div><br><center><a><img></a></center></div></div><input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33"><input type="hidden" id="SurveyID" name="SurveyID" value="220821"><input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs"><input type="hidden" id="LangCode" name="LangCode" value="EN"><input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults"><input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults"><input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0"><input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0"><script> function getQSTimeoutMs(){return 5000;} </script><script type="text/javascript"></script><script type="text/javascript"></script></div></div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780061974499"><div id="detectBreakpoint"></div></body></html>', '2026-05-29 21:39:39');
+INSERT INTO "page_html_source" VALUES (138, 104, '288c6f05627e8367dd6ab5173dda47c8', '<html lang="en-GB"><!--<![endif]--><head><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/captchafox/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/mt_captcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/hunter.js" data-ts-input="cf-turnstile-response"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/amazon_waf/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/yandex/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/lemin/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/keycaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest_v4/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/communication_helpers.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/core_helpers.js"></script>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- respview.client.meta -->
+
+
+<title>Tapestry Research</title>
+
+
+<!-- respview.css -->
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css?ad7753b880">
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.beacon.css?4ddb951d43">
+
+<!-- generated from: static/support/font-awesome-4.2.0/less/font-awesome.less, static/support/select2-4.0.1/select2.min.css, static/survey.respondent-post151.less, selfserve/2222/260216/static/theme.less, lib/steam/atm1d/v11/static/atm1d.less, lib/steam/cardsort/v7/static/cardsort.less and 0 themevars -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/less-compiled.css?a932463a8405103997a94450f6245f0e">
+
+
+<!-- extra CSS -->
+
+
+<!-- Custom CSS (specified in survey.xml) -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/Tapestry.css">
+
+<!-- respview.client.css -->
+<style>
+        table {
+        border-collapse: inherit !important; 
+        }
+        .row-col-legends-top {
+        background: #ededed;
+        position: sticky;
+        top: -16px;
+        z-index: 100;
+        }
+        .empty {
+        border: 1px solid #ccc;
+        }
+    </style>
+
+<!-- client.css -->
+<style media="screen">
+
+</style>
+
+<!-- JQuery -->
+<!--
+/s/jquery183.all.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/e2190ba850ec2bfa3e7d1567d2021910.js"></script><captcha-widgets></captcha-widgets>
+
+
+<!-- extra Logic -->
+
+
+<!-- respview.js -->
+<script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(4 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((4 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script>
+
+<!--[if lte IE 8]><script src="/s/support/respond/respond-1.4.2.min.js"></script><script src="/s/support/rem-unit-polyfill/rem.min.js"></script><![endif]-->
+
+
+<!--
+/s/support/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js
+/s/common.js
+/s/respview-post132.js
+/s/survey.respondent-post143.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/6f7910d7512e9866158e9fcb02cfdd53.js"></script>
+
+
+<!-- extra JS -->
+
+
+
+
+
+
+
+<!-- respview.client.js -->
+
+
+<!-- client.javascript -->
+
+
+<script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script>
+
+<!-- extra Head -->
+
+
+</head>
+
+<body class="survey-page non-touch" data-device="">
+
+
+<div id="survey" class="survey-container">
+<div class="survey-section"><div class="page-header"></div>
+<!-- /.page-header --></div>
+<div class="survey-section">
+<div class="survey-body">
+<div class="survey-header">
+<div class="logo logo-middle">
+<img src="/survey/selfserve/2222/logo_a2a001390fe4dc2ce73e6e195e691697.png" class="logo-image" alt="Logo">
+</div>
+<!-- /.logo -->
+<div role="progressbar" aria-valuenow="9" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-top" title="progress bar - 9% complete">
+<div class="progress-box-outer" aria-hidden="true"><span class="progress-box-completed" style="width: 9%;"></span></div>
+<div class="progress-text" aria-hidden="true">9%</div>
+</div>
+<!-- /.progress-bar -->
+</div>
+<!-- /.survey-header -->
+
+<form id="primary" name="primary" method="post" action="/survey/selfserve/2222/260216" enctype="application/x-www-form-urlencoded" novalidate="">
+<input type="hidden" name="_v2_counter" value="4">
+<!-- @@XYZZY@@ -->
+<div id="question_STD_ZIPCODE_US" class="question text label_STD_ZIPCODE_US   noRows noCols">
+<h1 title="question" class="question-text" id="question_text_STD_ZIPCODE_US">What is your zip code?</h1>
+<!-- /.question-text -->
+
+<h2 title="instructions" class="instruction-text">Please enter your answer</h2>
+<!-- /.instruction-text -->
+<div class="answers answers-list">
+<div class="fir fir-checkbox" style="display: none;">
+<span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> checkbox </title>
+<path d="M15.8,0H3.9C1.8,0,0,2,0,4.1V16c0,2.2,1.8,4,3.9,4h11.8c2.2,0,4.2-1.8,4.2-4V4.1C20,2,18,0,15.8,0z M19,16 c0,1.6-1.6,3-3.2,3H3.9C2.3,19,1,17.7,1,16V4.1C1,2.5,2.3,1,3.9,1h11.8C17.4,1,19,2.5,19,4.1V16z" class="fir-base"></path>
+<path d="M19,16c0,1.6-1.6,3-3.2,3H3.9C2.3,19,1,17.7,1,16V4.1C1,2.5,2.3,1,3.9,1h11.8C17.4,1,19,2.5,19,4.1V16z" class="fir-bg"></path>
+<polygon points="9.1,16.3 2.5,11 4.1,9 8.7,12.6 15.6,3.7 17.7,5.2 " class="fir-selected"></polygon>
+</svg>
+</span>
+</div>
+<div class="fir fir-radio" style="display: none;">
+<span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</div><div class="element even  groupingRows OneColumnEl    ">
+
+<input type="text" name="ans540.0.0" id="ans540.0.0" value="" size="20" class="input text-input imperium-ra-question" aria-labelledby="question_text_STD_ZIPCODE_US">
+
+</div><!-- /.grid -->
+</div>
+<!-- /.answers -->
+</div>
+<!-- /.question --><div class="survey-buttons">
+<input type="submit" name="continue" id="btn_continue" class="button continue" value="Next »" onclick="var i = document.createElement(''input''); i.setAttribute(''type'', ''hidden'');i.setAttribute(''value'', ''1'');i.setAttribute(''name'', ''__has_javascript'');document.forms.primary.appendChild(i);">
+
+</div>
+<!-- #surveyButtons --><input type="hidden" name="state" value="e931d063-a8b2-48f2-9f47-526db45d3b1a">
+<input type="hidden" name="start_time" value="1780061987">
+<input type="hidden" name="_ptime" value="0">
+<script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "wmbyfy2na31s8unf");}, 100); });
+</script>
+<input type="text" id="ra__723874" style="height:0!important;width:0!important;border:0!important;padding:0!important;" tabindex="-1"></form>
+
+
+</div>
+<!-- /.survey-body -->
+</div>
+<div class="survey-section"><div class="footer"><div style="width: 100%; height: 60px; background-color: #221b4f;" jstcache="0"><br jstcache="0"><center jstcache="0">       <a target="_blank" jstcache="0">          <img src="/survey/selfserve/2222/260216/Footer.png?2326399e4b" style="background-color: #221b4f;" jstcache="0" width="150px" height="38px">       </a>    </center></div></div>
+<!-- /.footer -->
+<input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33">
+        <input type="hidden" id="SurveyID" name="SurveyID" value="220821">
+        <input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs">
+        <input type="hidden" id="LangCode" name="LangCode" value="EN">
+        <input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults">
+        <input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults">
+        <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+        <input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0">
+
+        <script> function getQSTimeoutMs(){return 5000;} </script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qualityscore.js"></script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qslib1.0.js"></script></div>
+</div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780061994581"><input type="hidden" name="ra_1" id="ra_1" style="width:1200px" value="{&quot;ans540.0.0&quot;:&quot;103.151.173.100_9DD3839A79F67AACA33DAC8BA37F0993F17BCC9A401DEDC6797668F3BEAD4236&quot;}"><input type="hidden" name="ra_2" id="ra_2" style="width:1200px" value="{&quot;ans540.0.0&quot;:&quot;c66cef46-acac-4974-9a08-fb5cf3c2c054&quot;}"><input type="hidden" name="ra_3" id="ra_3" style="width:1200px" value="{&quot;ans540.0.0&quot;:&quot;a70e37ca-fea4-90b0-96ed-a61cebade825&quot;}"><input type="hidden" name="ra_4" id="ra_4" style="width:1200px" value="{&quot;ans540.0.0&quot;:&quot;4d265d43-26e8-46f8-8772-10b8192766bc&quot;}">
+<div id="detectBreakpoint"></div>
+<!-- /.survey-container -->
+
+
+</body></html>', '<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robots"><meta name="viewport"><title>Tapestry Research</title><link><link><link><link><script></script><captcha-widgets></captcha-widgets><script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(4 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((4 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script><script></script><script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script></head><body><div id="survey"><div><div></div></div><div><div><div><div><img></div><div role="progressbar"><div><span></span></div><div>9%</div></div></div><form id="primary" name="primary"><input type="hidden" name="_v2_counter" value="4"><div id="question_STD_ZIPCODE_US"><h1 id="question_text_STD_ZIPCODE_US">What is your zip code?</h1><h2>Please enter your answer</h2><div><div><span></span></div><div><span></span></div><div><input type="text" name="ans540.0.0" id="ans540.0.0" value=""></div></div></div><div><input type="submit" name="continue" id="btn_continue" value="Next »"></div><input type="hidden" name="state" value="e931d063-a8b2-48f2-9f47-526db45d3b1a"><input type="hidden" name="start_time" value="1780061987"><input type="hidden" name="_ptime" value="0"><script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "wmbyfy2na31s8unf");}, 100); });
+</script><input type="text" id="ra__723874"></form></div></div><div><div><div><br><center><a><img></a></center></div></div><input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33"><input type="hidden" id="SurveyID" name="SurveyID" value="220821"><input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs"><input type="hidden" id="LangCode" name="LangCode" value="EN"><input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults"><input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults"><input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0"><input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0"><script> function getQSTimeoutMs(){return 5000;} </script><script type="text/javascript"></script><script type="text/javascript"></script></div></div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780061994581"><input type="hidden" name="ra_1" id="ra_1" value="{&quot;ans540.0.0&quot;:&quot;103.151.173.100_9DD3839A79F67AACA33DAC8BA37F0993F17BCC9A401DEDC6797668F3BEAD4236&quot;}"><input type="hidden" name="ra_2" id="ra_2" value="{&quot;ans540.0.0&quot;:&quot;c66cef46-acac-4974-9a08-fb5cf3c2c054&quot;}"><input type="hidden" name="ra_3" id="ra_3" value="{&quot;ans540.0.0&quot;:&quot;a70e37ca-fea4-90b0-96ed-a61cebade825&quot;}"><input type="hidden" name="ra_4" id="ra_4" value="{&quot;ans540.0.0&quot;:&quot;4d265d43-26e8-46f8-8772-10b8192766bc&quot;}"><div id="detectBreakpoint"></div></body></html>', '2026-05-29 21:40:00');
+INSERT INTO "page_html_source" VALUES (139, 105, 'ca5fec93d866fe3c31d97bcd29939a5d', '<html lang="en-GB"><!--<![endif]--><head><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/captchafox/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/mt_captcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/hunter.js" data-ts-input="cf-turnstile-response"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/amazon_waf/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/yandex/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/lemin/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/keycaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest_v4/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/communication_helpers.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/core_helpers.js"></script>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- respview.client.meta -->
+
+
+<title>Tapestry Research</title>
+
+
+<!-- respview.css -->
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css?ad7753b880">
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.beacon.css?4ddb951d43">
+
+<!-- generated from: static/support/font-awesome-4.2.0/less/font-awesome.less, static/support/select2-4.0.1/select2.min.css, static/survey.respondent-post151.less, selfserve/2222/260216/static/theme.less, lib/steam/atm1d/v11/static/atm1d.less, lib/steam/cardsort/v7/static/cardsort.less and 0 themevars -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/less-compiled.css?a932463a8405103997a94450f6245f0e">
+
+
+<!-- extra CSS -->
+
+
+<!-- Custom CSS (specified in survey.xml) -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/Tapestry.css">
+
+<!-- respview.client.css -->
+<style>
+        table {
+        border-collapse: inherit !important; 
+        }
+        .row-col-legends-top {
+        background: #ededed;
+        position: sticky;
+        top: -16px;
+        z-index: 100;
+        }
+        .empty {
+        border: 1px solid #ccc;
+        }
+    </style>
+
+<!-- client.css -->
+<style media="screen">
+
+</style>
+
+<!-- JQuery -->
+<!--
+/s/jquery183.all.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/e2190ba850ec2bfa3e7d1567d2021910.js"></script><captcha-widgets></captcha-widgets>
+
+
+<!-- extra Logic -->
+
+
+<!-- respview.js -->
+<script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(5 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((5 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script>
+
+<!--[if lte IE 8]><script src="/s/support/respond/respond-1.4.2.min.js"></script><script src="/s/support/rem-unit-polyfill/rem.min.js"></script><![endif]-->
+
+
+<!--
+/s/support/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js
+/s/common.js
+/s/respview-post132.js
+/s/survey.respondent-post143.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/6f7910d7512e9866158e9fcb02cfdd53.js"></script>
+
+
+<!-- extra JS -->
+<!-- lib/steam/atm1d/v11/styles.xml -->
+  <script src="/survey/lib/steam/atm1d/v11/atm1d.js?e84439618b"></script>
+
+
+
+
+
+
+<!-- respview.client.js -->
+
+
+<!-- client.javascript -->
+
+
+<script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script>
+
+<!-- extra Head -->
+<style>
+
+        #question_QC2 .atm1d_vertical .answers > div {
+                text-align: left;
+            }
+
+        #question_QC2 .atm1d_vertical .answers > div > div,
+        #question_QC2 :not(.atm1d_vertical) .answers{
+            justify-content: flex-start;
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        #question_QC2 .atm1d label {
+            max-height: none;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        #question_QC2 .atm1d_vertical label {
+            min-width: 75%;
+            text-align: left;
+        }
+
+        #question_QC2 .atm1d_horizontal label {
+            min-height: 0;
+        }
+
+        @media (min-width: 768px) {
+            #question_QC2 .atm1d_vertical .answers > div {
+                    text-align: left;
+            }
+            #question_QC2 .atm1d_vertical .answers > div > div,
+            #question_QC2 :not(.atm1d_vertical) .answers {
+                justify-content: flex-start;
+                margin-left: 0;
+                margin-right: auto;
+            }
+
+            #question_QC2 .atm1d label {
+                max-height: none;
+                max-width: 100%;
+                text-align: center;
+            }
+
+            #question_QC2 .atm1d_vertical label {
+                min-width: 280px;
+                text-align: left;
+            }
+
+            #question_QC2 .atm1d_horizontal label {
+                min-height: 0;
+            }
+        }
+        </style>
+
+</head>
+
+<body class="survey-page non-touch" data-device="">
+
+
+<div id="survey" class="survey-container">
+<div class="survey-section"><div class="page-header"></div>
+<!-- /.page-header --></div>
+<div class="survey-section">
+<div class="survey-body">
+<div class="survey-header">
+<div class="logo logo-middle">
+<img src="/survey/selfserve/2222/logo_a2a001390fe4dc2ce73e6e195e691697.png" class="logo-image" alt="Logo">
+</div>
+<!-- /.logo -->
+<div role="progressbar" aria-valuenow="11" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-top" title="progress bar - 11% complete">
+<div class="progress-box-outer" aria-hidden="true"><span class="progress-box-completed" style="width: 11%;"></span></div>
+<div class="progress-text" aria-hidden="true">11%</div>
+</div>
+<!-- /.progress-bar -->
+</div>
+<!-- /.survey-header -->
+
+<form id="primary" name="primary" method="post" action="/survey/selfserve/2222/260216" enctype="application/x-www-form-urlencoded" novalidate="">
+<input type="hidden" name="_v2_counter" value="5">
+<!-- @@XYZZY@@ -->
+<div id="question_QC2" class="question checkbox label_QC2   noRows noCols" role="radiogroup">
+<fieldset class="atm1d atm1d_vertical" data-view-mode="vertical" data-num-cols="">
+            <legend>
+<h1 title="question" class="question-text" id="question_text_QC2">Which, if any, of the following have you done over the past weekend?</h1>
+<!-- /.question-text -->
+
+<h2 title="instructions" class="instruction-text">Please select all that apply</h2>
+<!-- /.instruction-text -->
+</legend>
+<div class="answers answers-list">
+        <div class="">
+            <input type="checkbox" name="ans53106.0.3" id="ans53106.0.3" value="1" class=" input checkbox">
+            <div class="showInputParent_0">
+            <label for="ans53106.0.3" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-square-o fa-icon-square-o"></i>
+                <i aria-hidden="true" class="fa fa-check-square-o fa-icon-check-square-o"></i>
+                <span>
+                    <span>Played poker</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="checkbox" name="ans53106.0.6" id="ans53106.0.6" value="1" class=" input checkbox">
+            <div class="showInputParent_0">
+            <label for="ans53106.0.6" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-square-o fa-icon-square-o"></i>
+                <i aria-hidden="true" class="fa fa-check-square-o fa-icon-check-square-o"></i>
+                <span>
+                    <span>Visited a flea market</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="checkbox" name="ans53106.0.2" id="ans53106.0.2" value="1" class=" input checkbox">
+            <div class="showInputParent_0">
+            <label for="ans53106.0.2" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-square-o fa-icon-square-o"></i>
+                <i aria-hidden="true" class="fa fa-check-square-o fa-icon-check-square-o"></i>
+                <span>
+                    <span>Flew in a helicopter</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="checkbox" name="ans53106.0.1" id="ans53106.0.1" value="1" class=" input checkbox">
+            <div class="showInputParent_0">
+            <label for="ans53106.0.1" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-square-o fa-icon-square-o"></i>
+                <i aria-hidden="true" class="fa fa-check-square-o fa-icon-check-square-o"></i>
+                <span>
+                    <span>Visited Antarctica</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="checkbox" name="ans53106.0.5" id="ans53106.0.5" value="1" class=" input checkbox">
+            <div class="showInputParent_0">
+            <label for="ans53106.0.5" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-square-o fa-icon-square-o"></i>
+                <i aria-hidden="true" class="fa fa-check-square-o fa-icon-check-square-o"></i>
+                <span>
+                    <span>Went skiing</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="checkbox" name="ans53106.0.0" id="ans53106.0.0" value="1" class=" input checkbox">
+            <div class="showInputParent_0">
+            <label for="ans53106.0.0" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-square-o fa-icon-square-o"></i>
+                <i aria-hidden="true" class="fa fa-check-square-o fa-icon-check-square-o"></i>
+                <span>
+                    <span>Watched TV</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="checkbox" name="ans53106.0.7" id="ans53106.0.7" value="1" class=" input checkbox">
+            <div class="showInputParent_0">
+            <label for="ans53106.0.7" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-square-o fa-icon-square-o"></i>
+                <i aria-hidden="true" class="fa fa-check-square-o fa-icon-check-square-o"></i>
+                <span>
+                    <span>Went bungee jumping</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="checkbox" name="ans53106.0.4" id="ans53106.0.4" value="1" class=" input checkbox">
+            <div class="showInputParent_0">
+            <label for="ans53106.0.4" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-square-o fa-icon-square-o"></i>
+                <i aria-hidden="true" class="fa fa-check-square-o fa-icon-check-square-o"></i>
+                <span>
+                    <span>Went geocaching</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="checkbox" name="ans53106.0.8" id="ans53106.0.8" value="1" class="exclusive input checkbox">
+            <div class="showInputParent_0">
+            <label for="ans53106.0.8" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-square-o fa-icon-square-o"></i>
+                <i aria-hidden="true" class="fa fa-check-square-o fa-icon-check-square-o"></i>
+                <span>
+                    <span>None of the above</span>
+                </span>
+            </label>
+            </div>
+            
+        </div><!-- /.grid -->
+</div>
+<!-- /.answers -->
+</fieldset>
+</div>
+<!-- /.question --><script type="text/javascript">
+setupExclusive(''cols'',''ans53106.0.8'');
+</script>
+<div class="survey-buttons">
+<input type="submit" name="continue" id="btn_continue" class="button continue" value="Next »" onclick="var i = document.createElement(''input''); i.setAttribute(''type'', ''hidden'');i.setAttribute(''value'', ''1'');i.setAttribute(''name'', ''__has_javascript'');document.forms.primary.appendChild(i);">
+
+</div>
+<!-- #surveyButtons --><input type="hidden" name="state" value="9766dfa4-5def-4b6e-be10-971394a3c859">
+<input type="hidden" name="start_time" value="1780062058">
+<input type="hidden" name="_ptime" value="0">
+<script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "rcp4d86fkjhd7z4v");}, 100); });
+</script>
+</form>
+
+
+</div>
+<!-- /.survey-body -->
+</div>
+<div class="survey-section"><div class="footer"><div style="width: 100%; height: 60px; background-color: #221b4f;" jstcache="0"><br jstcache="0"><center jstcache="0">       <a target="_blank" jstcache="0">          <img src="/survey/selfserve/2222/260216/Footer.png?2326399e4b" style="background-color: #221b4f;" jstcache="0" width="150px" height="38px">       </a>    </center></div></div>
+<!-- /.footer -->
+<input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33">
+        <input type="hidden" id="SurveyID" name="SurveyID" value="220821">
+        <input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs">
+        <input type="hidden" id="LangCode" name="LangCode" value="EN">
+        <input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults">
+        <input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults">
+        <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+        <input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0">
+
+        <script> function getQSTimeoutMs(){return 5000;} </script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qualityscore.js"></script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qslib1.0.js"></script></div>
+</div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062064657">
+<div id="detectBreakpoint"></div>
+<!-- /.survey-container -->
+
+
+</body></html>', '<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robots"><meta name="viewport"><title>Tapestry Research</title><link><link><link><link><script></script><captcha-widgets></captcha-widgets><script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(5 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((5 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script><script></script><script></script><script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script></head><body><div id="survey"><div><div></div></div><div><div><div><div><img></div><div role="progressbar"><div><span></span></div><div>11%</div></div></div><form id="primary" name="primary"><input type="hidden" name="_v2_counter" value="5"><div id="question_QC2" role="radiogroup"><fieldset><legend><h1 id="question_text_QC2">Which, if any, of the following have you done over the past weekend?</h1><h2>Please select all that apply</h2></legend><div><div><input type="checkbox" name="ans53106.0.3" id="ans53106.0.3" value="1"><div><label for="ans53106.0.3"><i></i><i></i><span><span>Played poker</span></span></label></div></div><div><input type="checkbox" name="ans53106.0.6" id="ans53106.0.6" value="1"><div><label for="ans53106.0.6"><i></i><i></i><span><span>Visited a flea market</span></span></label></div></div><div><input type="checkbox" name="ans53106.0.2" id="ans53106.0.2" value="1"><div><label for="ans53106.0.2"><i></i><i></i><span><span>Flew in a helicopter</span></span></label></div></div><div><input type="checkbox" name="ans53106.0.1" id="ans53106.0.1" value="1"><div><label for="ans53106.0.1"><i></i><i></i><span><span>Visited Antarctica</span></span></label></div></div><div><input type="checkbox" name="ans53106.0.5" id="ans53106.0.5" value="1"><div><label for="ans53106.0.5"><i></i><i></i><span><span>Went skiing</span></span></label></div></div><div><input type="checkbox" name="ans53106.0.0" id="ans53106.0.0" value="1"><div><label for="ans53106.0.0"><i></i><i></i><span><span>Watched TV</span></span></label></div></div><div><input type="checkbox" name="ans53106.0.7" id="ans53106.0.7" value="1"><div><label for="ans53106.0.7"><i></i><i></i><span><span>Went bungee jumping</span></span></label></div></div><div><input type="checkbox" name="ans53106.0.4" id="ans53106.0.4" value="1"><div><label for="ans53106.0.4"><i></i><i></i><span><span>Went geocaching</span></span></label></div></div><div><input type="checkbox" name="ans53106.0.8" id="ans53106.0.8" value="1"><div><label for="ans53106.0.8"><i></i><i></i><span><span>None of the above</span></span></label></div></div></div></fieldset></div><script type="text/javascript">
+setupExclusive(''cols'',''ans53106.0.8'');
+</script><div><input type="submit" name="continue" id="btn_continue" value="Next »"></div><input type="hidden" name="state" value="9766dfa4-5def-4b6e-be10-971394a3c859"><input type="hidden" name="start_time" value="1780062058"><input type="hidden" name="_ptime" value="0"><script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "rcp4d86fkjhd7z4v");}, 100); });
+</script></form></div></div><div><div><div><br><center><a><img></a></center></div></div><input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33"><input type="hidden" id="SurveyID" name="SurveyID" value="220821"><input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs"><input type="hidden" id="LangCode" name="LangCode" value="EN"><input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults"><input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults"><input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0"><input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0"><script> function getQSTimeoutMs(){return 5000;} </script><script type="text/javascript"></script><script type="text/javascript"></script></div></div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062064657"><div id="detectBreakpoint"></div></body></html>', '2026-05-29 21:41:09');
+INSERT INTO "page_html_source" VALUES (140, 106, 'c47f25c5f4dad0c0b89f20d89046fb1e', '<html lang="en-GB"><!--<![endif]--><head><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/captchafox/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/mt_captcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/hunter.js" data-ts-input="cf-turnstile-response"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/amazon_waf/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/yandex/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/lemin/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/keycaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest_v4/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/communication_helpers.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/core_helpers.js"></script>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- respview.client.meta -->
+
+
+<title>Tapestry Research</title>
+
+
+<!-- respview.css -->
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css?ad7753b880">
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.beacon.css?4ddb951d43">
+
+<!-- generated from: static/support/font-awesome-4.2.0/less/font-awesome.less, static/support/select2-4.0.1/select2.min.css, static/survey.respondent-post151.less, selfserve/2222/260216/static/theme.less, lib/steam/atm1d/v11/static/atm1d.less, lib/steam/cardsort/v7/static/cardsort.less and 0 themevars -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/less-compiled.css?a932463a8405103997a94450f6245f0e">
+
+
+<!-- extra CSS -->
+
+
+<!-- Custom CSS (specified in survey.xml) -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/Tapestry.css">
+
+<!-- respview.client.css -->
+<style>
+        table {
+        border-collapse: inherit !important; 
+        }
+        .row-col-legends-top {
+        background: #ededed;
+        position: sticky;
+        top: -16px;
+        z-index: 100;
+        }
+        .empty {
+        border: 1px solid #ccc;
+        }
+    </style>
+
+<!-- client.css -->
+<style media="screen">
+
+</style>
+
+<!-- JQuery -->
+<!--
+/s/jquery183.all.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/e2190ba850ec2bfa3e7d1567d2021910.js"></script><captcha-widgets></captcha-widgets>
+
+
+<!-- extra Logic -->
+
+
+<!-- respview.js -->
+<script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(6 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((6 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script>
+
+<!--[if lte IE 8]><script src="/s/support/respond/respond-1.4.2.min.js"></script><script src="/s/support/rem-unit-polyfill/rem.min.js"></script><![endif]-->
+
+
+<!--
+/s/support/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js
+/s/common.js
+/s/respview-post132.js
+/s/survey.respondent-post143.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/6f7910d7512e9866158e9fcb02cfdd53.js"></script>
+
+
+<!-- extra JS -->
+<!-- lib/steam/atm1d/v11/styles.xml -->
+  <script src="/survey/lib/steam/atm1d/v11/atm1d.js?e84439618b"></script>
+
+
+
+
+
+
+<!-- respview.client.js -->
+
+
+<!-- client.javascript -->
+
+
+<script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script>
+
+<!-- extra Head -->
+<style>
+
+        #question_S5_HISPANIC .atm1d_vertical .answers > div {
+                text-align: left;
+            }
+
+        #question_S5_HISPANIC .atm1d_vertical .answers > div > div,
+        #question_S5_HISPANIC :not(.atm1d_vertical) .answers{
+            justify-content: flex-start;
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        #question_S5_HISPANIC .atm1d label {
+            max-height: none;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        #question_S5_HISPANIC .atm1d_vertical label {
+            min-width: 75%;
+            text-align: left;
+        }
+
+        #question_S5_HISPANIC .atm1d_horizontal label {
+            min-height: 0;
+        }
+
+        @media (min-width: 768px) {
+            #question_S5_HISPANIC .atm1d_vertical .answers > div {
+                    text-align: left;
+            }
+            #question_S5_HISPANIC .atm1d_vertical .answers > div > div,
+            #question_S5_HISPANIC :not(.atm1d_vertical) .answers {
+                justify-content: flex-start;
+                margin-left: 0;
+                margin-right: auto;
+            }
+
+            #question_S5_HISPANIC .atm1d label {
+                max-height: none;
+                max-width: 100%;
+                text-align: center;
+            }
+
+            #question_S5_HISPANIC .atm1d_vertical label {
+                min-width: 280px;
+                text-align: left;
+            }
+
+            #question_S5_HISPANIC .atm1d_horizontal label {
+                min-height: 0;
+            }
+        }
+        </style>
+
+</head>
+
+<body class="survey-page non-touch" data-device="">
+
+
+<div id="survey" class="survey-container">
+<div class="survey-section"><div class="page-header"></div>
+<!-- /.page-header --></div>
+<div class="survey-section">
+<div class="survey-body">
+<div class="survey-header">
+<div class="logo logo-middle">
+<img src="/survey/selfserve/2222/logo_a2a001390fe4dc2ce73e6e195e691697.png" class="logo-image" alt="Logo">
+</div>
+<!-- /.logo -->
+<div role="progressbar" aria-valuenow="13" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-top" title="progress bar - 13% complete">
+<div class="progress-box-outer" aria-hidden="true"><span class="progress-box-completed" style="width: 13%;"></span></div>
+<div class="progress-text" aria-hidden="true">13%</div>
+</div>
+<!-- /.progress-bar -->
+</div>
+<!-- /.survey-header -->
+
+<form id="primary" name="primary" method="post" action="/survey/selfserve/2222/260216" enctype="application/x-www-form-urlencoded" novalidate="">
+<input type="hidden" name="_v2_counter" value="6">
+<!-- @@XYZZY@@ -->
+<div id="question_S5_HISPANIC" class="question radio label_S5_HISPANIC   noRows noCols" role="radiogroup">
+<fieldset class="atm1d atm1d_vertical" data-view-mode="vertical" data-num-cols="">
+            <legend>
+<h1 title="question" class="question-text" id="question_text_S5_HISPANIC">Are you Spanish, Hispanic, or Latinx such as Mexican, Mexican-American, Chicano, Puerto Rican, Cuban, or another Spanish, Hispanic, or Latinx group?</h1>
+<!-- /.question-text -->
+
+<h2 title="instructions" class="instruction-text">Please select an answer</h2>
+<!-- /.instruction-text -->
+</legend>
+<div class="answers answers-list">
+        <div class="">
+            <input type="radio" name="ans642.0.0" value="0" id="ans642.0.0" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans642.0.0" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>Yes</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="radio" name="ans642.0.0" value="1" id="ans642.0.1" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans642.0.1" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>No</span>
+                </span>
+            </label>
+            </div>
+            
+        </div><!-- /.grid -->
+</div>
+<!-- /.answers -->
+</fieldset>
+</div>
+<!-- /.question --><div class="survey-buttons">
+<input type="submit" name="continue" id="btn_continue" class="button continue" value="Next »" onclick="var i = document.createElement(''input''); i.setAttribute(''type'', ''hidden'');i.setAttribute(''value'', ''1'');i.setAttribute(''name'', ''__has_javascript'');document.forms.primary.appendChild(i);">
+
+</div>
+<!-- #surveyButtons --><input type="hidden" name="state" value="2a03fcb7-89eb-4706-90ee-84e2894e7489">
+<input type="hidden" name="start_time" value="1780062087">
+<input type="hidden" name="_ptime" value="0">
+<script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "7b1pk5r72r56yfdh");}, 100); });
+</script>
+</form>
+
+
+</div>
+<!-- /.survey-body -->
+</div>
+<div class="survey-section"><div class="footer"><div style="width: 100%; height: 60px; background-color: #221b4f;" jstcache="0"><br jstcache="0"><center jstcache="0">       <a target="_blank" jstcache="0">          <img src="/survey/selfserve/2222/260216/Footer.png?2326399e4b" style="background-color: #221b4f;" jstcache="0" width="150px" height="38px">       </a>    </center></div></div>
+<!-- /.footer -->
+<input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33">
+        <input type="hidden" id="SurveyID" name="SurveyID" value="220821">
+        <input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs">
+        <input type="hidden" id="LangCode" name="LangCode" value="EN">
+        <input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults">
+        <input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults">
+        <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+        <input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0">
+
+        <script> function getQSTimeoutMs(){return 5000;} </script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qualityscore.js"></script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qslib1.0.js"></script></div>
+</div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062093575">
+<div id="detectBreakpoint"></div>
+<!-- /.survey-container -->
+
+
+</body></html>', '<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robots"><meta name="viewport"><title>Tapestry Research</title><link><link><link><link><script></script><captcha-widgets></captcha-widgets><script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(6 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((6 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script><script></script><script></script><script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script></head><body><div id="survey"><div><div></div></div><div><div><div><div><img></div><div role="progressbar"><div><span></span></div><div>13%</div></div></div><form id="primary" name="primary"><input type="hidden" name="_v2_counter" value="6"><div id="question_S5_HISPANIC" role="radiogroup"><fieldset><legend><h1 id="question_text_S5_HISPANIC">Are you Spanish, Hispanic, or Latinx such as Mexican, Mexican-American, Chicano, Puerto Rican, Cuban, or another Spanish, Hispanic, or Latinx group?</h1><h2>Please select an answer</h2></legend><div><div><input type="radio" name="ans642.0.0" value="0" id="ans642.0.0"><div><label for="ans642.0.0"><i></i><i></i><span><span>Yes</span></span></label></div></div><div><input type="radio" name="ans642.0.0" value="1" id="ans642.0.1"><div><label for="ans642.0.1"><i></i><i></i><span><span>No</span></span></label></div></div></div></fieldset></div><div><input type="submit" name="continue" id="btn_continue" value="Next »"></div><input type="hidden" name="state" value="2a03fcb7-89eb-4706-90ee-84e2894e7489"><input type="hidden" name="start_time" value="1780062087"><input type="hidden" name="_ptime" value="0"><script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "7b1pk5r72r56yfdh");}, 100); });
+</script></form></div></div><div><div><div><br><center><a><img></a></center></div></div><input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33"><input type="hidden" id="SurveyID" name="SurveyID" value="220821"><input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs"><input type="hidden" id="LangCode" name="LangCode" value="EN"><input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults"><input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults"><input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0"><input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0"><script> function getQSTimeoutMs(){return 5000;} </script><script type="text/javascript"></script><script type="text/javascript"></script></div></div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062093575"><div id="detectBreakpoint"></div></body></html>', '2026-05-29 21:41:38');
+INSERT INTO "page_html_source" VALUES (141, 107, 'e645c8c87d2ac018c30c07618244729a', '<html lang="en-GB"><!--<![endif]--><head><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/captchafox/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/mt_captcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/hunter.js" data-ts-input="cf-turnstile-response"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/amazon_waf/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/yandex/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/lemin/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/keycaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest_v4/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/communication_helpers.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/core_helpers.js"></script>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- respview.client.meta -->
+
+
+<title>Tapestry Research</title>
+
+
+<!-- respview.css -->
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css?ad7753b880">
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.beacon.css?4ddb951d43">
+
+<!-- generated from: static/support/font-awesome-4.2.0/less/font-awesome.less, static/support/select2-4.0.1/select2.min.css, static/survey.respondent-post151.less, selfserve/2222/260216/static/theme.less, lib/steam/atm1d/v11/static/atm1d.less, lib/steam/cardsort/v7/static/cardsort.less and 0 themevars -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/less-compiled.css?a932463a8405103997a94450f6245f0e">
+
+
+<!-- extra CSS -->
+
+
+<!-- Custom CSS (specified in survey.xml) -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/Tapestry.css">
+
+<!-- respview.client.css -->
+<style>
+        table {
+        border-collapse: inherit !important; 
+        }
+        .row-col-legends-top {
+        background: #ededed;
+        position: sticky;
+        top: -16px;
+        z-index: 100;
+        }
+        .empty {
+        border: 1px solid #ccc;
+        }
+    </style>
+
+<!-- client.css -->
+<style media="screen">
+
+</style>
+
+<!-- JQuery -->
+<!--
+/s/jquery183.all.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/e2190ba850ec2bfa3e7d1567d2021910.js"></script><captcha-widgets></captcha-widgets>
+
+
+<!-- extra Logic -->
+
+
+<!-- respview.js -->
+<script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(7 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((7 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script>
+
+<!--[if lte IE 8]><script src="/s/support/respond/respond-1.4.2.min.js"></script><script src="/s/support/rem-unit-polyfill/rem.min.js"></script><![endif]-->
+
+
+<!--
+/s/support/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js
+/s/common.js
+/s/respview-post132.js
+/s/survey.respondent-post143.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/6f7910d7512e9866158e9fcb02cfdd53.js"></script>
+
+
+<!-- extra JS -->
+<!-- lib/steam/atm1d/v11/styles.xml -->
+  <script src="/survey/lib/steam/atm1d/v11/atm1d.js?e84439618b"></script>
+
+
+
+
+
+
+<!-- respview.client.js -->
+
+
+<!-- client.javascript -->
+
+
+<script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script>
+
+<!-- extra Head -->
+<style>
+
+        #question_RACE_MULTI .atm1d_vertical .answers > div {
+                text-align: left;
+            }
+
+        #question_RACE_MULTI .atm1d_vertical .answers > div > div,
+        #question_RACE_MULTI :not(.atm1d_vertical) .answers{
+            justify-content: flex-start;
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        #question_RACE_MULTI .atm1d label {
+            max-height: none;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        #question_RACE_MULTI .atm1d_vertical label {
+            min-width: 75%;
+            text-align: left;
+        }
+
+        #question_RACE_MULTI .atm1d_horizontal label {
+            min-height: 0;
+        }
+
+        @media (min-width: 768px) {
+            #question_RACE_MULTI .atm1d_vertical .answers > div {
+                    text-align: left;
+            }
+            #question_RACE_MULTI .atm1d_vertical .answers > div > div,
+            #question_RACE_MULTI :not(.atm1d_vertical) .answers {
+                justify-content: flex-start;
+                margin-left: 0;
+                margin-right: auto;
+            }
+
+            #question_RACE_MULTI .atm1d label {
+                max-height: none;
+                max-width: 100%;
+                text-align: center;
+            }
+
+            #question_RACE_MULTI .atm1d_vertical label {
+                min-width: 280px;
+                text-align: left;
+            }
+
+            #question_RACE_MULTI .atm1d_horizontal label {
+                min-height: 0;
+            }
+        }
+        </style>
+
+</head>
+
+<body class="survey-page non-touch" data-device="">
+
+
+<div id="survey" class="survey-container">
+<div class="survey-section"><div class="page-header"></div>
+<!-- /.page-header --></div>
+<div class="survey-section">
+<div class="survey-body">
+<div class="survey-header">
+<div class="logo logo-middle">
+<img src="/survey/selfserve/2222/logo_a2a001390fe4dc2ce73e6e195e691697.png" class="logo-image" alt="Logo">
+</div>
+<!-- /.logo -->
+<div role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-top" title="progress bar - 15% complete">
+<div class="progress-box-outer" aria-hidden="true"><span class="progress-box-completed" style="width: 15%;"></span></div>
+<div class="progress-text" aria-hidden="true">15%</div>
+</div>
+<!-- /.progress-bar -->
+</div>
+<!-- /.survey-header -->
+
+<form id="primary" name="primary" method="post" action="/survey/selfserve/2222/260216" enctype="application/x-www-form-urlencoded" novalidate="">
+<input type="hidden" name="_v2_counter" value="7">
+<!-- @@XYZZY@@ -->
+<div id="question_RACE_MULTI" class="question checkbox label_RACE_MULTI   noRows noCols" role="radiogroup">
+<fieldset class="atm1d atm1d_tiled" data-view-mode="tiled" data-num-cols="">
+            <legend>
+<h1 title="question" class="question-text" id="question_text_RACE_MULTI">What is your racial background?</h1>
+<!-- /.question-text -->
+
+<h2 title="instructions" class="instruction-text">Please select all that apply</h2>
+<!-- /.instruction-text -->
+</legend>
+<div class="answers answers-list">
+        <div class="">
+            <input type="checkbox" name="ans668.0.2" id="ans668.0.2" value="1" class=" input checkbox">
+            <div class="showInputParent_0">
+            <label for="ans668.0.2" class="showInput_0" style="width: 198.222px; height: 43.7778px;">
+                <i aria-hidden="true" class="fa fa-square-o fa-icon-square-o"></i>
+                <i aria-hidden="true" class="fa fa-check-square-o fa-icon-check-square-o"></i>
+                <span>
+                    <span>White/Caucasian</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="checkbox" name="ans668.0.0" id="ans668.0.0" value="1" class=" input checkbox">
+            <div class="showInputParent_0">
+            <label for="ans668.0.0" class="showInput_0" style="width: 198.222px; height: 43.7778px;">
+                <i aria-hidden="true" class="fa fa-square-o fa-icon-square-o"></i>
+                <i aria-hidden="true" class="fa fa-check-square-o fa-icon-check-square-o"></i>
+                <span>
+                    <span>Asian/Asian-American</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="checkbox" name="ans668.0.1" id="ans668.0.1" value="1" class=" input checkbox">
+            <div class="showInputParent_0">
+            <label for="ans668.0.1" class="showInput_0" style="width: 198.222px; height: 43.7778px;">
+                <i aria-hidden="true" class="fa fa-square-o fa-icon-square-o"></i>
+                <i aria-hidden="true" class="fa fa-check-square-o fa-icon-check-square-o"></i>
+                <span>
+                    <span>Black/African-American</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="checkbox" name="ans668.0.3" id="ans668.0.3" value="1" class=" input checkbox">
+            <div class="showInputParent_0">
+            <label for="ans668.0.3" class="showInput_0" style="width: 198.222px; height: 43.7778px;">
+                <i aria-hidden="true" class="fa fa-square-o fa-icon-square-o"></i>
+                <i aria-hidden="true" class="fa fa-check-square-o fa-icon-check-square-o"></i>
+                <span>
+                    <span>Other</span>
+                </span>
+            </label>
+            </div>
+            
+        </div><!-- /.grid -->
+</div>
+<!-- /.answers -->
+</fieldset>
+</div>
+<!-- /.question --><div class="survey-buttons">
+<input type="submit" name="continue" id="btn_continue" class="button continue" value="Next »" onclick="var i = document.createElement(''input''); i.setAttribute(''type'', ''hidden'');i.setAttribute(''value'', ''1'');i.setAttribute(''name'', ''__has_javascript'');document.forms.primary.appendChild(i);">
+
+</div>
+<!-- #surveyButtons --><input type="hidden" name="state" value="2cfa8672-538c-4fca-9896-dc80f89806e2">
+<input type="hidden" name="start_time" value="1780062099">
+<input type="hidden" name="_ptime" value="0">
+<script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "8yvdn7buu4jdv3r4");}, 100); });
+</script>
+</form>
+
+
+</div>
+<!-- /.survey-body -->
+</div>
+<div class="survey-section"><div class="footer"><div style="width: 100%; height: 60px; background-color: #221b4f;" jstcache="0"><br jstcache="0"><center jstcache="0">       <a target="_blank" jstcache="0">          <img src="/survey/selfserve/2222/260216/Footer.png?2326399e4b" style="background-color: #221b4f;" jstcache="0" width="150px" height="38px">       </a>    </center></div></div>
+<!-- /.footer -->
+<input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33">
+        <input type="hidden" id="SurveyID" name="SurveyID" value="220821">
+        <input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs">
+        <input type="hidden" id="LangCode" name="LangCode" value="EN">
+        <input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults">
+        <input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults">
+        <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+        <input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0">
+
+        <script> function getQSTimeoutMs(){return 5000;} </script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qualityscore.js"></script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qslib1.0.js"></script></div>
+</div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062106010">
+<div id="detectBreakpoint"></div>
+<!-- /.survey-container -->
+
+
+</body></html>', '<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robots"><meta name="viewport"><title>Tapestry Research</title><link><link><link><link><script></script><captcha-widgets></captcha-widgets><script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(7 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((7 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script><script></script><script></script><script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script></head><body><div id="survey"><div><div></div></div><div><div><div><div><img></div><div role="progressbar"><div><span></span></div><div>15%</div></div></div><form id="primary" name="primary"><input type="hidden" name="_v2_counter" value="7"><div id="question_RACE_MULTI" role="radiogroup"><fieldset><legend><h1 id="question_text_RACE_MULTI">What is your racial background?</h1><h2>Please select all that apply</h2></legend><div><div><input type="checkbox" name="ans668.0.2" id="ans668.0.2" value="1"><div><label for="ans668.0.2"><i></i><i></i><span><span>White/Caucasian</span></span></label></div></div><div><input type="checkbox" name="ans668.0.0" id="ans668.0.0" value="1"><div><label for="ans668.0.0"><i></i><i></i><span><span>Asian/Asian-American</span></span></label></div></div><div><input type="checkbox" name="ans668.0.1" id="ans668.0.1" value="1"><div><label for="ans668.0.1"><i></i><i></i><span><span>Black/African-American</span></span></label></div></div><div><input type="checkbox" name="ans668.0.3" id="ans668.0.3" value="1"><div><label for="ans668.0.3"><i></i><i></i><span><span>Other</span></span></label></div></div></div></fieldset></div><div><input type="submit" name="continue" id="btn_continue" value="Next »"></div><input type="hidden" name="state" value="2cfa8672-538c-4fca-9896-dc80f89806e2"><input type="hidden" name="start_time" value="1780062099"><input type="hidden" name="_ptime" value="0"><script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "8yvdn7buu4jdv3r4");}, 100); });
+</script></form></div></div><div><div><div><br><center><a><img></a></center></div></div><input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33"><input type="hidden" id="SurveyID" name="SurveyID" value="220821"><input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs"><input type="hidden" id="LangCode" name="LangCode" value="EN"><input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults"><input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults"><input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0"><input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0"><script> function getQSTimeoutMs(){return 5000;} </script><script type="text/javascript"></script><script type="text/javascript"></script></div></div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062106010"><div id="detectBreakpoint"></div></body></html>', '2026-05-29 21:41:50');
+INSERT INTO "page_html_source" VALUES (142, 108, '4e4a1bc82cbcea816df71ac83405c775', '<html lang="en-GB"><!--<![endif]--><head><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/captchafox/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/mt_captcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/hunter.js" data-ts-input="cf-turnstile-response"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/amazon_waf/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/yandex/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/lemin/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/keycaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest_v4/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/communication_helpers.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/core_helpers.js"></script>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- respview.client.meta -->
+
+
+<title>Tapestry Research</title>
+
+
+<!-- respview.css -->
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css?ad7753b880">
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.beacon.css?4ddb951d43">
+
+<!-- generated from: static/support/font-awesome-4.2.0/less/font-awesome.less, static/support/select2-4.0.1/select2.min.css, static/survey.respondent-post151.less, selfserve/2222/260216/static/theme.less, lib/steam/atm1d/v11/static/atm1d.less, lib/steam/cardsort/v7/static/cardsort.less and 0 themevars -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/less-compiled.css?a932463a8405103997a94450f6245f0e">
+
+
+<!-- extra CSS -->
+<!-- lib/steam/cardsort/v7/styles.xml -->
+  <link rel="stylesheet" href="/s/support/fontawesome/css/font-awesome.css?2dedbce405">
+
+<!--[if IE 7]>
+  <link rel=''stylesheet'' href=''/s/support/fontawesome/css/font-awesome-ie7.css?059a69441a'' />
+<![endif]-->
+
+  <link rel="stylesheet" href="/survey/lib/steam/cardsort/v7/cardsort.css?f697411ffe">
+
+  <link rel="stylesheet" href="/survey/lib/steam/cardsort/v7/cardsort_desktop.css?c5779a8ab6">
+
+
+<!-- Custom CSS (specified in survey.xml) -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/Tapestry.css">
+
+<!-- respview.client.css -->
+<style>
+        table {
+        border-collapse: inherit !important; 
+        }
+        .row-col-legends-top {
+        background: #ededed;
+        position: sticky;
+        top: -16px;
+        z-index: 100;
+        }
+        .empty {
+        border: 1px solid #ccc;
+        }
+    </style>
+
+<!-- client.css -->
+<style media="screen">
+
+</style>
+
+<!-- JQuery -->
+<!--
+/s/jquery183.all.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/e2190ba850ec2bfa3e7d1567d2021910.js"></script><captcha-widgets></captcha-widgets>
+
+
+<!-- extra Logic -->
+
+
+<!-- respview.js -->
+<script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(8 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((8 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script>
+
+<!--[if lte IE 8]><script src="/s/support/respond/respond-1.4.2.min.js"></script><script src="/s/support/rem-unit-polyfill/rem.min.js"></script><![endif]-->
+
+
+<!--
+/s/support/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js
+/s/common.js
+/s/respview-post132.js
+/s/survey.respondent-post143.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/6f7910d7512e9866158e9fcb02cfdd53.js"></script>
+
+
+<!-- extra JS -->
+<!-- lib/steam/cardsort/v7/styles.xml -->
+
+  <script src="/survey/lib/steam/cardsort/v7/cardsort.js?d389abd6a6"></script>
+
+
+
+
+
+
+<!-- respview.client.js -->
+
+
+<!-- client.javascript -->
+
+
+<script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script>
+
+<!-- extra Head -->
+    <link href="/survey/selfserve/2222/260216/cardsort.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="survey-page non-touch" data-device="">
+
+
+<div id="survey" class="survey-container">
+<div class="survey-section"><div class="page-header"></div>
+<!-- /.page-header --></div>
+<div class="survey-section">
+<div class="survey-body">
+<div class="survey-header">
+<div class="logo logo-middle">
+<img src="/survey/selfserve/2222/logo_a2a001390fe4dc2ce73e6e195e691697.png" class="logo-image" alt="Logo">
+</div>
+<!-- /.logo -->
+<div role="progressbar" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-top" title="progress bar - 16% complete">
+<div class="progress-box-outer" aria-hidden="true"><span class="progress-box-completed" style="width: 16%;"></span></div>
+<div class="progress-text" aria-hidden="true">16%</div>
+</div>
+<!-- /.progress-bar -->
+</div>
+<!-- /.survey-header -->
+
+<form id="primary" name="primary" method="post" action="/survey/selfserve/2222/260216" enctype="application/x-www-form-urlencoded" novalidate="">
+<input type="hidden" name="_v2_counter" value="8">
+<!-- @@XYZZY@@ -->
+<style type="text/css">
+    #question_QC3 .answers-table,.question-source {
+        display: none;
+    }
+    /* cardsort top-level container */
+    .sq-cardsort-QC3.sq-cardsort-desktop {
+    }
+    /* all cards */
+    .sq-cardsort-QC3 .sq-cardsort-card-item {
+        font-family: ''Century Gothic'', CenturyGothic, AppleGothic, sans-serif;
+        /* bug #21065 fix - limit the width of the card if max-width is specified */
+    }
+    /* each individual card */
+
+
+
+
+
+    /* disabled card */
+    .sq-cardsort-QC3 .sq-cardsort-card.sq-cardsort-state-disabled .sq-cardsort-card-item {
+        
+    }
+    /* hovered card */
+    .sq-cardsort-QC3 .sq-cardsort-card.sq-cardsort-state-hovered .sq-cardsort-card-item {
+        
+    }
+    /* selected card */
+    .sq-cardsort-QC3 .sq-cardsort-card.sq-cardsort-state-selected .sq-cardsort-card-item {
+        
+    }
+    /* card in bucket contents view */
+    /* bug 13492 fix starts here */
+    .sq-cardsort-QC3 .sq-cardsort-contents-overlay .sq-cardsort-card {
+        /* bug #20850 - use theme colors */
+        /*background-color: #cdcdcd;*/
+        min-height: 48px;
+        height: auto !important;
+        height: 48px;
+        text-align: left;
+    }
+    .sq-cardsort-QC3 .sq-cardsort-contents-overlay .sq-cardsort-card-item { /* this line is not part of the bug 13492 fix */
+        /* bug #20850 - use theme colors */
+        /*color: #000000;*/
+        display: block;
+        min-height: 48px;
+        height: auto !important;
+        height: 48px;
+        text-align: left;
+        width: auto;
+         /* this line is not part of the bug 13492 fix */
+    }
+    .sq-cardsort-QC3 .sq-cardsort-contents-overlay .sq-cardsort-card-legend {
+        display: inline-block;
+        height: auto;
+        line-height: normal;
+        margin-left: 50px; 
+        min-height: auto;
+        text-align: left;
+    }
+    /* bug 13492 fix ends here */
+
+    /* buckets container */
+    .sq-cardsort-QC3.sq-cardsort-desktop .sq-cardsort-buckets {
+    }
+    /* all buckets */
+    .sq-cardsort-QC3 .sq-cardsort-bucket {
+        /* bug #20850 - use theme colors */
+        /*background-color: #cdcdcd;*/
+        /*color: #000000;*/
+        width: 15%;
+        /* bug #21065 fix - limit the width of the bucket if max-width is specified */
+    }
+    .sq-cardsort-QC3 .sq-cardsort-bucket-item {
+        margin-right: 5px;
+    }
+    /* each individual bucket */
+
+
+
+
+
+    /* disabled bucket */
+    .sq-cardsort-QC3 .sq-cardsort-bucket.sq-cardsort-state-disabled {
+        /* bug #20850 - use theme colors */
+        /*background-color: #8d8d8d;*/
+        /*color: #404040;*/
+        
+    }
+    /* hovered bucket */
+    .sq-cardsort-QC3 .sq-cardsort-bucket.sq-cardsort-state-hovered {
+        /* bug #20850 - use theme colors */
+        /*background-color: #49c0b8;*/
+        /*color: #000000;*/
+        
+    }
+    /* selected bucket */
+    .sq-cardsort-QC3 .sq-cardsort-bucket.sq-cardsort-state-selected {
+        /* bug #20850 - use theme colors */
+        /*background-color: #49c0b8;*/
+        /*color: #000000;*/
+        
+    }
+    /* card counter on bucket */
+    .sq-cardsort-QC3 .sq-cardsort-bucket-count {
+        /* bug #20850 - use theme colors */
+        /*color: #cdcdcd;*/
+        
+        display: none;
+    }
+    /* disabled card counter on bucket */
+    .sq-cardsort-QC3 .sq-cardsort-bucket-count.sq-cardsort-state-disabled {
+        /* bug #20850 - use theme colors */
+        /*color: #8d8d8d;*/
+        
+    }
+    /* hovered card counter on bucket */
+    .sq-cardsort-QC3 .sq-cardsort-bucket-count.sq-cardsort-state-hovered {
+        /* bug #20850 - use theme colors */
+        /*color: #49c0b8;*/
+        
+    }
+    /* progress indicator */
+    .sq-cardsort-QC3 .sq-cardsort-progress {
+        ;
+    }
+    /* navigation (previous, next) buttons */
+    .sq-cardsort-QC3 .sq-cardsort-previous,.sq-cardsort-QC3 .sq-cardsort-next {
+        /* bug #20850 - use theme colors */
+        /*background-color: #cdcdcd;*/
+        /*color: #000000;*/
+        ;
+    }
+    /* disabled navigation (previous, next) buttons */
+    .sq-cardsort-QC3 .sq-cardsort-previous.sq-cardsort-state-disabled,.sq-cardsort-QC3 .sq-cardsort-next.sq-cardsort-state-disabled {
+        /* bug #20850 - use theme colors */
+        /*background-color: #8d8d8d;*/
+        /*color: #404040;*/
+        
+    }
+    /* hovered navigation (previous, next) buttons */
+    .sq-cardsort-QC3 .sq-cardsort-previous.sq-cardsort-state-hovered,.sq-cardsort-QC3 .sq-cardsort-next.sq-cardsort-state-hovered {
+        /* bug #20850 - use theme colors */
+        /*background-color: #49c0b8;*/
+        /*color: #000000;*/
+        
+    }
+    /* completion message */
+    .sq-cardsort-QC3 .sq-cardsort-completion-item {
+        
+    }
+    </style>
+
+    <script type="text/javascript">
+    (function($) {
+        var setupOptions = {
+ "displayCounter": false,
+ "buttonNextHTML": "<span style=\"font-family: Century Gothic;\">Next</span> <i class=\"fa-icon-chevron-right\"></i>",
+ "bucketSelectCSS": {},
+ "cardDisableCSS": {},
+ "contentsCardCSS": {},
+ "cardCSS": {
+  "font-family": "''Century Gothic'', CenturyGothic, AppleGothic, sans-serif"
+ },
+ "completionHTML": "<i>Click the \">>\" button to proceed.</i>",
+ "buttonPreviousHTML": "<i class=\"fa-icon-chevron-left\"></i><span style=\"font-family: Century Gothic;\"> Prev</span>",
+ "animationDuration": 500,
+ "wrapBuckets": true,
+ "bucketCountCSS": {},
+ "iconButtonCSS": {},
+ "progressCSS": {},
+ "completionCSS": {},
+ "displayProgress": true,
+ "iconButtonHoverCSS": {},
+ "iconButtonDisableCSS": {},
+ "dragAndDrop": true,
+ "bucketMaxWidth": "",
+ "cardHoverCSS": {},
+ "bucketHoverCSS": {},
+ "bucketCountDisableCSS": {},
+ "cardMaxWidth": "",
+ "cardSelectCSS": {},
+ "bucketCountHoverCSS": {},
+ "bucketDisableCSS": {},
+ "themeFile": "cardsort.css",
+ "bucketsPerRow": 0,
+ "automaticAdvance": true,
+ "bucketCSS": {
+  "width": "15%"
+ },
+ "displayNavigation": true
+};
+        $.extend(setupOptions, {
+            // bug 16635: add autoadvance and drag and drop begin
+            automaticAdvance: 1,
+            dragAndDrop: 1,
+            // bug 16635: add autoadvance and drag and drop end
+            debug: false,
+            deviceClass: "desktop",
+            grouping: "rows",
+            infiniteScroll: 0,
+            label: "QC3",
+            style: "cardsort",
+            type: "radio",
+            uniformBucketSize: 1,
+            uniformCardSize: 1
+        });
+        $ (function() {
+            Survey.question.cardsort.setup(setupOptions);
+        });
+    })(jQuery);
+    </script>
+<div id="question_QC3" class="question radio label_QC3  ">
+<h1 title="question" class="question-text" id="question_text_QC3">How much do you agree or disagree that each of the words below describe you?</h1>
+<!-- /.question-text -->
+
+<h2 title="instructions" class="instruction-text">Please select an answer</h2>
+<!-- /.instruction-text -->
+<!-- assign sq-cardsort-mobile class if mobile device -->
+    <!-- assign sq-cardsort-desktop class if not mobile device -->
+    <div class="sq-cardsort sq-cardsort-QC3 sq-cardsort-desktop">
+      <div class="sq-cardsort-body">
+        <div class="sq-cardsort-cards-view">
+          <ul class="sq-cardsort-cards" style="display: block; width: 331px;">
+            <li atleast="1" atmost="1" class="sq-cardsort-card sq-cardsort-card-r1 ui-draggable" index="0" style="display: inline-block;">
+              <span class="sq-cardsort-card-remove sq-cardsort-card-remove-r1 sq-cardsort-icon-button"><i class="fa-icon-ban-circle"></i></span>
+              <div class="sq-cardsort-card-item sq-cardsort-card-item-r1" index="0" style="height: 83px; width: 331px;"><p class="sq-cardsort-card-legend sq-cardsort-card-legend-left" style="margin-bottom: 21px; margin-top: 21px;">
+        Sophisticated
+    </p></div>
+            </li>
+            <li atleast="1" atmost="1" class="sq-cardsort-card sq-cardsort-card-r2 ui-draggable" index="1" style="display: none;">
+              <span class="sq-cardsort-card-remove sq-cardsort-card-remove-r2 sq-cardsort-icon-button"><i class="fa-icon-ban-circle"></i></span>
+              <div class="sq-cardsort-card-item sq-cardsort-card-item-r2" index="1" style="height: 83px; width: 331px;"><p class="sq-cardsort-card-legend sq-cardsort-card-legend-left" style="margin-bottom: 21px; margin-top: 21px;">
+        Elegant
+    </p></div>
+            </li>
+            <li atleast="1" atmost="1" class="sq-cardsort-card sq-cardsort-card-r3 ui-draggable" index="2" style="display: none;">
+              <span class="sq-cardsort-card-remove sq-cardsort-card-remove-r3 sq-cardsort-icon-button"><i class="fa-icon-ban-circle"></i></span>
+              <div class="sq-cardsort-card-item sq-cardsort-card-item-r3" index="2" style="height: 83px; width: 331px;"><p class="sq-cardsort-card-legend sq-cardsort-card-legend-left" style="margin-bottom: 21px; margin-top: 21px;">
+        Funny
+    </p></div>
+            </li>
+            <li atleast="1" atmost="1" class="sq-cardsort-card sq-cardsort-card-r4 ui-draggable" index="3" style="display: none;">
+              <span class="sq-cardsort-card-remove sq-cardsort-card-remove-r4 sq-cardsort-icon-button"><i class="fa-icon-ban-circle"></i></span>
+              <div class="sq-cardsort-card-item sq-cardsort-card-item-r4" index="3" style="height: 83px; width: 331px;"><p class="sq-cardsort-card-legend sq-cardsort-card-legend-left" style="margin-bottom: 10px; margin-top: 10px;">
+        Select “Agree slightly” for this item
+    </p></div>
+            </li>
+            <li atleast="1" atmost="1" class="sq-cardsort-card sq-cardsort-card-r5 ui-draggable" index="4" style="display: none;">
+              <span class="sq-cardsort-card-remove sq-cardsort-card-remove-r5 sq-cardsort-icon-button"><i class="fa-icon-ban-circle"></i></span>
+              <div class="sq-cardsort-card-item sq-cardsort-card-item-r5" index="4" style="height: 83px; width: 331px;"><p class="sq-cardsort-card-legend sq-cardsort-card-legend-left" style="margin-bottom: 21px; margin-top: 21px;">
+        Edgy
+    </p></div>
+            </li>
+            <!-- completion message - not actually a card -->
+            <li class="sq-cardsort-completion">
+              <div class="sq-cardsort-completion-item" aria-live="assertive"><i>Click the "&gt;&gt;" button to proceed.</i></div>
+            </li>
+          </ul>
+          <span class="sq-cardsort-progress">1/5</span>
+          <span class="sq-cardsort-icon-button sq-cardsort-previous sq-cardsort-state-disabled" disabled="disabled"><i class="fa-icon-chevron-left"></i><span style="font-family: Century Gothic;"> Prev</span></span>
+          <span class="sq-cardsort-icon-button sq-cardsort-next sq-cardsort-state-disabled" disabled="disabled"><span style="font-family: Century Gothic;">Next</span> <i class="fa-icon-chevron-right"></i></span>
+        </div>
+        <div class="sq-cardsort-buckets-view">
+          <ul class="sq-cardsort-buckets">
+            <li class="sq-cardsort-bucket sq-cardsort-bucket-c1 ui-droppable" index="0" style="display: inline-block; height: 52.7778px; width: 160.778px;">
+              <div class="sq-cardsort-bucket-item sq-cardsort-bucket-item-c1" index="0" style="margin-bottom: 13px; margin-top: 13px;"><p class="sq-cardsort-bucket-legend sq-cardsort-bucket-legend-top">
+Agree strongly
+<div class="force-width" style="width:12px"></div></p></div>
+              <span class="sq-cardsort-bucket-count sq-cardsort-bucket-count-c1 sq-cardsort-icon-button sq-cardsort-state-disabled">0</span>
+            </li>
+            <li class="sq-cardsort-bucket sq-cardsort-bucket-c2 ui-droppable" index="1" style="display: inline-block; height: 52.7778px; width: 160.778px;">
+              <div class="sq-cardsort-bucket-item sq-cardsort-bucket-item-c2" index="1" style="margin-bottom: 13px; margin-top: 13px;"><p class="sq-cardsort-bucket-legend sq-cardsort-bucket-legend-top">
+Agree slightly
+<div class="force-width" style="width:12px"></div></p></div>
+              <span class="sq-cardsort-bucket-count sq-cardsort-bucket-count-c2 sq-cardsort-icon-button sq-cardsort-state-disabled">0</span>
+            </li>
+            <li class="sq-cardsort-bucket sq-cardsort-bucket-c3 ui-droppable" index="2" style="display: inline-block; height: 52.7778px; width: 160.778px;">
+              <div class="sq-cardsort-bucket-item sq-cardsort-bucket-item-c3" index="2" style="margin-bottom: 6px; margin-top: 6px;"><p class="sq-cardsort-bucket-legend sq-cardsort-bucket-legend-top">
+Neither agree nor disagree
+<div class="force-width" style="width:12px"></div></p></div>
+              <span class="sq-cardsort-bucket-count sq-cardsort-bucket-count-c3 sq-cardsort-icon-button sq-cardsort-state-disabled">0</span>
+            </li>
+            <li class="sq-cardsort-bucket sq-cardsort-bucket-c4 ui-droppable" index="3" style="display: inline-block; height: 52.7778px; width: 160.778px;">
+              <div class="sq-cardsort-bucket-item sq-cardsort-bucket-item-c4" index="3" style="margin-bottom: 13px; margin-top: 13px;"><p class="sq-cardsort-bucket-legend sq-cardsort-bucket-legend-top">
+Disagree slightly
+<div class="force-width" style="width:12px"></div></p></div>
+              <span class="sq-cardsort-bucket-count sq-cardsort-bucket-count-c4 sq-cardsort-icon-button sq-cardsort-state-disabled">0</span>
+            </li>
+            <li class="sq-cardsort-bucket sq-cardsort-bucket-c5 ui-droppable" index="4" style="display: inline-block; height: 52.7778px; width: 160.778px;">
+              <div class="sq-cardsort-bucket-item sq-cardsort-bucket-item-c5" index="4" style="margin-bottom: 13px; margin-top: 13px;"><p class="sq-cardsort-bucket-legend sq-cardsort-bucket-legend-top">
+Disagree strongly
+<div class="force-width" style="width:12px"></div></p></div>
+              <span class="sq-cardsort-bucket-count sq-cardsort-bucket-count-c5 sq-cardsort-icon-button sq-cardsort-state-disabled">0</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- used to diplay the contents of a bucket -->
+      <div class="sq-cardsort-contents-overlay">
+        <div class="sq-cardsort-contents-bg"></div>
+        <span class="sq-cardsort-icon-button sq-cardsort-contents-close"><i class="fa-icon-remove"></i></span>
+        <div class="sq-cardsort-contents-view">
+          <div class="sq-cardsort-contents-title"></div>
+          <ul class="sq-cardsort-contents-cards"></ul>
+        </div>
+      </div>
+      <!-- used to diplay the contents of a bucket -->
+    </div>
+<div class="answers answers-table">
+<div class="fir fir-checkbox" style="display: none;">
+<span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> checkbox </title>
+<path d="M15.8,0H3.9C1.8,0,0,2,0,4.1V16c0,2.2,1.8,4,3.9,4h11.8c2.2,0,4.2-1.8,4.2-4V4.1C20,2,18,0,15.8,0z M19,16 c0,1.6-1.6,3-3.2,3H3.9C2.3,19,1,17.7,1,16V4.1C1,2.5,2.3,1,3.9,1h11.8C17.4,1,19,2.5,19,4.1V16z" class="fir-base"></path>
+<path d="M19,16c0,1.6-1.6,3-3.2,3H3.9C2.3,19,1,17.7,1,16V4.1C1,2.5,2.3,1,3.9,1h11.8C17.4,1,19,2.5,19,4.1V16z" class="fir-bg"></path>
+<polygon points="9.1,16.3 2.5,11 4.1,9 8.7,12.6 15.6,3.7 17.7,5.2 " class="fir-selected"></polygon>
+</svg>
+</span>
+</div>
+<div class="fir fir-radio" style="display: none;">
+<span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</div>
+<table class="grid setWidth grid-table-mode" data-settings="force-desktop mobile-mode group-by-row table-mode" data-height="" summary="This table contains form elements to answer the survey question">
+<tbody><tr class="row row-col-legends row-col-legends-top colCount-5">
+<td class="cell empty empty-left empty-top unused mobile border-collapse"></td>
+<th scope="col" id="QC3_c1" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   ">
+Agree strongly
+<div class="force-width" style="width:12px"></div></th><th scope="col" id="QC3_c2" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   ">
+Agree slightly
+<div class="force-width" style="width:12px"></div></th><th scope="col" id="QC3_c3" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   ">
+Neither agree nor disagree
+<div class="force-width" style="width:12px"></div></th><th scope="col" id="QC3_c4" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   ">
+Disagree slightly
+<div class="force-width" style="width:12px"></div></th><th scope="col" id="QC3_c5" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   ">
+Disagree strongly
+<div class="force-width" style="width:12px"></div></th>
+
+</tr>
+</tbody>
+<tbody><tr class="row row-elements even colCount-5">
+<th scope="row" id="QC3_r1_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+        Sophisticated
+    </th>
+<td headers="QC3_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.0" value="0" id="ans53217.0.0" class="input radio fir-hidden" aria-labelledby="QC3_r1_left QC3_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.0.0">Agree strongly</label> </span>
+</span>
+</td><td headers="QC3_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.0" value="1" id="ans53217.1.0" class="input radio fir-hidden" aria-labelledby="QC3_r1_left QC3_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.1.0">Agree slightly</label> </span>
+</span>
+</td><td headers="QC3_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.0" value="2" id="ans53217.2.0" class="input radio fir-hidden" aria-labelledby="QC3_r1_left QC3_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.2.0">Neither agree nor disagree</label> </span>
+</span>
+</td><td headers="QC3_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.0" value="3" id="ans53217.3.0" class="input radio fir-hidden" aria-labelledby="QC3_r1_left QC3_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.3.0">Disagree slightly</label> </span>
+</span>
+</td><td headers="QC3_c5" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.0" value="4" id="ans53217.4.0" class="input radio fir-hidden" aria-labelledby="QC3_r1_left QC3_c5"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.4.0">Disagree strongly</label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-5">
+<th scope="row" id="QC3_r2_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+        Elegant
+    </th>
+<td headers="QC3_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.1" value="0" id="ans53217.0.1" class="input radio fir-hidden" aria-labelledby="QC3_r2_left QC3_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.0.1">Agree strongly</label> </span>
+</span>
+</td><td headers="QC3_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.1" value="1" id="ans53217.1.1" class="input radio fir-hidden" aria-labelledby="QC3_r2_left QC3_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.1.1">Agree slightly</label> </span>
+</span>
+</td><td headers="QC3_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.1" value="2" id="ans53217.2.1" class="input radio fir-hidden" aria-labelledby="QC3_r2_left QC3_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.2.1">Neither agree nor disagree</label> </span>
+</span>
+</td><td headers="QC3_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.1" value="3" id="ans53217.3.1" class="input radio fir-hidden" aria-labelledby="QC3_r2_left QC3_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.3.1">Disagree slightly</label> </span>
+</span>
+</td><td headers="QC3_c5" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.1" value="4" id="ans53217.4.1" class="input radio fir-hidden" aria-labelledby="QC3_r2_left QC3_c5"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.4.1">Disagree strongly</label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-5">
+<th scope="row" id="QC3_r3_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+        Funny
+    </th>
+<td headers="QC3_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.2" value="0" id="ans53217.0.2" class="input radio fir-hidden" aria-labelledby="QC3_r3_left QC3_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.0.2">Agree strongly</label> </span>
+</span>
+</td><td headers="QC3_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.2" value="1" id="ans53217.1.2" class="input radio fir-hidden" aria-labelledby="QC3_r3_left QC3_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.1.2">Agree slightly</label> </span>
+</span>
+</td><td headers="QC3_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.2" value="2" id="ans53217.2.2" class="input radio fir-hidden" aria-labelledby="QC3_r3_left QC3_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.2.2">Neither agree nor disagree</label> </span>
+</span>
+</td><td headers="QC3_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.2" value="3" id="ans53217.3.2" class="input radio fir-hidden" aria-labelledby="QC3_r3_left QC3_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.3.2">Disagree slightly</label> </span>
+</span>
+</td><td headers="QC3_c5" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.2" value="4" id="ans53217.4.2" class="input radio fir-hidden" aria-labelledby="QC3_r3_left QC3_c5"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.4.2">Disagree strongly</label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-5">
+<th scope="row" id="QC3_r4_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+        Select “Agree slightly” for this item
+    </th>
+<td headers="QC3_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.3" value="0" id="ans53217.0.3" class="input radio fir-hidden" aria-labelledby="QC3_r4_left QC3_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.0.3">Agree strongly</label> </span>
+</span>
+</td><td headers="QC3_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.3" value="1" id="ans53217.1.3" class="input radio fir-hidden" aria-labelledby="QC3_r4_left QC3_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.1.3">Agree slightly</label> </span>
+</span>
+</td><td headers="QC3_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.3" value="2" id="ans53217.2.3" class="input radio fir-hidden" aria-labelledby="QC3_r4_left QC3_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.2.3">Neither agree nor disagree</label> </span>
+</span>
+</td><td headers="QC3_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.3" value="3" id="ans53217.3.3" class="input radio fir-hidden" aria-labelledby="QC3_r4_left QC3_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.3.3">Disagree slightly</label> </span>
+</span>
+</td><td headers="QC3_c5" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.3" value="4" id="ans53217.4.3" class="input radio fir-hidden" aria-labelledby="QC3_r4_left QC3_c5"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.4.3">Disagree strongly</label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-5">
+<th scope="row" id="QC3_r5_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+        Edgy
+    </th>
+<td headers="QC3_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.4" value="0" id="ans53217.0.4" class="input radio fir-hidden" aria-labelledby="QC3_r5_left QC3_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.0.4">Agree strongly</label> </span>
+</span>
+</td><td headers="QC3_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.4" value="1" id="ans53217.1.4" class="input radio fir-hidden" aria-labelledby="QC3_r5_left QC3_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.1.4">Agree slightly</label> </span>
+</span>
+</td><td headers="QC3_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.4" value="2" id="ans53217.2.4" class="input radio fir-hidden" aria-labelledby="QC3_r5_left QC3_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.2.4">Neither agree nor disagree</label> </span>
+</span>
+</td><td headers="QC3_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.4" value="3" id="ans53217.3.4" class="input radio fir-hidden" aria-labelledby="QC3_r5_left QC3_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.3.4">Disagree slightly</label> </span>
+</span>
+</td><td headers="QC3_c5" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans53217.0.4" value="4" id="ans53217.4.4" class="input radio fir-hidden" aria-labelledby="QC3_r5_left QC3_c5"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans53217.4.4">Disagree strongly</label> </span>
+</span>
+</td>
+
+</tr></tbody>
+</table>
+<!-- /.grid -->
+</div>
+<!-- /.answers -->
+</div>
+<!-- /.question --><div class="survey-buttons">
+<input type="submit" name="continue" id="btn_continue" class="button continue" value="Next »" onclick="var i = document.createElement(''input''); i.setAttribute(''type'', ''hidden'');i.setAttribute(''value'', ''1'');i.setAttribute(''name'', ''__has_javascript'');document.forms.primary.appendChild(i);">
+
+</div>
+<!-- #surveyButtons --><input type="hidden" name="state" value="cd533117-1322-40f9-9a43-65e2dfae2a7b">
+<input type="hidden" name="start_time" value="1780062110">
+<input type="hidden" name="_ptime" value="0">
+<script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "aszyy16ezgnnf33p");}, 100); });
+</script>
+</form>
+
+
+</div>
+<!-- /.survey-body -->
+</div>
+<div class="survey-section"><div class="footer"><div style="width: 100%; height: 60px; background-color: #221b4f;" jstcache="0"><br jstcache="0"><center jstcache="0">       <a target="_blank" jstcache="0">          <img src="/survey/selfserve/2222/260216/Footer.png?2326399e4b" style="background-color: #221b4f;" jstcache="0" width="150px" height="38px">       </a>    </center></div></div>
+<!-- /.footer -->
+<input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33">
+        <input type="hidden" id="SurveyID" name="SurveyID" value="220821">
+        <input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs">
+        <input type="hidden" id="LangCode" name="LangCode" value="EN">
+        <input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults">
+        <input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults">
+        <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+        <input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0">
+
+        <script> function getQSTimeoutMs(){return 5000;} </script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qualityscore.js"></script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qslib1.0.js"></script></div>
+</div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062117290">
+<div id="detectBreakpoint"></div>
+<!-- /.survey-container -->
+
+
+</body></html>', '<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robots"><meta name="viewport"><title>Tapestry Research</title><link><link><link><link><link><link><link><script></script><captcha-widgets></captcha-widgets><script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(8 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((8 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script><script></script><script></script><script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script><link type="text/css"></head><body><div id="survey"><div><div></div></div><div><div><div><div><img></div><div role="progressbar"><div><span></span></div><div>16%</div></div></div><form id="primary" name="primary"><input type="hidden" name="_v2_counter" value="8"><script type="text/javascript">
+ (function($) {
+ var setupOptions = {
+ "displayCounter": false,
+ "buttonNextHTML": "<span>Next</span><i></i>",
+ "bucketSelectCSS": {},
+ "cardDisableCSS": {},
+ "contentsCardCSS": {},
+ "cardCSS": {
+ "font-family": "''Century Gothic'', CenturyGothic, AppleGothic, sans-serif"
+ },
+ "completionHTML": "<i>Click the \">>\" button to proceed.</i>",
+ "buttonPreviousHTML": "<i></i><span> Prev</span>",
+ "animationDuration": 500,
+ "wrapBuckets": true,
+ "bucketCountCSS": {},
+ "iconButtonCSS": {},
+ "progressCSS": {},
+ "completionCSS": {},
+ "displayProgress": true,
+ "iconButtonHoverCSS": {},
+ "iconButtonDisableCSS": {},
+ "dragAndDrop": true,
+ "bucketMaxWidth": "",
+ "cardHoverCSS": {},
+ "bucketHoverCSS": {},
+ "bucketCountDisableCSS": {},
+ "cardMaxWidth": "",
+ "cardSelectCSS": {},
+ "bucketCountHoverCSS": {},
+ "bucketDisableCSS": {},
+ "themeFile": "cardsort.css",
+ "bucketsPerRow": 0,
+ "automaticAdvance": true,
+ "bucketCSS": {
+ "width": "15%"
+ },
+ "displayNavigation": true
+};
+ $.extend(setupOptions, {
+ // bug 16635: add autoadvance and drag and drop begin
+ automaticAdvance: 1,
+ dragAndDrop: 1,
+ // bug 16635: add autoadvance and drag and drop end
+ debug: false,
+ deviceClass: "desktop",
+ grouping: "rows",
+ infiniteScroll: 0,
+ label: "QC3",
+ style: "cardsort",
+ type: "radio",
+ uniformBucketSize: 1,
+ uniformCardSize: 1
+ });
+ $ (function() {
+ Survey.question.cardsort.setup(setupOptions);
+ });
+ })(jQuery);
+ </script><div id="question_QC3"><h1 id="question_text_QC3">How much do you agree or disagree that each of the words below describe you?</h1><h2>Please select an answer</h2><div><div><div><ul><li><span><i></i></span><div><p>
+ Sophisticated
+ </p></div></li><li><span><i></i></span><div><p>
+ Elegant
+ </p></div></li><li><span><i></i></span><div><p>
+ Funny
+ </p></div></li><li><span><i></i></span><div><p>
+ Select “Agree slightly” for this item
+ </p></div></li><li><span><i></i></span><div><p>
+ Edgy
+ </p></div></li><li><div><i>Click the "&gt;&gt;" button to proceed.</i></div></li></ul><span>1/5</span><span><i></i><span> Prev</span></span><span><span>Next</span><i></i></span></div><div><ul><li><div><p>
+Agree strongly
+<div></div></p></div><span>0</span></li><li><div><p>
+Agree slightly
+<div></div></p></div><span>0</span></li><li><div><p>
+Neither agree nor disagree
+<div></div></p></div><span>0</span></li><li><div><p>
+Disagree slightly
+<div></div></p></div><span>0</span></li><li><div><p>
+Disagree strongly
+<div></div></p></div><span>0</span></li></ul></div></div><div><div></div><span><i></i></span><div><div></div><ul></ul></div></div></div><div><div><span></span></div><div><span></span></div><table><tbody><tr><td></td><th id="QC3_c1">
+Agree strongly
+<div></div></th><th id="QC3_c2">
+Agree slightly
+<div></div></th><th id="QC3_c3">
+Neither agree nor disagree
+<div></div></th><th id="QC3_c4">
+Disagree slightly
+<div></div></th><th id="QC3_c5">
+Disagree strongly
+<div></div></th></tr></tbody><tbody><tr><th id="QC3_r1_left">
+ Sophisticated
+ </th><td headers="QC3_c1"><span><span><input type="radio" name="ans53217.0.0" value="0" id="ans53217.0.0"><span></span></span><span><label for="ans53217.0.0">Agree strongly</label></span></span></td><td headers="QC3_c2"><span><span><input type="radio" name="ans53217.0.0" value="1" id="ans53217.1.0"><span></span></span><span><label for="ans53217.1.0">Agree slightly</label></span></span></td><td headers="QC3_c3"><span><span><input type="radio" name="ans53217.0.0" value="2" id="ans53217.2.0"><span></span></span><span><label for="ans53217.2.0">Neither agree nor disagree</label></span></span></td><td headers="QC3_c4"><span><span><input type="radio" name="ans53217.0.0" value="3" id="ans53217.3.0"><span></span></span><span><label for="ans53217.3.0">Disagree slightly</label></span></span></td><td headers="QC3_c5"><span><span><input type="radio" name="ans53217.0.0" value="4" id="ans53217.4.0"><span></span></span><span><label for="ans53217.4.0">Disagree strongly</label></span></span></td></tr><tr><th id="QC3_r2_left">
+ Elegant
+ </th><td headers="QC3_c1"><span><span><input type="radio" name="ans53217.0.1" value="0" id="ans53217.0.1"><span></span></span><span><label for="ans53217.0.1">Agree strongly</label></span></span></td><td headers="QC3_c2"><span><span><input type="radio" name="ans53217.0.1" value="1" id="ans53217.1.1"><span></span></span><span><label for="ans53217.1.1">Agree slightly</label></span></span></td><td headers="QC3_c3"><span><span><input type="radio" name="ans53217.0.1" value="2" id="ans53217.2.1"><span></span></span><span><label for="ans53217.2.1">Neither agree nor disagree</label></span></span></td><td headers="QC3_c4"><span><span><input type="radio" name="ans53217.0.1" value="3" id="ans53217.3.1"><span></span></span><span><label for="ans53217.3.1">Disagree slightly</label></span></span></td><td headers="QC3_c5"><span><span><input type="radio" name="ans53217.0.1" value="4" id="ans53217.4.1"><span></span></span><span><label for="ans53217.4.1">Disagree strongly</label></span></span></td></tr><tr><th id="QC3_r3_left">
+ Funny
+ </th><td headers="QC3_c1"><span><span><input type="radio" name="ans53217.0.2" value="0" id="ans53217.0.2"><span></span></span><span><label for="ans53217.0.2">Agree strongly</label></span></span></td><td headers="QC3_c2"><span><span><input type="radio" name="ans53217.0.2" value="1" id="ans53217.1.2"><span></span></span><span><label for="ans53217.1.2">Agree slightly</label></span></span></td><td headers="QC3_c3"><span><span><input type="radio" name="ans53217.0.2" value="2" id="ans53217.2.2"><span></span></span><span><label for="ans53217.2.2">Neither agree nor disagree</label></span></span></td><td headers="QC3_c4"><span><span><input type="radio" name="ans53217.0.2" value="3" id="ans53217.3.2"><span></span></span><span><label for="ans53217.3.2">Disagree slightly</label></span></span></td><td headers="QC3_c5"><span><span><input type="radio" name="ans53217.0.2" value="4" id="ans53217.4.2"><span></span></span><span><label for="ans53217.4.2">Disagree strongly</label></span></span></td></tr><tr><th id="QC3_r4_left">
+ Select “Agree slightly” for this item
+ </th><td headers="QC3_c1"><span><span><input type="radio" name="ans53217.0.3" value="0" id="ans53217.0.3"><span></span></span><span><label for="ans53217.0.3">Agree strongly</label></span></span></td><td headers="QC3_c2"><span><span><input type="radio" name="ans53217.0.3" value="1" id="ans53217.1.3"><span></span></span><span><label for="ans53217.1.3">Agree slightly</label></span></span></td><td headers="QC3_c3"><span><span><input type="radio" name="ans53217.0.3" value="2" id="ans53217.2.3"><span></span></span><span><label for="ans53217.2.3">Neither agree nor disagree</label></span></span></td><td headers="QC3_c4"><span><span><input type="radio" name="ans53217.0.3" value="3" id="ans53217.3.3"><span></span></span><span><label for="ans53217.3.3">Disagree slightly</label></span></span></td><td headers="QC3_c5"><span><span><input type="radio" name="ans53217.0.3" value="4" id="ans53217.4.3"><span></span></span><span><label for="ans53217.4.3">Disagree strongly</label></span></span></td></tr><tr><th id="QC3_r5_left">
+ Edgy
+ </th><td headers="QC3_c1"><span><span><input type="radio" name="ans53217.0.4" value="0" id="ans53217.0.4"><span></span></span><span><label for="ans53217.0.4">Agree strongly</label></span></span></td><td headers="QC3_c2"><span><span><input type="radio" name="ans53217.0.4" value="1" id="ans53217.1.4"><span></span></span><span><label for="ans53217.1.4">Agree slightly</label></span></span></td><td headers="QC3_c3"><span><span><input type="radio" name="ans53217.0.4" value="2" id="ans53217.2.4"><span></span></span><span><label for="ans53217.2.4">Neither agree nor disagree</label></span></span></td><td headers="QC3_c4"><span><span><input type="radio" name="ans53217.0.4" value="3" id="ans53217.3.4"><span></span></span><span><label for="ans53217.3.4">Disagree slightly</label></span></span></td><td headers="QC3_c5"><span><span><input type="radio" name="ans53217.0.4" value="4" id="ans53217.4.4"><span></span></span><span><label for="ans53217.4.4">Disagree strongly</label></span></span></td></tr></tbody></table></div></div><div><input type="submit" name="continue" id="btn_continue" value="Next »"></div><input type="hidden" name="state" value="cd533117-1322-40f9-9a43-65e2dfae2a7b"><input type="hidden" name="start_time" value="1780062110"><input type="hidden" name="_ptime" value="0"><script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "aszyy16ezgnnf33p");}, 100); });
+</script></form></div></div><div><div><div><br><center><a><img></a></center></div></div><input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33"><input type="hidden" id="SurveyID" name="SurveyID" value="220821"><input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs"><input type="hidden" id="LangCode" name="LangCode" value="EN"><input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults"><input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults"><input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0"><input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0"><script> function getQSTimeoutMs(){return 5000;} </script><script type="text/javascript"></script><script type="text/javascript"></script></div></div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062117290"><div id="detectBreakpoint"></div></body></html>', '2026-05-29 21:42:04');
+INSERT INTO "page_html_source" VALUES (143, 109, 'bcae031994d4425792d4b64ad5456b19', '<html lang="en-GB"><!--<![endif]--><head><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/captchafox/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/mt_captcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/hunter.js" data-ts-input="cf-turnstile-response"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/amazon_waf/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/yandex/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/lemin/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/keycaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest_v4/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/communication_helpers.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/core_helpers.js"></script>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- respview.client.meta -->
+
+
+<title>Tapestry Research</title>
+
+
+<!-- respview.css -->
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css?ad7753b880">
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.beacon.css?4ddb951d43">
+
+<!-- generated from: static/support/font-awesome-4.2.0/less/font-awesome.less, static/support/select2-4.0.1/select2.min.css, static/survey.respondent-post151.less, selfserve/2222/260216/static/theme.less, lib/steam/atm1d/v11/static/atm1d.less, lib/steam/cardsort/v7/static/cardsort.less and 0 themevars -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/less-compiled.css?a932463a8405103997a94450f6245f0e">
+
+
+<!-- extra CSS -->
+
+
+<!-- Custom CSS (specified in survey.xml) -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/Tapestry.css">
+
+<!-- respview.client.css -->
+<style>
+        table {
+        border-collapse: inherit !important; 
+        }
+        .row-col-legends-top {
+        background: #ededed;
+        position: sticky;
+        top: -16px;
+        z-index: 100;
+        }
+        .empty {
+        border: 1px solid #ccc;
+        }
+    </style>
+
+<!-- client.css -->
+<style media="screen">
+
+</style>
+
+<!-- JQuery -->
+<!--
+/s/jquery183.all.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/e2190ba850ec2bfa3e7d1567d2021910.js"></script><captcha-widgets></captcha-widgets>
+
+
+<!-- extra Logic -->
+
+
+<!-- respview.js -->
+<script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(9 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((9 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script>
+
+<!--[if lte IE 8]><script src="/s/support/respond/respond-1.4.2.min.js"></script><script src="/s/support/rem-unit-polyfill/rem.min.js"></script><![endif]-->
+
+
+<!--
+/s/support/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js
+/s/common.js
+/s/respview-post132.js
+/s/survey.respondent-post143.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/6f7910d7512e9866158e9fcb02cfdd53.js"></script>
+
+
+<!-- extra JS -->
+<!-- lib/steam/atm1d/v11/styles.xml -->
+  <script src="/survey/lib/steam/atm1d/v11/atm1d.js?e84439618b"></script>
+
+
+
+
+
+
+<!-- respview.client.js -->
+
+
+<!-- client.javascript -->
+
+
+<script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script>
+
+<!-- extra Head -->
+<style>
+
+        #question_Kids_NF .atm1d_vertical .answers > div {
+                text-align: left;
+            }
+
+        #question_Kids_NF .atm1d_vertical .answers > div > div,
+        #question_Kids_NF :not(.atm1d_vertical) .answers{
+            justify-content: flex-start;
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        #question_Kids_NF .atm1d label {
+            max-height: none;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        #question_Kids_NF .atm1d_vertical label {
+            min-width: 75%;
+            text-align: left;
+        }
+
+        #question_Kids_NF .atm1d_horizontal label {
+            min-height: 0;
+        }
+
+        @media (min-width: 768px) {
+            #question_Kids_NF .atm1d_vertical .answers > div {
+                    text-align: left;
+            }
+            #question_Kids_NF .atm1d_vertical .answers > div > div,
+            #question_Kids_NF :not(.atm1d_vertical) .answers {
+                justify-content: flex-start;
+                margin-left: 0;
+                margin-right: auto;
+            }
+
+            #question_Kids_NF .atm1d label {
+                max-height: none;
+                max-width: 100%;
+                text-align: center;
+            }
+
+            #question_Kids_NF .atm1d_vertical label {
+                min-width: 280px;
+                text-align: left;
+            }
+
+            #question_Kids_NF .atm1d_horizontal label {
+                min-height: 0;
+            }
+        }
+        </style>
+
+</head>
+
+<body class="survey-page non-touch" data-device="">
+
+
+<div id="survey" class="survey-container">
+<div class="survey-section"><div class="page-header"></div>
+<!-- /.page-header --></div>
+<div class="survey-section">
+<div class="survey-body">
+<div class="survey-header">
+<div class="logo logo-middle">
+<img src="/survey/selfserve/2222/logo_a2a001390fe4dc2ce73e6e195e691697.png" class="logo-image" alt="Logo">
+</div>
+<!-- /.logo -->
+<div role="progressbar" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-top" title="progress bar - 18% complete">
+<div class="progress-box-outer" aria-hidden="true"><span class="progress-box-completed" style="width: 18%;"></span></div>
+<div class="progress-text" aria-hidden="true">18%</div>
+</div>
+<!-- /.progress-bar -->
+</div>
+<!-- /.survey-header -->
+
+<form id="primary" name="primary" method="post" action="/survey/selfserve/2222/260216" enctype="application/x-www-form-urlencoded" novalidate="">
+<input type="hidden" name="_v2_counter" value="9">
+<!-- @@XYZZY@@ -->
+<div id="question_Kids_NF" class="question radio label_Kids_NF   noRows noCols" role="radiogroup">
+<fieldset class="atm1d atm1d_vertical" data-view-mode="vertical" data-num-cols="">
+            <legend>
+<h1 title="question" class="question-text" id="question_text_Kids_NF">Do you have any children under 18 years old living in your household?</h1>
+<!-- /.question-text -->
+
+<h2 title="instructions" class="instruction-text">Please select an answer</h2>
+<!-- /.instruction-text -->
+</legend>
+<div class="answers answers-list">
+        <div class="">
+            <input type="radio" name="ans823.0.0" value="0" id="ans823.0.0" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans823.0.0" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>Yes</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="radio" name="ans823.0.0" value="1" id="ans823.0.1" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans823.0.1" class="showInput_0" style="width: 280px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>No</span>
+                </span>
+            </label>
+            </div>
+            
+        </div><!-- /.grid -->
+</div>
+<!-- /.answers -->
+</fieldset>
+</div>
+<!-- /.question --><div class="survey-buttons">
+<input type="submit" name="continue" id="btn_continue" class="button continue" value="Next »" onclick="var i = document.createElement(''input''); i.setAttribute(''type'', ''hidden'');i.setAttribute(''value'', ''1'');i.setAttribute(''name'', ''__has_javascript'');document.forms.primary.appendChild(i);">
+
+</div>
+<!-- #surveyButtons --><input type="hidden" name="state" value="f51902d0-ed74-4d01-a982-4ce4fb0b9790">
+<input type="hidden" name="start_time" value="1780062266">
+<input type="hidden" name="_ptime" value="0">
+<script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "j0msj8ysagasdknr");}, 100); });
+</script>
+</form>
+
+
+</div>
+<!-- /.survey-body -->
+</div>
+<div class="survey-section"><div class="footer"><div style="width: 100%; height: 60px; background-color: #221b4f;" jstcache="0"><br jstcache="0"><center jstcache="0">       <a target="_blank" jstcache="0">          <img src="/survey/selfserve/2222/260216/Footer.png?2326399e4b" style="background-color: #221b4f;" jstcache="0" width="150px" height="38px">       </a>    </center></div></div>
+<!-- /.footer -->
+<input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33">
+        <input type="hidden" id="SurveyID" name="SurveyID" value="220821">
+        <input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs">
+        <input type="hidden" id="LangCode" name="LangCode" value="EN">
+        <input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults">
+        <input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults">
+        <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+        <input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0">
+
+        <script> function getQSTimeoutMs(){return 5000;} </script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qualityscore.js"></script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qslib1.0.js"></script></div>
+</div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062272587">
+<div id="detectBreakpoint"></div>
+<!-- /.survey-container -->
+
+
+</body></html>', '<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robots"><meta name="viewport"><title>Tapestry Research</title><link><link><link><link><script></script><captcha-widgets></captcha-widgets><script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(9 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((9 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script><script></script><script></script><script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script></head><body><div id="survey"><div><div></div></div><div><div><div><div><img></div><div role="progressbar"><div><span></span></div><div>18%</div></div></div><form id="primary" name="primary"><input type="hidden" name="_v2_counter" value="9"><div id="question_Kids_NF" role="radiogroup"><fieldset><legend><h1 id="question_text_Kids_NF">Do you have any children under 18 years old living in your household?</h1><h2>Please select an answer</h2></legend><div><div><input type="radio" name="ans823.0.0" value="0" id="ans823.0.0"><div><label for="ans823.0.0"><i></i><i></i><span><span>Yes</span></span></label></div></div><div><input type="radio" name="ans823.0.0" value="1" id="ans823.0.1"><div><label for="ans823.0.1"><i></i><i></i><span><span>No</span></span></label></div></div></div></fieldset></div><div><input type="submit" name="continue" id="btn_continue" value="Next »"></div><input type="hidden" name="state" value="f51902d0-ed74-4d01-a982-4ce4fb0b9790"><input type="hidden" name="start_time" value="1780062266"><input type="hidden" name="_ptime" value="0"><script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "j0msj8ysagasdknr");}, 100); });
+</script></form></div></div><div><div><div><br><center><a><img></a></center></div></div><input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33"><input type="hidden" id="SurveyID" name="SurveyID" value="220821"><input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs"><input type="hidden" id="LangCode" name="LangCode" value="EN"><input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults"><input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults"><input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0"><input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0"><script> function getQSTimeoutMs(){return 5000;} </script><script type="text/javascript"></script><script type="text/javascript"></script></div></div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062272587"><div id="detectBreakpoint"></div></body></html>', '2026-05-29 21:44:36');
+INSERT INTO "page_html_source" VALUES (144, 110, 'ea70050c74e411ac2151bbab61ede1c6', '<html lang="en-GB"><!--<![endif]--><head><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/captchafox/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/mt_captcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/hunter.js" data-ts-input="cf-turnstile-response"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/amazon_waf/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/yandex/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/lemin/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/keycaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest_v4/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/communication_helpers.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/core_helpers.js"></script>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- respview.client.meta -->
+
+
+<title>Tapestry Research</title>
+
+
+<!-- respview.css -->
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css?ad7753b880">
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.beacon.css?4ddb951d43">
+
+<!-- generated from: static/support/font-awesome-4.2.0/less/font-awesome.less, static/support/select2-4.0.1/select2.min.css, static/survey.respondent-post151.less, selfserve/2222/260216/static/theme.less, lib/steam/atm1d/v11/static/atm1d.less, lib/steam/cardsort/v7/static/cardsort.less and 0 themevars -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/less-compiled.css?a932463a8405103997a94450f6245f0e">
+
+
+<!-- extra CSS -->
+
+
+<!-- Custom CSS (specified in survey.xml) -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/Tapestry.css">
+
+<!-- respview.client.css -->
+<style>
+        table {
+        border-collapse: inherit !important; 
+        }
+        .row-col-legends-top {
+        background: #ededed;
+        position: sticky;
+        top: -16px;
+        z-index: 100;
+        }
+        .empty {
+        border: 1px solid #ccc;
+        }
+    </style>
+
+<!-- client.css -->
+<style media="screen">
+
+</style>
+
+<!-- JQuery -->
+<!--
+/s/jquery183.all.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/e2190ba850ec2bfa3e7d1567d2021910.js"></script><captcha-widgets></captcha-widgets>
+
+
+<!-- extra Logic -->
+
+
+<!-- respview.js -->
+<script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(10 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((10 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script>
+
+<!--[if lte IE 8]><script src="/s/support/respond/respond-1.4.2.min.js"></script><script src="/s/support/rem-unit-polyfill/rem.min.js"></script><![endif]-->
+
+
+<!--
+/s/support/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js
+/s/common.js
+/s/respview-post132.js
+/s/survey.respondent-post143.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/6f7910d7512e9866158e9fcb02cfdd53.js"></script>
+
+
+<!-- extra JS -->
+
+
+
+
+
+
+
+<!-- respview.client.js -->
+
+
+<!-- client.javascript -->
+
+
+<script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script>
+
+<!-- extra Head -->
+
+
+</head>
+
+<body class="survey-page non-touch" data-device="">
+
+
+<div id="survey" class="survey-container">
+<div class="survey-section"><div class="page-header"></div>
+<!-- /.page-header --></div>
+<div class="survey-section">
+<div class="survey-body">
+<div class="survey-header">
+<div class="logo logo-middle">
+<img src="/survey/selfserve/2222/logo_a2a001390fe4dc2ce73e6e195e691697.png" class="logo-image" alt="Logo">
+</div>
+<!-- /.logo -->
+<div role="progressbar" aria-valuenow="21" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-top" title="progress bar - 21% complete">
+<div class="progress-box-outer" aria-hidden="true"><span class="progress-box-completed" style="width: 21%;"></span></div>
+<div class="progress-text" aria-hidden="true">21%</div>
+</div>
+<!-- /.progress-bar -->
+</div>
+<!-- /.survey-header -->
+
+<form id="primary" name="primary" method="post" action="/survey/selfserve/2222/260216" enctype="application/x-www-form-urlencoded" novalidate="">
+<input type="hidden" name="_v2_counter" value="10">
+<!-- @@XYZZY@@ -->
+<div id="question_NETWORKS1a" class="question radio label_NETWORKS1a   clearColWidths">
+<h1 title="question" class="question-text" id="question_text_NETWORKS1a">How often do you watch shows, movies, web series, videos, or clips from each of the following?</h1>
+<!-- /.question-text -->
+
+<h2 title="instructions" class="instruction-text">Please provide a response for each selection</h2>
+<!-- /.instruction-text -->
+<div class="answers answers-table">
+<div class="fir fir-checkbox" style="display: none;">
+<span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> checkbox </title>
+<path d="M15.8,0H3.9C1.8,0,0,2,0,4.1V16c0,2.2,1.8,4,3.9,4h11.8c2.2,0,4.2-1.8,4.2-4V4.1C20,2,18,0,15.8,0z M19,16 c0,1.6-1.6,3-3.2,3H3.9C2.3,19,1,17.7,1,16V4.1C1,2.5,2.3,1,3.9,1h11.8C17.4,1,19,2.5,19,4.1V16z" class="fir-base"></path>
+<path d="M19,16c0,1.6-1.6,3-3.2,3H3.9C2.3,19,1,17.7,1,16V4.1C1,2.5,2.3,1,3.9,1h11.8C17.4,1,19,2.5,19,4.1V16z" class="fir-bg"></path>
+<polygon points="9.1,16.3 2.5,11 4.1,9 8.7,12.6 15.6,3.7 17.7,5.2 " class="fir-selected"></polygon>
+</svg>
+</span>
+</div>
+<div class="fir fir-radio" style="display: none;">
+<span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</div>
+<table class="grid specifiedWidths grid-table-mode" data-settings="auto-optimize mobile-mode group-by-row table-mode ss-colWidth" data-height="" summary="This table contains form elements to answer the survey question" style="">
+<tbody>
+<tr class="row mobile-top-border-row">
+<td colspan="5" class="cell nonempty mobile-top-border-cell"></td>
+</tr><tr class="row row-col-legends row-col-legends-top colCount-4">
+<td class="cell empty empty-left empty-top unused mobile border-collapse"></td>
+<th scope="col" id="NETWORKS1a_c1" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   " style="width:150px; min-width:150px">
+<strong>Never</strong>
+</th><th scope="col" id="NETWORKS1a_c2" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   " style="width:150px; min-width:150px">
+<strong>Less than once a month</strong>
+</th><th scope="col" id="NETWORKS1a_c3" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   " style="width:150px; min-width:150px">
+<strong>Once or twice a month</strong>
+</th><th scope="col" id="NETWORKS1a_c4" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   " style="width:150px; min-width:150px">
+<strong>Once a week or more</strong>
+</th>
+
+</tr>
+</tbody>
+<tbody><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1a_r41_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Hallmark Channel
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.25" value="0" id="ans3546.0.25" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r41_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.25"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.25" value="1" id="ans3546.1.25" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r41_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.25"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.25" value="2" id="ans3546.2.25" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r41_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.25"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.25" value="3" id="ans3546.3.25" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r41_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.25"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1a_r68_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+USA Network
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.43" value="0" id="ans3546.0.43" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r68_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.43"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.43" value="1" id="ans3546.1.43" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r68_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.43"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.43" value="2" id="ans3546.2.43" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r68_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.43"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.43" value="3" id="ans3546.3.43" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r68_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.43"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1a_r54_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+OWN
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.32" value="0" id="ans3546.0.32" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r54_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.32"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.32" value="1" id="ans3546.1.32" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r54_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.32"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.32" value="2" id="ans3546.2.32" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r54_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.32"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.32" value="3" id="ans3546.3.32" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r54_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.32"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1a_r23_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Cartoon Network
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.14" value="0" id="ans3546.0.14" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r23_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.14"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.14" value="1" id="ans3546.1.14" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r23_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.14"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.14" value="2" id="ans3546.2.14" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r23_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.14"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.14" value="3" id="ans3546.3.14" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r23_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.14"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1a_r75_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+NBC
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.48" value="0" id="ans3546.0.48" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r75_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.48"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.48" value="1" id="ans3546.1.48" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r75_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.48"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.48" value="2" id="ans3546.2.48" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r75_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.48"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.48" value="3" id="ans3546.3.48" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r75_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.48"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1a_r11_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Nickelodeon
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.8" value="0" id="ans3546.0.8" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r11_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.8"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.8" value="1" id="ans3546.1.8" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r11_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.8"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.8" value="2" id="ans3546.2.8" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r11_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.8"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.8" value="3" id="ans3546.3.8" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r11_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.8"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1a_r4_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Comedy Central
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.2" value="0" id="ans3546.0.2" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r4_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.2"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.2" value="1" id="ans3546.1.2" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r4_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.2"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.2" value="2" id="ans3546.2.2" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r4_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.2"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.2" value="3" id="ans3546.3.2" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r4_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.2"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1a_r70_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+WE tv
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.44" value="0" id="ans3546.0.44" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r70_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.44"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.44" value="1" id="ans3546.1.44" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r70_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.44"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.44" value="2" id="ans3546.2.44" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r70_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.44"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.44" value="3" id="ans3546.3.44" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r70_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.44"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1a_r73_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+CBS
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.46" value="0" id="ans3546.0.46" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r73_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.46"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.46" value="1" id="ans3546.1.46" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r73_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.46"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.46" value="2" id="ans3546.2.46" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r73_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.46"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.46" value="3" id="ans3546.3.46" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r73_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.46"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1a_r37_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+FX
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.23" value="0" id="ans3546.0.23" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r37_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.23"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.23" value="1" id="ans3546.1.23" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r37_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.23"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.23" value="2" id="ans3546.2.23" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r37_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.23"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.23" value="3" id="ans3546.3.23" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r37_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.23"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-col-legends row-col-legends-middle colCount-4">
+<td class="cell empty empty-left empty-middle unused mobile border-collapse"></td>
+<th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Never</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Less than once a month</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Once or twice a month</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Once a week or more</strong>
+</th>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1a_r38_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+FXX
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.24" value="0" id="ans3546.0.24" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r38_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.24"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.24" value="1" id="ans3546.1.24" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r38_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.24"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.24" value="2" id="ans3546.2.24" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r38_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.24"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.24" value="3" id="ans3546.3.24" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r38_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.24"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1a_r45_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Investigation Discovery
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.28" value="0" id="ans3546.0.28" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r45_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.28"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.28" value="1" id="ans3546.1.28" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r45_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.28"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.28" value="2" id="ans3546.2.28" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r45_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.28"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.28" value="3" id="ans3546.3.28" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r45_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.28"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1a_r51_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+National Geographic (NatGeo)
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.31" value="0" id="ans3546.0.31" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r51_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.31"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.31" value="1" id="ans3546.1.31" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r51_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.31"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.31" value="2" id="ans3546.2.31" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r51_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.31"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.31" value="3" id="ans3546.3.31" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r51_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.31"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1a_r28_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Discovery Channel
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.16" value="0" id="ans3546.0.16" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r28_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.16"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.16" value="1" id="ans3546.1.16" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r28_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.16"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.16" value="2" id="ans3546.2.16" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r28_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.16"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.16" value="3" id="ans3546.3.16" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r28_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.16"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1a_r72_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+ABC
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.45" value="0" id="ans3546.0.45" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r72_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.45"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.45" value="1" id="ans3546.1.45" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r72_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.45"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.45" value="2" id="ans3546.2.45" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r72_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.45"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.45" value="3" id="ans3546.3.45" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r72_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.45"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1a_r35_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Freeform
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.22" value="0" id="ans3546.0.22" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r35_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.22"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.22" value="1" id="ans3546.1.22" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r35_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.22"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.22" value="2" id="ans3546.2.22" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r35_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.22"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.22" value="3" id="ans3546.3.22" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r35_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.22"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1a_r44_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+History Channel
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.27" value="0" id="ans3546.0.27" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r44_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.27"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.27" value="1" id="ans3546.1.27" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r44_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.27"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.27" value="2" id="ans3546.2.27" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r44_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.27"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.27" value="3" id="ans3546.3.27" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r44_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.27"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1a_r43_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+HGTV
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.26" value="0" id="ans3546.0.26" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r43_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.26"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.26" value="1" id="ans3546.1.26" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r43_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.26"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.26" value="2" id="ans3546.2.26" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r43_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.26"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.26" value="3" id="ans3546.3.26" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r43_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.26"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1a_r47_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Lifetime
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.29" value="0" id="ans3546.0.29" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r47_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.29"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.29" value="1" id="ans3546.1.29" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r47_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.29"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.29" value="2" id="ans3546.2.29" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r47_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.29"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.29" value="3" id="ans3546.3.29" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r47_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.29"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1a_r89_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Boinks!
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.54" value="0" id="ans3546.0.54" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r89_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.54"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.54" value="1" id="ans3546.1.54" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r89_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.54"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.54" value="2" id="ans3546.2.54" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r89_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.54"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.54" value="3" id="ans3546.3.54" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r89_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.54"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-col-legends row-col-legends-middle colCount-4">
+<td class="cell empty empty-left empty-middle unused mobile border-collapse"></td>
+<th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Never</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Less than once a month</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Once or twice a month</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Once a week or more</strong>
+</th>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1a_r63_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Travel Channel
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.40" value="0" id="ans3546.0.40" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r63_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.40"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.40" value="1" id="ans3546.1.40" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r63_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.40"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.40" value="2" id="ans3546.2.40" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r63_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.40"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.40" value="3" id="ans3546.3.40" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r63_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.40"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1a_r58_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Syfy
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.35" value="0" id="ans3546.0.35" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r58_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.35"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.35" value="1" id="ans3546.1.35" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r58_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.35"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.35" value="2" id="ans3546.2.35" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r58_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.35"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.35" value="3" id="ans3546.3.35" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r58_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.35"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1a_r65_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+TV One
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.41" value="0" id="ans3546.0.41" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r65_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.41"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.41" value="1" id="ans3546.1.41" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r65_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.41"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.41" value="2" id="ans3546.2.41" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r65_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.41"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.41" value="3" id="ans3546.3.41" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r65_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.41"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1a_r10_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Logo
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.7" value="0" id="ans3546.0.7" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r10_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.7"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.7" value="1" id="ans3546.1.7" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r10_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.7"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.7" value="2" id="ans3546.2.7" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r10_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.7"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.7" value="3" id="ans3546.3.7" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r10_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.7"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1a_r80_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Showtime
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.52" value="0" id="ans3546.0.52" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r80_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.52"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.52" value="1" id="ans3546.1.52" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r80_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.52"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.52" value="2" id="ans3546.2.52" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r80_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.52"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.52" value="3" id="ans3546.3.52" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r80_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.52"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1a_r90_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Trevi1
+</th>
+<td headers="NETWORKS1a_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.55" value="0" id="ans3546.0.55" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r90_left NETWORKS1a_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.0.55"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.55" value="1" id="ans3546.1.55" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r90_left NETWORKS1a_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.1.55"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.55" value="2" id="ans3546.2.55" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r90_left NETWORKS1a_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.2.55"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1a_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3546.0.55" value="3" id="ans3546.3.55" class="input radio fir-hidden" aria-labelledby="NETWORKS1a_r90_left NETWORKS1a_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3546.3.55"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr></tbody>
+</table>
+<!-- /.grid -->
+</div>
+<!-- /.answers -->
+</div>
+<!-- /.question --><div class="survey-buttons">
+<input type="submit" name="continue" id="btn_continue" class="button continue" value="Next »" onclick="var i = document.createElement(''input''); i.setAttribute(''type'', ''hidden'');i.setAttribute(''value'', ''1'');i.setAttribute(''name'', ''__has_javascript'');document.forms.primary.appendChild(i);">
+
+</div>
+<!-- #surveyButtons --><input type="hidden" name="state" value="dbee99be-258e-4f32-a535-f48050f20791">
+<input type="hidden" name="start_time" value="1780062277">
+<input type="hidden" name="_ptime" value="0">
+<script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "8ya23pv3x0v4jxfb");}, 100); });
+</script>
+</form>
+
+
+</div>
+<!-- /.survey-body -->
+</div>
+<div class="survey-section"><div class="footer"><div style="width: 100%; height: 60px; background-color: #221b4f;" jstcache="0"><br jstcache="0"><center jstcache="0">       <a target="_blank" jstcache="0">          <img src="/survey/selfserve/2222/260216/Footer.png?2326399e4b" style="background-color: #221b4f;" jstcache="0" width="150px" height="38px">       </a>    </center></div></div>
+<!-- /.footer -->
+<input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33">
+        <input type="hidden" id="SurveyID" name="SurveyID" value="220821">
+        <input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs">
+        <input type="hidden" id="LangCode" name="LangCode" value="EN">
+        <input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults">
+        <input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults">
+        <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+        <input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0">
+
+        <script> function getQSTimeoutMs(){return 5000;} </script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qualityscore.js"></script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qslib1.0.js"></script></div>
+</div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062282760">
+<div id="detectBreakpoint"></div>
+<!-- /.survey-container -->
+
+
+</body></html>', '<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robots"><meta name="viewport"><title>Tapestry Research</title><link><link><link><link><script></script><captcha-widgets></captcha-widgets><script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(10 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((10 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script><script></script><script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script></head><body><div id="survey"><div><div></div></div><div><div><div><div><img></div><div role="progressbar"><div><span></span></div><div>21%</div></div></div><form id="primary" name="primary"><input type="hidden" name="_v2_counter" value="10"><div id="question_NETWORKS1a"><h1 id="question_text_NETWORKS1a">How often do you watch shows, movies, web series, videos, or clips from each of the following?</h1><h2>Please provide a response for each selection</h2><div><div><span></span></div><div><span></span></div><table><tbody><tr><td></td></tr><tr><td></td><th id="NETWORKS1a_c1"><strong>Never</strong></th><th id="NETWORKS1a_c2"><strong>Less than once a month</strong></th><th id="NETWORKS1a_c3"><strong>Once or twice a month</strong></th><th id="NETWORKS1a_c4"><strong>Once a week or more</strong></th></tr></tbody><tbody><tr><th id="NETWORKS1a_r41_left">
+Hallmark Channel
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.25" value="0" id="ans3546.0.25"><span></span></span><span><label for="ans3546.0.25"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.25" value="1" id="ans3546.1.25"><span></span></span><span><label for="ans3546.1.25"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.25" value="2" id="ans3546.2.25"><span></span></span><span><label for="ans3546.2.25"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.25" value="3" id="ans3546.3.25"><span></span></span><span><label for="ans3546.3.25"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r68_left">
+USA Network
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.43" value="0" id="ans3546.0.43"><span></span></span><span><label for="ans3546.0.43"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.43" value="1" id="ans3546.1.43"><span></span></span><span><label for="ans3546.1.43"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.43" value="2" id="ans3546.2.43"><span></span></span><span><label for="ans3546.2.43"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.43" value="3" id="ans3546.3.43"><span></span></span><span><label for="ans3546.3.43"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r54_left">
+OWN
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.32" value="0" id="ans3546.0.32"><span></span></span><span><label for="ans3546.0.32"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.32" value="1" id="ans3546.1.32"><span></span></span><span><label for="ans3546.1.32"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.32" value="2" id="ans3546.2.32"><span></span></span><span><label for="ans3546.2.32"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.32" value="3" id="ans3546.3.32"><span></span></span><span><label for="ans3546.3.32"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r23_left">
+Cartoon Network
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.14" value="0" id="ans3546.0.14"><span></span></span><span><label for="ans3546.0.14"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.14" value="1" id="ans3546.1.14"><span></span></span><span><label for="ans3546.1.14"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.14" value="2" id="ans3546.2.14"><span></span></span><span><label for="ans3546.2.14"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.14" value="3" id="ans3546.3.14"><span></span></span><span><label for="ans3546.3.14"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r75_left">
+NBC
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.48" value="0" id="ans3546.0.48"><span></span></span><span><label for="ans3546.0.48"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.48" value="1" id="ans3546.1.48"><span></span></span><span><label for="ans3546.1.48"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.48" value="2" id="ans3546.2.48"><span></span></span><span><label for="ans3546.2.48"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.48" value="3" id="ans3546.3.48"><span></span></span><span><label for="ans3546.3.48"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r11_left">
+Nickelodeon
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.8" value="0" id="ans3546.0.8"><span></span></span><span><label for="ans3546.0.8"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.8" value="1" id="ans3546.1.8"><span></span></span><span><label for="ans3546.1.8"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.8" value="2" id="ans3546.2.8"><span></span></span><span><label for="ans3546.2.8"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.8" value="3" id="ans3546.3.8"><span></span></span><span><label for="ans3546.3.8"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r4_left">
+Comedy Central
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.2" value="0" id="ans3546.0.2"><span></span></span><span><label for="ans3546.0.2"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.2" value="1" id="ans3546.1.2"><span></span></span><span><label for="ans3546.1.2"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.2" value="2" id="ans3546.2.2"><span></span></span><span><label for="ans3546.2.2"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.2" value="3" id="ans3546.3.2"><span></span></span><span><label for="ans3546.3.2"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r70_left">
+WE tv
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.44" value="0" id="ans3546.0.44"><span></span></span><span><label for="ans3546.0.44"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.44" value="1" id="ans3546.1.44"><span></span></span><span><label for="ans3546.1.44"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.44" value="2" id="ans3546.2.44"><span></span></span><span><label for="ans3546.2.44"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.44" value="3" id="ans3546.3.44"><span></span></span><span><label for="ans3546.3.44"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r73_left">
+CBS
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.46" value="0" id="ans3546.0.46"><span></span></span><span><label for="ans3546.0.46"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.46" value="1" id="ans3546.1.46"><span></span></span><span><label for="ans3546.1.46"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.46" value="2" id="ans3546.2.46"><span></span></span><span><label for="ans3546.2.46"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.46" value="3" id="ans3546.3.46"><span></span></span><span><label for="ans3546.3.46"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r37_left">
+FX
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.23" value="0" id="ans3546.0.23"><span></span></span><span><label for="ans3546.0.23"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.23" value="1" id="ans3546.1.23"><span></span></span><span><label for="ans3546.1.23"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.23" value="2" id="ans3546.2.23"><span></span></span><span><label for="ans3546.2.23"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.23" value="3" id="ans3546.3.23"><span></span></span><span><label for="ans3546.3.23"><strong>Once a week or more</strong></label></span></span></td></tr><tr><td></td><th><strong>Never</strong></th><th><strong>Less than once a month</strong></th><th><strong>Once or twice a month</strong></th><th><strong>Once a week or more</strong></th></tr><tr><th id="NETWORKS1a_r38_left">
+FXX
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.24" value="0" id="ans3546.0.24"><span></span></span><span><label for="ans3546.0.24"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.24" value="1" id="ans3546.1.24"><span></span></span><span><label for="ans3546.1.24"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.24" value="2" id="ans3546.2.24"><span></span></span><span><label for="ans3546.2.24"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.24" value="3" id="ans3546.3.24"><span></span></span><span><label for="ans3546.3.24"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r45_left">
+Investigation Discovery
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.28" value="0" id="ans3546.0.28"><span></span></span><span><label for="ans3546.0.28"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.28" value="1" id="ans3546.1.28"><span></span></span><span><label for="ans3546.1.28"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.28" value="2" id="ans3546.2.28"><span></span></span><span><label for="ans3546.2.28"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.28" value="3" id="ans3546.3.28"><span></span></span><span><label for="ans3546.3.28"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r51_left">
+National Geographic (NatGeo)
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.31" value="0" id="ans3546.0.31"><span></span></span><span><label for="ans3546.0.31"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.31" value="1" id="ans3546.1.31"><span></span></span><span><label for="ans3546.1.31"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.31" value="2" id="ans3546.2.31"><span></span></span><span><label for="ans3546.2.31"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.31" value="3" id="ans3546.3.31"><span></span></span><span><label for="ans3546.3.31"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r28_left">
+Discovery Channel
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.16" value="0" id="ans3546.0.16"><span></span></span><span><label for="ans3546.0.16"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.16" value="1" id="ans3546.1.16"><span></span></span><span><label for="ans3546.1.16"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.16" value="2" id="ans3546.2.16"><span></span></span><span><label for="ans3546.2.16"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.16" value="3" id="ans3546.3.16"><span></span></span><span><label for="ans3546.3.16"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r72_left">
+ABC
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.45" value="0" id="ans3546.0.45"><span></span></span><span><label for="ans3546.0.45"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.45" value="1" id="ans3546.1.45"><span></span></span><span><label for="ans3546.1.45"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.45" value="2" id="ans3546.2.45"><span></span></span><span><label for="ans3546.2.45"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.45" value="3" id="ans3546.3.45"><span></span></span><span><label for="ans3546.3.45"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r35_left">
+Freeform
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.22" value="0" id="ans3546.0.22"><span></span></span><span><label for="ans3546.0.22"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.22" value="1" id="ans3546.1.22"><span></span></span><span><label for="ans3546.1.22"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.22" value="2" id="ans3546.2.22"><span></span></span><span><label for="ans3546.2.22"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.22" value="3" id="ans3546.3.22"><span></span></span><span><label for="ans3546.3.22"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r44_left">
+History Channel
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.27" value="0" id="ans3546.0.27"><span></span></span><span><label for="ans3546.0.27"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.27" value="1" id="ans3546.1.27"><span></span></span><span><label for="ans3546.1.27"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.27" value="2" id="ans3546.2.27"><span></span></span><span><label for="ans3546.2.27"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.27" value="3" id="ans3546.3.27"><span></span></span><span><label for="ans3546.3.27"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r43_left">
+HGTV
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.26" value="0" id="ans3546.0.26"><span></span></span><span><label for="ans3546.0.26"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.26" value="1" id="ans3546.1.26"><span></span></span><span><label for="ans3546.1.26"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.26" value="2" id="ans3546.2.26"><span></span></span><span><label for="ans3546.2.26"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.26" value="3" id="ans3546.3.26"><span></span></span><span><label for="ans3546.3.26"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r47_left">
+Lifetime
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.29" value="0" id="ans3546.0.29"><span></span></span><span><label for="ans3546.0.29"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.29" value="1" id="ans3546.1.29"><span></span></span><span><label for="ans3546.1.29"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.29" value="2" id="ans3546.2.29"><span></span></span><span><label for="ans3546.2.29"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.29" value="3" id="ans3546.3.29"><span></span></span><span><label for="ans3546.3.29"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r89_left">
+Boinks!
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.54" value="0" id="ans3546.0.54"><span></span></span><span><label for="ans3546.0.54"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.54" value="1" id="ans3546.1.54"><span></span></span><span><label for="ans3546.1.54"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.54" value="2" id="ans3546.2.54"><span></span></span><span><label for="ans3546.2.54"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.54" value="3" id="ans3546.3.54"><span></span></span><span><label for="ans3546.3.54"><strong>Once a week or more</strong></label></span></span></td></tr><tr><td></td><th><strong>Never</strong></th><th><strong>Less than once a month</strong></th><th><strong>Once or twice a month</strong></th><th><strong>Once a week or more</strong></th></tr><tr><th id="NETWORKS1a_r63_left">
+Travel Channel
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.40" value="0" id="ans3546.0.40"><span></span></span><span><label for="ans3546.0.40"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.40" value="1" id="ans3546.1.40"><span></span></span><span><label for="ans3546.1.40"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.40" value="2" id="ans3546.2.40"><span></span></span><span><label for="ans3546.2.40"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.40" value="3" id="ans3546.3.40"><span></span></span><span><label for="ans3546.3.40"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r58_left">
+Syfy
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.35" value="0" id="ans3546.0.35"><span></span></span><span><label for="ans3546.0.35"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.35" value="1" id="ans3546.1.35"><span></span></span><span><label for="ans3546.1.35"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.35" value="2" id="ans3546.2.35"><span></span></span><span><label for="ans3546.2.35"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.35" value="3" id="ans3546.3.35"><span></span></span><span><label for="ans3546.3.35"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r65_left">
+TV One
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.41" value="0" id="ans3546.0.41"><span></span></span><span><label for="ans3546.0.41"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.41" value="1" id="ans3546.1.41"><span></span></span><span><label for="ans3546.1.41"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.41" value="2" id="ans3546.2.41"><span></span></span><span><label for="ans3546.2.41"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.41" value="3" id="ans3546.3.41"><span></span></span><span><label for="ans3546.3.41"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r10_left">
+Logo
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.7" value="0" id="ans3546.0.7"><span></span></span><span><label for="ans3546.0.7"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.7" value="1" id="ans3546.1.7"><span></span></span><span><label for="ans3546.1.7"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.7" value="2" id="ans3546.2.7"><span></span></span><span><label for="ans3546.2.7"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.7" value="3" id="ans3546.3.7"><span></span></span><span><label for="ans3546.3.7"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r80_left">
+Showtime
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.52" value="0" id="ans3546.0.52"><span></span></span><span><label for="ans3546.0.52"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.52" value="1" id="ans3546.1.52"><span></span></span><span><label for="ans3546.1.52"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.52" value="2" id="ans3546.2.52"><span></span></span><span><label for="ans3546.2.52"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.52" value="3" id="ans3546.3.52"><span></span></span><span><label for="ans3546.3.52"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1a_r90_left">
+Trevi1
+</th><td headers="NETWORKS1a_c1"><span><span><input type="radio" name="ans3546.0.55" value="0" id="ans3546.0.55"><span></span></span><span><label for="ans3546.0.55"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1a_c2"><span><span><input type="radio" name="ans3546.0.55" value="1" id="ans3546.1.55"><span></span></span><span><label for="ans3546.1.55"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1a_c3"><span><span><input type="radio" name="ans3546.0.55" value="2" id="ans3546.2.55"><span></span></span><span><label for="ans3546.2.55"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1a_c4"><span><span><input type="radio" name="ans3546.0.55" value="3" id="ans3546.3.55"><span></span></span><span><label for="ans3546.3.55"><strong>Once a week or more</strong></label></span></span></td></tr></tbody></table></div></div><div><input type="submit" name="continue" id="btn_continue" value="Next »"></div><input type="hidden" name="state" value="dbee99be-258e-4f32-a535-f48050f20791"><input type="hidden" name="start_time" value="1780062277"><input type="hidden" name="_ptime" value="0"><script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "8ya23pv3x0v4jxfb");}, 100); });
+</script></form></div></div><div><div><div><br><center><a><img></a></center></div></div><input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33"><input type="hidden" id="SurveyID" name="SurveyID" value="220821"><input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs"><input type="hidden" id="LangCode" name="LangCode" value="EN"><input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults"><input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults"><input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0"><input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0"><script> function getQSTimeoutMs(){return 5000;} </script><script type="text/javascript"></script><script type="text/javascript"></script></div></div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062282760"><div id="detectBreakpoint"></div></body></html>', '2026-05-29 21:44:52');
+INSERT INTO "page_html_source" VALUES (145, 111, '4af90b412569d15c23b5f761de7bc5b8', '<html lang="en-GB"><!--<![endif]--><head><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/captchafox/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/mt_captcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/hunter.js" data-ts-input="cf-turnstile-response"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/amazon_waf/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/yandex/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/lemin/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/keycaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest_v4/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/communication_helpers.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/core_helpers.js"></script>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- respview.client.meta -->
+
+
+<title>Tapestry Research</title>
+
+
+<!-- respview.css -->
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css?ad7753b880">
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.beacon.css?4ddb951d43">
+
+<!-- generated from: static/support/font-awesome-4.2.0/less/font-awesome.less, static/support/select2-4.0.1/select2.min.css, static/survey.respondent-post151.less, selfserve/2222/260216/static/theme.less, lib/steam/atm1d/v11/static/atm1d.less, lib/steam/cardsort/v7/static/cardsort.less and 0 themevars -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/less-compiled.css?a932463a8405103997a94450f6245f0e">
+
+
+<!-- extra CSS -->
+
+
+<!-- Custom CSS (specified in survey.xml) -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/Tapestry.css">
+
+<!-- respview.client.css -->
+<style>
+        table {
+        border-collapse: inherit !important; 
+        }
+        .row-col-legends-top {
+        background: #ededed;
+        position: sticky;
+        top: -16px;
+        z-index: 100;
+        }
+        .empty {
+        border: 1px solid #ccc;
+        }
+    </style>
+
+<!-- client.css -->
+<style media="screen">
+
+</style>
+
+<!-- JQuery -->
+<!--
+/s/jquery183.all.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/e2190ba850ec2bfa3e7d1567d2021910.js"></script><captcha-widgets></captcha-widgets>
+
+
+<!-- extra Logic -->
+
+
+<!-- respview.js -->
+<script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(11 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((11 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script>
+
+<!--[if lte IE 8]><script src="/s/support/respond/respond-1.4.2.min.js"></script><script src="/s/support/rem-unit-polyfill/rem.min.js"></script><![endif]-->
+
+
+<!--
+/s/support/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js
+/s/common.js
+/s/respview-post132.js
+/s/survey.respondent-post143.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/6f7910d7512e9866158e9fcb02cfdd53.js"></script>
+
+
+<!-- extra JS -->
+
+
+
+
+
+
+
+<!-- respview.client.js -->
+
+
+<!-- client.javascript -->
+
+
+<script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script>
+
+<!-- extra Head -->
+
+
+</head>
+
+<body class="survey-page non-touch" data-device="">
+
+
+<div id="survey" class="survey-container">
+<div class="survey-section"><div class="page-header"></div>
+<!-- /.page-header --></div>
+<div class="survey-section">
+<div class="survey-body">
+<div class="survey-header">
+<div class="logo logo-middle">
+<img src="/survey/selfserve/2222/logo_a2a001390fe4dc2ce73e6e195e691697.png" class="logo-image" alt="Logo">
+</div>
+<!-- /.logo -->
+<div role="progressbar" aria-valuenow="24" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-top" title="progress bar - 24% complete">
+<div class="progress-box-outer" aria-hidden="true"><span class="progress-box-completed" style="width: 24%;"></span></div>
+<div class="progress-text" aria-hidden="true">24%</div>
+</div>
+<!-- /.progress-bar -->
+</div>
+<!-- /.survey-header -->
+
+<form id="primary" name="primary" method="post" action="/survey/selfserve/2222/260216" enctype="application/x-www-form-urlencoded" novalidate="">
+<input type="hidden" name="_v2_counter" value="11">
+<!-- @@XYZZY@@ -->
+<div id="question_NETWORKS1b" class="question radio label_NETWORKS1b   clearColWidths">
+<h1 title="question" class="question-text" id="question_text_NETWORKS1b">How often do you watch shows, movies, web series, videos, or clips from each of the following?</h1>
+<!-- /.question-text -->
+
+<h2 title="instructions" class="instruction-text">Please provide a response for each selection</h2>
+<!-- /.instruction-text -->
+<div class="answers answers-table">
+<div class="fir fir-checkbox" style="display: none;">
+<span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> checkbox </title>
+<path d="M15.8,0H3.9C1.8,0,0,2,0,4.1V16c0,2.2,1.8,4,3.9,4h11.8c2.2,0,4.2-1.8,4.2-4V4.1C20,2,18,0,15.8,0z M19,16 c0,1.6-1.6,3-3.2,3H3.9C2.3,19,1,17.7,1,16V4.1C1,2.5,2.3,1,3.9,1h11.8C17.4,1,19,2.5,19,4.1V16z" class="fir-base"></path>
+<path d="M19,16c0,1.6-1.6,3-3.2,3H3.9C2.3,19,1,17.7,1,16V4.1C1,2.5,2.3,1,3.9,1h11.8C17.4,1,19,2.5,19,4.1V16z" class="fir-bg"></path>
+<polygon points="9.1,16.3 2.5,11 4.1,9 8.7,12.6 15.6,3.7 17.7,5.2 " class="fir-selected"></polygon>
+</svg>
+</span>
+</div>
+<div class="fir fir-radio" style="display: none;">
+<span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</div>
+<table class="grid specifiedWidths grid-table-mode" data-settings="auto-optimize mobile-mode group-by-row table-mode ss-colWidth" data-height="" summary="This table contains form elements to answer the survey question" style="">
+<tbody>
+<tr class="row mobile-top-border-row">
+<td colspan="5" class="cell nonempty mobile-top-border-cell"></td>
+</tr><tr class="row row-col-legends row-col-legends-top colCount-4">
+<td class="cell empty empty-left empty-top unused mobile border-collapse"></td>
+<th scope="col" id="NETWORKS1b_c1" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   " style="width:150px; min-width:150px">
+<strong>Never</strong>
+</th><th scope="col" id="NETWORKS1b_c2" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   " style="width:150px; min-width:150px">
+<strong>Less than once a month</strong>
+</th><th scope="col" id="NETWORKS1b_c3" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   " style="width:150px; min-width:150px">
+<strong>Once or twice a month</strong>
+</th><th scope="col" id="NETWORKS1b_c4" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   " style="width:150px; min-width:150px">
+<strong>Once a week or more</strong>
+</th>
+
+</tr>
+</tbody>
+<tbody><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r14_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+A&amp;E
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.9" value="0" id="ans3656.0.9" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r14_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.9"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.9" value="1" id="ans3656.1.9" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r14_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.9"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.9" value="2" id="ans3656.2.9" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r14_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.9"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.9" value="3" id="ans3656.3.9" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r14_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.9"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r31_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+E!
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.18" value="0" id="ans3656.0.18" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r31_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.18"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.18" value="1" id="ans3656.1.18" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r31_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.18"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.18" value="2" id="ans3656.2.18" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r31_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.18"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.18" value="3" id="ans3656.3.18" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r31_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.18"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r15_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Adult Swim
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.10" value="0" id="ans3656.0.10" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r15_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.10"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.10" value="1" id="ans3656.1.10" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r15_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.10"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.10" value="2" id="ans3656.2.10" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r15_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.10"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.10" value="3" id="ans3656.3.10" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r15_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.10"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r22_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Bravo
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.13" value="0" id="ans3656.0.13" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r22_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.13"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.13" value="1" id="ans3656.1.13" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r22_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.13"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.13" value="2" id="ans3656.2.13" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r22_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.13"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.13" value="3" id="ans3656.3.13" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r22_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.13"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r81_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Starz
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.53" value="0" id="ans3656.0.53" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r81_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.53"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.53" value="1" id="ans3656.1.53" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r81_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.53"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.53" value="2" id="ans3656.2.53" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r81_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.53"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.53" value="3" id="ans3656.3.53" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r81_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.53"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r62_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+TNT
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.39" value="0" id="ans3656.0.39" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r62_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.39"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.39" value="1" id="ans3656.1.39" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r62_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.39"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.39" value="2" id="ans3656.2.39" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r62_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.39"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.39" value="3" id="ans3656.3.39" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r62_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.39"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r29_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Disney Channel
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.17" value="0" id="ans3656.0.17" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r29_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.17"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.17" value="1" id="ans3656.1.17" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r29_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.17"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.17" value="2" id="ans3656.2.17" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r29_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.17"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.17" value="3" id="ans3656.3.17" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r29_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.17"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r18_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+BBC America
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.12" value="0" id="ans3656.0.12" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r18_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.12"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.12" value="1" id="ans3656.1.12" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r18_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.12"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.12" value="2" id="ans3656.2.12" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r18_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.12"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.12" value="3" id="ans3656.3.12" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r18_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.12"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r59_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+TBS
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.36" value="0" id="ans3656.0.36" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r59_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.36"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.36" value="1" id="ans3656.1.36" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r59_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.36"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.36" value="2" id="ans3656.2.36" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r59_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.36"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.36" value="3" id="ans3656.3.36" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r59_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.36"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r92_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Smithsonian Channel
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.56" value="0" id="ans3656.0.56" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r92_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.56"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.56" value="1" id="ans3656.1.56" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r92_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.56"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.56" value="2" id="ans3656.2.56" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r92_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.56"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.56" value="3" id="ans3656.3.56" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r92_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.56"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-col-legends row-col-legends-middle colCount-4">
+<td class="cell empty empty-left empty-middle unused mobile border-collapse"></td>
+<th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Never</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Less than once a month</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Once or twice a month</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Once a week or more</strong>
+</th>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r78_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+HBO
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.51" value="0" id="ans3656.0.51" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r78_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.51"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.51" value="1" id="ans3656.1.51" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r78_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.51"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.51" value="2" id="ans3656.2.51" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r78_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.51"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.51" value="3" id="ans3656.3.51" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r78_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.51"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r5_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+MTV
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.3" value="0" id="ans3656.0.3" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r5_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.3"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.3" value="1" id="ans3656.1.3" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r5_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.3"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.3" value="2" id="ans3656.2.3" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r5_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.3"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.3" value="3" id="ans3656.3.3" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r5_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.3"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r74_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+FOX
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.47" value="0" id="ans3656.0.47" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r74_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.47"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.47" value="1" id="ans3656.1.47" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r74_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.47"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.47" value="2" id="ans3656.2.47" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r74_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.47"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.47" value="3" id="ans3656.3.47" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r74_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.47"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r60_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Telemundo
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.37" value="0" id="ans3656.0.37" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r60_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.37"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.37" value="1" id="ans3656.1.37" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r60_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.37"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.37" value="2" id="ans3656.2.37" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r60_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.37"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.37" value="3" id="ans3656.3.37" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r60_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.37"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r7_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Paramount Network
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.4" value="0" id="ans3656.0.4" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r7_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.4"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.4" value="1" id="ans3656.1.4" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r7_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.4"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.4" value="2" id="ans3656.2.4" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r7_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.4"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.4" value="3" id="ans3656.3.4" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r7_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.4"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r61_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+TLC
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.38" value="0" id="ans3656.0.38" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r61_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.38"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.38" value="1" id="ans3656.1.38" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r61_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.38"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.38" value="2" id="ans3656.2.38" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r61_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.38"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.38" value="3" id="ans3656.3.38" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r61_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.38"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r76_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+The CW
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.49" value="0" id="ans3656.0.49" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r76_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.49"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.49" value="1" id="ans3656.1.49" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r76_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.49"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.49" value="2" id="ans3656.2.49" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r76_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.49"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.49" value="3" id="ans3656.3.49" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r76_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.49"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r8_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+TV Land
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.5" value="0" id="ans3656.0.5" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r8_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.5"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.5" value="1" id="ans3656.1.5" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r8_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.5"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.5" value="2" id="ans3656.2.5" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r8_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.5"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.5" value="3" id="ans3656.3.5" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r8_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.5"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r1_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+BET
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.0" value="0" id="ans3656.0.0" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r1_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.0"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.0" value="1" id="ans3656.1.0" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r1_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.0"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.0" value="2" id="ans3656.2.0" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r1_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.0"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.0" value="3" id="ans3656.3.0" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r1_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.0"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r55_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Oxygen
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.33" value="0" id="ans3656.0.33" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r55_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.33"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.33" value="1" id="ans3656.1.33" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r55_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.33"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.33" value="2" id="ans3656.2.33" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r55_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.33"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.33" value="3" id="ans3656.3.33" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r55_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.33"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-col-legends row-col-legends-middle colCount-4">
+<td class="cell empty empty-left empty-middle unused mobile border-collapse"></td>
+<th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Never</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Less than once a month</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Once or twice a month</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Once a week or more</strong>
+</th>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r9_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+VH1
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.6" value="0" id="ans3656.0.6" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r9_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.6"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.6" value="1" id="ans3656.1.6" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r9_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.6"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.6" value="2" id="ans3656.2.6" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r9_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.6"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.6" value="3" id="ans3656.3.6" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r9_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.6"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r3_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+CMT
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.1" value="0" id="ans3656.0.1" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r3_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.1"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.1" value="1" id="ans3656.1.1" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r3_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.1"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.1" value="2" id="ans3656.2.1" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r3_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.1"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.1" value="3" id="ans3656.3.1" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r3_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.1"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS1b_r16_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+AMC
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.11" value="0" id="ans3656.0.11" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r16_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.11"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.11" value="1" id="ans3656.1.11" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r16_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.11"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.11" value="2" id="ans3656.2.11" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r16_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.11"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.11" value="3" id="ans3656.3.11" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r16_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.11"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS1b_r56_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Pop
+</th>
+<td headers="NETWORKS1b_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.34" value="0" id="ans3656.0.34" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r56_left NETWORKS1b_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.0.34"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.34" value="1" id="ans3656.1.34" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r56_left NETWORKS1b_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.1.34"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.34" value="2" id="ans3656.2.34" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r56_left NETWORKS1b_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.2.34"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS1b_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans3656.0.34" value="3" id="ans3656.3.34" class="input radio fir-hidden" aria-labelledby="NETWORKS1b_r56_left NETWORKS1b_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans3656.3.34"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr></tbody>
+</table>
+<!-- /.grid -->
+</div>
+<!-- /.answers -->
+</div>
+<!-- /.question --><div class="survey-buttons">
+<input type="submit" name="continue" id="btn_continue" class="button continue" value="Next »" onclick="var i = document.createElement(''input''); i.setAttribute(''type'', ''hidden'');i.setAttribute(''value'', ''1'');i.setAttribute(''name'', ''__has_javascript'');document.forms.primary.appendChild(i);">
+
+</div>
+<!-- #surveyButtons --><input type="hidden" name="state" value="87aa2c66-145b-487f-a1e5-e48e19b32015">
+<input type="hidden" name="start_time" value="1780062542">
+<input type="hidden" name="_ptime" value="0">
+<script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "9ccd44ebq4pq81bm");}, 100); });
+</script>
+</form>
+
+
+</div>
+<!-- /.survey-body -->
+</div>
+<div class="survey-section"><div class="footer"><div style="width: 100%; height: 60px; background-color: #221b4f;" jstcache="0"><br jstcache="0"><center jstcache="0">       <a target="_blank" jstcache="0">          <img src="/survey/selfserve/2222/260216/Footer.png?2326399e4b" style="background-color: #221b4f;" jstcache="0" width="150px" height="38px">       </a>    </center></div></div>
+<!-- /.footer -->
+<input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33">
+        <input type="hidden" id="SurveyID" name="SurveyID" value="220821">
+        <input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs">
+        <input type="hidden" id="LangCode" name="LangCode" value="EN">
+        <input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults">
+        <input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults">
+        <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+        <input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0">
+
+        <script> function getQSTimeoutMs(){return 5000;} </script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qualityscore.js"></script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qslib1.0.js"></script></div>
+</div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062548497">
+<div id="detectBreakpoint"></div>
+<!-- /.survey-container -->
+
+
+</body></html>', '<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robots"><meta name="viewport"><title>Tapestry Research</title><link><link><link><link><script></script><captcha-widgets></captcha-widgets><script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(11 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((11 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script><script></script><script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script></head><body><div id="survey"><div><div></div></div><div><div><div><div><img></div><div role="progressbar"><div><span></span></div><div>24%</div></div></div><form id="primary" name="primary"><input type="hidden" name="_v2_counter" value="11"><div id="question_NETWORKS1b"><h1 id="question_text_NETWORKS1b">How often do you watch shows, movies, web series, videos, or clips from each of the following?</h1><h2>Please provide a response for each selection</h2><div><div><span></span></div><div><span></span></div><table><tbody><tr><td></td></tr><tr><td></td><th id="NETWORKS1b_c1"><strong>Never</strong></th><th id="NETWORKS1b_c2"><strong>Less than once a month</strong></th><th id="NETWORKS1b_c3"><strong>Once or twice a month</strong></th><th id="NETWORKS1b_c4"><strong>Once a week or more</strong></th></tr></tbody><tbody><tr><th id="NETWORKS1b_r14_left">
+A&amp;E
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.9" value="0" id="ans3656.0.9"><span></span></span><span><label for="ans3656.0.9"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.9" value="1" id="ans3656.1.9"><span></span></span><span><label for="ans3656.1.9"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.9" value="2" id="ans3656.2.9"><span></span></span><span><label for="ans3656.2.9"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.9" value="3" id="ans3656.3.9"><span></span></span><span><label for="ans3656.3.9"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r31_left">
+E!
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.18" value="0" id="ans3656.0.18"><span></span></span><span><label for="ans3656.0.18"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.18" value="1" id="ans3656.1.18"><span></span></span><span><label for="ans3656.1.18"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.18" value="2" id="ans3656.2.18"><span></span></span><span><label for="ans3656.2.18"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.18" value="3" id="ans3656.3.18"><span></span></span><span><label for="ans3656.3.18"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r15_left">
+Adult Swim
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.10" value="0" id="ans3656.0.10"><span></span></span><span><label for="ans3656.0.10"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.10" value="1" id="ans3656.1.10"><span></span></span><span><label for="ans3656.1.10"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.10" value="2" id="ans3656.2.10"><span></span></span><span><label for="ans3656.2.10"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.10" value="3" id="ans3656.3.10"><span></span></span><span><label for="ans3656.3.10"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r22_left">
+Bravo
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.13" value="0" id="ans3656.0.13"><span></span></span><span><label for="ans3656.0.13"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.13" value="1" id="ans3656.1.13"><span></span></span><span><label for="ans3656.1.13"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.13" value="2" id="ans3656.2.13"><span></span></span><span><label for="ans3656.2.13"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.13" value="3" id="ans3656.3.13"><span></span></span><span><label for="ans3656.3.13"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r81_left">
+Starz
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.53" value="0" id="ans3656.0.53"><span></span></span><span><label for="ans3656.0.53"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.53" value="1" id="ans3656.1.53"><span></span></span><span><label for="ans3656.1.53"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.53" value="2" id="ans3656.2.53"><span></span></span><span><label for="ans3656.2.53"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.53" value="3" id="ans3656.3.53"><span></span></span><span><label for="ans3656.3.53"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r62_left">
+TNT
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.39" value="0" id="ans3656.0.39"><span></span></span><span><label for="ans3656.0.39"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.39" value="1" id="ans3656.1.39"><span></span></span><span><label for="ans3656.1.39"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.39" value="2" id="ans3656.2.39"><span></span></span><span><label for="ans3656.2.39"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.39" value="3" id="ans3656.3.39"><span></span></span><span><label for="ans3656.3.39"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r29_left">
+Disney Channel
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.17" value="0" id="ans3656.0.17"><span></span></span><span><label for="ans3656.0.17"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.17" value="1" id="ans3656.1.17"><span></span></span><span><label for="ans3656.1.17"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.17" value="2" id="ans3656.2.17"><span></span></span><span><label for="ans3656.2.17"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.17" value="3" id="ans3656.3.17"><span></span></span><span><label for="ans3656.3.17"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r18_left">
+BBC America
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.12" value="0" id="ans3656.0.12"><span></span></span><span><label for="ans3656.0.12"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.12" value="1" id="ans3656.1.12"><span></span></span><span><label for="ans3656.1.12"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.12" value="2" id="ans3656.2.12"><span></span></span><span><label for="ans3656.2.12"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.12" value="3" id="ans3656.3.12"><span></span></span><span><label for="ans3656.3.12"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r59_left">
+TBS
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.36" value="0" id="ans3656.0.36"><span></span></span><span><label for="ans3656.0.36"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.36" value="1" id="ans3656.1.36"><span></span></span><span><label for="ans3656.1.36"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.36" value="2" id="ans3656.2.36"><span></span></span><span><label for="ans3656.2.36"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.36" value="3" id="ans3656.3.36"><span></span></span><span><label for="ans3656.3.36"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r92_left">
+Smithsonian Channel
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.56" value="0" id="ans3656.0.56"><span></span></span><span><label for="ans3656.0.56"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.56" value="1" id="ans3656.1.56"><span></span></span><span><label for="ans3656.1.56"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.56" value="2" id="ans3656.2.56"><span></span></span><span><label for="ans3656.2.56"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.56" value="3" id="ans3656.3.56"><span></span></span><span><label for="ans3656.3.56"><strong>Once a week or more</strong></label></span></span></td></tr><tr><td></td><th><strong>Never</strong></th><th><strong>Less than once a month</strong></th><th><strong>Once or twice a month</strong></th><th><strong>Once a week or more</strong></th></tr><tr><th id="NETWORKS1b_r78_left">
+HBO
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.51" value="0" id="ans3656.0.51"><span></span></span><span><label for="ans3656.0.51"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.51" value="1" id="ans3656.1.51"><span></span></span><span><label for="ans3656.1.51"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.51" value="2" id="ans3656.2.51"><span></span></span><span><label for="ans3656.2.51"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.51" value="3" id="ans3656.3.51"><span></span></span><span><label for="ans3656.3.51"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r5_left">
+MTV
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.3" value="0" id="ans3656.0.3"><span></span></span><span><label for="ans3656.0.3"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.3" value="1" id="ans3656.1.3"><span></span></span><span><label for="ans3656.1.3"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.3" value="2" id="ans3656.2.3"><span></span></span><span><label for="ans3656.2.3"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.3" value="3" id="ans3656.3.3"><span></span></span><span><label for="ans3656.3.3"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r74_left">
+FOX
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.47" value="0" id="ans3656.0.47"><span></span></span><span><label for="ans3656.0.47"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.47" value="1" id="ans3656.1.47"><span></span></span><span><label for="ans3656.1.47"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.47" value="2" id="ans3656.2.47"><span></span></span><span><label for="ans3656.2.47"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.47" value="3" id="ans3656.3.47"><span></span></span><span><label for="ans3656.3.47"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r60_left">
+Telemundo
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.37" value="0" id="ans3656.0.37"><span></span></span><span><label for="ans3656.0.37"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.37" value="1" id="ans3656.1.37"><span></span></span><span><label for="ans3656.1.37"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.37" value="2" id="ans3656.2.37"><span></span></span><span><label for="ans3656.2.37"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.37" value="3" id="ans3656.3.37"><span></span></span><span><label for="ans3656.3.37"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r7_left">
+Paramount Network
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.4" value="0" id="ans3656.0.4"><span></span></span><span><label for="ans3656.0.4"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.4" value="1" id="ans3656.1.4"><span></span></span><span><label for="ans3656.1.4"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.4" value="2" id="ans3656.2.4"><span></span></span><span><label for="ans3656.2.4"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.4" value="3" id="ans3656.3.4"><span></span></span><span><label for="ans3656.3.4"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r61_left">
+TLC
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.38" value="0" id="ans3656.0.38"><span></span></span><span><label for="ans3656.0.38"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.38" value="1" id="ans3656.1.38"><span></span></span><span><label for="ans3656.1.38"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.38" value="2" id="ans3656.2.38"><span></span></span><span><label for="ans3656.2.38"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.38" value="3" id="ans3656.3.38"><span></span></span><span><label for="ans3656.3.38"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r76_left">
+The CW
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.49" value="0" id="ans3656.0.49"><span></span></span><span><label for="ans3656.0.49"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.49" value="1" id="ans3656.1.49"><span></span></span><span><label for="ans3656.1.49"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.49" value="2" id="ans3656.2.49"><span></span></span><span><label for="ans3656.2.49"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.49" value="3" id="ans3656.3.49"><span></span></span><span><label for="ans3656.3.49"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r8_left">
+TV Land
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.5" value="0" id="ans3656.0.5"><span></span></span><span><label for="ans3656.0.5"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.5" value="1" id="ans3656.1.5"><span></span></span><span><label for="ans3656.1.5"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.5" value="2" id="ans3656.2.5"><span></span></span><span><label for="ans3656.2.5"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.5" value="3" id="ans3656.3.5"><span></span></span><span><label for="ans3656.3.5"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r1_left">
+BET
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.0" value="0" id="ans3656.0.0"><span></span></span><span><label for="ans3656.0.0"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.0" value="1" id="ans3656.1.0"><span></span></span><span><label for="ans3656.1.0"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.0" value="2" id="ans3656.2.0"><span></span></span><span><label for="ans3656.2.0"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.0" value="3" id="ans3656.3.0"><span></span></span><span><label for="ans3656.3.0"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r55_left">
+Oxygen
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.33" value="0" id="ans3656.0.33"><span></span></span><span><label for="ans3656.0.33"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.33" value="1" id="ans3656.1.33"><span></span></span><span><label for="ans3656.1.33"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.33" value="2" id="ans3656.2.33"><span></span></span><span><label for="ans3656.2.33"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.33" value="3" id="ans3656.3.33"><span></span></span><span><label for="ans3656.3.33"><strong>Once a week or more</strong></label></span></span></td></tr><tr><td></td><th><strong>Never</strong></th><th><strong>Less than once a month</strong></th><th><strong>Once or twice a month</strong></th><th><strong>Once a week or more</strong></th></tr><tr><th id="NETWORKS1b_r9_left">
+VH1
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.6" value="0" id="ans3656.0.6"><span></span></span><span><label for="ans3656.0.6"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.6" value="1" id="ans3656.1.6"><span></span></span><span><label for="ans3656.1.6"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.6" value="2" id="ans3656.2.6"><span></span></span><span><label for="ans3656.2.6"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.6" value="3" id="ans3656.3.6"><span></span></span><span><label for="ans3656.3.6"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r3_left">
+CMT
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.1" value="0" id="ans3656.0.1"><span></span></span><span><label for="ans3656.0.1"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.1" value="1" id="ans3656.1.1"><span></span></span><span><label for="ans3656.1.1"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.1" value="2" id="ans3656.2.1"><span></span></span><span><label for="ans3656.2.1"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.1" value="3" id="ans3656.3.1"><span></span></span><span><label for="ans3656.3.1"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r16_left">
+AMC
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.11" value="0" id="ans3656.0.11"><span></span></span><span><label for="ans3656.0.11"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.11" value="1" id="ans3656.1.11"><span></span></span><span><label for="ans3656.1.11"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.11" value="2" id="ans3656.2.11"><span></span></span><span><label for="ans3656.2.11"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.11" value="3" id="ans3656.3.11"><span></span></span><span><label for="ans3656.3.11"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS1b_r56_left">
+Pop
+</th><td headers="NETWORKS1b_c1"><span><span><input type="radio" name="ans3656.0.34" value="0" id="ans3656.0.34"><span></span></span><span><label for="ans3656.0.34"><strong>Never</strong></label></span></span></td><td headers="NETWORKS1b_c2"><span><span><input type="radio" name="ans3656.0.34" value="1" id="ans3656.1.34"><span></span></span><span><label for="ans3656.1.34"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS1b_c3"><span><span><input type="radio" name="ans3656.0.34" value="2" id="ans3656.2.34"><span></span></span><span><label for="ans3656.2.34"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS1b_c4"><span><span><input type="radio" name="ans3656.0.34" value="3" id="ans3656.3.34"><span></span></span><span><label for="ans3656.3.34"><strong>Once a week or more</strong></label></span></span></td></tr></tbody></table></div></div><div><input type="submit" name="continue" id="btn_continue" value="Next »"></div><input type="hidden" name="state" value="87aa2c66-145b-487f-a1e5-e48e19b32015"><input type="hidden" name="start_time" value="1780062542"><input type="hidden" name="_ptime" value="0"><script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "9ccd44ebq4pq81bm");}, 100); });
+</script></form></div></div><div><div><div><br><center><a><img></a></center></div></div><input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33"><input type="hidden" id="SurveyID" name="SurveyID" value="220821"><input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs"><input type="hidden" id="LangCode" name="LangCode" value="EN"><input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults"><input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults"><input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0"><input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0"><script> function getQSTimeoutMs(){return 5000;} </script><script type="text/javascript"></script><script type="text/javascript"></script></div></div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062548497"><div id="detectBreakpoint"></div></body></html>', '2026-05-29 21:49:16');
+INSERT INTO "page_html_source" VALUES (146, 112, 'c18bf87c8b9f426c436d982f2b578aaf', '<html lang="en-GB"><!--<![endif]--><head><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/captchafox/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/mt_captcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/hunter.js" data-ts-input="cf-turnstile-response"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/amazon_waf/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/yandex/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/lemin/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/keycaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest_v4/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/communication_helpers.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/core_helpers.js"></script>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- respview.client.meta -->
+
+
+<title>Tapestry Research</title>
+
+
+<!-- respview.css -->
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css?ad7753b880">
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.beacon.css?4ddb951d43">
+
+<!-- generated from: static/support/font-awesome-4.2.0/less/font-awesome.less, static/support/select2-4.0.1/select2.min.css, static/survey.respondent-post151.less, selfserve/2222/260216/static/theme.less, lib/steam/atm1d/v11/static/atm1d.less, lib/steam/cardsort/v7/static/cardsort.less and 0 themevars -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/less-compiled.css?a932463a8405103997a94450f6245f0e">
+
+
+<!-- extra CSS -->
+
+
+<!-- Custom CSS (specified in survey.xml) -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/Tapestry.css">
+
+<!-- respview.client.css -->
+<style>
+        table {
+        border-collapse: inherit !important; 
+        }
+        .row-col-legends-top {
+        background: #ededed;
+        position: sticky;
+        top: -16px;
+        z-index: 100;
+        }
+        .empty {
+        border: 1px solid #ccc;
+        }
+    </style>
+
+<!-- client.css -->
+<style media="screen">
+
+</style>
+
+<!-- JQuery -->
+<!--
+/s/jquery183.all.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/e2190ba850ec2bfa3e7d1567d2021910.js"></script><captcha-widgets></captcha-widgets>
+
+
+<!-- extra Logic -->
+
+
+<!-- respview.js -->
+<script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(12 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((12 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script>
+
+<!--[if lte IE 8]><script src="/s/support/respond/respond-1.4.2.min.js"></script><script src="/s/support/rem-unit-polyfill/rem.min.js"></script><![endif]-->
+
+
+<!--
+/s/support/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js
+/s/common.js
+/s/respview-post132.js
+/s/survey.respondent-post143.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/6f7910d7512e9866158e9fcb02cfdd53.js"></script>
+
+
+<!-- extra JS -->
+
+
+
+
+
+
+
+<!-- respview.client.js -->
+
+
+<!-- client.javascript -->
+
+
+<script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script>
+
+<!-- extra Head -->
+
+
+</head>
+
+<body class="survey-page non-touch" data-device="">
+
+
+<div id="survey" class="survey-container">
+<div class="survey-section"><div class="page-header"></div>
+<!-- /.page-header --></div>
+<div class="survey-section">
+<div class="survey-body">
+<div class="survey-header">
+<div class="logo logo-middle">
+<img src="/survey/selfserve/2222/logo_a2a001390fe4dc2ce73e6e195e691697.png" class="logo-image" alt="Logo">
+</div>
+<!-- /.logo -->
+<div role="progressbar" aria-valuenow="26" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-top" title="progress bar - 26% complete">
+<div class="progress-box-outer" aria-hidden="true"><span class="progress-box-completed" style="width: 26%;"></span></div>
+<div class="progress-text" aria-hidden="true">26%</div>
+</div>
+<!-- /.progress-bar -->
+</div>
+<!-- /.survey-header -->
+
+<form id="primary" name="primary" method="post" action="/survey/selfserve/2222/260216" enctype="application/x-www-form-urlencoded" novalidate="">
+<input type="hidden" name="_v2_counter" value="12">
+<!-- @@XYZZY@@ -->
+<div id="question_NETWORKS2" class="question radio label_NETWORKS2   clearColWidths">
+<h1 title="question" class="question-text" id="question_text_NETWORKS2">How often do you <strong>stream</strong> shows, movies, web series, videos, or clips from each of the following?</h1>
+<!-- /.question-text -->
+
+<h2 title="instructions" class="instruction-text">Please provide a response for each selection</h2>
+<!-- /.instruction-text -->
+<div class="answers answers-table">
+<div class="fir fir-checkbox" style="display: none;">
+<span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> checkbox </title>
+<path d="M15.8,0H3.9C1.8,0,0,2,0,4.1V16c0,2.2,1.8,4,3.9,4h11.8c2.2,0,4.2-1.8,4.2-4V4.1C20,2,18,0,15.8,0z M19,16 c0,1.6-1.6,3-3.2,3H3.9C2.3,19,1,17.7,1,16V4.1C1,2.5,2.3,1,3.9,1h11.8C17.4,1,19,2.5,19,4.1V16z" class="fir-base"></path>
+<path d="M19,16c0,1.6-1.6,3-3.2,3H3.9C2.3,19,1,17.7,1,16V4.1C1,2.5,2.3,1,3.9,1h11.8C17.4,1,19,2.5,19,4.1V16z" class="fir-bg"></path>
+<polygon points="9.1,16.3 2.5,11 4.1,9 8.7,12.6 15.6,3.7 17.7,5.2 " class="fir-selected"></polygon>
+</svg>
+</span>
+</div>
+<div class="fir fir-radio" style="display: none;">
+<span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</div>
+<table class="grid specifiedWidths grid-table-mode" data-settings="auto-optimize mobile-mode group-by-row table-mode ss-colWidth" data-height="" summary="This table contains form elements to answer the survey question" style="">
+<tbody>
+<tr class="row mobile-top-border-row">
+<td colspan="5" class="cell nonempty mobile-top-border-cell"></td>
+</tr><tr class="row row-col-legends row-col-legends-top colCount-4">
+<td class="cell empty empty-left empty-top unused mobile border-collapse"></td>
+<th scope="col" id="NETWORKS2_c1" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   " style="width:150px; min-width:150px">
+<strong>Never</strong>
+</th><th scope="col" id="NETWORKS2_c2" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   " style="width:150px; min-width:150px">
+<strong>Less than once a month</strong>
+</th><th scope="col" id="NETWORKS2_c3" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   " style="width:150px; min-width:150px">
+<strong>Once or twice a month</strong>
+</th><th scope="col" id="NETWORKS2_c4" class="cell nonempty legend col-legend col-legend-top col-legend-basic legend-level-1 mobile border-collapse   " style="width:150px; min-width:150px">
+<strong>Once a week or more</strong>
+</th>
+
+</tr>
+</tbody>
+<tbody><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS2_r101_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Discovery+
+</th>
+<td headers="NETWORKS2_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.10" value="0" id="ans95672.0.10" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r101_left NETWORKS2_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.0.10"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.10" value="1" id="ans95672.1.10" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r101_left NETWORKS2_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.1.10"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.10" value="2" id="ans95672.2.10" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r101_left NETWORKS2_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.2.10"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.10" value="3" id="ans95672.3.10" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r101_left NETWORKS2_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.3.10"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS2_r102_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Peacock
+</th>
+<td headers="NETWORKS2_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.11" value="0" id="ans95672.0.11" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r102_left NETWORKS2_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.0.11"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.11" value="1" id="ans95672.1.11" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r102_left NETWORKS2_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.1.11"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.11" value="2" id="ans95672.2.11" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r102_left NETWORKS2_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.2.11"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.11" value="3" id="ans95672.3.11" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r102_left NETWORKS2_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.3.11"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS2_r94_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Disney+
+</th>
+<td headers="NETWORKS2_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.7" value="0" id="ans95672.0.7" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r94_left NETWORKS2_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.0.7"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.7" value="1" id="ans95672.1.7" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r94_left NETWORKS2_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.1.7"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.7" value="2" id="ans95672.2.7" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r94_left NETWORKS2_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.2.7"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.7" value="3" id="ans95672.3.7" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r94_left NETWORKS2_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.3.7"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS2_r87_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Pluto TV
+</th>
+<td headers="NETWORKS2_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.4" value="0" id="ans95672.0.4" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r87_left NETWORKS2_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.0.4"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.4" value="1" id="ans95672.1.4" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r87_left NETWORKS2_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.1.4"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.4" value="2" id="ans95672.2.4" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r87_left NETWORKS2_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.2.4"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.4" value="3" id="ans95672.3.4" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r87_left NETWORKS2_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.3.4"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS2_r83_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Amazon Prime Video
+</th>
+<td headers="NETWORKS2_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.1" value="0" id="ans95672.0.1" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r83_left NETWORKS2_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.0.1"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.1" value="1" id="ans95672.1.1" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r83_left NETWORKS2_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.1.1"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.1" value="2" id="ans95672.2.1" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r83_left NETWORKS2_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.2.1"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.1" value="3" id="ans95672.3.1" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r83_left NETWORKS2_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.3.1"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS2_r104_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Tubi
+</th>
+<td headers="NETWORKS2_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.13" value="0" id="ans95672.0.13" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r104_left NETWORKS2_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.0.13"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.13" value="1" id="ans95672.1.13" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r104_left NETWORKS2_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.1.13"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.13" value="2" id="ans95672.2.13" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r104_left NETWORKS2_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.2.13"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.13" value="3" id="ans95672.3.13" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r104_left NETWORKS2_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.3.13"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS2_r85_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Hulu
+</th>
+<td headers="NETWORKS2_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.2" value="0" id="ans95672.0.2" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r85_left NETWORKS2_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.0.2"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.2" value="1" id="ans95672.1.2" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r85_left NETWORKS2_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.1.2"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.2" value="2" id="ans95672.2.2" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r85_left NETWORKS2_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.2.2"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.2" value="3" id="ans95672.3.2" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r85_left NETWORKS2_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.3.2"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS2_r86_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Crackle
+</th>
+<td headers="NETWORKS2_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.3" value="0" id="ans95672.0.3" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r86_left NETWORKS2_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.0.3"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.3" value="1" id="ans95672.1.3" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r86_left NETWORKS2_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.1.3"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.3" value="2" id="ans95672.2.3" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r86_left NETWORKS2_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.2.3"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.3" value="3" id="ans95672.3.3" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r86_left NETWORKS2_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.3.3"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS2_r103_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Max (formerly HBO Max)
+</th>
+<td headers="NETWORKS2_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.12" value="0" id="ans95672.0.12" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r103_left NETWORKS2_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.0.12"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.12" value="1" id="ans95672.1.12" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r103_left NETWORKS2_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.1.12"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.12" value="2" id="ans95672.2.12" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r103_left NETWORKS2_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.2.12"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.12" value="3" id="ans95672.3.12" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r103_left NETWORKS2_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.3.12"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS2_r93_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+AppleTV+
+</th>
+<td headers="NETWORKS2_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.6" value="0" id="ans95672.0.6" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r93_left NETWORKS2_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.0.6"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.6" value="1" id="ans95672.1.6" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r93_left NETWORKS2_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.1.6"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.6" value="2" id="ans95672.2.6" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r93_left NETWORKS2_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.2.6"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.6" value="3" id="ans95672.3.6" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r93_left NETWORKS2_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.3.6"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-col-legends row-col-legends-middle colCount-4">
+<td class="cell empty empty-left empty-middle unused mobile border-collapse"></td>
+<th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Never</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Less than once a month</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Once or twice a month</strong>
+</th><th scope="col" class="cell nonempty legend col-legend col-legend-middle col-legend-basic legend-level-1 mobile border-collapse q-col-legend-row-item   " style="width:150px; min-width:150px">
+<strong>Once a week or more</strong>
+</th>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS2_r100_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Paramount+
+</th>
+<td headers="NETWORKS2_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.9" value="0" id="ans95672.0.9" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r100_left NETWORKS2_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.0.9"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.9" value="1" id="ans95672.1.9" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r100_left NETWORKS2_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.1.9"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.9" value="2" id="ans95672.2.9" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r100_left NETWORKS2_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.2.9"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.9" value="3" id="ans95672.3.9" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r100_left NETWORKS2_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.3.9"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS2_r91_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+BET+
+</th>
+<td headers="NETWORKS2_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.5" value="0" id="ans95672.0.5" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r91_left NETWORKS2_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.0.5"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.5" value="1" id="ans95672.1.5" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r91_left NETWORKS2_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.1.5"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.5" value="2" id="ans95672.2.5" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r91_left NETWORKS2_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.2.5"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.5" value="3" id="ans95672.3.5" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r91_left NETWORKS2_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.3.5"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements even colCount-4">
+<th scope="row" id="NETWORKS2_r105_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Roku Channel
+</th>
+<td headers="NETWORKS2_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.14" value="0" id="ans95672.0.14" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r105_left NETWORKS2_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.0.14"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.14" value="1" id="ans95672.1.14" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r105_left NETWORKS2_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.1.14"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.14" value="2" id="ans95672.2.14" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r105_left NETWORKS2_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.2.14"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.14" value="3" id="ans95672.3.14" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r105_left NETWORKS2_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.3.14"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr><tr class="row row-elements odd colCount-4">
+<th scope="row" id="NETWORKS2_r82_left" class="cell nonempty legend row-legend row-legend-left row-legend-basic legend-level-1 mobile border-collapse  ">
+Netflix
+</th>
+<td headers="NETWORKS2_c1" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.0" value="0" id="ans95672.0.0" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r82_left NETWORKS2_c1"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.0.0"><strong>Never</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c2" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.0" value="1" id="ans95672.1.0" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r82_left NETWORKS2_c2"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.1.0"><strong>Less than once a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c3" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.0" value="2" id="ans95672.2.0" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r82_left NETWORKS2_c3"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.2.0"><strong>Once or twice a month</strong></label> </span>
+</span>
+</td><td headers="NETWORKS2_c4" class="cell nonempty element indent-1 mobile border-collapse groupingRows    clickableCell">
+<span class="cell-sub-wrapper cell-legend-right">
+<span class="cell-input cell-sub-column">
+<input type="radio" name="ans95672.0.0" value="3" id="ans95672.3.0" class="input radio fir-hidden" aria-labelledby="NETWORKS2_r82_left NETWORKS2_c4"><span class="fir-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 22 22" class="rounded" aria-hidden="true">
+<title> radio </title>
+<circle cx="10" cy="10" r="10" class="fir-base"></circle>
+<circle cx="10" cy="10" r="9" class="fir-bg"></circle>
+<circle cx="10" cy="10" r="7" class="fir-selected"></circle>
+</svg>
+</span>
+</span>
+<span class="cell-text cell-sub-column"><label for="ans95672.3.0"><strong>Once a week or more</strong></label> </span>
+</span>
+</td>
+
+</tr></tbody>
+</table>
+<!-- /.grid -->
+</div>
+<!-- /.answers -->
+</div>
+<!-- /.question --><div class="survey-buttons">
+<input type="submit" name="continue" id="btn_continue" class="button continue" value="Next »" onclick="var i = document.createElement(''input''); i.setAttribute(''type'', ''hidden'');i.setAttribute(''value'', ''1'');i.setAttribute(''name'', ''__has_javascript'');document.forms.primary.appendChild(i);">
+
+</div>
+<!-- #surveyButtons --><input type="hidden" name="state" value="c3ceb45d-94ff-469d-bd6d-59c4b670880f">
+<input type="hidden" name="start_time" value="1780062732">
+<input type="hidden" name="_ptime" value="0">
+<script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "3geq1h8br5x38zee");}, 100); });
+</script>
+</form>
+
+
+</div>
+<!-- /.survey-body -->
+</div>
+<div class="survey-section"><div class="footer"><div style="width: 100%; height: 60px; background-color: #221b4f;" jstcache="0"><br jstcache="0"><center jstcache="0">       <a target="_blank" jstcache="0">          <img src="/survey/selfserve/2222/260216/Footer.png?2326399e4b" style="background-color: #221b4f;" jstcache="0" width="150px" height="38px">       </a>    </center></div></div>
+<!-- /.footer -->
+<input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33">
+        <input type="hidden" id="SurveyID" name="SurveyID" value="220821">
+        <input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs">
+        <input type="hidden" id="LangCode" name="LangCode" value="EN">
+        <input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults">
+        <input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults">
+        <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+        <input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0">
+
+        <script> function getQSTimeoutMs(){return 5000;} </script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qualityscore.js"></script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qslib1.0.js"></script></div>
+</div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062738764">
+<div id="detectBreakpoint"></div>
+<!-- /.survey-container -->
+
+
+</body></html>', '<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robots"><meta name="viewport"><title>Tapestry Research</title><link><link><link><link><script></script><captcha-widgets></captcha-widgets><script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(12 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((12 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script><script></script><script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script></head><body><div id="survey"><div><div></div></div><div><div><div><div><img></div><div role="progressbar"><div><span></span></div><div>26%</div></div></div><form id="primary" name="primary"><input type="hidden" name="_v2_counter" value="12"><div id="question_NETWORKS2"><h1 id="question_text_NETWORKS2">How often do you <strong>stream</strong> shows, movies, web series, videos, or clips from each of the following?</h1><h2>Please provide a response for each selection</h2><div><div><span></span></div><div><span></span></div><table><tbody><tr><td></td></tr><tr><td></td><th id="NETWORKS2_c1"><strong>Never</strong></th><th id="NETWORKS2_c2"><strong>Less than once a month</strong></th><th id="NETWORKS2_c3"><strong>Once or twice a month</strong></th><th id="NETWORKS2_c4"><strong>Once a week or more</strong></th></tr></tbody><tbody><tr><th id="NETWORKS2_r101_left">
+Discovery+
+</th><td headers="NETWORKS2_c1"><span><span><input type="radio" name="ans95672.0.10" value="0" id="ans95672.0.10"><span></span></span><span><label for="ans95672.0.10"><strong>Never</strong></label></span></span></td><td headers="NETWORKS2_c2"><span><span><input type="radio" name="ans95672.0.10" value="1" id="ans95672.1.10"><span></span></span><span><label for="ans95672.1.10"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS2_c3"><span><span><input type="radio" name="ans95672.0.10" value="2" id="ans95672.2.10"><span></span></span><span><label for="ans95672.2.10"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS2_c4"><span><span><input type="radio" name="ans95672.0.10" value="3" id="ans95672.3.10"><span></span></span><span><label for="ans95672.3.10"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS2_r102_left">
+Peacock
+</th><td headers="NETWORKS2_c1"><span><span><input type="radio" name="ans95672.0.11" value="0" id="ans95672.0.11"><span></span></span><span><label for="ans95672.0.11"><strong>Never</strong></label></span></span></td><td headers="NETWORKS2_c2"><span><span><input type="radio" name="ans95672.0.11" value="1" id="ans95672.1.11"><span></span></span><span><label for="ans95672.1.11"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS2_c3"><span><span><input type="radio" name="ans95672.0.11" value="2" id="ans95672.2.11"><span></span></span><span><label for="ans95672.2.11"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS2_c4"><span><span><input type="radio" name="ans95672.0.11" value="3" id="ans95672.3.11"><span></span></span><span><label for="ans95672.3.11"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS2_r94_left">
+Disney+
+</th><td headers="NETWORKS2_c1"><span><span><input type="radio" name="ans95672.0.7" value="0" id="ans95672.0.7"><span></span></span><span><label for="ans95672.0.7"><strong>Never</strong></label></span></span></td><td headers="NETWORKS2_c2"><span><span><input type="radio" name="ans95672.0.7" value="1" id="ans95672.1.7"><span></span></span><span><label for="ans95672.1.7"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS2_c3"><span><span><input type="radio" name="ans95672.0.7" value="2" id="ans95672.2.7"><span></span></span><span><label for="ans95672.2.7"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS2_c4"><span><span><input type="radio" name="ans95672.0.7" value="3" id="ans95672.3.7"><span></span></span><span><label for="ans95672.3.7"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS2_r87_left">
+Pluto TV
+</th><td headers="NETWORKS2_c1"><span><span><input type="radio" name="ans95672.0.4" value="0" id="ans95672.0.4"><span></span></span><span><label for="ans95672.0.4"><strong>Never</strong></label></span></span></td><td headers="NETWORKS2_c2"><span><span><input type="radio" name="ans95672.0.4" value="1" id="ans95672.1.4"><span></span></span><span><label for="ans95672.1.4"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS2_c3"><span><span><input type="radio" name="ans95672.0.4" value="2" id="ans95672.2.4"><span></span></span><span><label for="ans95672.2.4"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS2_c4"><span><span><input type="radio" name="ans95672.0.4" value="3" id="ans95672.3.4"><span></span></span><span><label for="ans95672.3.4"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS2_r83_left">
+Amazon Prime Video
+</th><td headers="NETWORKS2_c1"><span><span><input type="radio" name="ans95672.0.1" value="0" id="ans95672.0.1"><span></span></span><span><label for="ans95672.0.1"><strong>Never</strong></label></span></span></td><td headers="NETWORKS2_c2"><span><span><input type="radio" name="ans95672.0.1" value="1" id="ans95672.1.1"><span></span></span><span><label for="ans95672.1.1"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS2_c3"><span><span><input type="radio" name="ans95672.0.1" value="2" id="ans95672.2.1"><span></span></span><span><label for="ans95672.2.1"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS2_c4"><span><span><input type="radio" name="ans95672.0.1" value="3" id="ans95672.3.1"><span></span></span><span><label for="ans95672.3.1"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS2_r104_left">
+Tubi
+</th><td headers="NETWORKS2_c1"><span><span><input type="radio" name="ans95672.0.13" value="0" id="ans95672.0.13"><span></span></span><span><label for="ans95672.0.13"><strong>Never</strong></label></span></span></td><td headers="NETWORKS2_c2"><span><span><input type="radio" name="ans95672.0.13" value="1" id="ans95672.1.13"><span></span></span><span><label for="ans95672.1.13"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS2_c3"><span><span><input type="radio" name="ans95672.0.13" value="2" id="ans95672.2.13"><span></span></span><span><label for="ans95672.2.13"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS2_c4"><span><span><input type="radio" name="ans95672.0.13" value="3" id="ans95672.3.13"><span></span></span><span><label for="ans95672.3.13"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS2_r85_left">
+Hulu
+</th><td headers="NETWORKS2_c1"><span><span><input type="radio" name="ans95672.0.2" value="0" id="ans95672.0.2"><span></span></span><span><label for="ans95672.0.2"><strong>Never</strong></label></span></span></td><td headers="NETWORKS2_c2"><span><span><input type="radio" name="ans95672.0.2" value="1" id="ans95672.1.2"><span></span></span><span><label for="ans95672.1.2"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS2_c3"><span><span><input type="radio" name="ans95672.0.2" value="2" id="ans95672.2.2"><span></span></span><span><label for="ans95672.2.2"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS2_c4"><span><span><input type="radio" name="ans95672.0.2" value="3" id="ans95672.3.2"><span></span></span><span><label for="ans95672.3.2"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS2_r86_left">
+Crackle
+</th><td headers="NETWORKS2_c1"><span><span><input type="radio" name="ans95672.0.3" value="0" id="ans95672.0.3"><span></span></span><span><label for="ans95672.0.3"><strong>Never</strong></label></span></span></td><td headers="NETWORKS2_c2"><span><span><input type="radio" name="ans95672.0.3" value="1" id="ans95672.1.3"><span></span></span><span><label for="ans95672.1.3"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS2_c3"><span><span><input type="radio" name="ans95672.0.3" value="2" id="ans95672.2.3"><span></span></span><span><label for="ans95672.2.3"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS2_c4"><span><span><input type="radio" name="ans95672.0.3" value="3" id="ans95672.3.3"><span></span></span><span><label for="ans95672.3.3"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS2_r103_left">
+Max (formerly HBO Max)
+</th><td headers="NETWORKS2_c1"><span><span><input type="radio" name="ans95672.0.12" value="0" id="ans95672.0.12"><span></span></span><span><label for="ans95672.0.12"><strong>Never</strong></label></span></span></td><td headers="NETWORKS2_c2"><span><span><input type="radio" name="ans95672.0.12" value="1" id="ans95672.1.12"><span></span></span><span><label for="ans95672.1.12"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS2_c3"><span><span><input type="radio" name="ans95672.0.12" value="2" id="ans95672.2.12"><span></span></span><span><label for="ans95672.2.12"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS2_c4"><span><span><input type="radio" name="ans95672.0.12" value="3" id="ans95672.3.12"><span></span></span><span><label for="ans95672.3.12"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS2_r93_left">
+AppleTV+
+</th><td headers="NETWORKS2_c1"><span><span><input type="radio" name="ans95672.0.6" value="0" id="ans95672.0.6"><span></span></span><span><label for="ans95672.0.6"><strong>Never</strong></label></span></span></td><td headers="NETWORKS2_c2"><span><span><input type="radio" name="ans95672.0.6" value="1" id="ans95672.1.6"><span></span></span><span><label for="ans95672.1.6"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS2_c3"><span><span><input type="radio" name="ans95672.0.6" value="2" id="ans95672.2.6"><span></span></span><span><label for="ans95672.2.6"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS2_c4"><span><span><input type="radio" name="ans95672.0.6" value="3" id="ans95672.3.6"><span></span></span><span><label for="ans95672.3.6"><strong>Once a week or more</strong></label></span></span></td></tr><tr><td></td><th><strong>Never</strong></th><th><strong>Less than once a month</strong></th><th><strong>Once or twice a month</strong></th><th><strong>Once a week or more</strong></th></tr><tr><th id="NETWORKS2_r100_left">
+Paramount+
+</th><td headers="NETWORKS2_c1"><span><span><input type="radio" name="ans95672.0.9" value="0" id="ans95672.0.9"><span></span></span><span><label for="ans95672.0.9"><strong>Never</strong></label></span></span></td><td headers="NETWORKS2_c2"><span><span><input type="radio" name="ans95672.0.9" value="1" id="ans95672.1.9"><span></span></span><span><label for="ans95672.1.9"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS2_c3"><span><span><input type="radio" name="ans95672.0.9" value="2" id="ans95672.2.9"><span></span></span><span><label for="ans95672.2.9"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS2_c4"><span><span><input type="radio" name="ans95672.0.9" value="3" id="ans95672.3.9"><span></span></span><span><label for="ans95672.3.9"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS2_r91_left">
+BET+
+</th><td headers="NETWORKS2_c1"><span><span><input type="radio" name="ans95672.0.5" value="0" id="ans95672.0.5"><span></span></span><span><label for="ans95672.0.5"><strong>Never</strong></label></span></span></td><td headers="NETWORKS2_c2"><span><span><input type="radio" name="ans95672.0.5" value="1" id="ans95672.1.5"><span></span></span><span><label for="ans95672.1.5"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS2_c3"><span><span><input type="radio" name="ans95672.0.5" value="2" id="ans95672.2.5"><span></span></span><span><label for="ans95672.2.5"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS2_c4"><span><span><input type="radio" name="ans95672.0.5" value="3" id="ans95672.3.5"><span></span></span><span><label for="ans95672.3.5"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS2_r105_left">
+Roku Channel
+</th><td headers="NETWORKS2_c1"><span><span><input type="radio" name="ans95672.0.14" value="0" id="ans95672.0.14"><span></span></span><span><label for="ans95672.0.14"><strong>Never</strong></label></span></span></td><td headers="NETWORKS2_c2"><span><span><input type="radio" name="ans95672.0.14" value="1" id="ans95672.1.14"><span></span></span><span><label for="ans95672.1.14"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS2_c3"><span><span><input type="radio" name="ans95672.0.14" value="2" id="ans95672.2.14"><span></span></span><span><label for="ans95672.2.14"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS2_c4"><span><span><input type="radio" name="ans95672.0.14" value="3" id="ans95672.3.14"><span></span></span><span><label for="ans95672.3.14"><strong>Once a week or more</strong></label></span></span></td></tr><tr><th id="NETWORKS2_r82_left">
+Netflix
+</th><td headers="NETWORKS2_c1"><span><span><input type="radio" name="ans95672.0.0" value="0" id="ans95672.0.0"><span></span></span><span><label for="ans95672.0.0"><strong>Never</strong></label></span></span></td><td headers="NETWORKS2_c2"><span><span><input type="radio" name="ans95672.0.0" value="1" id="ans95672.1.0"><span></span></span><span><label for="ans95672.1.0"><strong>Less than once a month</strong></label></span></span></td><td headers="NETWORKS2_c3"><span><span><input type="radio" name="ans95672.0.0" value="2" id="ans95672.2.0"><span></span></span><span><label for="ans95672.2.0"><strong>Once or twice a month</strong></label></span></span></td><td headers="NETWORKS2_c4"><span><span><input type="radio" name="ans95672.0.0" value="3" id="ans95672.3.0"><span></span></span><span><label for="ans95672.3.0"><strong>Once a week or more</strong></label></span></span></td></tr></tbody></table></div></div><div><input type="submit" name="continue" id="btn_continue" value="Next »"></div><input type="hidden" name="state" value="c3ceb45d-94ff-469d-bd6d-59c4b670880f"><input type="hidden" name="start_time" value="1780062732"><input type="hidden" name="_ptime" value="0"><script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "3geq1h8br5x38zee");}, 100); });
+</script></form></div></div><div><div><div><br><center><a><img></a></center></div></div><input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33"><input type="hidden" id="SurveyID" name="SurveyID" value="220821"><input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs"><input type="hidden" id="LangCode" name="LangCode" value="EN"><input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults"><input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults"><input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0"><input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0"><script> function getQSTimeoutMs(){return 5000;} </script><script type="text/javascript"></script><script type="text/javascript"></script></div></div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062738764"><div id="detectBreakpoint"></div></body></html>', '2026-05-29 21:52:26');
+INSERT INTO "page_html_source" VALUES (147, 113, 'aaebe7b5d876d14ff1295329ad96becd', '<html lang="en-GB"><!--<![endif]--><head><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/captchafox/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/mt_captcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/hunter.js" data-ts-input="cf-turnstile-response"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/amazon_waf/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/yandex/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/lemin/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/keycaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest_v4/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/communication_helpers.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/core_helpers.js"></script>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- respview.client.meta -->
+
+
+<title>Tapestry Research</title>
+
+
+<!-- respview.css -->
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css?ad7753b880">
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.beacon.css?4ddb951d43">
+
+<!-- generated from: static/support/font-awesome-4.2.0/less/font-awesome.less, static/support/select2-4.0.1/select2.min.css, static/survey.respondent-post151.less, selfserve/2222/260216/static/theme.less, lib/steam/atm1d/v11/static/atm1d.less, lib/steam/cardsort/v7/static/cardsort.less and 0 themevars -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/less-compiled.css?a932463a8405103997a94450f6245f0e">
+
+
+<!-- extra CSS -->
+
+
+<!-- Custom CSS (specified in survey.xml) -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/Tapestry.css">
+
+<!-- respview.client.css -->
+<style>
+        table {
+        border-collapse: inherit !important; 
+        }
+        .row-col-legends-top {
+        background: #ededed;
+        position: sticky;
+        top: -16px;
+        z-index: 100;
+        }
+        .empty {
+        border: 1px solid #ccc;
+        }
+    </style>
+
+<!-- client.css -->
+<style media="screen">
+
+</style>
+
+<!-- JQuery -->
+<!--
+/s/jquery183.all.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/e2190ba850ec2bfa3e7d1567d2021910.js"></script><captcha-widgets></captcha-widgets>
+
+
+<!-- extra Logic -->
+
+
+<!-- respview.js -->
+<script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(13 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((13 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script>
+
+<!--[if lte IE 8]><script src="/s/support/respond/respond-1.4.2.min.js"></script><script src="/s/support/rem-unit-polyfill/rem.min.js"></script><![endif]-->
+
+
+<!--
+/s/support/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js
+/s/common.js
+/s/respview-post132.js
+/s/survey.respondent-post143.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/6f7910d7512e9866158e9fcb02cfdd53.js"></script>
+
+
+<!-- extra JS -->
+<!-- lib/steam/atm1d/v11/styles.xml -->
+  <script src="/survey/lib/steam/atm1d/v11/atm1d.js?e84439618b"></script>
+
+
+
+
+
+
+<!-- respview.client.js -->
+
+
+<!-- client.javascript -->
+
+
+<script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script>
+
+<!-- extra Head -->
+<style>
+
+        #question_CABLESTATUS .atm1d_vertical .answers > div {
+                text-align: left;
+            }
+
+        #question_CABLESTATUS .atm1d_vertical .answers > div > div,
+        #question_CABLESTATUS :not(.atm1d_vertical) .answers{
+            justify-content: flex-start;
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        #question_CABLESTATUS .atm1d label {
+            max-height: none;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        #question_CABLESTATUS .atm1d_vertical label {
+            min-width: 75%;
+            text-align: left;
+        }
+
+        #question_CABLESTATUS .atm1d_horizontal label {
+            min-height: 0;
+        }
+
+        @media (min-width: 768px) {
+            #question_CABLESTATUS .atm1d_vertical .answers > div {
+                    text-align: left;
+            }
+            #question_CABLESTATUS .atm1d_vertical .answers > div > div,
+            #question_CABLESTATUS :not(.atm1d_vertical) .answers {
+                justify-content: flex-start;
+                margin-left: 0;
+                margin-right: auto;
+            }
+
+            #question_CABLESTATUS .atm1d label {
+                max-height: none;
+                max-width: 100%;
+                text-align: center;
+            }
+
+            #question_CABLESTATUS .atm1d_vertical label {
+                min-width: 280px;
+                text-align: left;
+            }
+
+            #question_CABLESTATUS .atm1d_horizontal label {
+                min-height: 0;
+            }
+        }
+        </style>
+
+</head>
+
+<body class="survey-page non-touch" data-device="">
+
+
+<div id="survey" class="survey-container">
+<div class="survey-section"><div class="page-header"></div>
+<!-- /.page-header --></div>
+<div class="survey-section">
+<div class="survey-body">
+<div class="survey-header">
+<div class="logo logo-middle">
+<img src="/survey/selfserve/2222/logo_a2a001390fe4dc2ce73e6e195e691697.png" class="logo-image" alt="Logo">
+</div>
+<!-- /.logo -->
+<div role="progressbar" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-top" title="progress bar - 28% complete">
+<div class="progress-box-outer" aria-hidden="true"><span class="progress-box-completed" style="width: 28%;"></span></div>
+<div class="progress-text" aria-hidden="true">28%</div>
+</div>
+<!-- /.progress-bar -->
+</div>
+<!-- /.survey-header -->
+
+<form id="primary" name="primary" method="post" action="/survey/selfserve/2222/260216" enctype="application/x-www-form-urlencoded" novalidate="">
+<input type="hidden" name="_v2_counter" value="13">
+<!-- @@XYZZY@@ -->
+<div id="question_CABLESTATUS" class="question radio label_CABLESTATUS   noRows noCols" role="radiogroup">
+<fieldset class="atm1d atm1d_vertical" data-view-mode="vertical" data-num-cols="">
+            <legend>
+<h1 title="question" class="question-text" id="question_text_CABLESTATUS">Do you have paid cable or satellite TV (e.g. Comcast/Xfinity, Optimum, DISH, DirecTV, Verizon FiOS etc.) in your household?</h1>
+<!-- /.question-text -->
+
+<h2 title="instructions" class="instruction-text">Please select an answer</h2>
+<!-- /.instruction-text -->
+</legend>
+<div class="answers answers-list">
+        <div class="">
+            <input type="radio" name="ans1522.0.0" value="0" id="ans1522.0.0" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans1522.0.0" class="showInput_0" style="width: 299.556px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>Yes, I have this in my household</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="radio" name="ans1522.0.0" value="1" id="ans1522.0.1" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans1522.0.1" class="showInput_0" style="width: 299.556px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>No, I do not have this in my household</span>
+                </span>
+            </label>
+            </div>
+            
+        </div><!-- /.grid -->
+</div>
+<!-- /.answers -->
+</fieldset>
+</div>
+<!-- /.question --><div class="survey-buttons">
+<input type="submit" name="continue" id="btn_continue" class="button continue" value="Next »" onclick="var i = document.createElement(''input''); i.setAttribute(''type'', ''hidden'');i.setAttribute(''value'', ''1'');i.setAttribute(''name'', ''__has_javascript'');document.forms.primary.appendChild(i);">
+
+</div>
+<!-- #surveyButtons --><input type="hidden" name="state" value="4e0cfd65-0f9a-434f-8be7-2db1b6c1fc33">
+<input type="hidden" name="start_time" value="1780062880">
+<input type="hidden" name="_ptime" value="0">
+<script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "gf6jjsbv4wcwg9nc");}, 100); });
+</script>
+</form>
+
+
+</div>
+<!-- /.survey-body -->
+</div>
+<div class="survey-section"><div class="footer"><div style="width: 100%; height: 60px; background-color: #221b4f;" jstcache="0"><br jstcache="0"><center jstcache="0">       <a target="_blank" jstcache="0">          <img src="/survey/selfserve/2222/260216/Footer.png?2326399e4b" style="background-color: #221b4f;" jstcache="0" width="150px" height="38px">       </a>    </center></div></div>
+<!-- /.footer -->
+<input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33">
+        <input type="hidden" id="SurveyID" name="SurveyID" value="220821">
+        <input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs">
+        <input type="hidden" id="LangCode" name="LangCode" value="EN">
+        <input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults">
+        <input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults">
+        <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+        <input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0">
+
+        <script> function getQSTimeoutMs(){return 5000;} </script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qualityscore.js"></script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qslib1.0.js"></script></div>
+</div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062886738">
+<div id="detectBreakpoint"></div>
+<!-- /.survey-container -->
+
+
+</body></html>', '<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robots"><meta name="viewport"><title>Tapestry Research</title><link><link><link><link><script></script><captcha-widgets></captcha-widgets><script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(13 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((13 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script><script></script><script></script><script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script></head><body><div id="survey"><div><div></div></div><div><div><div><div><img></div><div role="progressbar"><div><span></span></div><div>28%</div></div></div><form id="primary" name="primary"><input type="hidden" name="_v2_counter" value="13"><div id="question_CABLESTATUS" role="radiogroup"><fieldset><legend><h1 id="question_text_CABLESTATUS">Do you have paid cable or satellite TV (e.g. Comcast/Xfinity, Optimum, DISH, DirecTV, Verizon FiOS etc.) in your household?</h1><h2>Please select an answer</h2></legend><div><div><input type="radio" name="ans1522.0.0" value="0" id="ans1522.0.0"><div><label for="ans1522.0.0"><i></i><i></i><span><span>Yes, I have this in my household</span></span></label></div></div><div><input type="radio" name="ans1522.0.0" value="1" id="ans1522.0.1"><div><label for="ans1522.0.1"><i></i><i></i><span><span>No, I do not have this in my household</span></span></label></div></div></div></fieldset></div><div><input type="submit" name="continue" id="btn_continue" value="Next »"></div><input type="hidden" name="state" value="4e0cfd65-0f9a-434f-8be7-2db1b6c1fc33"><input type="hidden" name="start_time" value="1780062880"><input type="hidden" name="_ptime" value="0"><script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "gf6jjsbv4wcwg9nc");}, 100); });
+</script></form></div></div><div><div><div><br><center><a><img></a></center></div></div><input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33"><input type="hidden" id="SurveyID" name="SurveyID" value="220821"><input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs"><input type="hidden" id="LangCode" name="LangCode" value="EN"><input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults"><input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults"><input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0"><input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0"><script> function getQSTimeoutMs(){return 5000;} </script><script type="text/javascript"></script><script type="text/javascript"></script></div></div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062886738"><div id="detectBreakpoint"></div></body></html>', '2026-05-29 21:54:51');
+INSERT INTO "page_html_source" VALUES (148, 114, '892b8dd8732315298893ea1f4f02b126', '<html lang="en-GB"><!--<![endif]--><head><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/captchafox/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/mt_captcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/turnstile/hunter.js" data-ts-input="cf-turnstile-response"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/amazon_waf/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/yandex/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/lemin/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/arkoselabs/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/recaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/keycaptcha/hunter.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest_v4/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/captcha/geetest/interceptor.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/communication_helpers.js"></script><script src="chrome-extension://ifibfemgeogfhoebkmokieepdoobkbpo/content/core_helpers.js"></script>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- respview.client.meta -->
+
+
+<title>Tapestry Research</title>
+
+
+<!-- respview.css -->
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css?ad7753b880">
+<link rel="stylesheet" href="/s/support/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.beacon.css?4ddb951d43">
+
+<!-- generated from: static/support/font-awesome-4.2.0/less/font-awesome.less, static/support/select2-4.0.1/select2.min.css, static/survey.respondent-post151.less, selfserve/2222/260216/static/theme.less, lib/steam/atm1d/v11/static/atm1d.less, lib/steam/cardsort/v7/static/cardsort.less and 0 themevars -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/less-compiled.css?a932463a8405103997a94450f6245f0e">
+
+
+<!-- extra CSS -->
+
+
+<!-- Custom CSS (specified in survey.xml) -->
+<link rel="stylesheet" href="/survey/selfserve/2222/260216/Tapestry.css">
+
+<!-- respview.client.css -->
+<style>
+        table {
+        border-collapse: inherit !important; 
+        }
+        .row-col-legends-top {
+        background: #ededed;
+        position: sticky;
+        top: -16px;
+        z-index: 100;
+        }
+        .empty {
+        border: 1px solid #ccc;
+        }
+    </style>
+
+<!-- client.css -->
+<style media="screen">
+
+</style>
+
+<!-- JQuery -->
+<!--
+/s/jquery183.all.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/e2190ba850ec2bfa3e7d1567d2021910.js"></script><captcha-widgets></captcha-widgets>
+
+
+<!-- extra Logic -->
+
+
+<!-- respview.js -->
+<script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(14 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((14 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script>
+
+<!--[if lte IE 8]><script src="/s/support/respond/respond-1.4.2.min.js"></script><script src="/s/support/rem-unit-polyfill/rem.min.js"></script><![endif]-->
+
+
+<!--
+/s/support/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js
+/s/common.js
+/s/respview-post132.js
+/s/survey.respondent-post143.js
+-->
+<script src="//uk.surveyfiles.com/s/exp/tmp/6f7910d7512e9866158e9fcb02cfdd53.js"></script>
+
+
+<!-- extra JS -->
+<!-- lib/steam/atm1d/v11/styles.xml -->
+  <script src="/survey/lib/steam/atm1d/v11/atm1d.js?e84439618b"></script>
+
+
+
+
+
+
+<!-- respview.client.js -->
+
+
+<!-- client.javascript -->
+
+
+<script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script>
+
+<!-- extra Head -->
+<style>
+
+        #question_Which_Showtime .atm1d_vertical .answers > div {
+                text-align: left;
+            }
+
+        #question_Which_Showtime .atm1d_vertical .answers > div > div,
+        #question_Which_Showtime :not(.atm1d_vertical) .answers{
+            justify-content: flex-start;
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        #question_Which_Showtime .atm1d label {
+            max-height: none;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        #question_Which_Showtime .atm1d_vertical label {
+            min-width: 75%;
+            text-align: left;
+        }
+
+        #question_Which_Showtime .atm1d_horizontal label {
+            min-height: 0;
+        }
+
+        @media (min-width: 768px) {
+            #question_Which_Showtime .atm1d_vertical .answers > div {
+                    text-align: left;
+            }
+            #question_Which_Showtime .atm1d_vertical .answers > div > div,
+            #question_Which_Showtime :not(.atm1d_vertical) .answers {
+                justify-content: flex-start;
+                margin-left: 0;
+                margin-right: auto;
+            }
+
+            #question_Which_Showtime .atm1d label {
+                max-height: none;
+                max-width: 100%;
+                text-align: center;
+            }
+
+            #question_Which_Showtime .atm1d_vertical label {
+                min-width: 280px;
+                text-align: left;
+            }
+
+            #question_Which_Showtime .atm1d_horizontal label {
+                min-height: 0;
+            }
+        }
+        </style>
+
+</head>
+
+<body class="survey-page non-touch" data-device="">
+
+
+<div id="survey" class="survey-container">
+<div class="survey-section"><div class="page-header"></div>
+<!-- /.page-header --></div>
+<div class="survey-section">
+<div class="survey-body">
+<div class="survey-header">
+<div class="logo logo-middle">
+<img src="/survey/selfserve/2222/logo_a2a001390fe4dc2ce73e6e195e691697.png" class="logo-image" alt="Logo">
+</div>
+<!-- /.logo -->
+<div role="progressbar" aria-valuenow="29" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-top" title="progress bar - 29% complete">
+<div class="progress-box-outer" aria-hidden="true"><span class="progress-box-completed" style="width: 29%;"></span></div>
+<div class="progress-text" aria-hidden="true">29%</div>
+</div>
+<!-- /.progress-bar -->
+</div>
+<!-- /.survey-header -->
+
+<form id="primary" name="primary" method="post" action="/survey/selfserve/2222/260216" enctype="application/x-www-form-urlencoded" novalidate="">
+<input type="hidden" name="_v2_counter" value="14">
+<!-- @@XYZZY@@ -->
+<div id="question_Which_Showtime" class="question radio label_Which_Showtime   noRows noCols" role="radiogroup">
+<fieldset class="atm1d atm1d_vertical" data-view-mode="vertical" data-num-cols="">
+            <legend>
+<h1 title="question" class="question-text" id="question_text_Which_Showtime">You mentioned that you watch Showtime. Which of the following ways do you watch most frequently?</h1>
+<!-- /.question-text -->
+
+<h2 title="instructions" class="instruction-text">Please select an answer</h2>
+<!-- /.instruction-text -->
+</legend>
+<div class="answers answers-list">
+        <div class="">
+            <input type="radio" name="ans2036.0.0" value="0" id="ans2036.0.0" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans2036.0.0" class="showInput_0" style="width: 552px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>A subscription through my cable/satellite/telco provider</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="radio" name="ans2036.0.0" value="2" id="ans2036.0.2" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans2036.0.2" class="showInput_0" style="width: 552px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>A subscription through an online third party like Amazon, Hulu, Sling TV, etc.</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="radio" name="ans2036.0.0" value="3" id="ans2036.0.3" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans2036.0.3" class="showInput_0" style="width: 552px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>As part of my Paramount+ subscription</span>
+                </span>
+            </label>
+            </div>
+            
+        </div>        <div class="">
+            <input type="radio" name="ans2036.0.0" value="4" id="ans2036.0.4" class="input radio">
+            <div class="showInputParent_0">
+            <label for="ans2036.0.4" class="showInput_0" style="width: 552px; height: 55.7778px;">
+                <i aria-hidden="true" class="fa fa-circle-o fa-icon-circle-o"></i>
+                <i aria-hidden="true" class="fa fa-dot-circle-o fa-icon-dot-circle-o"></i>
+                <span>
+                    <span>Other/not a subscriber</span>
+                </span>
+            </label>
+            </div>
+            
+        </div><!-- /.grid -->
+</div>
+<!-- /.answers -->
+</fieldset>
+</div>
+<!-- /.question --><div class="survey-buttons">
+<input type="submit" name="continue" id="btn_continue" class="button continue" value="Next »" onclick="var i = document.createElement(''input''); i.setAttribute(''type'', ''hidden'');i.setAttribute(''value'', ''1'');i.setAttribute(''name'', ''__has_javascript'');document.forms.primary.appendChild(i);">
+
+</div>
+<!-- #surveyButtons --><input type="hidden" name="state" value="63e799a9-0a89-4896-acb7-1b2d3749821a">
+<input type="hidden" name="start_time" value="1780062892">
+<input type="hidden" name="_ptime" value="0">
+<script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "qucw4rvf4c8mu8cr");}, 100); });
+</script>
+</form>
+
+
+</div>
+<!-- /.survey-body -->
+</div>
+<div class="survey-section"><div class="footer"><div style="width: 100%; height: 60px; background-color: #221b4f;" jstcache="0"><br jstcache="0"><center jstcache="0">       <a target="_blank" jstcache="0">          <img src="/survey/selfserve/2222/260216/Footer.png?2326399e4b" style="background-color: #221b4f;" jstcache="0" width="150px" height="38px">       </a>    </center></div></div>
+<!-- /.footer -->
+<input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33">
+        <input type="hidden" id="SurveyID" name="SurveyID" value="220821">
+        <input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs">
+        <input type="hidden" id="LangCode" name="LangCode" value="EN">
+        <input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults">
+        <input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults">
+        <input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0">
+        <input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0">
+
+        <script> function getQSTimeoutMs(){return 5000;} </script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qualityscore.js"></script>
+        <script type="text/javascript" src="/survey/lib/sys/qualityscore/v1/qslib1.0.js"></script></div>
+</div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062899257">
+<div id="detectBreakpoint"></div>
+<!-- /.survey-container -->
+
+
+</body></html>', '<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robots"><meta name="viewport"><title>Tapestry Research</title><link><link><link><link><script></script><captcha-widgets></captcha-widgets><script>
+(function(){
+if (!window.location.hash) {
+var fragmentPattern = ''_?$&\'')*,(;=.-~:@!'';
+for (var i = 1, result = ''''; i <= Math.floor(14 / fragmentPattern.length); i++) {
+result += fragmentPattern.slice(-1);
+}
+result += fragmentPattern.charAt((14 % fragmentPattern.length) - 1);
+window.location.hash = result;
+}
+})();
+</script><script></script><script></script><script>
+function goForward(){window.history.forward();}
+goForward();
+addHandler(goForward);
+window.onpageshow=function(evt){if(evt.persisted) goForward();}
+window.onpopstate=function(){goForward();}
+window.onunload=function(){void(0);}
+</script></head><body><div id="survey"><div><div></div></div><div><div><div><div><img></div><div role="progressbar"><div><span></span></div><div>29%</div></div></div><form id="primary" name="primary"><input type="hidden" name="_v2_counter" value="14"><div id="question_Which_Showtime" role="radiogroup"><fieldset><legend><h1 id="question_text_Which_Showtime">You mentioned that you watch Showtime. Which of the following ways do you watch most frequently?</h1><h2>Please select an answer</h2></legend><div><div><input type="radio" name="ans2036.0.0" value="0" id="ans2036.0.0"><div><label for="ans2036.0.0"><i></i><i></i><span><span>A subscription through my cable/satellite/telco provider</span></span></label></div></div><div><input type="radio" name="ans2036.0.0" value="2" id="ans2036.0.2"><div><label for="ans2036.0.2"><i></i><i></i><span><span>A subscription through an online third party like Amazon, Hulu, Sling TV, etc.</span></span></label></div></div><div><input type="radio" name="ans2036.0.0" value="3" id="ans2036.0.3"><div><label for="ans2036.0.3"><i></i><i></i><span><span>As part of my Paramount+ subscription</span></span></label></div></div><div><input type="radio" name="ans2036.0.0" value="4" id="ans2036.0.4"><div><label for="ans2036.0.4"><i></i><i></i><span><span>Other/not a subscriber</span></span></label></div></div></div></fieldset></div><div><input type="submit" name="continue" id="btn_continue" value="Next »"></div><input type="hidden" name="state" value="63e799a9-0a89-4896-acb7-1b2d3749821a"><input type="hidden" name="start_time" value="1780062892"><input type="hidden" name="_ptime" value="0"><script>addHandler(Survey.capturePreciseTime)</script><script>
+$ (window).on("load", function() { setTimeout(function() { Survey.recordPageTiming("selfserve/2222/260216", "ms9jfz2pe6g10xxs", "qucw4rvf4c8mu8cr");}, 100); });
+</script></form></div></div><div><div><div><br><center><a><img></a></center></div></div><input type="hidden" id="ClientID" name="ClientID" value="086BBCA4-BA6E-11EC-A210-1264B5C78F33"><input type="hidden" id="SurveyID" name="SurveyID" value="220821"><input type="hidden" id="PanelistID" name="PanelistID" value="ms9jfz2pe6g10xxs"><input type="hidden" id="LangCode" name="LangCode" value="EN"><input type="hidden" id="ClientLabelQS" name="ClientLabelQS" value="client_Imperium_QSresults"><input type="hidden" id="ClientLabelRVID" name="ClientLabelRVID" value="client_Imperium_RVIDresults"><input type="hidden" id="CollectCompleted" name="CollectCompleted" value="0"><input type="hidden" id="AnalyzeCompleted" name="AnalyzeCompleted" value="0"><script> function getQSTimeoutMs(){return 5000;} </script><script type="text/javascript"></script><script type="text/javascript"></script></div></div><input type="hidden" name="imperium_qs_time_start" id="imperium_qs_time_start" value="1780062899257"><div id="detectBreakpoint"></div></body></html>', '2026-05-29 21:55:12');
+
+-- ----------------------------
+-- Table structure for page_result_prompt
+-- ----------------------------
+DROP TABLE IF EXISTS "page_result_prompt";
+CREATE TABLE "page_result_prompt" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+  "page_result_id" INTEGER,
+  "prompt" TEXT,
+  "page_summary" TEXT
+);
+
+-- ----------------------------
+-- Records of page_result_prompt
+-- ----------------------------
+INSERT INTO "page_result_prompt" VALUES (41, 91, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+== OPEN-END QUESTION (type: "open_end") ==
+
+【识别特征】
+- 问卷平台标注为 open-end 题型的开放式问答
+- 通常是长文本 textarea，要求受访者用自己的话作答
+- 题目通常以 "Please describe..."、"In your own words..."、"What do you think..." 开头
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本
+- showAnswer 禁止为空！即使开放式也必须有值
+
+【输出要求】
+- subject: 题目原文
+- showAnswer: 符合人设背景的 2-3 句自然语言回答
+
+【推荐值生成规则】
+- 回答应与题目主题相关，符合人设身份
+- 保持真实感，避免模板化套话
+- 示例："I think the service quality has improved significantly over the past year."
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><meta><meta><meta><meta><meta name="Generator"><meta name="description"><meta name="viewport"><meta><meta><meta><meta><title>Macalester 2026- prospective families</title><meta name="robots"><link type="text/css"><link type="text/css"><link type="text/css"><script type="text/javascript">d...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_end
+      required: "<<<FROM_HTML:required>>>"
+      input_type: textarea
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+```
+', 'The respondent values academic reputation, faculty quality, community, and hands-on learning opportunities when choosing a college.');
+INSERT INTO "page_result_prompt" VALUES (42, 92, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+== OPEN-END QUESTION (type: "open_end") ==
+
+【识别特征】
+- 问卷平台标注为 open-end 题型的开放式问答
+- 通常是长文本 textarea，要求受访者用自己的话作答
+- 题目通常以 "Please describe..."、"In your own words..."、"What do you think..." 开头
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本
+- showAnswer 禁止为空！即使开放式也必须有值
+
+【输出要求】
+- subject: 题目原文
+- showAnswer: 符合人设背景的 2-3 句自然语言回答
+
+【推荐值生成规则】
+- 回答应与题目主题相关，符合人设身份
+- 保持真实感，避免模板化套话
+- 示例："I think the service quality has improved significantly over the past year."
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><meta><meta><meta><meta><meta name="Generator"><meta name="description"><meta name="viewport"><meta><meta><meta><meta><title>Macalester 2026- prospective families</title><meta name="robots"><link type="text/css"><link type="text/css"><link type="text/css"><script type="text/javascript">d...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_end
+      required: "<<<FROM_HTML:required>>>"
+      input_type: textarea
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+```
+', 'The respondent prioritizes academic reputation, faculty quality, community, and hands-on learning opportunities when choosing a college.');
+INSERT INTO "page_result_prompt" VALUES (43, 93, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+
+== OPEN-ENDED TEXT (type: "open_text") ==
+
+【识别特征】
+- 开放式文本输入，通常是 textarea 或单行 input
+- 题目通常是追问性质，如 "was unclear what was confusing"、"please explain"
+- 可能紧跟在一个选择题后面，询问用户为什么选择某个选项
+- 题目文本通常包含 "was unclear"、"what was confusing"、"please explain" 等关键词
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本，禁止改写
+- showAnswer：必须使用 HTML 中的原始占位符文本（placeholder），如无占位符则根据语义生成
+
+【强制约束 — showAnswer 禁止为空！】
+- 即使是开放式问题，showAnswer 也必须有值！
+- 禁止返回 null / 空字符串！
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文
+- showAnswer: 根据上下文生成的合理文本（字符串）
+
+【推荐值生成规则 — 根据题目上下文生成合理回答】
+- 如果题目询问"什么不清楚"：生成与选项相关的模糊点描述
+- 如果题目询问"为什么选择"：生成选择理由
+- 如果题目是开放反馈：生成 1-2 句自然语言回复
+- 内容应简洁，1-3 句话即可
+- 示例：
+  - "Some details about the coverage seemed vague."
+  - "The explanation was not specific enough for me."
+  - "I was not clear about the exact steps involved."
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><meta><meta><meta><meta><meta name="Generator"><meta name="description"><meta name="viewport"><meta><meta><meta><meta><title>Macalester 2026- prospective families</title><meta name="robots"><link type="text/css"><link type="text/css"><link type="text/css"><script type="text/javascript">d...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_text
+      required: "<<<FROM_HTML:required>>>"
+      input_type: text
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+```
+', 'The respondent values academic reputation and program variety over financial aid when choosing a college.');
+INSERT INTO "page_result_prompt" VALUES (44, 94, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+
+== OPEN-ENDED TEXT (type: "open_text") ==
+
+【识别特征】
+- 开放式文本输入，通常是 textarea 或单行 input
+- 题目通常是追问性质，如 "was unclear what was confusing"、"please explain"
+- 可能紧跟在一个选择题后面，询问用户为什么选择某个选项
+- 题目文本通常包含 "was unclear"、"what was confusing"、"please explain" 等关键词
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本，禁止改写
+- showAnswer：必须使用 HTML 中的原始占位符文本（placeholder），如无占位符则根据语义生成
+
+【强制约束 — showAnswer 禁止为空！】
+- 即使是开放式问题，showAnswer 也必须有值！
+- 禁止返回 null / 空字符串！
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文
+- showAnswer: 根据上下文生成的合理文本（字符串）
+
+【推荐值生成规则 — 根据题目上下文生成合理回答】
+- 如果题目询问"什么不清楚"：生成与选项相关的模糊点描述
+- 如果题目询问"为什么选择"：生成选择理由
+- 如果题目是开放反馈：生成 1-2 句自然语言回复
+- 内容应简洁，1-3 句话即可
+- 示例：
+  - "Some details about the coverage seemed vague."
+  - "The explanation was not specific enough for me."
+  - "I was not clear about the exact steps involved."
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><meta><meta><meta><meta><meta name="Generator"><meta name="description"><meta name="viewport"><meta><meta><meta><meta><title>Macalester 2026- prospective families</title><meta name="robots"><link type="text/css"><link type="text/css"><link type="text/css"><script type="text/javascript">d...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_text
+      required: "<<<FROM_HTML:required>>>"
+      input_type: text
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+```
+', 'The respondent values academic reputation and faculty quality above other factors when choosing a college.');
+INSERT INTO "page_result_prompt" VALUES (45, 95, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+
+== OPEN-ENDED TEXT (type: "open_text") ==
+
+【识别特征】
+- 开放式文本输入，通常是 textarea 或单行 input
+- 题目通常是追问性质，如 "was unclear what was confusing"、"please explain"
+- 可能紧跟在一个选择题后面，询问用户为什么选择某个选项
+- 题目文本通常包含 "was unclear"、"what was confusing"、"please explain" 等关键词
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本，禁止改写
+- showAnswer：必须使用 HTML 中的原始占位符文本（placeholder），如无占位符则根据语义生成
+
+【强制约束 — showAnswer 禁止为空！】
+- 即使是开放式问题，showAnswer 也必须有值！
+- 禁止返回 null / 空字符串！
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文
+- showAnswer: 根据上下文生成的合理文本（字符串）
+
+【推荐值生成规则 — 根据题目上下文生成合理回答】
+- 如果题目询问"什么不清楚"：生成与选项相关的模糊点描述
+- 如果题目询问"为什么选择"：生成选择理由
+- 如果题目是开放反馈：生成 1-2 句自然语言回复
+- 内容应简洁，1-3 句话即可
+- 示例：
+  - "Some details about the coverage seemed vague."
+  - "The explanation was not specific enough for me."
+  - "I was not clear about the exact steps involved."
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><meta><meta><meta><meta><meta name="Generator"><meta name="description"><meta name="viewport"><meta><meta><meta><meta><title>Macalester 2026- prospective families</title><meta name="robots"><link type="text/css"><link type="text/css"><link type="text/css"><script type="text/javascript">d...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_text
+      required: "<<<FROM_HTML:required>>>"
+      input_type: text
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+```
+', 'The respondent values academic reputation and program variety over financial aid when choosing a college.');
+INSERT INTO "page_result_prompt" VALUES (46, 96, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+== OPEN-END QUESTION (type: "open_end") ==
+
+【识别特征】
+- 问卷平台标注为 open-end 题型的开放式问答
+- 通常是长文本 textarea，要求受访者用自己的话作答
+- 题目通常以 "Please describe..."、"In your own words..."、"What do you think..." 开头
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本
+- showAnswer 禁止为空！即使开放式也必须有值
+
+【输出要求】
+- subject: 题目原文
+- showAnswer: 符合人设背景的 2-3 句自然语言回答
+
+【推荐值生成规则】
+- 回答应与题目主题相关，符合人设身份
+- 保持真实感，避免模板化套话
+- 示例："I think the service quality has improved significantly over the past year."
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><meta><meta><meta><meta><meta name="Generator"><meta name="description"><meta name="viewport"><meta><meta><meta><meta><title>Macalester 2026- prospective families</title><meta name="robots"><link type="text/css"><link type="text/css"><link type="text/css"><script type="text/javascript">d...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_end
+      required: "<<<FROM_HTML:required>>>"
+      input_type: textarea
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+```
+', 'The respondent values academic reputation, faculty quality, community, and hands-on learning opportunities when choosing a college, beyond financial aid.');
+INSERT INTO "page_result_prompt" VALUES (47, 97, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+
+== OPEN-ENDED TEXT (type: "open_text") ==
+
+【识别特征】
+- 开放式文本输入，通常是 textarea 或单行 input
+- 题目通常是追问性质，如 "was unclear what was confusing"、"please explain"
+- 可能紧跟在一个选择题后面，询问用户为什么选择某个选项
+- 题目文本通常包含 "was unclear"、"what was confusing"、"please explain" 等关键词
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本，禁止改写
+- showAnswer：必须使用 HTML 中的原始占位符文本（placeholder），如无占位符则根据语义生成
+
+【强制约束 — showAnswer 禁止为空！】
+- 即使是开放式问题，showAnswer 也必须有值！
+- 禁止返回 null / 空字符串！
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文
+- showAnswer: 根据上下文生成的合理文本（字符串）
+
+【推荐值生成规则 — 根据题目上下文生成合理回答】
+- 如果题目询问"什么不清楚"：生成与选项相关的模糊点描述
+- 如果题目询问"为什么选择"：生成选择理由
+- 如果题目是开放反馈：生成 1-2 句自然语言回复
+- 内容应简洁，1-3 句话即可
+- 示例：
+  - "Some details about the coverage seemed vague."
+  - "The explanation was not specific enough for me."
+  - "I was not clear about the exact steps involved."
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><meta><meta><meta><meta><meta name="Generator"><meta name="description"><meta name="viewport"><meta><meta><meta><meta><title>Macalester 2026- prospective families</title><meta name="robots"><link type="text/css"><link type="text/css"><link type="text/css"><script type="text/javascript">d...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_text
+      required: "<<<FROM_HTML:required>>>"
+      input_type: text
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+```
+', 'The respondent values academic reputation and program variety when choosing a college, beyond financial aid considerations.');
+INSERT INTO "page_result_prompt" VALUES (48, 98, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+
+== OPEN-ENDED TEXT (type: "open_text") ==
+
+【识别特征】
+- 开放式文本输入，通常是 textarea 或单行 input
+- 题目通常是追问性质，如 "was unclear what was confusing"、"please explain"
+- 可能紧跟在一个选择题后面，询问用户为什么选择某个选项
+- 题目文本通常包含 "was unclear"、"what was confusing"、"please explain" 等关键词
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本，禁止改写
+- showAnswer：必须使用 HTML 中的原始占位符文本（placeholder），如无占位符则根据语义生成
+
+【强制约束 — showAnswer 禁止为空！】
+- 即使是开放式问题，showAnswer 也必须有值！
+- 禁止返回 null / 空字符串！
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文
+- showAnswer: 根据上下文生成的合理文本（字符串）
+
+【推荐值生成规则 — 根据题目上下文生成合理回答】
+- 如果题目询问"什么不清楚"：生成与选项相关的模糊点描述
+- 如果题目询问"为什么选择"：生成选择理由
+- 如果题目是开放反馈：生成 1-2 句自然语言回复
+- 内容应简洁，1-3 句话即可
+- 示例：
+  - "Some details about the coverage seemed vague."
+  - "The explanation was not specific enough for me."
+  - "I was not clear about the exact steps involved."
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><meta><meta><meta><meta><meta name="Generator"><meta name="description"><meta name="viewport"><meta><meta><meta><meta><title>Macalester 2026- prospective families</title><meta name="robots"><link type="text/css"><link type="text/css"><link type="text/css"><script type="text/javascript">d...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_text
+      required: "<<<FROM_HTML:required>>>"
+      input_type: text
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+```
+', 'The respondent values academic reputation and program variety over financial aid when choosing a college.');
+INSERT INTO "page_result_prompt" VALUES (49, 99, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+
+== OPEN-ENDED TEXT (type: "open_text") ==
+
+【识别特征】
+- 开放式文本输入，通常是 textarea 或单行 input
+- 题目通常是追问性质，如 "was unclear what was confusing"、"please explain"
+- 可能紧跟在一个选择题后面，询问用户为什么选择某个选项
+- 题目文本通常包含 "was unclear"、"what was confusing"、"please explain" 等关键词
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本，禁止改写
+- showAnswer：必须使用 HTML 中的原始占位符文本（placeholder），如无占位符则根据语义生成
+
+【强制约束 — showAnswer 禁止为空！】
+- 即使是开放式问题，showAnswer 也必须有值！
+- 禁止返回 null / 空字符串！
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文
+- showAnswer: 根据上下文生成的合理文本（字符串）
+
+【推荐值生成规则 — 根据题目上下文生成合理回答】
+- 如果题目询问"什么不清楚"：生成与选项相关的模糊点描述
+- 如果题目询问"为什么选择"：生成选择理由
+- 如果题目是开放反馈：生成 1-2 句自然语言回复
+- 内容应简洁，1-3 句话即可
+- 示例：
+  - "Some details about the coverage seemed vague."
+  - "The explanation was not specific enough for me."
+  - "I was not clear about the exact steps involved."
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><meta><meta><meta><meta><meta name="Generator"><meta name="description"><meta name="viewport"><meta><meta><meta><meta><title>Macalester 2026- prospective families</title><meta name="robots"><link type="text/css"><link type="text/css"><link type="text/css"><script type="text/javascript">d...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_text
+      required: "<<<FROM_HTML:required>>>"
+      input_type: text
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+```
+', 'The respondent values academic reputation and program variety over financial aid when choosing a college.');
+INSERT INTO "page_result_prompt" VALUES (50, 100, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+== OPEN-END QUESTION (type: "open_end") ==
+
+【识别特征】
+- 问卷平台标注为 open-end 题型的开放式问答
+- 通常是长文本 textarea，要求受访者用自己的话作答
+- 题目通常以 "Please describe..."、"In your own words..."、"What do you think..." 开头
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本
+- showAnswer 禁止为空！即使开放式也必须有值
+
+【输出要求】
+- subject: 题目原文
+- showAnswer: 符合人设背景的 2-3 句自然语言回答
+
+【推荐值生成规则】
+- 回答应与题目主题相关，符合人设身份
+- 保持真实感，避免模板化套话
+- 示例："I think the service quality has improved significantly over the past year."
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><meta><meta><meta><meta><meta name="Generator"><meta name="description"><meta name="viewport"><meta><meta><meta><meta><title>Macalester 2026- prospective families</title><meta name="robots"><link type="text/css"><link type="text/css"><link type="text/css"><script type="text/javascript">d...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_end
+      required: "<<<FROM_HTML:required>>>"
+      input_type: textarea
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+```
+', 'The respondent values academic reputation, faculty quality, community, and hands-on learning opportunities when considering a college or university.');
+INSERT INTO "page_result_prompt" VALUES (51, 101, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+== SINGLE-CHOICE QUESTION (type: "single") ==
+
+【识别特征】
+- HTML: <input type="radio"> + <label>
+- 每组 radio 共享相同的 name 属性
+- 题目文本可能只有编号（如 "7."），选项列表在问卷平台元数据中
+
+【特别注意 — 量表式单选题！】
+- 若页面只有一道题，选项为 1-5（或类似数字/文字量表），仍是单选题！
+- 判断标准：只有一行选项（不是多行分别评分的矩阵）→ 必须识别为 single！
+- 禁止将"单行 1-5 量表"误判为 likert！likert 必须是多行独立评分！
+- 示例题型："how much more likely would you be to consider them?" 只有一行 → single
+
+【关键上下文 — 优先使用问卷平台提供的元数据！】
+- 问卷平台（SG3/Alchemer/SurveyGizmo/Qualtrics）会将题目结构嵌入页面 JavaScript 中
+- 如果 prompt 中包含【题目结构（从问卷平台提取）】块，必须从中获取选项列表
+- showAnswer 必须是选项列表中存在的选项，禁止凭空捏造选项！
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML <label> 或问卷平台元数据中的原始题目文本，不得改写
+- showAnswer：必须使用选项列表中的原始标签文本，不得改写
+- 例如 HTML 为 "Boy aged 1 or younger"，禁止改为 "Under 1 year"
+- 例如 HTML 为 "Strongly agree"，禁止改为 "Agree strongly"
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文（如 "What is your gender?"）
+- showAnswer: 选中的选项原文（如 "Female" 或 "4 - Likely"）
+
+【推荐值生成规则】
+- showAnswer 禁止为空！禁止返回 null / 空字符串！
+- 每道题只选一个选项，不要全选
+- 必须从题目结构（从问卷平台提取）中的选项列表选择！
+- 通常选中间或偏好的选项，避免极端选项（量表题优先选 3 或 4）
+
+== NUMBER INPUT (type: "number") ==
+
+【识别特征】
+- HTML: <input type="number"> 或标签含 age/amount/count 等数字含义
+
+【强制约束】
+- showAnswer 必须是纯数字字符串，不含单位
+- subject：使用 HTML 中的原始 label 文本
+
+【输出要求】
+- subject: 题目原文
+- showAnswer: 纯数字（如 "35"、"5"、"12000"）
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robo...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - q_index: 1
+      title: "<<<FROM_HTML:title>>>"
+      questions_type: number
+      required: "<<<FROM_HTML:required>>>"
+      min: "<<<FROM_HTML:min>>>"
+      max: "<<<FROM_HTML:max>>>"
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+    - q_index: 2
+      title: "<<<FROM_HTML:title>>>"
+      questions_type: single
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: single_select
+        option_sort: as_appearing
+        max_selections: null
+
+```
+', 'The respondent provides their age as a number and selects their gender from the given options.');
+INSERT INTO "page_result_prompt" VALUES (52, 102, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+== SINGLE-CHOICE QUESTION (type: "single") ==
+
+【识别特征】
+- HTML: <input type="radio"> + <label>
+- 每组 radio 共享相同的 name 属性
+- 题目文本可能只有编号（如 "7."），选项列表在问卷平台元数据中
+
+【特别注意 — 量表式单选题！】
+- 若页面只有一道题，选项为 1-5（或类似数字/文字量表），仍是单选题！
+- 判断标准：只有一行选项（不是多行分别评分的矩阵）→ 必须识别为 single！
+- 禁止将"单行 1-5 量表"误判为 likert！likert 必须是多行独立评分！
+- 示例题型："how much more likely would you be to consider them?" 只有一行 → single
+
+【关键上下文 — 优先使用问卷平台提供的元数据！】
+- 问卷平台（SG3/Alchemer/SurveyGizmo/Qualtrics）会将题目结构嵌入页面 JavaScript 中
+- 如果 prompt 中包含【题目结构（从问卷平台提取）】块，必须从中获取选项列表
+- showAnswer 必须是选项列表中存在的选项，禁止凭空捏造选项！
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML <label> 或问卷平台元数据中的原始题目文本，不得改写
+- showAnswer：必须使用选项列表中的原始标签文本，不得改写
+- 例如 HTML 为 "Boy aged 1 or younger"，禁止改为 "Under 1 year"
+- 例如 HTML 为 "Strongly agree"，禁止改为 "Agree strongly"
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文（如 "What is your gender?"）
+- showAnswer: 选中的选项原文（如 "Female" 或 "4 - Likely"）
+
+【推荐值生成规则】
+- showAnswer 禁止为空！禁止返回 null / 空字符串！
+- 每道题只选一个选项，不要全选
+- 必须从题目结构（从问卷平台提取）中的选项列表选择！
+- 通常选中间或偏好的选项，避免极端选项（量表题优先选 3 或 4）
+
+== NUMBER INPUT (type: "number") ==
+
+【识别特征】
+- HTML: <input type="number"> 或标签含 age/amount/count 等数字含义
+
+【强制约束】
+- showAnswer 必须是纯数字字符串，不含单位
+- subject：使用 HTML 中的原始 label 文本
+
+【输出要求】
+- subject: 题目原文
+- showAnswer: 纯数字（如 "35"、"5"、"12000"）
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robo...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - q_index: 1
+      title: "<<<FROM_HTML:title>>>"
+      questions_type: number
+      required: "<<<FROM_HTML:required>>>"
+      min: "<<<FROM_HTML:min>>>"
+      max: "<<<FROM_HTML:max>>>"
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+    - q_index: 2
+      title: "<<<FROM_HTML:title>>>"
+      questions_type: single
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: single_select
+        option_sort: as_appearing
+        max_selections: null
+
+```
+', 'The respondent provided their age as 35 and selected Female as their gender.');
+INSERT INTO "page_result_prompt" VALUES (53, 103, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+== SINGLE-CHOICE QUESTION (type: "single") ==
+
+【识别特征】
+- HTML: <input type="radio"> + <label>
+- 每组 radio 共享相同的 name 属性
+- 题目文本可能只有编号（如 "7."），选项列表在问卷平台元数据中
+
+【特别注意 — 量表式单选题！】
+- 若页面只有一道题，选项为 1-5（或类似数字/文字量表），仍是单选题！
+- 判断标准：只有一行选项（不是多行分别评分的矩阵）→ 必须识别为 single！
+- 禁止将"单行 1-5 量表"误判为 likert！likert 必须是多行独立评分！
+- 示例题型："how much more likely would you be to consider them?" 只有一行 → single
+
+【关键上下文 — 优先使用问卷平台提供的元数据！】
+- 问卷平台（SG3/Alchemer/SurveyGizmo/Qualtrics）会将题目结构嵌入页面 JavaScript 中
+- 如果 prompt 中包含【题目结构（从问卷平台提取）】块，必须从中获取选项列表
+- showAnswer 必须是选项列表中存在的选项，禁止凭空捏造选项！
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML <label> 或问卷平台元数据中的原始题目文本，不得改写
+- showAnswer：必须使用选项列表中的原始标签文本，不得改写
+- 例如 HTML 为 "Boy aged 1 or younger"，禁止改为 "Under 1 year"
+- 例如 HTML 为 "Strongly agree"，禁止改为 "Agree strongly"
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文（如 "What is your gender?"）
+- showAnswer: 选中的选项原文（如 "Female" 或 "4 - Likely"）
+
+【推荐值生成规则】
+- showAnswer 禁止为空！禁止返回 null / 空字符串！
+- 每道题只选一个选项，不要全选
+- 必须从题目结构（从问卷平台提取）中的选项列表选择！
+- 通常选中间或偏好的选项，避免极端选项（量表题优先选 3 或 4）
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+【答题上下文】（仅作背景参考）
+· what is your age: The respondent provided their age as 35 and selected Female as their gender.
+
+注意: 所有题目上下文（如"题目N"说明）仅作背景参考，当前答题必须严格依据当前题干内容；若当前题干与上下文冲突或重复，以当前题干为准，主动忽略上下文中对"题目N"的冗余描述或约束。
+
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robo...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: single
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: single_select
+        option_sort: as_appearing
+        max_selections: null
+```
+', 'The respondent indicates their current country of residence is the United States.');
+INSERT INTO "page_result_prompt" VALUES (54, 104, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+
+== OPEN-ENDED TEXT (type: "open_text") ==
+
+【识别特征】
+- 开放式文本输入，通常是 textarea 或单行 input
+- 题目通常是追问性质，如 "was unclear what was confusing"、"please explain"
+- 可能紧跟在一个选择题后面，询问用户为什么选择某个选项
+- 题目文本通常包含 "was unclear"、"what was confusing"、"please explain" 等关键词
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本，禁止改写
+- showAnswer：必须使用 HTML 中的原始占位符文本（placeholder），如无占位符则根据语义生成
+
+【强制约束 — showAnswer 禁止为空！】
+- 即使是开放式问题，showAnswer 也必须有值！
+- 禁止返回 null / 空字符串！
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文
+- showAnswer: 根据上下文生成的合理文本（字符串）
+
+【推荐值生成规则 — 根据题目上下文生成合理回答】
+- 如果题目询问"什么不清楚"：生成与选项相关的模糊点描述
+- 如果题目询问"为什么选择"：生成选择理由
+- 如果题目是开放反馈：生成 1-2 句自然语言回复
+- 内容应简洁，1-3 句话即可
+- 示例：
+  - "Some details about the coverage seemed vague."
+  - "The explanation was not specific enough for me."
+  - "I was not clear about the exact steps involved."
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+【答题上下文】（仅作背景参考）
+· what is your age: The respondent provided their age as 35 and selected Female as their gender.
+· what is your current country of residence: The respondent indicates their current country of residence is the United States.
+
+注意: 所有题目上下文（如"题目N"说明）仅作背景参考，当前答题必须严格依据当前题干内容；若当前题干与上下文冲突或重复，以当前题干为准，主动忽略上下文中对"题目N"的冗余描述或约束。
+
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robo...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_text
+      required: "<<<FROM_HTML:required>>>"
+      input_type: text
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+```
+', 'The respondent provided a zip code for their residence in the United States.');
+INSERT INTO "page_result_prompt" VALUES (55, 105, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+== MULTIPLE-CHOICE QUESTION (type: "multiple") ==
+
+【识别特征】
+- HTML: <input type="checkbox"> + <label>
+- 同一题目的多个 checkbox 共享相同的 name 属性（通常带有 [] 后缀）
+- 题目文本可能只有编号，选项列表在问卷平台元数据中
+
+【关键上下文 — 优先使用问卷平台提供的元数据！】
+- 问卷平台（SG3/Alchemer/SurveyGizmo/Qualtrics）会将题目结构嵌入页面 JavaScript 中
+- 如果 prompt 中包含【题目结构（从问卷平台提取）】块，必须从中获取选项列表
+- showAnswer 必须是选项列表中存在的选项，禁止凭空捏造选项！
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML <label> 标签或问卷平台元数据中的原始文本，不得改写
+- showAnswer：必须使用选项列表中的原始标签文本，禁止简写或意译
+- 例如 HTML 为 "I prefer cats"，禁止改为 "Cats"
+
+【强制约束 — 禁止拆分！】
+- 一道多选题 = 一个 interaction。永远不要为每个选项单独创建 interaction！
+
+【强制约束 — showAnswer 禁止为空！】
+- showAnswer 必须返回字符串数组（建议 2-4 个选项），禁止返回 null / 空数组 / 空字符串！
+- 如果页面选项过少（如只有 0-1 个选项），仍需返回至少 1 个选项！
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文
+- showAnswer: 字符串数组（必须！不能为 null！），例如 ["Watched TV", "Visited a flea market"]
+
+【推荐值生成规则】
+- showAnswer 为字符串数组，选 2-4 个选项，不要全选
+- 通常不选 "None of the above"
+- 必须从题目结构（从问卷平台提取）中的选项列表选择！
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+【答题上下文】（仅作背景参考）
+· what is your age: The respondent provided their age as 35 and selected Female as their gender.
+· what is your current country of residence: The respondent indicates their current country of residence is the United States.
+· what is your zip code: The respondent provided a zip code for their residence in the United States.
+
+注意: 所有题目上下文（如"题目N"说明）仅作背景参考，当前答题必须严格依据当前题干内容；若当前题干与上下文冲突或重复，以当前题干为准，主动忽略上下文中对"题目N"的冗余描述或约束。
+
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robo...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: multi
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: multi_select
+        option_sort: as_appearing
+        max_selections: "<<<FROM_HTML:max_selections>>>"
+```
+', 'The respondent selected a few common weekend activities, indicating a preference for typical leisure activities over extreme or unusual ones.');
+INSERT INTO "page_result_prompt" VALUES (56, 106, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+== SINGLE-CHOICE QUESTION (type: "single") ==
+
+【识别特征】
+- HTML: <input type="radio"> + <label>
+- 每组 radio 共享相同的 name 属性
+- 题目文本可能只有编号（如 "7."），选项列表在问卷平台元数据中
+
+【特别注意 — 量表式单选题！】
+- 若页面只有一道题，选项为 1-5（或类似数字/文字量表），仍是单选题！
+- 判断标准：只有一行选项（不是多行分别评分的矩阵）→ 必须识别为 single！
+- 禁止将"单行 1-5 量表"误判为 likert！likert 必须是多行独立评分！
+- 示例题型："how much more likely would you be to consider them?" 只有一行 → single
+
+【关键上下文 — 优先使用问卷平台提供的元数据！】
+- 问卷平台（SG3/Alchemer/SurveyGizmo/Qualtrics）会将题目结构嵌入页面 JavaScript 中
+- 如果 prompt 中包含【题目结构（从问卷平台提取）】块，必须从中获取选项列表
+- showAnswer 必须是选项列表中存在的选项，禁止凭空捏造选项！
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML <label> 或问卷平台元数据中的原始题目文本，不得改写
+- showAnswer：必须使用选项列表中的原始标签文本，不得改写
+- 例如 HTML 为 "Boy aged 1 or younger"，禁止改为 "Under 1 year"
+- 例如 HTML 为 "Strongly agree"，禁止改为 "Agree strongly"
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文（如 "What is your gender?"）
+- showAnswer: 选中的选项原文（如 "Female" 或 "4 - Likely"）
+
+【推荐值生成规则】
+- showAnswer 禁止为空！禁止返回 null / 空字符串！
+- 每道题只选一个选项，不要全选
+- 必须从题目结构（从问卷平台提取）中的选项列表选择！
+- 通常选中间或偏好的选项，避免极端选项（量表题优先选 3 或 4）
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+【答题上下文】（仅作背景参考）
+· what is your age: The respondent provided their age as 35 and selected Female as their gender.
+· what is your current country of residence: The respondent indicates their current country of residence is the United States.
+· what is your zip code: The respondent provided a zip code for their residence in the United States.
+· which if any of the following have you done over the past weekend: The respondent selected a few common weekend activities, indicating a preference for typical leisure activities over extreme or unusual ones.
+
+注意: 所有题目上下文（如"题目N"说明）仅作背景参考，当前答题必须严格依据当前题干内容；若当前题干与上下文冲突或重复，以当前题干为准，主动忽略上下文中对"题目N"的冗余描述或约束。
+
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robo...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: single
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: single_select
+        option_sort: as_appearing
+        max_selections: null
+```
+', 'The respondent indicates they are not Spanish, Hispanic, or Latinx.');
+INSERT INTO "page_result_prompt" VALUES (57, 107, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+
+== MULTI-SELECT TOP/BOTTOM N (type: "multi_select") ==
+
+【识别特征】
+- 需要从多个选项中选出指定数量的项目（如 top 3, bottom 4）
+- 题目文本通常包含 "select the 3 you find..."、"select up to 4"、"in any order" 等关键词
+- 通常使用 checkbox 选择，选中即表示选中该项
+- 不需要排序，只需选中指定数量的选项
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本，禁止改写
+- showAnswer：必须使用 HTML 中选中选项的原始文本，禁止改写或意译
+
+【强制约束 — 禁止拆分！】
+- 一道题 = 一个 interaction。永远不要为每个选项单独创建 interaction！
+
+【强制约束 — showAnswer 禁止为空！】
+- showAnswer 必须返回字符串数组（数量由题目指定，通常 2-5 个）
+- 禁止返回 null / 空数组 / 空字符串！
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文
+- showAnswer: 字符串数组，例如 ["选项A", "选项B", "选项C"]
+- showAnswer 是字符串数组，格式为 ["选中项1", "选中项2", "选中项3"]
+
+【推荐值生成规则】
+- 根据题目要求选择正确数量的选项
+- "most appealing" → 选最喜欢的
+- "least appealing" → 选最不喜欢的
+- 通常不选 "None of the above" / "None" / "No offerings"
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+【答题上下文】（仅作背景参考）
+· what is your age: The respondent provided their age as 35 and selected Female as their gender.
+· what is your current country of residence: The respondent indicates their current country of residence is the United States.
+· what is your zip code: The respondent provided a zip code for their residence in the United States.
+· which if any of the following have you done over the past weekend: The respondent selected a few common weekend activities, indicating a preference for typical leisure activities over extreme or unusual ones.
+· are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an: The respondent indicates they are not Spanish, Hispanic, or Latinx.
+
+注意: 所有题目上下文（如"题目N"说明）仅作背景参考，当前答题必须严格依据当前题干内容；若当前题干与上下文冲突或重复，以当前题干为准，主动忽略上下文中对"题目N"的冗余描述或约束。
+
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robo...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: multi_select
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: multi_select
+        max_selections: "<<<FROM_HTML:max_selections>>>"
+```
+', 'The respondent selected White/Caucasian and Asian/Asian-American as their racial background, indicating a multiracial identity.');
+INSERT INTO "page_result_prompt" VALUES (58, 108, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+== MATRIX QUESTION (type: "matrix_radio") ==
+
+【识别特征】
+- 多行 × 多列，每行（或每列）是一个独立的 interaction
+- 每行是 radio（单选），所有行共享列选项
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始文本，禁止改写
+- showAnswer：必须使用列标签文本，禁止简写
+- 例如 HTML 为 "Boy aged 1 or younger"，禁止改为 "Under 1 year"
+
+【矩阵方向判断 — 关键！】
+先检查矩阵容器的 class 属性是否含有 "Transposed"：
+
+★ 普通矩阵（无 Transposed class）：行 = 被评价项目，列 = 量表/选项
+  - 每行是一个 interaction，必须返回所有行
+  - subject: "{行文本}（{选中列文本}）"，例如 "Auto（Farmers）"
+  - showAnswer: 选中的列选项原文，例如 "Farmers"
+
+★ 转置矩阵（class 含 "Transposed"，如 "QuestionBody Transposed q-matrix"）：列 = 被评价项目（如品牌），行 = 量表
+  - 每列是一个 interaction，必须返回所有列
+  - subject: 列标题原文（如 "Allstate"）
+  - showAnswer: 为该列选中的行（量表）原文（如 "Very likely"）
+  - 禁止将量表标签写入 subject，禁止将品牌名写入 showAnswer
+
+【★ 输出格式约束 — 必须严格遵循！★】
+对于矩阵题的答案输出，使用以下格式：
+- subject: 行标签原文（行文本 + "："）
+- showAnswer: 列标签原文（选中的列文本，不包含行文本！）
+
+示例（正确格式）：
+```
+Political engagement on campus.:
+► Impacts my impression positively.
+
+Social engagement on campus.:
+► Does not impact my impression.
+
+Courses that focus on critical thinking.:
+► Impacts my impression positively.
+
+General student body political affiliation leans liberal.:
+► Impacts my impression negatively.
+```
+
+【★ 常见错误 — 禁止这样做！★】
+✗ 错误：subject 的 ► 后面重复了 row label
+  Political engagement on campus.:
+  ► Political engagement on campus.          ← 错误！这是 row label
+
+✓ 正确：subject 的 ► 后面必须是 column label
+  Political engagement on campus.:
+  ► Impacts my impression positively.       ← 正确！这是 column label
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 见上方方向规则
+- showAnswer: 选中的选项原文（必须是列标签，不是行标签！）
+
+【推荐值生成规则】
+- 每行/列只选一个选项
+- 各行（列）之间推荐不同选项，避免全部相同
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+【答题上下文】（仅作背景参考）
+· what is your age: The respondent provided their age as 35 and selected Female as their gender.
+· what is your current country of residence: The respondent indicates their current country of residence is the United States.
+· what is your zip code: The respondent provided a zip code for their residence in the United States.
+· which if any of the following have you done over the past weekend: The respondent selected a few common weekend activities, indicating a preference for typical leisure activities over extreme or unusual ones.
+· are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an: The respondent indicates they are not Spanish, Hispanic, or Latinx.
+· what is your racial background: The respondent selected White/Caucasian and Asian/Asian-American as their racial background, indicating a multiracial identity.
+
+注意: 所有题目上下文（如"题目N"说明）仅作背景参考，当前答题必须严格依据当前题干内容；若当前题干与上下文冲突或重复，以当前题干为准，主动忽略上下文中对"题目N"的冗余描述或约束。
+
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robo...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: matrix_radio
+      required: "<<<FROM_HTML:required>>>"
+      columns: "<<<FROM_HTML:columns[]>>>"
+      rows: "<<<FROM_HTML:rows[]>>>"
+      response_format:
+        type: single_per_row
+        orientation: horizontal
+        option_sort: as_appearing
+        max_selections: null
+```
+', 'The respondent moderately agrees with being sophisticated and funny, is neutral about being elegant, strongly agrees with the attention check item, and slightly disagrees with being edgy.');
+INSERT INTO "page_result_prompt" VALUES (59, 109, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+== SINGLE-CHOICE QUESTION (type: "single") ==
+
+【识别特征】
+- HTML: <input type="radio"> + <label>
+- 每组 radio 共享相同的 name 属性
+- 题目文本可能只有编号（如 "7."），选项列表在问卷平台元数据中
+
+【特别注意 — 量表式单选题！】
+- 若页面只有一道题，选项为 1-5（或类似数字/文字量表），仍是单选题！
+- 判断标准：只有一行选项（不是多行分别评分的矩阵）→ 必须识别为 single！
+- 禁止将"单行 1-5 量表"误判为 likert！likert 必须是多行独立评分！
+- 示例题型："how much more likely would you be to consider them?" 只有一行 → single
+
+【关键上下文 — 优先使用问卷平台提供的元数据！】
+- 问卷平台（SG3/Alchemer/SurveyGizmo/Qualtrics）会将题目结构嵌入页面 JavaScript 中
+- 如果 prompt 中包含【题目结构（从问卷平台提取）】块，必须从中获取选项列表
+- showAnswer 必须是选项列表中存在的选项，禁止凭空捏造选项！
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML <label> 或问卷平台元数据中的原始题目文本，不得改写
+- showAnswer：必须使用选项列表中的原始标签文本，不得改写
+- 例如 HTML 为 "Boy aged 1 or younger"，禁止改为 "Under 1 year"
+- 例如 HTML 为 "Strongly agree"，禁止改为 "Agree strongly"
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文（如 "What is your gender?"）
+- showAnswer: 选中的选项原文（如 "Female" 或 "4 - Likely"）
+
+【推荐值生成规则】
+- showAnswer 禁止为空！禁止返回 null / 空字符串！
+- 每道题只选一个选项，不要全选
+- 必须从题目结构（从问卷平台提取）中的选项列表选择！
+- 通常选中间或偏好的选项，避免极端选项（量表题优先选 3 或 4）
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+【答题上下文】（仅作背景参考）
+· what is your age: The respondent provided their age as 35 and selected Female as their gender.
+· what is your current country of residence: The respondent indicates their current country of residence is the United States.
+· what is your zip code: The respondent provided a zip code for their residence in the United States.
+· which if any of the following have you done over the past weekend: The respondent selected a few common weekend activities, indicating a preference for typical leisure activities over extreme or unusual ones.
+· are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an: The respondent indicates they are not Spanish, Hispanic, or Latinx.
+· what is your racial background: The respondent selected White/Caucasian and Asian/Asian-American as their racial background, indicating a multiracial identity.
+· how much do you agree or disagree that each of the words below describe you: The respondent moderately agrees with being sophisticated and funny, is neutral about being elegant, strongly agrees with the attention check item, and slightly disagrees with being edgy.
+
+注意: 所有题目上下文（如"题目N"说明）仅作背景参考，当前答题必须严格依据当前题干内容；若当前题干与上下文冲突或重复，以当前题干为准，主动忽略上下文中对"题目N"的冗余描述或约束。
+
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robo...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: single
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: single_select
+        option_sort: as_appearing
+        max_selections: null
+```
+', 'The respondent indicates they do not have any children under 18 living in their household.');
+INSERT INTO "page_result_prompt" VALUES (60, 110, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+== MATRIX QUESTION (type: "matrix_radio") ==
+
+【识别特征】
+- 多行 × 多列，每行（或每列）是一个独立的 interaction
+- 每行是 radio（单选），所有行共享列选项
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始文本，禁止改写
+- showAnswer：必须使用列标签文本，禁止简写
+- 例如 HTML 为 "Boy aged 1 or younger"，禁止改为 "Under 1 year"
+
+【矩阵方向判断 — 关键！】
+先检查矩阵容器的 class 属性是否含有 "Transposed"：
+
+★ 普通矩阵（无 Transposed class）：行 = 被评价项目，列 = 量表/选项
+  - 每行是一个 interaction，必须返回所有行
+  - subject: "{行文本}（{选中列文本}）"，例如 "Auto（Farmers）"
+  - showAnswer: 选中的列选项原文，例如 "Farmers"
+
+★ 转置矩阵（class 含 "Transposed"，如 "QuestionBody Transposed q-matrix"）：列 = 被评价项目（如品牌），行 = 量表
+  - 每列是一个 interaction，必须返回所有列
+  - subject: 列标题原文（如 "Allstate"）
+  - showAnswer: 为该列选中的行（量表）原文（如 "Very likely"）
+  - 禁止将量表标签写入 subject，禁止将品牌名写入 showAnswer
+
+【★ 输出格式约束 — 必须严格遵循！★】
+对于矩阵题的答案输出，使用以下格式：
+- subject: 行标签原文（行文本 + "："）
+- showAnswer: 列标签原文（选中的列文本，不包含行文本！）
+
+示例（正确格式）：
+```
+Political engagement on campus.:
+► Impacts my impression positively.
+
+Social engagement on campus.:
+► Does not impact my impression.
+
+Courses that focus on critical thinking.:
+► Impacts my impression positively.
+
+General student body political affiliation leans liberal.:
+► Impacts my impression negatively.
+```
+
+【★ 常见错误 — 禁止这样做！★】
+✗ 错误：subject 的 ► 后面重复了 row label
+  Political engagement on campus.:
+  ► Political engagement on campus.          ← 错误！这是 row label
+
+✓ 正确：subject 的 ► 后面必须是 column label
+  Political engagement on campus.:
+  ► Impacts my impression positively.       ← 正确！这是 column label
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 见上方方向规则
+- showAnswer: 选中的选项原文（必须是列标签，不是行标签！）
+
+【推荐值生成规则】
+- 每行/列只选一个选项
+- 各行（列）之间推荐不同选项，避免全部相同
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+【答题上下文】（仅作背景参考）
+· what is your age: The respondent provided their age as 35 and selected Female as their gender.
+· what is your current country of residence: The respondent indicates their current country of residence is the United States.
+· what is your zip code: The respondent provided a zip code for their residence in the United States.
+· which if any of the following have you done over the past weekend: The respondent selected a few common weekend activities, indicating a preference for typical leisure activities over extreme or unusual ones.
+· are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an: The respondent indicates they are not Spanish, Hispanic, or Latinx.
+· what is your racial background: The respondent selected White/Caucasian and Asian/Asian-American as their racial background, indicating a multiracial identity.
+· how much do you agree or disagree that each of the words below describe you: The respondent moderately agrees with being sophisticated and funny, is neutral about being elegant, strongly agrees with the attention check item, and slightly disagrees with being edgy.
+· do you have any children under 18 years old living in your household: The respondent indicates they do not have any children under 18 living in their household.
+
+注意: 所有题目上下文（如"题目N"说明）仅作背景参考，当前答题必须严格依据当前题干内容；若当前题干与上下文冲突或重复，以当前题干为准，主动忽略上下文中对"题目N"的冗余描述或约束。
+
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robo...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: matrix_radio
+      required: "<<<FROM_HTML:required>>>"
+      columns: "<<<FROM_HTML:columns[]>>>"
+      rows: "<<<FROM_HTML:rows[]>>>"
+      response_format:
+        type: single_per_row
+        orientation: horizontal
+        option_sort: as_appearing
+        max_selections: null
+```
+', 'The respondent watches NBC, CBS, Discovery Channel, ABC, and HGTV at least once a week, watches Comedy Central, FX, National Geographic, History Channel, and Showtime once or twice a month, watches USA Network, Investigation Discovery, Lifetime, and Travel Channel less than once a month, and never watches Hallmark Channel, OWN, Cartoon Network, Nickelodeon, WE tv, FXX, Freeform, Boinks!, Syfy, TV One, Logo, or Trevi1.');
+INSERT INTO "page_result_prompt" VALUES (61, 111, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+【答题上下文】（仅作背景参考）
+· what is your age: The respondent provided their age as 35 and selected Female as their gender.
+· what is your current country of residence: The respondent indicates their current country of residence is the United States.
+· what is your zip code: The respondent provided a zip code for their residence in the United States.
+· which if any of the following have you done over the past weekend: The respondent selected a few common weekend activities, indicating a preference for typical leisure activities over extreme or unusual ones.
+· are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an: The respondent indicates they are not Spanish, Hispanic, or Latinx.
+· what is your racial background: The respondent selected White/Caucasian and Asian/Asian-American as their racial background, indicating a multiracial identity.
+· how much do you agree or disagree that each of the words below describe you: The respondent moderately agrees with being sophisticated and funny, is neutral about being elegant, strongly agrees with the attention check item, and slightly disagrees with being edgy.
+· do you have any children under 18 years old living in your household: The respondent indicates they do not have any children under 18 living in their household.
+
+注意: 所有题目上下文（如"题目N"说明）仅作背景参考，当前答题必须严格依据当前题干内容；若当前题干与上下文冲突或重复，以当前题干为准，主动忽略上下文中对"题目N"的冗余描述或约束。
+
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robo...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: matrix_radio
+      required: "<<<FROM_HTML:required>>>"
+      columns: "<<<FROM_HTML:columns[]>>>"
+      rows: "<<<FROM_HTML:rows[]>>>"
+      response_format:
+        type: single_per_row
+        orientation: horizontal
+        option_sort: as_appearing
+        max_selections: null
+```
+', 'The respondent rarely watches most listed TV networks, with a few exceptions like HBO, FOX, and AMC which they watch weekly or more, indicating a selective viewing habit focused on premium and major broadcast channels.');
+INSERT INTO "page_result_prompt" VALUES (62, 112, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+== MATRIX QUESTION (type: "matrix_radio") ==
+
+【识别特征】
+- 多行 × 多列，每行（或每列）是一个独立的 interaction
+- 每行是 radio（单选），所有行共享列选项
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始文本，禁止改写
+- showAnswer：必须使用列标签文本，禁止简写
+- 例如 HTML 为 "Boy aged 1 or younger"，禁止改为 "Under 1 year"
+
+【矩阵方向判断 — 关键！】
+先检查矩阵容器的 class 属性是否含有 "Transposed"：
+
+★ 普通矩阵（无 Transposed class）：行 = 被评价项目，列 = 量表/选项
+  - 每行是一个 interaction，必须返回所有行
+  - subject: "{行文本}（{选中列文本}）"，例如 "Auto（Farmers）"
+  - showAnswer: 选中的列选项原文，例如 "Farmers"
+
+★ 转置矩阵（class 含 "Transposed"，如 "QuestionBody Transposed q-matrix"）：列 = 被评价项目（如品牌），行 = 量表
+  - 每列是一个 interaction，必须返回所有列
+  - subject: 列标题原文（如 "Allstate"）
+  - showAnswer: 为该列选中的行（量表）原文（如 "Very likely"）
+  - 禁止将量表标签写入 subject，禁止将品牌名写入 showAnswer
+
+【★ 输出格式约束 — 必须严格遵循！★】
+对于矩阵题的答案输出，使用以下格式：
+- subject: 行标签原文（行文本 + "："）
+- showAnswer: 列标签原文（选中的列文本，不包含行文本！）
+
+示例（正确格式）：
+```
+Political engagement on campus.:
+► Impacts my impression positively.
+
+Social engagement on campus.:
+► Does not impact my impression.
+
+Courses that focus on critical thinking.:
+► Impacts my impression positively.
+
+General student body political affiliation leans liberal.:
+► Impacts my impression negatively.
+```
+
+【★ 常见错误 — 禁止这样做！★】
+✗ 错误：subject 的 ► 后面重复了 row label
+  Political engagement on campus.:
+  ► Political engagement on campus.          ← 错误！这是 row label
+
+✓ 正确：subject 的 ► 后面必须是 column label
+  Political engagement on campus.:
+  ► Impacts my impression positively.       ← 正确！这是 column label
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 见上方方向规则
+- showAnswer: 选中的选项原文（必须是列标签，不是行标签！）
+
+【推荐值生成规则】
+- 每行/列只选一个选项
+- 各行（列）之间推荐不同选项，避免全部相同
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+【答题上下文】（仅作背景参考）
+· what is your age: The respondent provided their age as 35 and selected Female as their gender.
+· what is your current country of residence: The respondent indicates their current country of residence is the United States.
+· what is your zip code: The respondent provided a zip code for their residence in the United States.
+· which if any of the following have you done over the past weekend: The respondent selected a few common weekend activities, indicating a preference for typical leisure activities over extreme or unusual ones.
+· are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an: The respondent indicates they are not Spanish, Hispanic, or Latinx.
+· what is your racial background: The respondent selected White/Caucasian and Asian/Asian-American as their racial background, indicating a multiracial identity.
+· how much do you agree or disagree that each of the words below describe you: The respondent moderately agrees with being sophisticated and funny, is neutral about being elegant, strongly agrees with the attention check item, and slightly disagrees with being edgy.
+· do you have any children under 18 years old living in your household: The respondent indicates they do not have any children under 18 living in their household.
+· how often do you watch shows movies web series videos or clips from each of the following: The respondent watches NBC, CBS, Discovery Channel, ABC, and HGTV at least once a week, watches Comedy Central, FX, National Geographic, History Channel, and Showtime once or twice a month, watches USA Network, Investigation Discovery, Lifetime, and Travel Channel less than once a month, and never watches Hallmark Channel, OWN, Cartoon Network, Nickelodeon, WE tv, FXX, Freeform, Boinks!, Syfy, TV One, Logo, or Trevi1.
+· how often do you watch shows movies web series videos or clips from each of the following: The respondent rarely watches most listed TV networks, with a few exceptions like HBO, FOX, and AMC which they watch weekly or more, indicating a selective viewing habit focused on premium and major broadcast channels.
+
+注意: 所有题目上下文（如"题目N"说明）仅作背景参考，当前答题必须严格依据当前题干内容；若当前题干与上下文冲突或重复，以当前题干为准，主动忽略上下文中对"题目N"的冗余描述或约束。
+
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robo...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: matrix_radio
+      required: "<<<FROM_HTML:required>>>"
+      columns: "<<<FROM_HTML:columns[]>>>"
+      rows: "<<<FROM_HTML:rows[]>>>"
+      response_format:
+        type: single_per_row
+        orientation: horizontal
+        option_sort: as_appearing
+        max_selections: null
+```
+', 'The respondent streams Netflix, Amazon Prime Video, Hulu, and Disney+ at least weekly, uses Max and Paramount+ occasionally, rarely uses Discovery+, Peacock, Tubi, AppleTV+, and Roku Channel, and never uses Pluto TV, Crackle, or BET+.');
+INSERT INTO "page_result_prompt" VALUES (63, 113, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+== SINGLE-CHOICE QUESTION (type: "single") ==
+
+【识别特征】
+- HTML: <input type="radio"> + <label>
+- 每组 radio 共享相同的 name 属性
+- 题目文本可能只有编号（如 "7."），选项列表在问卷平台元数据中
+
+【特别注意 — 量表式单选题！】
+- 若页面只有一道题，选项为 1-5（或类似数字/文字量表），仍是单选题！
+- 判断标准：只有一行选项（不是多行分别评分的矩阵）→ 必须识别为 single！
+- 禁止将"单行 1-5 量表"误判为 likert！likert 必须是多行独立评分！
+- 示例题型："how much more likely would you be to consider them?" 只有一行 → single
+
+【关键上下文 — 优先使用问卷平台提供的元数据！】
+- 问卷平台（SG3/Alchemer/SurveyGizmo/Qualtrics）会将题目结构嵌入页面 JavaScript 中
+- 如果 prompt 中包含【题目结构（从问卷平台提取）】块，必须从中获取选项列表
+- showAnswer 必须是选项列表中存在的选项，禁止凭空捏造选项！
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML <label> 或问卷平台元数据中的原始题目文本，不得改写
+- showAnswer：必须使用选项列表中的原始标签文本，不得改写
+- 例如 HTML 为 "Boy aged 1 or younger"，禁止改为 "Under 1 year"
+- 例如 HTML 为 "Strongly agree"，禁止改为 "Agree strongly"
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文（如 "What is your gender?"）
+- showAnswer: 选中的选项原文（如 "Female" 或 "4 - Likely"）
+
+【推荐值生成规则】
+- showAnswer 禁止为空！禁止返回 null / 空字符串！
+- 每道题只选一个选项，不要全选
+- 必须从题目结构（从问卷平台提取）中的选项列表选择！
+- 通常选中间或偏好的选项，避免极端选项（量表题优先选 3 或 4）
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+【答题上下文】（仅作背景参考）
+· what is your age: The respondent provided their age as 35 and selected Female as their gender.
+· what is your current country of residence: The respondent indicates their current country of residence is the United States.
+· what is your zip code: The respondent provided a zip code for their residence in the United States.
+· which if any of the following have you done over the past weekend: The respondent selected a few common weekend activities, indicating a preference for typical leisure activities over extreme or unusual ones.
+· are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an: The respondent indicates they are not Spanish, Hispanic, or Latinx.
+· what is your racial background: The respondent selected White/Caucasian and Asian/Asian-American as their racial background, indicating a multiracial identity.
+· how much do you agree or disagree that each of the words below describe you: The respondent moderately agrees with being sophisticated and funny, is neutral about being elegant, strongly agrees with the attention check item, and slightly disagrees with being edgy.
+· do you have any children under 18 years old living in your household: The respondent indicates they do not have any children under 18 living in their household.
+· how often do you watch shows movies web series videos or clips from each of the following: The respondent watches NBC, CBS, Discovery Channel, ABC, and HGTV at least once a week, watches Comedy Central, FX, National Geographic, History Channel, and Showtime once or twice a month, watches USA Network, Investigation Discovery, Lifetime, and Travel Channel less than once a month, and never watches Hallmark Channel, OWN, Cartoon Network, Nickelodeon, WE tv, FXX, Freeform, Boinks!, Syfy, TV One, Logo, or Trevi1.
+· how often do you watch shows movies web series videos or clips from each of the following: The respondent rarely watches most listed TV networks, with a few exceptions like HBO, FOX, and AMC which they watch weekly or more, indicating a selective viewing habit focused on premium and major broadcast channels.
+· how often do you stream shows movies web series videos or clips from each of the following: The respondent streams Netflix, Amazon Prime Video, Hulu, and Disney+ at least weekly, uses Max and Paramount+ occasionally, rarely uses Discovery+, Peacock, Tubi, AppleTV+, and Roku Channel, and never uses Pluto TV, Crackle, or BET+.
+
+注意: 所有题目上下文（如"题目N"说明）仅作背景参考，当前答题必须严格依据当前题干内容；若当前题干与上下文冲突或重复，以当前题干为准，主动忽略上下文中对"题目N"的冗余描述或约束。
+
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robo...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: single
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: single_select
+        option_sort: as_appearing
+        max_selections: null
+```
+', 'The respondent does not have paid cable or satellite TV in their household, indicating a preference for streaming or other TV sources.');
+INSERT INTO "page_result_prompt" VALUES (64, 114, '=== System Prompt ===
+你是问卷分析专家，输出严格 JSON 格式。
+
+You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.
+
+【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组
+
+【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案
+
+== SINGLE-CHOICE QUESTION (type: "single") ==
+
+【识别特征】
+- HTML: <input type="radio"> + <label>
+- 每组 radio 共享相同的 name 属性
+- 题目文本可能只有编号（如 "7."），选项列表在问卷平台元数据中
+
+【特别注意 — 量表式单选题！】
+- 若页面只有一道题，选项为 1-5（或类似数字/文字量表），仍是单选题！
+- 判断标准：只有一行选项（不是多行分别评分的矩阵）→ 必须识别为 single！
+- 禁止将"单行 1-5 量表"误判为 likert！likert 必须是多行独立评分！
+- 示例题型："how much more likely would you be to consider them?" 只有一行 → single
+
+【关键上下文 — 优先使用问卷平台提供的元数据！】
+- 问卷平台（SG3/Alchemer/SurveyGizmo/Qualtrics）会将题目结构嵌入页面 JavaScript 中
+- 如果 prompt 中包含【题目结构（从问卷平台提取）】块，必须从中获取选项列表
+- showAnswer 必须是选项列表中存在的选项，禁止凭空捏造选项！
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML <label> 或问卷平台元数据中的原始题目文本，不得改写
+- showAnswer：必须使用选项列表中的原始标签文本，不得改写
+- 例如 HTML 为 "Boy aged 1 or younger"，禁止改为 "Under 1 year"
+- 例如 HTML 为 "Strongly agree"，禁止改为 "Agree strongly"
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文（如 "What is your gender?"）
+- showAnswer: 选中的选项原文（如 "Female" 或 "4 - Likely"）
+
+【推荐值生成规则】
+- showAnswer 禁止为空！禁止返回 null / 空字符串！
+- 每道题只选一个选项，不要全选
+- 必须从题目结构（从问卷平台提取）中的选项列表选择！
+- 通常选中间或偏好的选项，避免极端选项（量表题优先选 3 或 4）
+
+【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）
+
+【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ 
+
+【当前受访者人设】
+A typical survey respondent answering questions honestly.
+
+=== User Prompt ===
+【答题上下文】（仅作背景参考）
+· what is your age: The respondent provided their age as 35 and selected Female as their gender.
+· what is your current country of residence: The respondent indicates their current country of residence is the United States.
+· what is your zip code: The respondent provided a zip code for their residence in the United States.
+· which if any of the following have you done over the past weekend: The respondent selected a few common weekend activities, indicating a preference for typical leisure activities over extreme or unusual ones.
+· are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an: The respondent indicates they are not Spanish, Hispanic, or Latinx.
+· what is your racial background: The respondent selected White/Caucasian and Asian/Asian-American as their racial background, indicating a multiracial identity.
+· how much do you agree or disagree that each of the words below describe you: The respondent moderately agrees with being sophisticated and funny, is neutral about being elegant, strongly agrees with the attention check item, and slightly disagrees with being edgy.
+· do you have any children under 18 years old living in your household: The respondent indicates they do not have any children under 18 living in their household.
+· how often do you watch shows movies web series videos or clips from each of the following: The respondent watches NBC, CBS, Discovery Channel, ABC, and HGTV at least once a week, watches Comedy Central, FX, National Geographic, History Channel, and Showtime once or twice a month, watches USA Network, Investigation Discovery, Lifetime, and Travel Channel less than once a month, and never watches Hallmark Channel, OWN, Cartoon Network, Nickelodeon, WE tv, FXX, Freeform, Boinks!, Syfy, TV One, Logo, or Trevi1.
+· how often do you watch shows movies web series videos or clips from each of the following: The respondent rarely watches most listed TV networks, with a few exceptions like HBO, FOX, and AMC which they watch weekly or more, indicating a selective viewing habit focused on premium and major broadcast channels.
+· how often do you stream shows movies web series videos or clips from each of the following: The respondent streams Netflix, Amazon Prime Video, Hulu, and Disney+ at least weekly, uses Max and Paramount+ occasionally, rarely uses Discovery+, Peacock, Tubi, AppleTV+, and Roku Channel, and never uses Pluto TV, Crackle, or BET+.
+· do you have paid cable or satellite tv e g comcast xfinity optimum dish directv verizon fios etc in: The respondent does not have paid cable or satellite TV in their household, indicating a preference for streaming or other TV sources.
+
+注意: 所有题目上下文（如"题目N"说明）仅作背景参考，当前答题必须严格依据当前题干内容；若当前题干与上下文冲突或重复，以当前题干为准，主动忽略上下文中对"题目N"的冗余描述或约束。
+
+--- 当前页面HTML（数据来源）---
+```html
+<html><head><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><script></script><meta name="robo...[truncated]
+```
+
+--- YAML模板（格式参考，禁止使用占位符文本！）---
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: single
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: single_select
+        option_sort: as_appearing
+        max_selections: null
+```
+', 'The respondent prefers to watch Showtime via an online third-party subscription rather than through cable or as part of Paramount+.');
+
+-- ----------------------------
+-- Table structure for page_results
+-- ----------------------------
+DROP TABLE IF EXISTS "page_results";
+CREATE TABLE "page_results" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+  "survey_id" INTEGER NOT NULL,
+  "page_id" VARCHAR(128) NOT NULL,
+  "yaml_template" TEXT,
+  "recommend_answer" TEXT,
+  "page_fingerprint" TEXT,
+  "page_fingerprint_md5" VARCHAR(32) NOT NULL,
+  "screenshot_path" TEXT,
+  "created_at" DATETIME DEFAULT (datetime('now', 'localtime')),
+  "ocr_text" TEXT,
+  "ocr_json" TEXT,
+  "ocr_model" VARCHAR(32),
+  "ocr_verified" VARCHAR(16),
+  "ocr_verified_at" DATETIME,
+  "ocr_error" TEXT,
+  FOREIGN KEY ("survey_id") REFERENCES "survey" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+-- ----------------------------
+-- Records of page_results
+-- ----------------------------
+INSERT INTO "page_results" VALUES (91, 32, '8 outside of financial aid what is most important to you when considering a college or university th', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_end
+      required: "<<<FROM_HTML:required>>>"
+      input_type: textarea
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text', '{"data":{"page_metadata":{"page_id":"8 outside of financial aid what is most important to you when considering a college or university th","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university","recommended_answers":"Department that doesn''t feel like a factory. Professors who remember your name. Not just the brochure version.\n\nCampus where you can be invisible sometimes. Or loud. Whatever.\n\nLibrary that stays open late. Windows that open. Real trees.\n\nPeople who seem interested in things. Not just grades. Not just networking.","humans_pass":true}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''sg_NextButton'']","text":"Next","attributes":{"id":"sg_NextButton","type":"submit","value":"Next"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent values academic reputation, faculty quality, community, and hands-on learning opportunities when choosing a college."}}', '[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university","humans_pass":true}]', 'f0c8e64062f7e3c7bd7352ab398e86ea', NULL, '2026-05-29 14:36:25', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO "page_results" VALUES (92, 33, '8 outside of financial aid what is most important to you when considering a college or university th', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_end
+      required: "<<<FROM_HTML:required>>>"
+      input_type: textarea
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text', '{"data":{"page_metadata":{"page_id":"8 outside of financial aid what is most important to you when considering a college or university th","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university","recommended_answers":"The library. Late-night light through tall windows. Somewhere quiet when the dorms get loud. A campus that doesn''t feel like a mall, professors who actually remember your name. Coffee that''s not burnt. Or whatever. The thing where you can disappear into a corner and no one bothers you.","humans_pass":true}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''sg_NextButton'']","text":"Next","attributes":{"id":"sg_NextButton","type":"submit","value":"Next"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent prioritizes academic reputation, faculty quality, community, and hands-on learning opportunities when choosing a college."}}', '[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university","humans_pass":true}]', 'f0c8e64062f7e3c7bd7352ab398e86ea', NULL, '2026-05-29 14:47:29', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO "page_results" VALUES (93, 34, '8 outside of financial aid what is most important to you when considering a college or university th', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_text
+      required: "<<<FROM_HTML:required>>>"
+      input_type: text
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text', '{"data":{"page_metadata":{"page_id":"8 outside of financial aid what is most important to you when considering a college or university th","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university","recommended_answers":"Campus feel. Not the tour version. Walking through at 7am when nobody''s watching. Library smell. Coffee shop lines. The way people don''t make eye contact or sometimes they do, which was odd.","humans_pass":true}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''sg_NextButton'']","text":"Next","attributes":{"id":"sg_NextButton","type":"submit","value":"Next"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent values academic reputation and program variety over financial aid when choosing a college."}}', '[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university","humans_pass":true}]', 'f0c8e64062f7e3c7bd7352ab398e86ea', NULL, '2026-05-29 15:03:52', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO "page_results" VALUES (94, 35, '8 outside of financial aid what is most important to you when considering a college or university th', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_text
+      required: "<<<FROM_HTML:required>>>"
+      input_type: text
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text', '{"data":{"page_metadata":{"page_id":"8 outside of financial aid what is most important to you when considering a college or university th","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university","recommended_answers":"Campus feel. Not the tour version. Walking through at like 7am when nobody''s watching. The library smell. How fast people walk between classes. Some places feel alive. Others feel like a shopping mall with desks. \n\nThat one bench under a weird tree. Or the corner where students actually hang out. Not the official student center. The unofficial one.","humans_pass":false}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''sg_NextButton'']","text":"Next","attributes":{"id":"sg_NextButton","type":"submit","value":"Next"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent values academic reputation and faculty quality above other factors when choosing a college."}}', '[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university","humans_pass":false}]', 'e3565b9f12f767fb9e8ee2bb42272e5b', NULL, '2026-05-29 15:14:12', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO "page_results" VALUES (95, 36, '8 outside of financial aid what is most important to you when considering a college or university th', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_text
+      required: "<<<FROM_HTML:required>>>"
+      input_type: text
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text', '{"data":{"page_metadata":{"page_id":"8 outside of financial aid what is most important to you when considering a college or university th","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university","recommended_answers":"A place that feels like it fits. Not perfect, just right enough. The way light hits the library windows in late afternoon. Professors who actually remember your name after class. Somewhere you can walk without headphones and not feel weird or whatever. Or maybe that''s just me.","humans_pass":true}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''sg_NextButton'']","text":"Next","attributes":{"id":"sg_NextButton","type":"submit","value":"Next"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent values academic reputation and program variety over financial aid when choosing a college."}}', '[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university","humans_pass":true}]', 'f0c8e64062f7e3c7bd7352ab398e86ea', NULL, '2026-05-29 15:19:50', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO "page_results" VALUES (96, 37, '8 outside of financial aid what is most important to you when considering a college or university th', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_end
+      required: "<<<FROM_HTML:required>>>"
+      input_type: textarea
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text', '{"data":{"page_metadata":{"page_id":"8 outside of financial aid what is most important to you when considering a college or university th","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university","recommended_answers":"The campus itself. Not the brochures. Walking through, feeling the air. Some places just click. Others don''t. The library at midnight, kind of quiet. A bench under a tree nobody sits on, which was weird. Professors who talk to you like you''re already there. Not the rankings. That one hallway with weird lighting. Something about it sticks. idk.","humans_pass":true}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''sg_NextButton'']","text":"Next","attributes":{"id":"sg_NextButton","type":"submit","value":"Next"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent values academic reputation, faculty quality, community, and hands-on learning opportunities when choosing a college, beyond financial aid."}}', '[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university","humans_pass":true}]', 'f0c8e64062f7e3c7bd7352ab398e86ea', NULL, '2026-05-29 15:25:40', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO "page_results" VALUES (97, 38, '8 outside of financial aid what is most important to you when considering a college or university th', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_text
+      required: "<<<FROM_HTML:required>>>"
+      input_type: text
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text', '{"data":{"page_metadata":{"page_id":"8 outside of financial aid what is most important to you when considering a college or university th","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university","recommended_answers":"{\n  \"subject\": \"Outside of financial aid, what is most important to you when considering a college or university?\",\n  \"showAnswer\": \"Honestly, the campus vibe is huge for me. I visited a school last year where everyone seemed stressed and just kept to themselves, and it felt really isolating. I''d rather be somewhere with a strong sense of community, where people actually hang out and support each other. Also, I really care about the location – I want to be in a city with things to do off campus, like coffee shops and parks, not stuck in the middle of nowhere.\"\n}","humans_pass":false}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''sg_NextButton'']","text":"Next","attributes":{"id":"sg_NextButton","type":"submit","value":"Next"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent values academic reputation and program variety when choosing a college, beyond financial aid considerations."}}', '[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university"subject\": \"Outside of financial aid, what is most important to you when considering a college or university?\",\n  \"showAnswer\": \"Honestly, the campus vibe is huge for me. I visited a school last year where everyone seemed stressed and just kept to themselves, and it felt really isolating. I''d rather be somewhere with a strong sense of community, where people actually hang out and support each other. Also, I really care about the location – I want to be in a city with things to do off campus, like coffee shops and parks, not stuck in the middle of nowhere.\"\n}","humans_pass":false}]', 'ce4e9792efdd0097041c7e33f433c632', NULL, '2026-05-29 17:23:20', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO "page_results" VALUES (98, 39, '8 outside of financial aid what is most important to you when considering a college or university th', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_text
+      required: "<<<FROM_HTML:required>>>"
+      input_type: text
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text', '{"data":{"page_metadata":{"page_id":"8 outside of financial aid what is most important to you when considering a college or university th","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university","recommended_answers":"{\n  \"subject\": \"Outside of financial aid, what is most important to you when considering a college or university?\",\n  \"showAnswer\": \"Honestly, the campus vibe is huge for me. I visited a few schools and could just tell where I''d actually want to hang out, not just study. Also, the strength of the specific program I''m interested in — I''d rather go somewhere that''s really solid in my field than a big-name school where I''d just be a number.\"\n}","humans_pass":false}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''sg_NextButton'']","text":"Next","attributes":{"id":"sg_NextButton","type":"submit","value":"Next"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent values academic reputation and program variety over financial aid when choosing a college."}}', '[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university"subject\": \"Outside of financial aid, what is most important to you when considering a college or university?\",\n  \"showAnswer\": \"Honestly, the campus vibe is huge for me. I visited a few schools and could just tell where I''d actually want to hang out, not just study. Also, the strength of the specific program I''m interested in — I''d rather go somewhere that''s really solid in my field than a big-name school where I''d just be a number.\"\n}","humans_pass":false}]', '0e86fda906bce6e687168114e4337392', NULL, '2026-05-29 17:24:26', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO "page_results" VALUES (99, 40, '8 outside of financial aid what is most important to you when considering a college or university th', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_text
+      required: "<<<FROM_HTML:required>>>"
+      input_type: text
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text', '{"data":{"page_metadata":{"page_id":"8 outside of financial aid what is most important to you when considering a college or university th","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university","recommended_answers":"Honestly, the campus vibe is huge for me. I visited a few schools and one just felt like a place I could actually see myself living and studying, not just a tourist attraction. Also, how much hands-on learning they offer — like internships or research with professors. I''d rather be doing real stuff than just sitting in lectures all day.","humans_pass":false}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''sg_NextButton'']","text":"Next","attributes":{"id":"sg_NextButton","type":"submit","value":"Next"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent values academic reputation and program variety over financial aid when choosing a college."}}', '[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university","humans_pass":false}]', 'e3565b9f12f767fb9e8ee2bb42272e5b', NULL, '2026-05-29 17:31:25', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO "page_results" VALUES (100, 41, '8 outside of financial aid what is most important to you when considering a college or university th', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_end
+      required: "<<<FROM_HTML:required>>>"
+      input_type: textarea
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text', '{"data":{"page_metadata":{"page_id":"8 outside of financial aid what is most important to you when considering a college or university th","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university","recommended_answers":"Honestly, the campus vibe matters a ton to me. I visited a few schools and some just felt super competitive and stressed out, while others had a more laid-back, collaborative feel. I want to be somewhere I can actually enjoy the next four years, not just grind 24/7. Also, location is huge—I''d love to be near a city for internships and fun stuff which was odd, but not right in the middle of it, I guess.","humans_pass":true}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''sg_NextButton'']","text":"Next","attributes":{"id":"sg_NextButton","type":"submit","value":"Next"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent values academic reputation, faculty quality, community, and hands-on learning opportunities when considering a college or university."}}', '[{"question_type":"","subject":"outside of financial aid what is most important to you when considering a college or university","humans_pass":true}]', 'f0c8e64062f7e3c7bd7352ab398e86ea', NULL, '2026-05-29 17:34:07', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO "page_results" VALUES (101, 16, 'what is your age', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - q_index: 1
+      title: "<<<FROM_HTML:title>>>"
+      questions_type: number
+      required: "<<<FROM_HTML:required>>>"
+      min: "<<<FROM_HTML:min>>>"
+      max: "<<<FROM_HTML:max>>>"
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+    - q_index: 2
+      title: "<<<FROM_HTML:title>>>"
+      questions_type: single
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: single_select
+        option_sort: as_appearing
+        max_selections: null
+', '{"data":{"page_metadata":{"page_id":"what is your age","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"number","subject":"what is your age","recommended_answers":"35"},{"question_type":"single","subject":"what is your gender","recommended_answers":"Female"}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''btn_continue'']","text":"Next","attributes":{"id":"btn_continue","type":"submit","value":"Next »"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent provides their age as a number and selects their gender from the given options."}}', '[{"question_type":"number","subject":"what is your age"},{"question_type":"single","subject":"what is your gender"}]', 'd46000d2d448f3f4d52d73dd4c901fdd', NULL, '2026-05-29 21:39:06', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO "page_results" VALUES (102, 28, 'what is your age', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - q_index: 1
+      title: "<<<FROM_HTML:title>>>"
+      questions_type: number
+      required: "<<<FROM_HTML:required>>>"
+      min: "<<<FROM_HTML:min>>>"
+      max: "<<<FROM_HTML:max>>>"
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+    - q_index: 2
+      title: "<<<FROM_HTML:title>>>"
+      questions_type: single
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: single_select
+        option_sort: as_appearing
+        max_selections: null
+', '{"data":{"page_metadata":{"page_id":"what is your age","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"number","subject":"what is your age","recommended_answers":"35"},{"question_type":"single","subject":"what is your gender","recommended_answers":"Female"}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''btn_continue'']","text":"Next","attributes":{"id":"btn_continue","type":"submit","value":"Next »"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent provided their age as 35 and selected Female as their gender."}}', '[{"question_type":"number","subject":"what is your age"},{"question_type":"single","subject":"what is your gender"}]', 'd46000d2d448f3f4d52d73dd4c901fdd', 'storage\screenshots\sess_1779846324961_cbycj\102.jpg', '2026-05-29 21:39:24', 'tapestry What is your age? Please enter a number 35 What is your gender? Please select an answer Male Female Other Non-Binary → Next: Next What is your age? Please enter a number 35 What is your gender? Please select an answer Male Female Other Non-Binary → Next: Next', '{"page_id":"1","questions":[{"question_text":"What is your age? Please enter a number","question_type":"text_input","options":[],"selected_index":[],"input_text":"35"},{"question_text":"What is your gender? Please select an answer","question_type":"single_choice","options":["Male","Female","Other","Non-Binary"],"selected_index":[1],"input_text":""}],"raw_text":"tapestry What is your age? Please enter a number 35 What is your gender? Please select an answer Male Female Other Non-Binary → Next: Next What is your age? Please enter a number 35 What is your gender? Please select an answer Male Female Other Non-Binary → Next: Next","note":""}', 'qwen_vl', 'mismatch', '2026-05-29 21:39:36', '');
+INSERT INTO "page_results" VALUES (103, 28, 'what is your current country of residence', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: single
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: single_select
+        option_sort: as_appearing
+        max_selections: null', '{"data":{"page_metadata":{"page_id":"what is your current country of residence","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"what is your current country of residence","recommended_answers":"United States"}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''btn_continue'']","text":"Next","attributes":{"id":"btn_continue","type":"submit","value":"Next »"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent indicates their current country of residence is the United States."}}', '[{"question_type":"","subject":"what is your current country of residence"}]', 'fbc5ddce7e246e8982a3ff4239390147', 'storage\screenshots\sess_1779846324961_cbycj\103.jpg', '2026-05-29 21:39:39', 'tapestry What is your current country of residence? Please select an answer Canada Mexico United States Other → Next: Next tapestry What is your current country of residence? Please select an answer Canada Mexico United States Other → Next: Next Next > Next >', '{"page_id":"1","questions":[{"question_text":"What is your current country of residence? Please select an answer","question_type":"single_choice","options":["Canada","Mexico","United States","Other"],"selected_index":[2],"input_text":""}],"raw_text":"tapestry What is your current country of residence? Please select an answer Canada Mexico United States Other → Next: Next tapestry What is your current country of residence? Please select an answer Canada Mexico United States Other → Next: Next Next \u003e Next \u003e","note":""}', 'qwen_vl', 'match', '2026-05-29 21:39:53', '');
+INSERT INTO "page_results" VALUES (104, 28, 'what is your zip code', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_text
+      required: "<<<FROM_HTML:required>>>"
+      input_type: text
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text', '{"data":{"page_metadata":{"page_id":"what is your zip code","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"what is your zip code","recommended_answers":"10001"}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''btn_continue'']","text":"Next","attributes":{"id":"btn_continue","type":"submit","value":"Next »"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent provided a zip code for their residence in the United States."}}', '[{"question_type":"","subject":"what is your zip code"}]', 'e4c0b79bba6dd8282c1c9eb147d289dc', 'storage\screenshots\sess_1779846324961_cbycj\104.jpg', '2026-05-29 21:40:00', 'tapestry What is your zip code? Please enter your answer 10001 Next » tapestry', '{"page_id":"1","questions":[{"question_text":"What is your zip code? Please enter your answer","question_type":"text_input","options":[],"selected_index":[],"input_text":"10001"}],"raw_text":"tapestry What is your zip code? Please enter your answer 10001 Next » tapestry","note":""}', 'qwen_vl', 'match', '2026-05-29 21:41:02', '');
+INSERT INTO "page_results" VALUES (105, 28, 'which if any of the following have you done over the past weekend', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: multi
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: multi_select
+        option_sort: as_appearing
+        max_selections: "<<<FROM_HTML:max_selections>>>"', '{"data":{"page_metadata":{"page_id":"which if any of the following have you done over the past weekend","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"which if any of the following have you done over the past weekend","recommended_answers":["Watched TV","Visited a flea market","Went geocaching"]}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''btn_continue'']","text":"Next","attributes":{"id":"btn_continue","type":"submit","value":"Next »"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent selected a few common weekend activities, indicating a preference for typical leisure activities over extreme or unusual ones."}}', '[{"question_type":"","subject":"which if any of the following have you done over the past weekend"}]', 'dc3746f434f29458fe2ebe714d217e9a', 'storage\screenshots\sess_1779846324961_cbycj\105.jpg', '2026-05-29 21:41:09', 'tapestry Which, if any, of the following have you done over the past weekend? Please select all that apply Played poker Visited a flea market Flew in a helicopter Visited Antarctica Went skiing Watched TV Went bungee jumping Visited Antarctica Went skiing Watched TV Went bungee jumping Went geocaching None of the above → Next: Next Next » tapestry', '{"page_id":"brief page identifier or page number","questions":[{"question_text":"Which, if any, of the following have you done over the past weekend? Please select all that apply","question_type":"multi_choice","options":["Played poker","Visited a flea market","Flew in a helicopter","Visited Antarctica","Went skiing","Watched TV","Went bungee jumping","Visited Antarctica","Went skiing","Watched TV","Went bungee jumping","Went geocaching","None of the above"],"selected_index":[5,9],"input_text":""}],"raw_text":"tapestry Which, if any, of the following have you done over the past weekend? Please select all that apply Played poker Visited a flea market Flew in a helicopter Visited Antarctica Went skiing Watched TV Went bungee jumping Visited Antarctica Went skiing Watched TV Went bungee jumping Went geocaching None of the above → Next: Next Next » tapestry","note":""}', 'qwen_vl', 'match', '2026-05-29 21:41:33', '');
+INSERT INTO "page_results" VALUES (106, 28, 'are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: single
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: single_select
+        option_sort: as_appearing
+        max_selections: null', '{"data":{"page_metadata":{"page_id":"are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an","recommended_answers":"No"}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''btn_continue'']","text":"Next","attributes":{"id":"btn_continue","type":"submit","value":"Next »"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent indicates they are not Spanish, Hispanic, or Latinx."}}', '[{"question_type":"","subject":"are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an"}]', '9c688c34c52a502aa835dc0bb94f7cd0', 'storage\screenshots\sess_1779846324961_cbycj\106.jpg', '2026-05-29 21:41:38', 'tapestry 13% Are you Spanish, Hispanic, or Latinx such as Mexican, Mexican-American, Chicano, Puerto Rican, Cuban, or another Spanish, Hispanic, or Latinx group? Please select an answer Yes No Next >> tapestry 13% Are you Spanish, Hispanic, or Latinx such as Mexican, Mexican-American, Chicano, Puerto Rican, Cuban, or another Spanish, Hispanic, or Latinx group? Please select an answer Yes No Next >> tapestry', '{"page_id":"1","questions":[{"question_text":"Are you Spanish, Hispanic, or Latinx such as Mexican, Mexican-American, Chicano, Puerto Rican, Cuban, or another Spanish, Hispanic, or Latinx group? Please select an answer","question_type":"single_choice","options":["Yes","No"],"selected_index":[1],"input_text":""}],"raw_text":"tapestry 13% Are you Spanish, Hispanic, or Latinx such as Mexican, Mexican-American, Chicano, Puerto Rican, Cuban, or another Spanish, Hispanic, or Latinx group? Please select an answer Yes No Next \u003e\u003e tapestry 13% Are you Spanish, Hispanic, or Latinx such as Mexican, Mexican-American, Chicano, Puerto Rican, Cuban, or another Spanish, Hispanic, or Latinx group? Please select an answer Yes No Next \u003e\u003e tapestry","note":"The repeated identical question and UI elements suggest a duplicate rendering; only one instance is fully readable. The progress bar shows ''13%'' but no other context is visible."}', 'qwen_vl', 'mismatch', '2026-05-29 21:41:47', '');
+INSERT INTO "page_results" VALUES (107, 28, 'what is your racial background', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: multi_select
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: multi_select
+        max_selections: "<<<FROM_HTML:max_selections>>>"', '{"data":{"page_metadata":{"page_id":"what is your racial background","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"what is your racial background","recommended_answers":["White/Caucasian","Asian/Asian-American"]}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''btn_continue'']","text":"Next","attributes":{"id":"btn_continue","type":"submit","value":"Next »"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent selected White/Caucasian and Asian/Asian-American as their racial background, indicating a multiracial identity."}}', '[{"question_type":"","subject":"what is your racial background"}]', 'e79d6c9d440f37c85a96765036a7ddad', 'storage\screenshots\sess_1779846324961_cbycj\107.jpg', '2026-05-29 21:41:50', 'tapestry 15% What is your racial background? Please select all that apply White/Caucasian Asian/Asian-American Black/African-American Other Next » tapestry', '{"page_id":"1","questions":[{"question_text":"What is your racial background? Please select all that apply","question_type":"multi_choice","options":["White/Caucasian","Asian/Asian-American","Black/African-American","Other"],"selected_index":[0],"input_text":""}],"raw_text":"tapestry 15% What is your racial background? Please select all that apply White/Caucasian Asian/Asian-American Black/African-American Other Next » tapestry","note":""}', 'qwen_vl', 'match', '2026-05-29 21:41:56', '');
+INSERT INTO "page_results" VALUES (108, 28, 'how much do you agree or disagree that each of the words below describe you', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: matrix_radio
+      required: "<<<FROM_HTML:required>>>"
+      columns: "<<<FROM_HTML:columns[]>>>"
+      rows: "<<<FROM_HTML:rows[]>>>"
+      response_format:
+        type: single_per_row
+        orientation: horizontal
+        option_sort: as_appearing
+        max_selections: null', '{"data":{"page_metadata":{"page_id":"how much do you agree or disagree that each of the words below describe you","is_matrix_page":true,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"sophisticated","recommended_answers":"Agree slightly"},{"question_type":"","subject":"elegant","recommended_answers":"Neither agree nor disagree"},{"question_type":"","subject":"funny","recommended_answers":"Agree strongly"},{"question_type":"","subject":"select agree slightly for this item","recommended_answers":"Agree slightly"},{"question_type":"","subject":"edgy","recommended_answers":"Disagree slightly"}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''btn_continue'']","text":"Next","attributes":{"id":"btn_continue","type":"submit","value":"Next »"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent moderately agrees with being sophisticated and funny, is neutral about being elegant, strongly agrees with the attention check item, and slightly disagrees with being edgy."}}', '[{"question_type":"","subject":"sophisticated"},{"question_type":"","subject":"elegant"},{"question_type":"","subject":"funny"},{"question_type":"","subject":"select agree slightly for this item"},{"question_type":"","subject":"edgy"}]', '0d4859dbd8d1275db71582432745bbf3', 'storage\screenshots\sess_1779846324961_cbycj\108.jpg', '2026-05-29 21:42:04', 'tapestry How much do you agree or disagree that each of the words below describe you? Please select an answer Prev Next Click the ">>" button to proceed. Next >> tapestry', '{"page_id":"brief page identifier or page number","questions":[],"raw_text":"tapestry How much do you agree or disagree that each of the words below describe you? Please select an answer Prev Next Click the \"\u003e\u003e\" button to proceed. Next \u003e\u003e tapestry","note":"The actual matrix of words and response options is not visible in the screenshot; only the question header and navigation are shown."}', 'qwen_vl', 'unclear', '2026-05-29 21:44:30', '');
+INSERT INTO "page_results" VALUES (109, 28, 'do you have any children under 18 years old living in your household', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: single
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: single_select
+        option_sort: as_appearing
+        max_selections: null', '{"data":{"page_metadata":{"page_id":"do you have any children under 18 years old living in your household","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"do you have any children under 18 years old living in your household","recommended_answers":"No"}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''btn_continue'']","text":"Next","attributes":{"id":"btn_continue","type":"submit","value":"Next »"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent indicates they do not have any children under 18 living in their household."}}', '[{"question_type":"","subject":"do you have any children under 18 years old living in your household"}]', '2ad82c0ed2e9a134cb319cc212c79df7', 'storage\screenshots\sess_1779846324961_cbycj\109.jpg', '2026-05-29 21:44:36', 'tapestry 18% Do you have any children under 18 years old living in your household? Please select an answer Yes No Next » tapestry', '{"page_id":"brief page identifier or page number","questions":[{"question_text":"Do you have any children under 18 years old living in your household?","question_type":"single_choice","options":["Yes","No"],"selected_index":[1],"input_text":""}],"raw_text":"tapestry 18% Do you have any children under 18 years old living in your household? Please select an answer Yes No Next » tapestry","note":""}', 'qwen_vl', 'mismatch', '2026-05-29 21:44:42', '');
+INSERT INTO "page_results" VALUES (110, 28, 'how often do you watch shows movies web series videos or clips from each of the following', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: matrix_radio
+      required: "<<<FROM_HTML:required>>>"
+      columns: "<<<FROM_HTML:columns[]>>>"
+      rows: "<<<FROM_HTML:rows[]>>>"
+      response_format:
+        type: single_per_row
+        orientation: horizontal
+        option_sort: as_appearing
+        max_selections: null', '{"data":{"page_metadata":{"page_id":"how often do you watch shows movies web series videos or clips from each of the following","is_matrix_page":true,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"hallmark channel","recommended_answers":"Never"},{"question_type":"","subject":"usa network","recommended_answers":"Less than once a month"},{"question_type":"","subject":"own","recommended_answers":"Never"},{"question_type":"","subject":"cartoon network","recommended_answers":"Never"},{"question_type":"","subject":"nbc","recommended_answers":"Once a week or more"},{"question_type":"","subject":"nickelodeon","recommended_answers":"Never"},{"question_type":"","subject":"comedy central","recommended_answers":"Once or twice a month"},{"question_type":"","subject":"we tv","recommended_answers":"Never"},{"question_type":"","subject":"cbs","recommended_answers":"Once a week or more"},{"question_type":"","subject":"fx","recommended_answers":"Once or twice a month"},{"question_type":"","subject":"fxx","recommended_answers":"Never"},{"question_type":"","subject":"investigation discovery","recommended_answers":"Less than once a month"},{"question_type":"","subject":"national geographic natgeo","recommended_answers":"Once or twice a month"},{"question_type":"","subject":"discovery channel","recommended_answers":"Once a week or more"},{"question_type":"","subject":"abc","recommended_answers":"Once a week or more"},{"question_type":"","subject":"freeform","recommended_answers":"Never"},{"question_type":"","subject":"history channel","recommended_answers":"Once or twice a month"},{"question_type":"","subject":"hgtv","recommended_answers":"Once a week or more"},{"question_type":"","subject":"lifetime","recommended_answers":"Less than once a month"},{"question_type":"","subject":"boinks","recommended_answers":"Never"},{"question_type":"","subject":"travel channel","recommended_answers":"Less than once a month"},{"question_type":"","subject":"syfy","recommended_answers":"Never"},{"question_type":"","subject":"tv one","recommended_answers":"Never"},{"question_type":"","subject":"logo","recommended_answers":"Never"},{"question_type":"","subject":"showtime","recommended_answers":"Once or twice a month"},{"question_type":"","subject":"trevi1","recommended_answers":"Never"}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''btn_continue'']","text":"Next","attributes":{"id":"btn_continue","type":"submit","value":"Next »"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent watches NBC, CBS, Discovery Channel, ABC, and HGTV at least once a week, watches Comedy Central, FX, National Geographic, History Channel, and Showtime once or twice a month, watches USA Network, Investigation Discovery, Lifetime, and Travel Channel less than once a month, and never watches Hallmark Channel, OWN, Cartoon Network, Nickelodeon, WE tv, FXX, Freeform, Boinks!, Syfy, TV One, Logo, or Trevi1."}}', '[{"question_type":"","subject":"hallmark channel"},{"question_type":"","subject":"usa network"},{"question_type":"","subject":"own"},{"question_type":"","subject":"cartoon network"},{"question_type":"","subject":"nbc"},{"question_type":"","subject":"nickelodeon"},{"question_type":"","subject":"comedy central"},{"question_type":"","subject":"we tv"},{"question_type":"","subject":"cbs"},{"question_type":"","subject":"fx"},{"question_type":"","subject":"fxx"},{"question_type":"","subject":"investigation discovery"},{"question_type":"","subject":"national geographic natgeo"},{"question_type":"","subject":"discovery channel"},{"question_type":"","subject":"abc"},{"question_type":"","subject":"freeform"},{"question_type":"","subject":"history channel"},{"question_type":"","subject":"hgtv"},{"question_type":"","subject":"lifetime"},{"question_type":"","subject":"boinks"},{"question_type":"","subject":"travel channel"},{"question_type":"","subject":"syfy"},{"question_type":"","subject":"tv one"},{"question_type":"","subject":"logo"},{"question_type":"","subject":"showtime"},{"question_type":"","subject":"trevi1"}]', '611e0928e180c8b62baa75d7829e6ec0', 'storage\screenshots\sess_1779846324961_cbycj\110.jpg', '2026-05-29 21:44:52', 'Nickelodeon Comedy Central WE tv CBS FX Never Less than once a month Once or twice a month Once a week or more FXI Investigation Discovery National Geographic (NatGeo) Discovery Channel ABC Freeform History Channel HGTV Lifetime Boinks! Never Less than once a month Once or twice a month Once a week or more Travel Channel Syfy TV One Logo Showtime Trevi1 tapestry How often do you watch shows, movies, web series, videos, or clips from each of the following? Please provide a response for each selection Hallmark Channel USA Network OWN Cartoon Network NBC Nickelodeon Comedy Central WE tv CBS FX Never Less than once a month Once or twice a month Once a week or more FXI Investigation Discovery National Geographic (NatGeo) Discovery Channel ABC Freeform History Channel HGTV Lifetime Boinks! Never Less than once a month Once or twice a month Once a week or more Travel Channel', '{"page_id":"1","questions":[{"question_text":"How often do you watch shows, movies, web series, videos, or clips from each of the following? Please provide a response for each selection","question_type":"matrix","options":["Never","Less than once a month","Once or twice a month","Once a week or more"],"selected_index":[0],"input_text":""}],"raw_text":"Nickelodeon Comedy Central WE tv CBS FX Never Less than once a month Once or twice a month Once a week or more FXI Investigation Discovery National Geographic (NatGeo) Discovery Channel ABC Freeform History Channel HGTV Lifetime Boinks! Never Less than once a month Once or twice a month Once a week or more Travel Channel Syfy TV One Logo Showtime Trevi1 tapestry How often do you watch shows, movies, web series, videos, or clips from each of the following? Please provide a response for each selection Hallmark Channel USA Network OWN Cartoon Network NBC Nickelodeon Comedy Central WE tv CBS FX Never Less than once a month Once or twice a month Once a week or more FXI Investigation Discovery National Geographic (NatGeo) Discovery Channel ABC Freeform History Channel HGTV Lifetime Boinks! Never Less than once a month Once or twice a month Once a week or more Travel Channel","note":"The lower portion of the image contains a partially visible row with an orange ''Next »'' button and a green ''→ Next: Next'' button. The ''History Channel'' row in the lower matrix has a yellow dot in the ''Once a week or more'' column, which may indicate a different response or highlight. Some rows are cut off at the bottom edge."}', 'qwen_vl', 'match', '2026-05-29 21:49:10', '');
+INSERT INTO "page_results" VALUES (111, 28, 'how often do you watch shows movies web series videos or clips from each of the following', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: "<<<FROM_HTML:questions_type>>>"
+      required: "<<<FROM_HTML:required>>>"
+      columns: "<<<FROM_HTML:columns[]>>>"
+      rows: "<<<FROM_HTML:rows[]>>>""
+      response_format:
+        type: "<<<FROM_HTML:type>>>"
+        orientation: "<<<FROM_HTML:orientation>>>"
+        option_sort: "<<<FROM_HTML:option_sort>>>"
+        max_selections: "<<<FROM_HTML:max_selections>>>"', '{"data":{"page_metadata":{"page_id":"how often do you watch shows movies web series videos or clips from each of the following","is_matrix_page":true,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"a e never","recommended_answers":"Never"},{"question_type":"","subject":"e never","recommended_answers":"Less than once a month"},{"question_type":"","subject":"adult swim never","recommended_answers":"Never"},{"question_type":"","subject":"bravo never","recommended_answers":"Less than once a month"},{"question_type":"","subject":"starz never","recommended_answers":"Never"},{"question_type":"","subject":"tnt never","recommended_answers":"Less than once a month"},{"question_type":"","subject":"disney channel never","recommended_answers":"Never"},{"question_type":"","subject":"bbc america never","recommended_answers":"Less than once a month"},{"question_type":"","subject":"tbs never","recommended_answers":"Never"},{"question_type":"","subject":"smithsonian channel never","recommended_answers":"Never"},{"question_type":"","subject":"hbo never","recommended_answers":"Once a week or more"},{"question_type":"","subject":"mtv never","recommended_answers":"Never"},{"question_type":"","subject":"fox never","recommended_answers":"Once a week or more"},{"question_type":"","subject":"telemundo never","recommended_answers":"Never"},{"question_type":"","subject":"paramount network never","recommended_answers":"Never"},{"question_type":"","subject":"tlc never","recommended_answers":"Less than once a month"},{"question_type":"","subject":"the cw never","recommended_answers":"Never"},{"question_type":"","subject":"tv land never","recommended_answers":"Never"},{"question_type":"","subject":"bet never","recommended_answers":"Never"},{"question_type":"","subject":"oxygen never","recommended_answers":"Never"},{"question_type":"","subject":"vh1 never","recommended_answers":"Never"},{"question_type":"","subject":"cmt never","recommended_answers":"Never"},{"question_type":"","subject":"amc never","recommended_answers":"Once a week or more"},{"question_type":"","subject":"pop never","recommended_answers":"Never"}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''btn_continue'']","text":"Next","attributes":{"id":"btn_continue","type":"submit","value":"Next »"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent rarely watches most listed TV networks, with a few exceptions like HBO, FOX, and AMC which they watch weekly or more, indicating a selective viewing habit focused on premium and major broadcast channels."}}', '[{"question_type":"","subject":"a e never"},{"question_type":"","subject":"e never"},{"question_type":"","subject":"adult swim never"},{"question_type":"","subject":"bravo never"},{"question_type":"","subject":"starz never"},{"question_type":"","subject":"tnt never"},{"question_type":"","subject":"disney channel never"},{"question_type":"","subject":"bbc america never"},{"question_type":"","subject":"tbs never"},{"question_type":"","subject":"smithsonian channel never"},{"question_type":"","subject":"hbo never"},{"question_type":"","subject":"mtv never"},{"question_type":"","subject":"fox never"},{"question_type":"","subject":"telemundo never"},{"question_type":"","subject":"paramount network never"},{"question_type":"","subject":"tlc never"},{"question_type":"","subject":"the cw never"},{"question_type":"","subject":"tv land never"},{"question_type":"","subject":"bet never"},{"question_type":"","subject":"oxygen never"},{"question_type":"","subject":"vh1 never"},{"question_type":"","subject":"cmt never"},{"question_type":"","subject":"amc never"},{"question_type":"","subject":"pop never"}]', '58062a8b50ca545c8acc66164c11e09d', 'storage\screenshots\sess_1779846324961_cbycj\111.jpg', '2026-05-29 21:49:16', 'tapestry How often do you watch shows, movies, web series, videos, or clips from each of the following? Please provide a response for each selection A&E E! Adult Swim Bravo Starz TNT Disney Channel BBC America TBS Smithsonian Channel HBO MTV FOX Telemundo Paramount Network TLC The CW TV Land BET Oxygen VH1 CMT AMC Pop tapestry How often do you watch shows, movies, web series, videos, or clips from each of the following? Please provide a response for each selection A&E E! Adult Swim Bravo Starz TNT Disney Channel BBC America TBS Smithsonian Channel HBO MTV FOX Telemundo Paramount Network TLC The CW TV Land BET Oxygen VH1 CMT AMC Pop Next > Next: Next', '{"page_id":"1","questions":[{"question_text":"How often do you watch shows, movies, web series, videos, or clips from each of the following? Please provide a response for each selection","question_type":"matrix","options":["Never","Less than once a month","Once or twice a month","Once a week or more"],"selected_index":[0],"input_text":""}],"raw_text":"tapestry How often do you watch shows, movies, web series, videos, or clips from each of the following? Please provide a response for each selection A\u0026E E! Adult Swim Bravo Starz TNT Disney Channel BBC America TBS Smithsonian Channel HBO MTV FOX Telemundo Paramount Network TLC The CW TV Land BET Oxygen VH1 CMT AMC Pop tapestry How often do you watch shows, movies, web series, videos, or clips from each of the following? Please provide a response for each selection A\u0026E E! Adult Swim Bravo Starz TNT Disney Channel BBC America TBS Smithsonian Channel HBO MTV FOX Telemundo Paramount Network TLC The CW TV Land BET Oxygen VH1 CMT AMC Pop Next \u003e Next: Next","note":"The image contains two identical survey sections stacked vertically; both appear to be the same page with identical responses. The top section has an orange ''Next »'' button; the bottom section has a green ''→ Next: Next'' button. All radio buttons are filled in teal for selected options."}', 'qwen_vl', 'match', '2026-05-29 21:52:20', '');
+INSERT INTO "page_results" VALUES (112, 28, 'how often do you stream shows movies web series videos or clips from each of the following', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: matrix_radio
+      required: "<<<FROM_HTML:required>>>"
+      columns: "<<<FROM_HTML:columns[]>>>"
+      rows: "<<<FROM_HTML:rows[]>>>"
+      response_format:
+        type: single_per_row
+        orientation: horizontal
+        option_sort: as_appearing
+        max_selections: null', '{"data":{"page_metadata":{"page_id":"how often do you stream shows movies web series videos or clips from each of the following","is_matrix_page":true,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"discovery","recommended_answers":"Less than once a month"},{"question_type":"","subject":"peacock","recommended_answers":"Never"},{"question_type":"","subject":"disney","recommended_answers":"Once a week or more"},{"question_type":"","subject":"pluto tv","recommended_answers":"Never"},{"question_type":"","subject":"amazon prime video","recommended_answers":"Once a week or more"},{"question_type":"","subject":"tubi","recommended_answers":"Less than once a month"},{"question_type":"","subject":"hulu","recommended_answers":"Once a week or more"},{"question_type":"","subject":"crackle","recommended_answers":"Never"},{"question_type":"","subject":"max formerly hbo max","recommended_answers":"Once or twice a month"},{"question_type":"","subject":"appletv","recommended_answers":"Less than once a month"},{"question_type":"","subject":"paramount","recommended_answers":"Once or twice a month"},{"question_type":"","subject":"bet","recommended_answers":"Never"},{"question_type":"","subject":"roku channel","recommended_answers":"Less than once a month"},{"question_type":"","subject":"netflix","recommended_answers":"Once a week or more"}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''btn_continue'']","text":"Next","attributes":{"id":"btn_continue","type":"submit","value":"Next »"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent streams Netflix, Amazon Prime Video, Hulu, and Disney+ at least weekly, uses Max and Paramount+ occasionally, rarely uses Discovery+, Peacock, Tubi, AppleTV+, and Roku Channel, and never uses Pluto TV, Crackle, or BET+."}}', '[{"question_type":"","subject":"discovery"},{"question_type":"","subject":"peacock"},{"question_type":"","subject":"disney"},{"question_type":"","subject":"pluto tv"},{"question_type":"","subject":"amazon prime video"},{"question_type":"","subject":"tubi"},{"question_type":"","subject":"hulu"},{"question_type":"","subject":"crackle"},{"question_type":"","subject":"max formerly hbo max"},{"question_type":"","subject":"appletv"},{"question_type":"","subject":"paramount"},{"question_type":"","subject":"bet"},{"question_type":"","subject":"roku channel"},{"question_type":"","subject":"netflix"}]', '17ec3c3bbafeddf1a721fcba1d9f2dc2', 'storage\screenshots\sess_1779846324961_cbycj\112.jpg', '2026-05-29 21:52:26', 'tapestry How often do you stream shows, movies, web series, videos, or clips from each of the following? Please provide a response for each selection Discovery+ Never Less than once a month Once or twice a month Once a week or more Peacock Disney+ Pluto TV Amazon Prime Video Tubi Hulu Crackle Max (formerly HBO Max) AppleTV+ Paramount+ Never Less than once a month Once or twice a month Once a week or more BET+ Roku Channel Netflix → Next: Next tapestry', '{"page_id":"streaming_frequency_page","questions":[{"question_text":"How often do you stream shows, movies, web series, videos, or clips from each of the following? Please provide a response for each selection","question_type":"matrix","options":["Never","Less than once a month","Once or twice a month","Once a week or more"],"selected_index":[1,1,3,1,3,1,1,2,1,2,1,1,3],"input_text":""}],"raw_text":"tapestry How often do you stream shows, movies, web series, videos, or clips from each of the following? Please provide a response for each selection Discovery+ Never Less than once a month Once or twice a month Once a week or more Peacock Disney+ Pluto TV Amazon Prime Video Tubi Hulu Crackle Max (formerly HBO Max) AppleTV+ Paramount+ Never Less than once a month Once or twice a month Once a week or more BET+ Roku Channel Netflix → Next: Next tapestry","note":"The matrix grid has multiple rows and columns; the selected options are indicated by teal dots in the corresponding cells. The ''Next'' button is visible at bottom right."}', 'qwen_vl', 'match', '2026-05-29 21:54:46', '');
+INSERT INTO "page_results" VALUES (113, 28, 'do you have paid cable or satellite tv e g comcast xfinity optimum dish directv verizon fios etc in', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: single
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: single_select
+        option_sort: as_appearing
+        max_selections: null', '{"data":{"page_metadata":{"page_id":"do you have paid cable or satellite tv e g comcast xfinity optimum dish directv verizon fios etc in","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"do you have paid cable or satellite tv e g comcast xfinity optimum dish directv verizon fios etc in","recommended_answers":"No, I do not have this in my household"}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''btn_continue'']","text":"Next","attributes":{"id":"btn_continue","type":"submit","value":"Next »"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent does not have paid cable or satellite TV in their household, indicating a preference for streaming or other TV sources."}}', '[{"question_type":"","subject":"do you have paid cable or satellite tv e g comcast xfinity optimum dish directv verizon fios etc in"}]', '7b5f9b1aa92f682fa6f3e01fc16de02b', 'storage\screenshots\sess_1779846324961_cbycj\113.jpg', '2026-05-29 21:54:51', 'tapestry Do you have paid cable or satellite TV (e.g. Comcast/Xfinity, Optimum, DISH, DirecTV, Verizon FiOS etc.) in your household? Please select an answer Yes, I have this in my household No, I do not have this in my household Next » tapestry', '{"page_id":"brief page identifier or page number","questions":[{"question_text":"Do you have paid cable or satellite TV (e.g. Comcast/Xfinity, Optimum, DISH, DirecTV, Verizon FiOS etc.) in your household? Please select an answer","question_type":"single_choice","options":["Yes, I have this in my household","No, I do not have this in my household"],"selected_index":[1],"input_text":""}],"raw_text":"tapestry Do you have paid cable or satellite TV (e.g. Comcast/Xfinity, Optimum, DISH, DirecTV, Verizon FiOS etc.) in your household? Please select an answer Yes, I have this in my household No, I do not have this in my household Next » tapestry","note":""}', 'qwen_vl', 'match', '2026-05-29 21:54:59', '');
+INSERT INTO "page_results" VALUES (114, 28, 'you mentioned that you watch showtime which of the following ways do you watch most frequently', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: single
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: single_select
+        option_sort: as_appearing
+        max_selections: null', '{"data":{"page_metadata":{"page_id":"you mentioned that you watch showtime which of the following ways do you watch most frequently","is_matrix_page":false,"has_next_button":false,"has_submit_button":false,"is_thank_you_page":false},"interactions":[{"question_type":"","subject":"you mentioned that you watch showtime which of the following ways do you watch most frequently","recommended_answers":"I mostly stream it through the Showtime app on my Apple TV. It''s just easier that way, I guess, since I can watch whenever I want, and I don''t have to deal with cable schedules. Sometimes I''ll binge a whole season over a weekend, not gonna lie.","humans_pass":true}],"nav_buttons":{"buttons":[{"role":"next","xpath":"//input[@id=''btn_continue'']","text":"Next","attributes":{"id":"btn_continue","type":"submit","value":"Next »"},"wait_after_click":1500}],"primary_button":"next"},"page_summary":"The respondent prefers to watch Showtime via an online third-party subscription rather than through cable or as part of Paramount+."}}', '[{"question_type":"","subject":"you mentioned that you watch showtime which of the following ways do you watch most frequently","humans_pass":true}]', '290475afcbd52049bd3eba2c6f4d96eb', NULL, '2026-05-29 21:55:12', NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- ----------------------------
+-- Table structure for prompt_assembly_orders
+-- ----------------------------
+DROP TABLE IF EXISTS "prompt_assembly_orders";
+CREATE TABLE "prompt_assembly_orders" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+  "assembly_name" TEXT NOT NULL,
+  "step_order" INTEGER NOT NULL,
+  "prompt_key" TEXT NOT NULL,
+  "is_active" INTEGER NOT NULL DEFAULT 1,
+  UNIQUE ("assembly_name" ASC, "step_order" ASC)
+);
+
+-- ----------------------------
+-- Records of prompt_assembly_orders
+-- ----------------------------
+INSERT INTO "prompt_assembly_orders" VALUES (1, 'analyze', 1, 'system.role', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (2, 'analyze', 2, 'structure.grouping', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (3, 'analyze', 3, 'core_rules', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (4, 'analyze', 4, 'qtype.single', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (5, 'analyze', 5, 'qtype.multiple', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (6, 'analyze', 6, 'qtype.select', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (7, 'analyze', 7, 'qtype.open_text', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (8, 'analyze', 8, 'qtype.email', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (9, 'analyze', 9, 'qtype.phone', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (10, 'analyze', 10, 'qtype.number', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (11, 'analyze', 11, 'qtype.date', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (12, 'analyze', 12, 'qtype.time', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (13, 'analyze', 13, 'qtype.open_end', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (14, 'analyze', 14, 'qtype.matrix_radio', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (15, 'analyze', 15, 'qtype.matrix_checkbox', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (16, 'analyze', 16, 'qtype.likert', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (17, 'analyze', 17, 'qtype.semantic_diff', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (18, 'analyze', 18, 'qtype.slider', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (19, 'analyze', 19, 'qtype.nps', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (20, 'analyze', 20, 'qtype.likert_card', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (21, 'analyze', 21, 'qtype.multi_select', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (22, 'analyze', 22, 'qtype.ranking_drag', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (23, 'analyze', 23, 'qtype.ranking_select', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (24, 'analyze', 24, 'qtype.max_diff', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (25, 'analyze', 25, 'qtype.conjoint', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (26, 'analyze', 26, 'qtype.cardsort_drag', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (27, 'analyze', 27, 'qtype.cardsort_select', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (28, 'analyze', 28, 'qtype.image_select', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (29, 'analyze', 29, 'qtype.heatmap', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (30, 'analyze', 30, 'structure.nav_buttons', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (31, 'analyze', 31, 'structure.output_format', 1);
+INSERT INTO "prompt_assembly_orders" VALUES (32, 'structure', 1, 'structure.analysis', 1);
+
+-- ----------------------------
+-- Table structure for prompt_versions
+-- ----------------------------
+DROP TABLE IF EXISTS "prompt_versions";
+CREATE TABLE "prompt_versions" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+  "prompt_key" TEXT NOT NULL,
+  "survey_id" TEXT,
+  "content_before" TEXT,
+  "content_after" TEXT NOT NULL,
+  "changed_by" TEXT,
+  "changed_at" TEXT NOT NULL DEFAULT (datetime('now','localtime'))
+);
+
+-- ----------------------------
+-- Records of prompt_versions
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for prompts
+-- ----------------------------
+DROP TABLE IF EXISTS "prompts";
+CREATE TABLE "prompts" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+  "prompt_key" TEXT NOT NULL,
+  "prompt_type" TEXT NOT NULL,
+  "question_type" TEXT,
+  "content" TEXT NOT NULL,
+  "description" TEXT,
+  "yaml_template" TEXT,
+  "version" INTEGER NOT NULL DEFAULT 1,
+  "is_active" INTEGER NOT NULL DEFAULT 1,
+  "created_at" TEXT NOT NULL DEFAULT (datetime('now','localtime')),
+  "updated_at" TEXT NOT NULL DEFAULT (datetime('now','localtime')),
+  UNIQUE ("prompt_key" ASC)
+);
+
+-- ----------------------------
+-- Records of prompts
+-- ----------------------------
+INSERT INTO "prompts" VALUES (1, 'qtype.single', 'question_type', 'single', '== SINGLE-CHOICE QUESTION (type: "single") ==
+
+【识别特征】
+- HTML: <input type="radio"> + <label>
+- 每组 radio 共享相同的 name 属性
+- 题目文本可能只有编号（如 "7."），选项列表在问卷平台元数据中
+
+【特别注意 — 量表式单选题！】
+- 若页面只有一道题，选项为 1-5（或类似数字/文字量表），仍是单选题！
+- 判断标准：只有一行选项（不是多行分别评分的矩阵）→ 必须识别为 single！
+- 禁止将"单行 1-5 量表"误判为 likert！likert 必须是多行独立评分！
+- 示例题型："how much more likely would you be to consider them?" 只有一行 → single
+
+【关键上下文 — 优先使用问卷平台提供的元数据！】
+- 问卷平台（SG3/Alchemer/SurveyGizmo/Qualtrics）会将题目结构嵌入页面 JavaScript 中
+- 如果 prompt 中包含【题目结构（从问卷平台提取）】块，必须从中获取选项列表
+- showAnswer 必须是选项列表中存在的选项，禁止凭空捏造选项！
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML <label> 或问卷平台元数据中的原始题目文本，不得改写
+- showAnswer：必须使用选项列表中的原始标签文本，不得改写
+- 例如 HTML 为 "Boy aged 1 or younger"，禁止改为 "Under 1 year"
+- 例如 HTML 为 "Strongly agree"，禁止改为 "Agree strongly"
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文（如 "What is your gender?"）
+- showAnswer: 选中的选项原文（如 "Female" 或 "4 - Likely"）
+
+【推荐值生成规则】
+- showAnswer 禁止为空！禁止返回 null / 空字符串！
+- 每道题只选一个选项，不要全选
+- 必须从题目结构（从问卷平台提取）中的选项列表选择！
+- 通常选中间或偏好的选项，避免极端选项（量表题优先选 3 或 4）', '单选题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: single
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: single_select
+        option_sort: as_appearing
+        max_selections: null
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (2, 'qtype.multiple', 'question_type', 'multiple', '== MULTIPLE-CHOICE QUESTION (type: "multiple") ==
+
+【识别特征】
+- HTML: <input type="checkbox"> + <label>
+- 同一题目的多个 checkbox 共享相同的 name 属性（通常带有 [] 后缀）
+- 题目文本可能只有编号，选项列表在问卷平台元数据中
+
+【关键上下文 — 优先使用问卷平台提供的元数据！】
+- 问卷平台（SG3/Alchemer/SurveyGizmo/Qualtrics）会将题目结构嵌入页面 JavaScript 中
+- 如果 prompt 中包含【题目结构（从问卷平台提取）】块，必须从中获取选项列表
+- showAnswer 必须是选项列表中存在的选项，禁止凭空捏造选项！
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML <label> 标签或问卷平台元数据中的原始文本，不得改写
+- showAnswer：必须使用选项列表中的原始标签文本，禁止简写或意译
+- 例如 HTML 为 "I prefer cats"，禁止改为 "Cats"
+
+【强制约束 — 禁止拆分！】
+- 一道多选题 = 一个 interaction。永远不要为每个选项单独创建 interaction！
+
+【强制约束 — showAnswer 禁止为空！】
+- showAnswer 必须返回字符串数组（建议 2-4 个选项），禁止返回 null / 空数组 / 空字符串！
+- 如果页面选项过少（如只有 0-1 个选项），仍需返回至少 1 个选项！
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文
+- showAnswer: 字符串数组（必须！不能为 null！），例如 ["Watched TV", "Visited a flea market"]
+
+【推荐值生成规则】
+- showAnswer 为字符串数组，选 2-4 个选项，不要全选
+- 通常不选 "None of the above"
+- 必须从题目结构（从问卷平台提取）中的选项列表选择！', '多选题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: multi
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: multi_select
+        option_sort: as_appearing
+        max_selections: "<<<FROM_HTML:max_selections>>>"
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (3, 'qtype.select', 'question_type', 'select', '== DROP-DOWN SELECT (type: "select") ==
+
+【识别特征】
+- HTML: <select> + <option> 列表
+- 点击展开选项列表后选择
+- 题目文本可能只有编号（如 "7."），选项列表在 HTML 外部提供
+
+【关键上下文 — 优先使用问卷平台提供的元数据！】
+- 问卷平台（SG3/Alchemer/SurveyGizmo/Qualtrics）会将题目结构嵌入页面 JavaScript 中
+- 如果 prompt 中包含【题目结构（从问卷平台提取）】块，showAnswer 必须从中选取
+- showAnswer 必须是选项列表中存在的选项，禁止凭空捏造选项！
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本，或问卷平台元数据中的题目文本
+- showAnswer：必须使用选项列表中的原始文本，禁止改写
+- showAnswer 禁止为空，必须返回一个有效选项！
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文
+- showAnswer: 选中的选项原文（字符串）', '下拉选择题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: select
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: single_select
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (4, 'qtype.matrix_radio', 'question_type', 'matrix_radio', '== MATRIX QUESTION (type: "matrix_radio") ==
+
+【识别特征】
+- 多行 × 多列，每行（或每列）是一个独立的 interaction
+- 每行是 radio（单选），所有行共享列选项
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始文本，禁止改写
+- showAnswer：必须使用列标签文本，禁止简写
+- 例如 HTML 为 "Boy aged 1 or younger"，禁止改为 "Under 1 year"
+
+【矩阵方向判断 — 关键！】
+先检查矩阵容器的 class 属性是否含有 "Transposed"：
+
+★ 普通矩阵（无 Transposed class）：行 = 被评价项目，列 = 量表/选项
+  - 每行是一个 interaction，必须返回所有行
+  - subject: "{行文本}（{选中列文本}）"，例如 "Auto（Farmers）"
+  - showAnswer: 选中的列选项原文，例如 "Farmers"
+
+★ 转置矩阵（class 含 "Transposed"，如 "QuestionBody Transposed q-matrix"）：列 = 被评价项目（如品牌），行 = 量表
+  - 每列是一个 interaction，必须返回所有列
+  - subject: 列标题原文（如 "Allstate"）
+  - showAnswer: 为该列选中的行（量表）原文（如 "Very likely"）
+  - 禁止将量表标签写入 subject，禁止将品牌名写入 showAnswer
+
+【★ 输出格式约束 — 必须严格遵循！★】
+对于矩阵题的答案输出，使用以下格式：
+- subject: 行标签原文（行文本 + "："）
+- showAnswer: 列标签原文（选中的列文本，不包含行文本！）
+
+示例（正确格式）：
+```
+Political engagement on campus.:
+► Impacts my impression positively.
+
+Social engagement on campus.:
+► Does not impact my impression.
+
+Courses that focus on critical thinking.:
+► Impacts my impression positively.
+
+General student body political affiliation leans liberal.:
+► Impacts my impression negatively.
+```
+
+【★ 常见错误 — 禁止这样做！★】
+✗ 错误：subject 的 ► 后面重复了 row label
+  Political engagement on campus.:
+  ► Political engagement on campus.          ← 错误！这是 row label
+
+✓ 正确：subject 的 ► 后面必须是 column label
+  Political engagement on campus.:
+  ► Impacts my impression positively.       ← 正确！这是 column label
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 见上方方向规则
+- showAnswer: 选中的选项原文（必须是列标签，不是行标签！）
+
+【推荐值生成规则】
+- 每行/列只选一个选项
+- 各行（列）之间推荐不同选项，避免全部相同', '矩阵单选题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: matrix_radio
+      required: "<<<FROM_HTML:required>>>"
+      columns: "<<<FROM_HTML:columns[]>>>"
+      rows: "<<<FROM_HTML:rows[]>>>"
+      response_format:
+        type: single_per_row
+        orientation: horizontal
+        option_sort: as_appearing
+        max_selections: null
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (5, 'qtype.matrix_checkbox', 'question_type', 'matrix_checkbox', '== MATRIX MULTI-SELECT (type: "matrix_checkbox") ==
+
+【识别特征】
+- 多区块矩阵，每区块内可多选
+- 对应 HTML 中 checkbox 类型
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始行标签文本和列标签文本，禁止改写
+- showAnswer：必须使用 HTML 中的原始列标签文本，禁止简写
+
+【强制约束 — 只记录选中的 checkbox，未选中的不记录】
+- 模拟随机选择 2-4 个选项，不要输出全部
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: "{行文本}（{列文本}）"
+- showAnswer: 字符串数组，例如 ["Under 1 year", "2 years"]', '矩阵多选题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: matrix_checkbox
+      required: "<<<FROM_HTML:required>>>"
+      columns: "<<<FROM_HTML:columns[]>>>"
+      rows: "<<<FROM_HTML:rows[]>>>"
+      response_format:
+        type: multi_per_row
+        orientation: horizontal
+        option_sort: as_appearing
+        max_selections: null
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (6, 'qtype.email', 'question_type', 'email', '== EMAIL INPUT (type: "email") ==
+
+【识别特征】
+- HTML: <input type="email">
+- 用于收集电子邮件地址
+
+【强制约束】
+- showAnswer 必须是有效邮箱格式：user@example.com
+- subject：使用 HTML 中的原始 label 或 placeholder 文本
+
+【输出要求】
+- subject: 题目原文
+- showAnswer: 合理的邮箱地址（如 "john.smith@example.com"）', '邮箱输入题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: email
+      required: "<<<FROM_HTML:required>>>"
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (7, 'qtype.phone', 'question_type', 'phone', '== PHONE INPUT (type: "phone") ==
+
+【识别特征】
+- HTML: <input type="tel"> 或标签含 phone/tel/mobile 等关键词
+
+【强制约束】
+- showAnswer 应符合常见电话格式
+- subject：使用 HTML 中的原始 label 文本
+
+【输出要求】
+- subject: 题目原文
+- showAnswer: 电话号码（如 "+1-555-0100" 或 "13812345678"）', '电话输入题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: phone
+      required: "<<<FROM_HTML:required>>>"
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (8, 'qtype.number', 'question_type', 'number', '== NUMBER INPUT (type: "number") ==
+
+【识别特征】
+- HTML: <input type="number"> 或标签含 age/amount/count 等数字含义
+
+【强制约束】
+- showAnswer 必须是纯数字字符串，不含单位
+- subject：使用 HTML 中的原始 label 文本
+
+【输出要求】
+- subject: 题目原文
+- showAnswer: 纯数字（如 "35"、"5"、"12000"）', '数字输入题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: number
+      required: "<<<FROM_HTML:required>>>"
+      min: "<<<FROM_HTML:min>>>"
+      max: "<<<FROM_HTML:max>>>"
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (9, 'qtype.date', 'question_type', 'date', '== DATE INPUT (type: "date") ==
+
+【识别特征】
+- HTML: <input type="date"> 或含日期选择器
+
+【强制约束】
+- showAnswer 格式：YYYY-MM-DD
+- subject：使用 HTML 中的原始 label 文本
+
+【输出要求】
+- subject: 题目原文
+- showAnswer: 日期字符串（如 "2024-06-15"）', '日期输入题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: date
+      required: "<<<FROM_HTML:required>>>"
+      response_format:
+        type: date
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (10, 'qtype.time', 'question_type', 'time', '== TIME INPUT (type: "time") ==
+
+【识别特征】
+- HTML: <input type="time"> 或含时间选择器
+
+【强制约束】
+- showAnswer 格式：HH:MM（24小时制）
+- subject：使用 HTML 中的原始 label 文本
+
+【输出要求】
+- subject: 题目原文
+- showAnswer: 时间字符串（如 "09:30"）', '时间输入题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: time
+      required: "<<<FROM_HTML:required>>>"
+      response_format:
+        type: time
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (11, 'qtype.open_end', 'question_type', 'open_end', '== OPEN-END QUESTION (type: "open_end") ==
+
+【识别特征】
+- 问卷平台标注为 open-end 题型的开放式问答
+- 通常是长文本 textarea，要求受访者用自己的话作答
+- 题目通常以 "Please describe..."、"In your own words..."、"What do you think..." 开头
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本
+- showAnswer 禁止为空！即使开放式也必须有值
+
+【输出要求】
+- subject: 题目原文
+- showAnswer: 符合人设背景的 2-3 句自然语言回答
+
+【推荐值生成规则】
+- 回答应与题目主题相关，符合人设身份
+- 保持真实感，避免模板化套话
+- 示例："I think the service quality has improved significantly over the past year."', '开放式长文本题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_end
+      required: "<<<FROM_HTML:required>>>"
+      input_type: textarea
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (12, 'qtype.open_text', 'question_type', 'open_text', '
+== OPEN-ENDED TEXT (type: "open_text") ==
+
+【识别特征】
+- 开放式文本输入，通常是 textarea 或单行 input
+- 题目通常是追问性质，如 "was unclear what was confusing"、"please explain"
+- 可能紧跟在一个选择题后面，询问用户为什么选择某个选项
+- 题目文本通常包含 "was unclear"、"what was confusing"、"please explain" 等关键词
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本，禁止改写
+- showAnswer：必须使用 HTML 中的原始占位符文本（placeholder），如无占位符则根据语义生成
+
+【强制约束 — showAnswer 禁止为空！】
+- 即使是开放式问题，showAnswer 也必须有值！
+- 禁止返回 null / 空字符串！
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文
+- showAnswer: 根据上下文生成的合理文本（字符串）
+
+【推荐值生成规则 — 根据题目上下文生成合理回答】
+- 如果题目询问"什么不清楚"：生成与选项相关的模糊点描述
+- 如果题目询问"为什么选择"：生成选择理由
+- 如果题目是开放反馈：生成 1-2 句自然语言回复
+- 内容应简洁，1-3 句话即可
+- 示例：
+  - "Some details about the coverage seemed vague."
+  - "The explanation was not specific enough for me."
+  - "I was not clear about the exact steps involved."', '开放式短文本追问题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: open_text
+      required: "<<<FROM_HTML:required>>>"
+      input_type: text
+      placeholder: "<<<FROM_HTML:placeholder>>>"
+      response_format:
+        type: open_text
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (13, 'qtype.semantic_diff', 'question_type', 'semantic_diff', '== SEMANTIC DIFFERENTIAL (type: "semantic_diff") ==
+
+【识别特征】
+- 两极对立形容词之间的量表（如 "Bad ←——→ Good"、"Weak ←——→ Strong"）
+- 每行一对极性标签，中间是数字量表（通常 1-7 或 1-5）
+- 常见于品牌感知、产品评价类题目
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：使用"左极标签 / 右极标签"格式，如 "Bad / Good"
+- showAnswer：量表中间偏右侧的数字或标签（偏正面）
+
+【输出要求 — 每个极性对 = 一个 interaction】
+- subject: "左极（Bad）/ 右极（Good）"
+- showAnswer: 选中的量表值（如 "6" 或 "Agree"）
+
+【推荐值生成规则】
+- 各行推荐不同量表值，避免全部相同
+- 整体偏向正面（右侧），符合普通受访者的正向偏差心理', '语义差异量表题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: semantic_diff
+      required: "<<<FROM_HTML:required>>>"
+      columns: "<<<FROM_HTML:columns[]>>>"
+      rows: "<<<FROM_HTML:rows[]>>>"
+      response_format:
+        type: semantic_diff
+        orientation: horizontal
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (14, 'qtype.slider', 'question_type', 'slider', '== SLIDER QUESTION (type: "slider") ==
+
+【识别特征】
+- 连续区间滑动条，通常有最小值/最大值标注
+- HTML 通常含 input[type=range] 或自定义拖拽组件
+- 常见于满意度、重要性、可能性等连续评分题
+
+【强制约束】
+- showAnswer 为量表范围内的数字字符串
+- subject：使用 HTML 中的原始题目文本
+
+【输出要求】
+- subject: 题目原文
+- showAnswer: 数字字符串（选中间偏正面的值，如区间 0-10 → "7"）', '滑动条题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: slider
+      required: "<<<FROM_HTML:required>>>"
+      min: "<<<FROM_HTML:min>>>"
+      max: "<<<FROM_HTML:max>>>"
+      min_label: "<<<FROM_HTML:min_label>>>"
+      max_label: "<<<FROM_HTML:max_label>>>"
+      response_format:
+        type: slider
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (15, 'qtype.nps', 'question_type', 'nps', '== NET PROMOTER SCORE (type: "nps") ==
+
+【识别特征】
+- 0-10 数字量表，询问推荐可能性
+- 题目通常含 "How likely are you to recommend..."
+- 0=完全不推荐，10=极力推荐
+
+【强制约束】
+- showAnswer 必须是 0-10 之间的整数字符串
+- subject：使用 HTML 中的原始题目文本
+
+【输出要求】
+- subject: 题目原文
+- showAnswer: 整数字符串（推荐选 "7"、"8" 或 "9"，表示较高但非极端推荐意愿）', 'NPS推荐意愿题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: nps
+      required: "<<<FROM_HTML:required>>>"
+      min: "0"
+      max: "10"
+      min_label: "<<<FROM_HTML:min_label>>>"
+      max_label: "<<<FROM_HTML:max_label>>>"
+      response_format:
+        type: nps
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (16, 'qtype.likert', 'question_type', 'likert', '== LIKERT CARD MATRIX (type: "likert") ==
+
+【关键判断 — 必须是多行独立评分！】
+- Likert 必须满足：页面有多个陈述/卡片，每个陈述独立评分
+- 若页面只有一行量表选项（单道题 1-5 评分）→ 不是 likert！是 single！
+- 禁止将"单行量表题"误判为 likert！
+
+【识别特征】
+- 页面包含多个卡片/陈述（statement），每个卡片是独立的评分单元
+- 每个卡片有独立的量表选项（通常是 -5 到 +5，或 1-5 量表）
+- 题目文本是通用说明，各卡片是具体被评价的项目
+- 典型关键词："how different does this statement feel"、"on a scale of"、"select a rating for each"
+
+【强制约束 — 每个卡片/陈述 = 一个 interaction！】
+- 页面有多少个卡片/陈述，就必须返回多少个 interaction！
+- 禁止只返回 1 个 interaction！
+- 禁止把所有卡片合并为 1 个 interaction！
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：使用卡片的标题文本（如 "Home Inventory"），禁止改写
+- showAnswer：使用 HTML 中该卡片选中的量表选项原文，禁止改写
+
+【输出要求】
+- subject: 卡片/陈述标题（如 "Home Inventory"）
+- showAnswer: 选中的量表选项原文（如 "- 3 - Somewhat different"）
+
+【推荐值生成规则】
+- 每个卡片只选一个量表值
+- 各卡片之间推荐不同量表值，避免全部相同', 'Likert量表矩阵题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: likert
+      required: "<<<FROM_HTML:required>>>"
+      columns: "<<<FROM_HTML:columns[]>>>"
+      rows: "<<<FROM_HTML:rows[]>>>"
+      response_format:
+        type: single_per_row
+        orientation: horizontal
+        option_sort: as_appearing
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (17, 'qtype.likert_card', 'question_type', 'likert_card', '== LIKERT CARD / STAR RATING (type: "likert_card") ==
+
+【识别特征】
+- 卡片式量表、星级评分、滑动条（slider）
+- 通常通过 CLICK 选择评分/等级
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本
+- showAnswer：必须使用 HTML 中的原始选项文本，禁止改写或意译
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文
+- showAnswer: 选中的量表选项原文（字符串或数字）', '卡片式量表/星级评分处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: likert_card
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: likert_scale
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (18, 'qtype.multi_select', 'question_type', 'multi_select', '
+== MULTI-SELECT TOP/BOTTOM N (type: "multi_select") ==
+
+【识别特征】
+- 需要从多个选项中选出指定数量的项目（如 top 3, bottom 4）
+- 题目文本通常包含 "select the 3 you find..."、"select up to 4"、"in any order" 等关键词
+- 通常使用 checkbox 选择，选中即表示选中该项
+- 不需要排序，只需选中指定数量的选项
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本，禁止改写
+- showAnswer：必须使用 HTML 中选中选项的原始文本，禁止改写或意译
+
+【强制约束 — 禁止拆分！】
+- 一道题 = 一个 interaction。永远不要为每个选项单独创建 interaction！
+
+【强制约束 — showAnswer 禁止为空！】
+- showAnswer 必须返回字符串数组（数量由题目指定，通常 2-5 个）
+- 禁止返回 null / 空数组 / 空字符串！
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文
+- showAnswer: 字符串数组，例如 ["选项A", "选项B", "选项C"]
+- showAnswer 是字符串数组，格式为 ["选中项1", "选中项2", "选中项3"]
+
+【推荐值生成规则】
+- 根据题目要求选择正确数量的选项
+- "most appealing" → 选最喜欢的
+- "least appealing" → 选最不喜欢的
+- 通常不选 "None of the above" / "None" / "No offerings"', '选出最X题(multi_select)处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: multi_select
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: multi_select
+        max_selections: "<<<FROM_HTML:max_selections>>>"
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (19, 'qtype.ranking_drag', 'question_type', 'ranking_drag', '== RANK ORDER QUESTION - DRAG (type: "ranking_drag") ==
+
+【识别特征】
+- 需要从多个选项中拖拽选出 top N 并排序（通常 top 4）
+- 页面显示多个可选项（Items 区域）和已排序槽位（Top N 区域）
+- 题目文本通常包含 "rank your top"、"drag and rank"、"most appealing" 等关键词
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本，禁止改写
+- showAnswer：必须使用 HTML 中选项的原始文本，禁止改写或意译
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文
+- showAnswer: 排序后的选项文本数组（按排名顺序，1=最优先）
+- 格式：["第1名", "第2名", "第3名", "第4名"]，只输出 top N 项
+
+【排序题分析步骤】
+1. 从 HTML 中提取所有可用选项（Items 列表中的项目）
+2. 识别"Top N"槽位中已选中的选项
+3. 根据槽位编号确定排名顺序
+4. showAnswer 为按排名排序的选项文本数组', '拖拽排序题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: ranking_drag
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: ranking
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (20, 'qtype.ranking_select', 'question_type', 'ranking_select', '== RANK ORDER QUESTION - SELECT (type: "ranking_select") ==
+
+【识别特征】
+- 通过下拉选择框为每个位置指定选项（非拖拽）
+- 每个排名槽位有独立的 <select> 下拉框
+- 题目文本通常包含 "rank"、"order"、"first choice" 等关键词
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本，禁止改写
+- showAnswer：必须使用选项列表中的原始文本，禁止改写
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文
+- showAnswer: 排序后的选项文本数组（按排名顺序）
+- 格式：["第1名", "第2名", "第3名"]，只输出选中的 top N 项
+
+【排序题分析步骤】
+1. 从 HTML 中提取所有可用选项
+2. 按照人设偏好确定优先顺序
+3. showAnswer 为按排名排序的选项文本数组', '选择排序题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: ranking_select
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: ranking
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (21, 'qtype.max_diff', 'question_type', 'max_diff', '== MAX DIFF / BEST-WORST SCALING (type: "max_diff") ==
+
+【识别特征】
+- 每轮展示一组选项（通常 4-6 个），要求选出"最吸引"和"最不吸引"各一项
+- 反复多轮，每轮选项组合不同
+- 题目通常含 "best"、"worst"、"most"、"least" 等关键词
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：使用当前轮次的题目文本
+- showAnswer：包含 best 和 worst 两个字段
+
+【输出要求 — 每轮一个 interaction】
+- subject: 题目原文（当前轮次说明）
+- showAnswer: {"best": "最吸引项原文", "worst": "最不吸引项原文"}
+
+【推荐值生成规则】
+- best：选人设最偏好的选项
+- worst：选与人设最不相关的选项
+- 两者不能相同', 'MaxDiff/Best-Worst题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: max_diff
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: max_diff
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (22, 'qtype.conjoint', 'question_type', 'conjoint', '== CONJOINT ANALYSIS (type: "conjoint") ==
+
+【识别特征】
+- 展示多个"套餐/概念"（concept），每个概念由多个属性组合而成
+- 要求在概念之间选择最偏好的一个（或排序）
+- 反复多轮，每轮概念组合不同
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：使用当前轮次题目或概念描述文本
+- showAnswer：选中的概念编号或标签
+
+【输出要求 — 每轮一个 interaction】
+- subject: 题目原文
+- showAnswer: 选中的概念标签（如 "Option A" 或 "Concept 2"）
+
+【推荐值生成规则】
+- 根据人设偏好（收入、家庭状况等）选择最符合需求的概念
+- 不要固定选择第一个选项', '联合分析题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: conjoint
+      required: "<<<FROM_HTML:required>>>"
+      response_format:
+        type: conjoint
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (23, 'qtype.cardsort_drag', 'question_type', 'cardsort_drag', '== CARD SORT QUESTION - DRAG (type: "cardsort_drag") ==
+
+【识别特征】
+- HTML 包含卡片拖拽区域和分类桶
+- 每张卡片需要拖拽到对应分类桶
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始卡片文本，禁止改写
+- showAnswer：必须使用 HTML 中的分类桶名称，禁止改写
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 卡片原文
+- showAnswer: 目标分类桶名称（字符串）', '拖拽分类题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: cardsort_drag
+      required: "<<<FROM_HTML:required>>>"
+      categories: "<<<FROM_HTML:categories[]>>>"
+      cards: "<<<FROM_HTML:cards[]>>>"
+      response_format:
+        type: cardsort
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (24, 'qtype.cardsort_select', 'question_type', 'cardsort_select', '== CARD SORT QUESTION - SELECT (type: "cardsort_select") ==
+
+【识别特征】
+- 每张卡片旁有下拉选择框，通过选择框指定分类（非拖拽）
+- 题目通常包含多行卡片，每行一个 <select> 下拉框
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始卡片文本，禁止改写
+- showAnswer：必须使用选项列表中的原始分类名称，禁止改写
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 卡片原文
+- showAnswer: 选中的分类名称（字符串）', '下拉分类题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: cardsort_select
+      required: "<<<FROM_HTML:required>>>"
+      categories: "<<<FROM_HTML:categories[]>>>"
+      cards: "<<<FROM_HTML:cards[]>>>"
+      response_format:
+        type: cardsort
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (25, 'qtype.image_select', 'question_type', 'image_select', '== IMAGE SELECT (type: "image_select") ==
+
+【识别特征】
+- 展示多张图片，受访者点击选择一张或多张
+- HTML 通常含 <img> 标签 + 可点击容器（checkbox 或 radio 形式）
+- 常用于品牌标志、产品外观、广告素材选择
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：使用 HTML 中的原始题目文本
+- showAnswer：使用图片的 alt 文本、label 或 data 属性中的原始标识，禁止改写
+
+【输出要求】
+- subject: 题目原文
+- showAnswer: 选中图片的标识文本（字符串，单选；或字符串数组，多选）
+
+【推荐值生成规则】
+- 单选：选一张；多选：选 2-3 张
+- 根据人设背景偏好合理选择', '图片选择题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: image_select
+      required: "<<<FROM_HTML:required>>>"
+      options: "<<<FROM_HTML:options[]>>>"
+      response_format:
+        type: single_select
+        max_selections: "<<<FROM_HTML:max_selections>>>"
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (26, 'qtype.heatmap', 'question_type', 'heatmap', '== HEATMAP / CLICK MAP (type: "heatmap") ==
+
+【识别特征】
+- 展示一张图片，受访者在图片上点击标注关注区域
+- 也称 Click Map / Eye Tracking Simulation
+- 通常有坐标记录功能
+
+【强制约束】
+- subject：使用 HTML 中的原始题目文本
+- showAnswer：提供点击坐标或区域描述
+
+【输出要求】
+- subject: 题目原文
+- showAnswer: 点击坐标字符串（如 "350,220"）或区域描述（如 "top-center"）
+
+【推荐值生成规则】
+- 若有明显的视觉焦点区域（如品牌 logo、价格标签），优先选择该区域
+- 坐标采用"x,y"格式（像素），默认选图片中心偏上区域', '热图点击题处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: heatmap
+      required: "<<<FROM_HTML:required>>>"
+      response_format:
+        type: heatmap
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (27, 'qtype.mixed', 'question_type', 'mixed', '== MIXED / UNKNOWN QUESTION TYPE ==
+
+【识别特征】
+- 同一页面包含多种题型，或 AI 无法明确归类时使用此类型
+- 页面 HTML 结构复杂，包含多种输入元素
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中的原始题目文本，禁止改写
+- showAnswer：必须使用 HTML 中的原始选项文本，禁止改写
+
+【强制约束 — 禁止拆分！】
+- 同一交互组的多个题型 = 一个 interaction
+- 不要将不同题型拆分为多个 interaction
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文
+- showAnswer: 字符串或字符串数组（根据题型决定）
+
+【推荐值生成规则】
+- 根据各题型规则分别处理
+- 遵循 core_rules 中的通用约束', '混合题型/未知题型兜底处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: mixed
+      required: "<<<FROM_HTML:required>>>"
+      response_format:
+        type: "<<<FROM_HTML:type>>>"
+        max_selections: null
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (28, 'qtype.unknown', 'question_type', 'unknown', '== UNKNOWN QUESTION TYPE ==
+
+【识别特征】
+- 无法从 HTML 识别出任何已知题型模式时使用此类型
+- 页面 HTML 结构异常或使用了非标准控件
+
+【强制约束 — 原样提取文本，禁止改写！】
+- subject：必须使用 HTML 中最可能的题目文本，禁止改写
+- showAnswer：必须使用 HTML 中存在的选项文本，禁止凭空捏造
+
+【强制约束 — 禁止凭空捏造！】
+- showAnswer 必须是 HTML 中存在的值！
+
+【输出要求 — interactions 数组中每个元素只需以下两个字段】
+- subject: 题目原文
+- showAnswer: 根据元素类型推断的合理答案
+
+【推荐值生成规则】
+- 优先尝试识别 input/select/textarea 等基本元素类型
+- 使用通用逻辑推断答案格式', '无法识别题型降级兜底处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: unknown
+      required: "<<<FROM_HTML:required>>>"
+      response_format:
+        type: "<<<FROM_HTML:type>>>"
+        max_selections: null
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (29, 'qtype.instruction', 'question_type', 'instruction', '== INSTRUCTION PAGE ==
+
+【识别特征】
+- 页面无任何交互元素（无 input/select/textarea/button 等）
+- 仅包含说明文字、图片、标题等非输入内容
+- 典型页面：问卷说明、隐私政策、答题指引、感谢页
+
+【强制约束】
+- 此类页面不生成任何 interaction
+- 仅记录页面元数据
+
+【页面属性】
+- is_description_page: true
+- has_next_button: 通常为 true
+- has_submit_button: 通常为 false
+- is_thank_you_page: 根据页面内容判断', '说明页/无交互元素页面处理指令', 'survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "true"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: instruction
+      response_format:
+        type: instruction
+', 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (30, 'system.default', 'system', NULL, 'You are a data extraction assistant.', '默认系统提示词', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (31, 'system.analyze', 'system', NULL, '你是问卷分析专家，输出严格 JSON 格式。', '分析模式系统提示词', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (32, 'system.structure', 'system', NULL, '你是问卷结构分析专家。', '结构分析系统提示词', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (33, 'system.role', 'system', NULL, 'You are an HTML semantic architect and data protocol expert.
+Your task: convert complex DOM structure into flat, semantic interaction instructions.
+Ignore all UI decoration and nesting layers.', 'HTML语义架构师角色提示词', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (34, 'system.conflict_resolution', 'system', NULL, '【冲突消解规则 — 强制遵循】
+若当前上下文中存在多条互相矛盾的设定，统一按以下优先级裁定，无需说明原因：
+1. 后置信息优先：在同一上下文中，出现较晚的描述自动覆盖之前的冲突设定。
+2. 行为事实优先：具有实际行为支撑的设定（如"工作了2年"）优先于静态数字标签（如"年龄10岁"）。
+3. 现实逻辑优先：保留符合现实常理的条件，自动丢弃逻辑上无法共存的对立描述。
+4. 只采信成立的设定：对立描述中仅有一条可生效，另一条视为无效，不参与推理和回答。', '冲突消解规则', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (165, 'strategy.conservative', 'strategy', NULL, '【策略】保守：优先选择中立或最安全的选项。', '保守策略', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (166, 'strategy.aggressive', 'strategy', NULL, '【策略】激进：倾向选择极端或最明确的选项。', '激进策略', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (167, 'strategy.speed', 'strategy', NULL, '【策略】速度优先：快速选择，不要过度思考。', '速度优先策略', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (168, 'strategy.authentic', 'strategy', NULL, '【策略】真实：选择最真实反映个人情况的答案。', '真实策略', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (169, 'strategy.trap_aware', 'strategy', NULL, '【策略】陷阱检测：留意卡片或选项中的 "Select..." 陷阱指令，严格遵循。', '陷阱检测策略', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (170, 'persona.generic', 'persona', NULL, '【通用人设（generic 模式）】
+不载人设，AI 以默认中立身份作答。
+可选在 persona_generic 节点中定义通用人设，适合通用需求，不关心特定身份。
+
+【预设人设配置】（prompts.yaml persona_generic）
+- 年龄：38-45 岁（随机）
+- 性别：Male/Female（随机）
+- 种族：White/Caucasian / Black/African-American / Asian/Asian-American / Hispanic/Latino
+- 职业：Operations Manager
+- 收入：$95,000/年
+- 学历：Bachelor''s
+- 家庭状态：已婚，有 16-18 岁正在申请大学的孩子
+- 答题策略：优先家庭导向选项，关注子女教育和家庭消费
+- 价格敏感度：中等，收入属于中等水平，家庭消费意愿较强，不极端追求低价
+
+【选项映射】（人设配置中的 option_mapping）
+- role_in_decision: "I make the decisions jointly with my spouse/partner"
+- household_income: "$75,000 - $99,999"
+- has_children: "Yes, I have a child/children aged 16-18"
+- life_situation: "Help a student(s) in your household apply to college"
+- major_purchase: "Make a large purchase (such as a car or home)"
+- vacation: "Go on a vacation"
+
+【答题逻辑规则】
+- 收入相关：注重性价比，平衡品质与价格
+- 年龄相关（36-50岁）：关注子女教育、职业稳定、退休储蓄
+- 家庭状况：有家室有孩子，优先家庭保险、教育储蓄、家庭安全', '通用人设（generic模式）', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (171, 'persona.strict', 'persona', NULL, '你是一个严格的答题者。只选择最中立和安全的答案。', '严格答题者人设', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (172, 'persona.random', 'persona', NULL, '你是一个随机的答题者。每个题目选择随机选项。', '随机答题者人设', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (173, 'persona.honest', 'persona', NULL, '你是一个诚实的答题者。选择最真实反映个人情况的答案。', '诚实答题者人设', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (174, 'persona.persona_based', 'persona', NULL, '【人设身份 — 必须严格按照以下信息作答】
+你将扮演以下真实人设，所有答题行为必须符合该人设的年龄、职业、收入水平和生活状态：
+
+{persona_info}
+
+【核心约束】严格依照上述人设推断并选择答案，使答案逻辑自洽、符合真实人物的认知与偏好。', '基于人设身份作答模板', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (175, 'persona.rules', 'persona', NULL, '【基于人设的答题逻辑规则 — 必须遵循】
+
+1. 收入相关题目：
+   - 高收入 (>$120,000/year)：倾向高端服务、溢价产品、投资理财；价格敏感度低
+   - 中等收入 ($50,000–$120,000/year)：注重性价比，平衡品质与价格
+   - 低收入 (<$50,000/year)：优先考虑价格、基本保障和实用性
+
+2. 年龄相关题目：
+   - 18–25岁：关注科技、娱乐、社交媒体、学业/入门职业发展
+   - 26–35岁：关注职业晋升、住房、开始规划家庭
+   - 36–50岁：关注子女教育、职业稳定、退休储蓄
+   - 51岁以上：关注健康、退休计划、遗产规划
+
+3. 职业相关题目：
+   - 专业人员（医生/律师/工程师）：重视专业性、可信度和长期价值
+   - 管理层（总监/经理/CEO）：关注效率、战略价值和领导力
+   - 蓝领/服务业：注重实用性、安全保障、物超所值
+   - 学生：价格敏感度高，关注学习资源和未来发展
+
+4. 家庭状况相关题目：
+   - has_family=Yes, has_children=Yes：优先家庭保险、教育储蓄、家庭安全
+   - has_family=Yes, has_children=No：关注双收入规划、住房、旅行休闲
+   - has_family=No：更关注个人发展、灵活性、体验消费
+
+5. 学历相关题目：
+   - PhD/Master''s/Professional：倾向详细信息、数据支持的选择
+   - Bachelor''s：平衡实用与理性决策
+   - Some College/High School：偏好简洁直观的选项
+
+6. 种族相关题目：根据 race/ethnicity 选择对应选项（Caucasian→White/Caucasian，Asian→Asian/Asian-American，Hispanic→Hispanic/Latino，African American→Black/African-American）', '基于人设的答题逻辑规则', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (176, 'core_rules', 'core_rules', NULL, '【Core Rules — 强制约束清单】
+
+【最高优先级约束 — 原样提取，禁止改写！】
+- **所有字段的文本值必须从 HTML 或问卷平台元数据中原样提取，不得改写、意译、简写或翻译！**
+- subject / showAnswer：必须使用 HTML 或【题目结构（从问卷平台提取）】中的原始文本
+- **违规示例（禁止）：**
+  - HTML 为 "Boy aged 1 or younger" → 禁止改为 "Under 1 year"
+  - HTML 为 "Strongly agree" → 禁止改为 "Agree strongly"
+  - HTML 为 "I prefer cats" → 禁止简写为 "Cats"
+  - 问卷平台提供选项 "Minnesota" → 禁止捏造 "California"
+- **正确示例：**
+  - HTML 为 "Boy aged 1 or younger" → showAnswer = "Boy aged 1 or younger"（完全一致）
+  - HTML 为 "Under 1 year" → showAnswer = "Under 1 year"（完全一致）
+
+【关键上下文约束 — 必须使用问卷平台元数据！】
+- SG3/Alchemer/SurveyGizmo/Qualtrics 等平台将题目结构嵌入页面 JavaScript
+- 如果 prompt 包含【题目结构（从问卷平台提取）】块，必须从中获取：
+  - 题目完整文本（替换 "7." 等残缺编号）
+  - 选项完整列表（用于 showAnswer 选值）
+- **禁止凭空捏造选项！** showAnswer 必须在选项列表中存在！
+
+1. subject（语义主语）：
+   - 单选/多选: 使用题目文本（如 "What is your gender?"）
+   - 矩阵: "{行文本}（{列文本}）"，例: "Customer Service（Satisfaction）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Very Satisfied"）
+   - 填空题: 根据语义生成的合理文本
+
+3. 多选题强制约束：
+   - 一道题 = 一个 interaction。禁止为每个选项单独创建 interaction！
+   - showAnswer 选 2-4 个，不要全选
+
+4. 矩阵题强制约束：
+   - 每行输出一个 interaction，禁止只返回部分行
+   - 行与行之间推荐不同选项，避免所有行都选同一答案', '全局约束清单（所有题型共享）', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (177, 'structure.grouping', 'structure', NULL, '【题型说明 — 页面结构分组】
+- single: 单选题
+- multiple: 多选题
+- select: 下拉选择
+- open_text: 开放式文本（input/textarea）
+- matrix_radio: 矩阵单选题（每行一个 interaction）
+- matrix_checkbox: 矩阵多选题
+- likert: Likert 量表（多行独立评分）
+- likert_card: 卡片式量表
+- multi_select: 选择最 X 题（top/bottom N）
+- ranking_drag: 拖拽排序题
+- ranking_select: 选择排序题
+- cardsort_drag: 拖拽分类题
+- cardsort_select: 下拉分类题
+
+【分组策略】
+- 根据 HTML 结构自动识别，无需显式标注
+- 矩阵题所有行必须在同一 group 内
+- nav_button 不参与分组', '页面题型分组规则', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (178, 'structure.analysis', 'structure', NULL, '你是问卷页面结构分析器。将页面元素划分为若干题组，返回纯 JSON 数组。
+
+【角色】
+你是一位资深的自动化脚本专家，擅长从复杂的 HTML 结构中精准定位问卷元素。
+
+【分组规则】
+- matrix_radio（矩阵单选）: 多行共享同一组列选项（radio），所有行归入同一 group。
+- matrix_checkbox（矩阵多选）: 多行共享列选项（checkbox），所有行归入同一 group。
+- single（单选题）: 独立 radio 选项，每组独立分组。
+- multiple（多选题）: checkbox 多选，每组独立分组。
+- select（下拉题）: select 下拉框。
+- open_text（开放文本）: input[type=text/number/email/url] 单行输入框，或 textarea 多行文本。
+- likert_card（量表卡片）: 卡片式量表、滑动条、星级评分等。
+- ranking_drag（拖拽排序）: 拖拽选出 top N 并排序。
+- ranking_select（选择排序）: 通过下拉框为每个位置指定排名。
+- cardsort_drag（拖拽分类）: 拖拽卡片到分类桶。
+- cardsort_select（下拉分类）: 通过下拉框选择分类。
+- nav_button（翻页导航）: Next/Continue/Submit/Forward/Proceed 等导航按钮，**不参与分组**。
+- mixed（混合题型）: 同页多类型合并为一个 group（AI 失败时使用）。
+
+【关键约束】
+1. 矩阵题的所有行列元素必须在同一个 group 内。
+2. nav_button 类型元素忽略，不参与分组。
+3. 每个 group 至少包含 1 个元素。
+4. 以 id^="question_" 开头的容器，视为一个独立题目单元（块）。
+5. 返回纯 JSON，不要任何其他文字说明。
+
+【输出格式】
+[
+  {"group_id": 0, "type": "matrix", "question_id": "question_001", "element_indices": [0,1,2,3,4,5], "description": "服务质量评分矩阵"},
+  {"group_id": 1, "type": "single", "question_id": "question_002", "element_indices": [6,7,8], "description": "您的年龄段"}
+]
+
+【元素列表】
+{elements_json}', '页面结构分析（JSON分组）', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (179, 'structure.nav_buttons', 'structure', NULL, '【Navigation Buttons】
+- 从 HTML 中识别 Next/Continue/Submit/Forward/Proceed 等导航按钮
+- 识别 thank_you 页面（感谢页）
+- nav_buttons 只需列出按钮文本和角色，无需 xpath 和 attributes（后端自动生成）', '导航按钮识别规则', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (180, 'structure.output_format', 'structure', NULL, '【Output Format — STRICT JSON（必须直接能被 API 后端解析）】
+
+直接返回纯 JSON，不要任何解释文字。JSON 结构必须如下：
+
+{
+  "data": {
+    "page_metadata": {
+      "page_id": "题目文本或题目组合",
+      "question_type": "single|multiple|matrix|text|mixed",
+      "cache_answer_mode": "original",
+      "is_matrix_page": false,
+      "has_next_button": true,
+      "has_submit_button": false,
+      "is_thank_you_page": false
+    },
+    "interactions": [
+      {
+        "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
+        "showAnswer": "推荐答案文本"
+      }
+    ],
+    "nav_buttons": {
+      "buttons": [
+        {
+          "role": "next",
+          "xpath": "//input[@type=''submit'' and @value=''Next'']",
+          "text": "Next",
+          "attributes": { "type": "submit", "value": "Next", "name": "continue" }
+        }
+      ],
+      "primary_button": "next"
+    },
+    "original_question_type": [
+      {
+        "subject": "题目原文",
+        "question_type": "single|multiple|matrix|text",
+        "options": ["选项A", "选项B", "..."]
+      }
+    ],
+    "page_summary": "Summarize the main opinion and attitude of this page in one concise English sentence; merge repeated points; express user attitude or judgment directly; do not include original question text"
+
+  }
+}
+
+【重要约束】
+1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
+2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+3. original_question_type 列出页面上所有题目的原文、题型和选项列表
+4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+6. 禁止返回任何非 JSON 文字
+ ', '最终JSON输出格式规范', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (181, 'yaml_structure.system', 'yaml_structure', NULL, '你是一个问卷结构解析助手。我会给你一段海外调查问卷的 HTML 源码文件。
+
+你的任务是从 HTML 中提取题目结构，生成标准化的 YAML 模板。
+所有动态内容必须使用占位符 `<<<FROM_HTML:xxx>>>` 格式，禁止输出实际数据值。
+
+【占位符格式】
+- q1_title → "<<<FROM_HTML:q1_title>>>"
+- q1_type → "<<<FROM_HTML:q1_type>>>"
+- q1_required → "<<<FROM_HTML:q1_required>>>"
+- q1_opt1 / q1_opt2 → "<<<FROM_HTML:q1_opt1>>>" / "<<<FROM_HTML:q1_opt2>>>" 等
+- q1_col1 / q1_col2 → "<<<FROM_HTML:q1_col1>>>" / "<<<FROM_HTML:q1_col2>>>" 等
+- q1_row1 / q1_row2 → "<<<FROM_HTML:q1_row1>>>" / "<<<FROM_HTML:q1_row2>>>" 等
+- q1_placeholder → "<<<FROM_HTML:q1_placeholder>>>"
+- q1_response_type → "<<<FROM_HTML:q1_response_type>>>"
+- q1_orientation → "<<<FROM_HTML:q1_orientation>>>"
+- q1_option_sort → "<<<FROM_HTML:q1_option_sort>>>"
+- has_next_button / has_submit_button → "<<<FROM_HTML:has_next_button>>>" / "<<<FROM_HTML:has_submit_button>>>"
+- is_thank_you_page / is_description_page → "<<<FROM_HTML:is_thank_you_page>>>" / "<<<FROM_HTML:is_description_page>>>"
+
+【输出格式】
+直接输出 YAML，不要 markdown 代码块包裹。
+
+【严格禁止 - 必须遵守】
+1. 绝对禁止输出 `fingerprint` 字段！
+2. 绝对禁止输出任何实际文本值！所有内容必须用占位符！
+3. 不要使用 markdown 代码块包裹 YAML
+4. 不要遗漏 page_metadata 部分
+5. 不要遗漏 response_format 部分', 'YAML结构提取：系统提示词（STRUCTURE_SYSTEM_PROMPT）', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (182, 'yaml_structure.user_prefix', 'yaml_structure', NULL, '---
+
+**任务说明**
+
+请从以下 HTML 中提取题目结构，为每道题生成对应的 YAML 占位符模板。
+
+**页面元数据识别**
+- has_next_button: 从 HTML 中查找 Next/Continue/Proceed 按钮
+- has_submit_button: 从 HTML 中查找 Submit 按钮
+- is_thank_you_page: 从 HTML 中查找感谢页面特征
+- is_description_page: 从 HTML 中查找说明页特征
+
+**题型识别规则**
+- radio / single → single
+- checkbox / multi → multi
+- table + radio → matrix_radio
+- table + checkbox → matrix_checkbox
+- likert 量表 → likert
+- 语义量表 → semantic_diff
+- slider → slider
+- nps → nps
+- rating / likert_card → likert_card
+- select → select
+- input[type=text] → open_text
+- textarea → open_end
+- input[type=email] → email
+- input[type=tel] → phone
+- input[type=number] → number
+- input[type=date] → date
+- input[type=time] → time
+- image_select → image_select
+- ranking_drag → ranking_drag
+- ranking_select → ranking_select
+- multi_select（含 xnumber）→ multi_select
+- max_diff → max_diff
+- conjoint → conjoint
+- cardsort_drag → cardsort_drag
+- cardsort_select → cardsort_select
+- heatmap → heatmap
+- instruction / NAV_BUTTON → instruction
+- mixed → mixed
+- 无法识别 → unknown
+
+**输出要求**
+1. 输出完整的 survey_page 结构（包含 page_metadata）
+2. 每道题必须包含 response_format
+3. 所有动态值使用占位符
+4. 直接输出 YAML，不要 markdown 代码块包裹
+
+HTML 源码如下：', 'YAML结构提取：用户提示前缀（STRUCTURE_USER_PROMPT_PREFIX）', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (183, 'yaml_structure.answer_system', 'yaml_structure', NULL, '你是一个问卷答题助手，专门根据问卷题目内容和人设信息生成合理的推荐答案。
+
+你的职责：
+- 理解题目语义和选项
+- 结合人设信息生成符合该身份的回答
+- 确保 showAnswer 必须是 HTML 中存在的选项
+- 禁止凭空捏造选项
+- 禁止输出 YAML 结构，只输出推荐答案
+
+**【极其重要】输出要求：**
+- 只输出 interactions 数组和 page_summary
+- 不要输出 survey_page、fingerprint 或任何 YAML 格式内容
+- 直接输出 JSON，不要 markdown 代码块包裹
+
+**输出格式必须是合法的 JSON**：
+{
+  "interactions": [
+    {"questionType": "matrix_radio", "subject": "ABC（Never）", "showAnswer": "Never"}
+  ],
+  "page_summary": "This page surveys TV watching habits."
+}', 'YAML答案推荐：系统提示词（ANSWER_SYSTEM_PROMPT）', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (184, 'yaml_structure.answer_user_prefix', 'yaml_structure', NULL, '---
+
+**【极其重要】你的任务是生成推荐答案，不是输出 YAML 结构！**
+
+请仔细阅读以下信息，为每道题目生成推荐答案。
+
+**【重要】数据来源优先级：HTML > YAML 占位符**
+
+请严格按照以下优先级获取数据：
+1. **HTML 内容（最高优先级）**：所有题目文本、rows、columns 必须从 HTML 中提取
+2. **YAML 模板（仅格式参考）**：用于了解题型，不要复制到输出中
+3. **禁止使用 YAML 中的占位符文本作为答案！**
+
+**【任务说明】**
+
+请根据以下信息为每道题目生成推荐答案。
+
+**【通用答案生成规则】**
+
+1. subject（语义主语）：
+   - 单选/多选: 使用 HTML 中的题目文本
+   - 矩阵: "{HTML中的行文本}（{HTML中的列文本}）"
+
+2. showAnswer（推荐答案）：
+   - 单选题: 字符串（如 "Female"）
+   - 多选题: 字符串数组（如 ["Apple", "Samsung"]）
+   - 矩阵题: 字符串（如 "Never"）
+
+3. 矩阵题强制约束：
+   - 每行输出一个 subject
+   - 行与行之间推荐不同选项
+
+**【输出格式 - 必须严格遵循】**
+
+直接输出以下 JSON 结构，不要任何其他内容：
+{
+  "interactions": [
+    {
+      "questionType": "<<<FROM_HTML:q1_type>>>",
+      "subject": "<<<FROM_HTML:q1_row1>>>（<<<FROM_HTML:q1_col1>>>）",
+      "showAnswer": "<<<FROM_HTML:q1_col1>>>"
+    }
+  ],
+  "page_summary": "<<<FROM_HTML:page_summary>>>"
+}
+
+**【重要约束】**
+1. 只输出 interactions 数组，不要包含 survey_page 或其他 YAML 结构
+2. 不要输出任何 YAML 格式的内容
+3. page_summary 必须是英文句子
+
+---
+
+**YAML 结构（仅格式参考，禁止复制到输出中）**', 'YAML答案推荐：用户提示前缀（ANSWER_USER_PROMPT_PREFIX）', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (185, 'yaml_structure.template_to_yaml_system', 'yaml_structure', NULL, '你是一个问卷数据生成助手。
+
+你的职责：
+- 根据提供的 YAML 模板结构（包含占位符）
+- 结合当前 HTML 内容中的实际数据
+- 生成包含最新数据的完整 YAML
+
+重要规则：
+- 严格保持模板的结构格式不变
+- 用 HTML 中的实际题目文本、选项等数据替换占位符
+- 不得遗漏任何题目
+- 不得改变题目的类型和顺序
+
+【重要】字符编码约束：
+- 只使用 ASCII 标准字符输出 YAML
+- 所有引号统一使用双引号 "
+- 禁止使用 Unicode 弯引号
+
+输出格式：
+- 直接输出 YAML，不要任何解释文字
+- 不要 markdown 代码块包裹', '模板转YAML：系统提示词（TEMPLATE_TO_YAML_SYSTEM_PROMPT）', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (186, 'yaml_structure.template_to_yaml_user', 'yaml_structure', NULL, '---
+
+**任务说明**
+
+请根据以下 YAML 模板结构（包含占位符），结合当前 HTML 内容，生成最新的 YAML 数据。
+
+---
+
+**YAML 模板结构（参考格式）**
+
+{yamlTemplate}
+
+---
+
+**当前 HTML 内容**
+
+{html}
+
+---
+
+**生成要求**
+
+1. 严格按照模板的结构格式输出
+2. 用 HTML 中的实际数据替换占位符
+3. 确保所有题目都被正确提取
+4. 保持题目的原始顺序
+5. 不得凭空添加或删除任何题目
+
+直接输出 YAML 数据：', '模板转YAML：用户提示（TEMPLATE_TO_YAML_USER_PROMPT）', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (187, 'yaml_prompts.system_prefix', 'yaml_prompts', NULL, '你是一个问卷YAML结构提取助手。
+请严格从HTML中提取所有题目信息，100%来源于文件，不得添加修改。
+重要：所有动态内容必须使用占位符格式，禁止输出实际数据值。
+', 'YAML提取：系统前缀', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (188, 'yaml_prompts.multi_question_rules', 'yaml_prompts', NULL, '【多题页面处理规则】
+- 每个fieldset是一道题
+- 统一收录到questions列表
+- 示例YAML结构:
+  survey_page:
+    fingerprint: "<<<FROM_HTML:fingerprint>>>"
+    title: "<<<FROM_HTML:title>>>"
+    page_metadata:
+      has_next_button: "<<<FROM_HTML:has_next_button>>>"
+      has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+      is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+      is_description_page: "<<<FROM_HTML:is_description_page>>>"
+    questions:
+      - title: "<<<FROM_HTML:title>>>"
+        questions_type: "<<<FROM_HTML:questions_type>>>"
+        ...
+', 'YAML提取：多题页面处理规则', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (189, 'yaml_prompts.question_type_rules', 'yaml_prompts', NULL, '【题型识别规则】
+选择类: single/multi/select/image
+文本类: open_text/email/phone/number/date/time/open_end
+矩阵类: matrix_radio/matrix_checkbox
+量表类: likert/semantic_diff/slider/nps/likert_card
+排序类: multi_select/ranking_drag/ranking_select
+分类类: cardsort_drag/cardsort_select
+特殊类: image_select/heatmap/max_diff/conjoint
+其他类: mixed/instruction/unknown
+', 'YAML提取：32种题型识别规则', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (190, 'yaml_prompts.field_extraction_rules', 'yaml_prompts', NULL, '【字段提取规则】
+- title: 题目文本（去除题号和星号）
+- questions_type: 从32枚举中选择（不是type）
+- required: true/false
+- 各类题型额外字段（见题型差异化输出）
+', 'YAML提取：字段提取规则', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (191, 'yaml_prompts.question_type_differential', 'yaml_prompts', NULL, '【题型差异化输出】
+single/multi/select/image → choices, columns
+matrix_radio/checkbox → columns, rows
+likert → columns, rows
+slider/nps → min, max, min_label, max_label
+ranking_drag/select → rank_items
+cardsort_drag/select → cards, categories
+open_text/email → input_type, placeholder
+', 'YAML提取：题型差异化输出', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (192, 'yaml_prompts.response_format_rules', 'yaml_prompts', NULL, '【response_format字段】
+- type: single_select/single_per_row/multi_select/matrix等
+- orientation: 方向（horizontal/vertical/null）
+- option_sort: 排序方式（as_appearing/random/null）
+- max_selections: 多选上限（数字/null）
+', 'YAML提取：response_format字段规则', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (193, 'yaml_prompts.prohibitions', 'yaml_prompts', NULL, '【严格禁止】
+- 遗漏题目
+- 使用枚举外type
+- 凭空添加选项
+- 修改原始文本
+- 改变选项顺序
+- 主观猜测题型
+', 'YAML提取：严格禁止行为', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (194, 'yaml_prompts.output_format_rules', 'yaml_prompts', NULL, '【输出格式】
+- 直接输出YAML，不要markdown包裹
+- 不要任何解释文字
+- 不要```yaml代码块
+- 重要：题目类型字段必须命名为 questions_type，不是 type
+
+【占位符格式】
+所有动态内容必须使用占位符 `<<<FROM_HTML:xxx>>>` 格式，禁止输出实际数据值：
+- title → "<<<FROM_HTML:title>>>"
+- columns → "<<<FROM_HTML:col1>>>", "<<<FROM_HTML:col2>>>" 等
+- rows → "<<<FROM_HTML:row1>>>", "<<<FROM_HTML:row2>>>" 等
+- options → "<<<FROM_HTML:opt1>>>", "<<<FROM_HTML:opt2>>>" 等
+- has_next_button → "<<<FROM_HTML:has_next_button>>>"
+- has_submit_button → "<<<FROM_HTML:has_submit_button>>>"
+- is_thank_you_page → "<<<FROM_HTML:is_thank_you_page>>>"
+- is_description_page → "<<<FROM_HTML:is_description_page>>>"
+- required → "<<<FROM_HTML:required>>>"
+
+【示例YAML结构】
+```yaml
+survey_page:
+  title: "<<<FROM_HTML:title>>>"
+  page_metadata:
+    has_next_button: "<<<FROM_HTML:has_next_button>>>"
+    has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+    is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+    is_description_page: "<<<FROM_HTML:is_description_page>>>"
+  questions:
+    - title: "<<<FROM_HTML:title>>>"
+      questions_type: "<<<FROM_HTML:questions_type>>>"
+      required: "<<<FROM_HTML:required>>>"
+      options:
+        - "<<<FROM_HTML:opt1>>>"
+        - "<<<FROM_HTML:opt2>>>"
+```
+
+【页面属性输出】
+每个survey_page的YAML必须包含page_metadata节点：
+- has_next_button: true/false (是否有"下一页"按钮)
+- has_submit_button: true/false (是否有"提交"按钮)
+- is_thank_you_page: true/false (是否是感谢页)
+- is_description_page: true/false (是否是无题目说明页，仅有说明文字无表单输入)
+', 'YAML提取：输出格式要求', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (195, 'yaml_prompts.page_detection_rules', 'yaml_prompts', NULL, '【页面属性检测规则】
+从HTML内容中识别以下页面属性，返回占位符格式：
+
+has_next_button: "<<<FROM_HTML:has_next_button>>>"
+- 当HTML中存在"Next"、"下一页"、"Continue"、"下一步"等导航按钮时为 true
+- 否则为 false
+
+has_submit_button: "<<<FROM_HTML:has_submit_button>>>"
+- 当HTML中存在"Submit"、"提交"、"Finish"、"完成"等提交按钮时为 true
+- 否则为 false
+
+is_thank_you_page: "<<<FROM_HTML:is_thank_you_page>>>"
+- 当页面内容包含"Thank you"、"谢谢"、"感谢"、"提交成功"等感谢信息时为 true
+- 通常出现在问卷最后或提交后
+
+is_description_page: "<<<FROM_HTML:is_description_page>>>"
+- 当页面没有任何题目（无fieldset、无input、无select）时为 true
+- 只有说明文字、图片等非题目内容，无任何可交互表单元素时为 true
+- 包含：问卷说明、免责声明、隐私政策、答题指引等
+', 'YAML提取：页面属性检测规则', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
+INSERT INTO "prompts" VALUES (197, 'open_text.degraded', 'open_text', 'open_end', '== OPEN-END ANSWER — BRANCH 2 LOOP 降效重写 ==
+
+【任务】
+将提供的开放题答案草稿重写，使其更像普通受访者的口语表达，彻底去除 AI 痕迹。
+上次答案已由审核员判定不合格，请针对以下问题修改。
+
+【字数控制（来自问卷平台配置）】
+<<<LENGTH_RULE>>>
+
+【必须执行的修改（逐条检查）】
+1. 结构化表达 → 删除
+   × "First... Second... Finally..."、"首先...其次...最后..."
+   × "In conclusion / To sum up"、"综上所述"
+2. 书面长句 → 拆成 1~2 个短句或碎片化表达
+3. 过于完整的结论句 → 删除或改写
+   × "In summary, I strongly believe that X is essential."
+4. 正式用词 → 用随意口语替换
+   × "utilize" → "use"
+   × "endeavor" → "try"
+   × "perceive" → "think/feel"
+
+【可以保留的内容】
+- 原答案中的具体事实（数字、地名、产品名、经历细节）
+- 原答案表达的核心观点和态度
+- 第一人称视角
+
+【输出要求】
+- 直接输出改写后的纯文本
+- 禁止任何解释、说明、前置标题
+- 禁止重复题目内容
+- 禁止输出 JSON 格式（直接输出纯文本即可）', '开放题降效重写提示词（Branch 2 Loop）', NULL, 1, 1, '2026-05-28 00:00:00', '2026-05-29 17:22:04');
+INSERT INTO "prompts" VALUES (201, 'open_text.initial', 'open_text_generator', 'open_text', '== OPEN-END ANSWER — BRANCH 1 初次生成 ==
+
+【目标】
+为开放文本题（open_end / open_text）生成自然、无 AI 痕迹的初始答案。
+
+【字数控制（来自问卷平台配置）】
+<<<LENGTH_RULE>>>
+
+【强制约束 — 语言风格（必须遵守）】
+- 禁止结构化书面语：
+  × "First / Secondly / Finally"、"首先/其次/最后"
+  × "In conclusion"、"综上所述"、"值得注意的是"
+  × "It is important to note that"、"This indicates that"
+- 禁止 AI 套话：
+  × "As an AI language model"
+  × "I believe it is worth mentioning"
+  × "That''s a great question"
+- 语气口语化：允许缩写（it''s / they''re / gonna）、允许不完整句子
+
+【强制约束 — 内容要求】
+- 严格围绕题目作答，不引入无关话题
+- 答案必须符合人设的年龄、职业、生活背景
+- 禁止添加开场白（× "Great question!"、× "Thanks for asking..."）
+- 选择 1~2 个具体点展开，避免泛泛而谈（× "Overall it''s pretty good."）
+- 带个人色彩：具体经历、个人偏好比泛泛感受更真实
+
+【输出要求】
+- subject: 题目原文（从 HTML 提取）
+- showAnswer: 符合以上约束的自然语言字符串
+- 直接输出 JSON，不要任何解释', '开放题生成提示词', '', 1, 1, '2026-05-29 07:00:47', '2026-05-29 17:22:04');
+INSERT INTO "prompts" VALUES (204, 'open_text.verify', 'open_text_validator', 'open_text', '== OPEN-END ANSWER QUALITY VERIFICATION ==
+
+【角色】
+你是一位问卷答案质量审核员，专门检测开放题答案是否像真实受访者所写。
+
+【审核维度（全部通过才算合规）】
+
+1. 无明显 AI 痕迹（权重最高）
+   以下任意一种出现即判不合规：
+   × 结构套语：First/Second/Finally、In conclusion、综上所述、首先其次最后
+   × AI 惯用语：As an AI、It is worth noting、值得注意的是、这表明了
+   × 学术句式：主句 + 多个从句 + 结论句的完整组合
+
+2. 内容与题目相关
+   ✓ 答案语义紧扣题目
+   × 引入与题目完全无关的话题
+
+3. 语气自然真实
+   ✓ 口语化，像普通人随口说的
+   ✓ 允许不完整句子、允许个人主观色彩
+   × 像范文、论文或官方公告的措辞
+
+4. 长度合规性（来自问卷平台配置）
+   约束: <<<LENGTH_RULE>>>
+   Case 1 (min+max): 必须在 {min}~{max} words 之间
+   Case 2 (min only): >= {min} words
+   Case 3 (max only): <= {max} words
+   Case 4 (无约束): 10~200 词范围内
+   × 低于下限 或 超过硬性上限 → 不合规
+
+【输出格式（强制要求）】
+严格返回以下 JSON，不要任何其他文字、标点或 markdown 包裹：
+{
+  "relevance_score": <integer 0-100>,
+  "human_score": <integer 0-100>,
+  "ai_score": <integer 0-100>,
+  "score_note": "简短英文说明",
+  "prompt_suggestion_note": "如有任何项不达标，用中文写 2-4 条改进建议（格式：禁止X/必须Y）；否则为空字符串"
+}', '开放题AI验证提示词', '', 1, 1, '2026-05-29 07:02:48', '2026-05-29 17:30:11');
+INSERT INTO "prompts" VALUES (205, 'open_text.humanize', 'open_text_humanizer', 'open_text', 'You will receive a survey answer. Apply these specific edits to make it harder for AI detectors to flag it. Do NOT rewrite or restructure — make surgical word-level changes only.
+WHAT TO CHANGE (pick 3-4 of these, whichever fit naturally):
+Word substitutions — swap predictable words for less expected ones that still make sense:
+- "memorable" -> "one I keep thinking about" or "that one time"
+- "experience" -> "thing that happened" or "situation"
+- "customer service" -> "the person at the desk" or "the lady/guy there"
+- "however" / "but" -> "though" or just start a new sentence
+- "decided" -> "ended up" or "just went ahead and"
+- "received" -> "got" or "they handed me"
+- "noticed" -> "could tell" or "saw"
+- any -ly adverb -> rephrase without it ("quickly" -> "right away", "surprisingly" -> "which was weird")
+Rhythm breaks — do ONE of these:
+- Take the longest sentence and split it at a natural pause with a period, even mid-thought
+- Take two short sentences and run them together with just a comma (comma splice is fine)
+Filler insertion — add ONE of these somewhere it feels natural (not at the start):
+- "or whatever", "I guess", "which was odd", "for some reason", "not gonna lie"
+End abruptly — if the last sentence wraps things up too neatly, cut the final 4-6 words or replace with "idk" / "so yeah" / nothing
+DO NOT:
+- Reorder sentences or change sentence structure significantly
+- Fix or introduce grammar errors that make the text confusing
+- Remove existing casual words like "honestly", "tbh", "like" — keep them
+- Add new facts or change what happened
+- Exceed 85 words
+Output the modified answer only. No explanation.', '开放题反AI检测扰动提示词', '', 1, 1, '2026-05-29 07:02:48', '2026-05-29 07:02:48');
+
+-- ----------------------------
+-- Table structure for site_page_fingerprints
+-- ----------------------------
+DROP TABLE IF EXISTS "site_page_fingerprints";
+CREATE TABLE "site_page_fingerprints" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+  "site_id" INTEGER NOT NULL,
+  "page_id_pattern_regex" TEXT NOT NULL,
+  "next_pattern" TEXT NOT NULL,
+  "wait_after_click" INTEGER NOT NULL DEFAULT 1500,
+  "created_at" DATETIME DEFAULT (datetime('now','localtime')),
+  FOREIGN KEY ("site_id") REFERENCES "sites" ("id") ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+-- ----------------------------
+-- Records of site_page_fingerprints
+-- ----------------------------
+INSERT INTO "site_page_fingerprints" VALUES (7, 1, '["/<legend[^>]*>([\\s\\S]*?)<\\/legend>/gi", "/<label[^>]*>([\\s\\S]*?)<\\/label>/gi", "/<div[^>]*>([\\s\\S]*?)<\\/div>/gi"]', '/<input[^>]*id="sg_NextButton"/', 1500, '2026-05-29 06:27:26');
+INSERT INTO "site_page_fingerprints" VALUES (8, 5, '["/<h1 title=\"question\" class=\"question-text\"[^>]*>(.*?)</h1>/gi"]', '/<input[^>]*id="btn_continue"[^>]*>/', 1500, '2026-05-29 21:33:23');
+INSERT INTO "site_page_fingerprints" VALUES (9, 2, '["/<legend>\\s*<label[^>]*class=\"[^\"]*QuestionText[^\"]*\"[^>]*>([\\s\\S]*?)<\\/label><\\/legend>/gi","/<legend>\\s*<div[^>]*class=\"[^\"]*QuestionText[^\"]*\"[^>]*>([\\s\\S]*?)<\\/div>\\s*<\\/legend>/gi"]', '/<input[^>]*id="NextButton"[^>]*>/', 1500, '2026-05-29 21:34:27');
+INSERT INTO "site_page_fingerprints" VALUES (10, 3, '["/<legend>\\s*<div[^>]*class=\"[^\"]*QuestionText[^\"]*\"[^>]*>([\\s\\S]*?)<\\/div>\\s*<\\/legend>/gi","/<legend><div[^>]*>([\\s\\S]*?)<\\/div><\\/legend>/gi","/<legend>\\s*<label[^>]*>([\\s\\S]*?)<\\/label><\\/legend>/gi"]', '/<input[^>]*id="NextButton"[^>]*>/', 1500, '2026-05-29 21:34:27');
+INSERT INTO "site_page_fingerprints" VALUES (11, 4, '["/<legend[^>]*>([\\s\\S]*?)<\\/legend>/gi","/<label[^>]*>([\\s\\S]*?)<\\/label>/gi","/<div[^>]*>([\\s\\S]*?)<\\/div>/gi"]', '/<input[^>]*id="btn_continue"[^>]*>/', 1500, '2026-05-29 21:34:27');
+
+-- ----------------------------
+-- Table structure for sites
+-- ----------------------------
+DROP TABLE IF EXISTS "sites";
+CREATE TABLE "sites" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+  "site_name" TEXT NOT NULL,
+  "survey_name" text NOT NULL,
+  "url" TEXT NOT NULL,
+  "is_active" INTEGER NOT NULL DEFAULT 1,
+  "updated_at" DATETIME,
+  "created_at" DATETIME DEFAULT (datetime('now','localtime')),
+  UNIQUE ("survey_name" ASC)
+);
+
+-- ----------------------------
+-- Records of sites
+-- ----------------------------
+INSERT INTO "sites" VALUES (1, 'Macalester-2026-prospective-families', '8809865', 'https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families', 1, '2026-05-17', '2026-05-27 18:22:08');
+INSERT INTO "sites" VALUES (2, 'SV_3BHtJkfaEOEDj5c', 'sv_3bhtjkfaeoedj5c', 'https://survey.qualtrics.com/jfe/form/SV_3BHtJkfaEOEDj5c', 1, '2026-05-17', '2026-05-27 18:22:08');
+INSERT INTO "sites" VALUES (3, 'sv_eM9M11Pt2XiyUNo', 'sv_em9m11pt2xiyuno', 'https://escalentcspacehandp.qualtrics.com/jfe/form/SV_eM9M11Pt2XiyUNo', 1, '2026-05-17', '2026-05-27 18:22:08');
+INSERT INTO "sites" VALUES (4, 'SV_79T3rQ4xn7FNeiG', 'sv_79t3rq4xn7fneig', 'https://survey.qualtrics.com/jfe/form/SV_79T3rQ4xn7FNeiG?link=1&wspid=0133-2SV_79T3rQ4xn7FNeiG', 1, '2026-05-17', '2026-05-27 18:22:08');
+INSERT INTO "sites" VALUES (5, 'selfserve_2222_2600216', 'selfserve_2222_2600216', 'https://surveys.tapestryresearch.com/survey/selfserve/2222/260216', 1, '2026-05-17', '2026-05-27 18:22:08');
+
+-- ----------------------------
+-- Table structure for sqlite_sequence
+-- ----------------------------
+DROP TABLE IF EXISTS "sqlite_sequence";
+CREATE TABLE "sqlite_sequence" (
+  "name",
+  "seq"
+);
+
+-- ----------------------------
+-- Records of sqlite_sequence
+-- ----------------------------
+INSERT INTO "sqlite_sequence" VALUES ('prompt_assembly_orders', 32);
+INSERT INTO "sqlite_sequence" VALUES ('prompts', 208);
+INSERT INTO "sqlite_sequence" VALUES ('sites', 5);
+INSERT INTO "sqlite_sequence" VALUES ('_page_html_source_old_20260528', 133);
+INSERT INTO "sqlite_sequence" VALUES ('page_result_prompt', 64);
+INSERT INTO "sqlite_sequence" VALUES ('page_results', 114);
+INSERT INTO "sqlite_sequence" VALUES ('survey_persona', 2);
+INSERT INTO "sqlite_sequence" VALUES ('prompt_assembly_orders', 32);
+INSERT INTO "sqlite_sequence" VALUES ('prompts', 196);
+INSERT INTO "sqlite_sequence" VALUES ('site_page_fingerprints', 11);
+INSERT INTO "sqlite_sequence" VALUES ('survey', 41);
+INSERT INTO "sqlite_sequence" VALUES ('sites', 5);
+INSERT INTO "sqlite_sequence" VALUES ('page_html_source', 148);
+
+-- ----------------------------
+-- Table structure for survey
+-- ----------------------------
+DROP TABLE IF EXISTS "survey";
+CREATE TABLE "survey" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+  "session_name" VARCHAR(64) NOT NULL,
+  "survey_name" VARCHAR(64) NOT NULL,
+  "url" VARCHAR(254) NOT NULL,
+  "created_at" DATETIME DEFAULT (datetime('now', 'localtime'))
+);
+
+-- ----------------------------
+-- Records of survey
+-- ----------------------------
+INSERT INTO "survey" VALUES (15, 'sess_1779784997230_m6kxv', 'selfserve_2222_2600216', 'https://surveys.tapestryresearch.com/survey/selfserve/2222/260216#-', '2026-05-26 17:32:44');
+INSERT INTO "survey" VALUES (16, 'session_test', '8809865', 'https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families', '2026-05-26 18:18:41');
+INSERT INTO "survey" VALUES (17, 'sess_1779802935132_7w62q', 'selfserve_2222_2600216', 'https://surveys.tapestryresearch.com/survey/selfserve/2222/260216#?', '2026-05-26 21:42:23');
+INSERT INTO "survey" VALUES (18, 'sess_1779803093262_u8ek6', 'selfserve_2222_2600216', 'https://surveys.tapestryresearch.com/survey/selfserve/2222/260216#?', '2026-05-26 21:45:01');
+INSERT INTO "survey" VALUES (19, 'sess_1779843960570_6fl8r', 'selfserve_2222_2600216', 'https://surveys.tapestryresearch.com/survey/selfserve/2222/260216#;', '2026-05-27 09:06:01');
+INSERT INTO "survey" VALUES (20, 'sess_1779845271340_xlx97', 'selfserve_2222_2600216', 'https://surveys.tapestryresearch.com/survey/selfserve/2222/260216#~', '2026-05-27 09:28:01');
+INSERT INTO "survey" VALUES (21, 'sess_1779845383434_0n5hn', 'selfserve_2222_2600216', 'https://surveys.tapestryresearch.com/survey/selfserve/2222/260216#~', '2026-05-27 09:29:53');
+INSERT INTO "survey" VALUES (22, 'sess_1779845662511_2boek', 'selfserve_2222_2600216', 'https://surveys.tapestryresearch.com/survey/selfserve/2222/260216#~', '2026-05-27 09:34:30');
+INSERT INTO "survey" VALUES (23, 'sess_1779845853972_71yl2', 'selfserve_2222_2600216', 'https://surveys.tapestryresearch.com/survey/selfserve/2222/260216#~', '2026-05-27 09:37:40');
+INSERT INTO "survey" VALUES (24, 'sess_1779845959475_t1mhy', 'selfserve_2222_2600216', 'https://surveys.tapestryresearch.com/survey/selfserve/2222/260216#~', '2026-05-27 09:39:25');
+INSERT INTO "survey" VALUES (25, 'sess_1779846055678_t61dh', 'selfserve_2222_2600216', 'https://surveys.tapestryresearch.com/survey/selfserve/2222/260216#~', '2026-05-27 09:41:02');
+INSERT INTO "survey" VALUES (26, 'sess_1779846163305_u1j66', 'selfserve_2222_2600216', 'https://surveys.tapestryresearch.com/survey/selfserve/2222/260216#~', '2026-05-27 09:42:47');
+INSERT INTO "survey" VALUES (27, 'sess_1779846250284_qhvdn', 'selfserve_2222_2600216', 'https://surveys.tapestryresearch.com/survey/selfserve/2222/260216#~', '2026-05-27 09:44:23');
+INSERT INTO "survey" VALUES (28, 'sess_1779846324961_cbycj', 'selfserve_2222_2600216', 'https://surveys.tapestryresearch.com/survey/selfserve/2222/260216#~', '2026-05-27 09:45:28');
+INSERT INTO "survey" VALUES (29, 'session_20260529142233', '8809865', 'https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families', '2026-05-29 14:22:34');
+INSERT INTO "survey" VALUES (30, 'session_20260529142843', '8809865', 'https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families', '2026-05-29 14:28:44');
+INSERT INTO "survey" VALUES (31, 'session_20260529143200', '8809865', 'https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families', '2026-05-29 14:32:01');
+INSERT INTO "survey" VALUES (32, 'session_20260529143609', '8809865', 'https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families', '2026-05-29 14:36:10');
+INSERT INTO "survey" VALUES (33, 'session_20260529144714', '8809865', 'https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families', '2026-05-29 14:47:14');
+INSERT INTO "survey" VALUES (34, 'session_20260529150336', '8809865', 'https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families', '2026-05-29 15:03:36');
+INSERT INTO "survey" VALUES (35, 'session_20260529151335', '8809865', 'https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families', '2026-05-29 15:13:35');
+INSERT INTO "survey" VALUES (36, 'session_20260529151935', '8809865', 'https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families', '2026-05-29 15:19:35');
+INSERT INTO "survey" VALUES (37, 'session_20260529152524', '8809865', 'https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families', '2026-05-29 15:25:24');
+INSERT INTO "survey" VALUES (38, 'session_20260529172255', '8809865', 'https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families', '2026-05-29 17:22:55');
+INSERT INTO "survey" VALUES (39, 'session_20260529172401', '8809865', 'https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families', '2026-05-29 17:24:02');
+INSERT INTO "survey" VALUES (40, 'session_20260529173055', '8809865', 'https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families', '2026-05-29 17:30:55');
+INSERT INTO "survey" VALUES (41, 'session_20260529173354', '8809865', 'https://survey.alchemer.com/s3/8809865/Macalester-2026-prospective-families', '2026-05-29 17:33:55');
+
+-- ----------------------------
+-- Table structure for survey_persona
+-- ----------------------------
+DROP TABLE IF EXISTS "survey_persona";
+CREATE TABLE "survey_persona" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+  "survey_id" TEXT NOT NULL,
+  "persona_key" TEXT NOT NULL,
+  "description" TEXT NOT NULL,
+  "is_active" INTEGER NOT NULL DEFAULT 1,
+  "created_at" DATETIME DEFAULT (datetime('now', 'localtime')),
+  "updated_at" DATETIME DEFAULT (datetime('now', 'localtime')),
+  "persona_mode" TEXT DEFAULT 'auto',
+  "age_range" TEXT,
+  "gender" TEXT,
+  "race" TEXT,
+  "occupation" TEXT,
+  "income" INTEGER,
+  "education" TEXT,
+  "has_children" INTEGER DEFAULT 0,
+  "marital_status" TEXT,
+  "option_mapping" TEXT,
+  UNIQUE ("survey_id" ASC, "persona_key" ASC)
+);
+
+-- ----------------------------
+-- Records of survey_persona
+-- ----------------------------
+INSERT INTO "survey_persona" VALUES (2, '__default__', 'default', 'A typical survey respondent answering questions honestly.', 1, '2026-05-29 14:29:29', '2026-05-29 14:29:29', 'auto', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL);
+
+-- ----------------------------
+-- Table structure for survey_prompt_overrides
+-- ----------------------------
+DROP TABLE IF EXISTS "survey_prompt_overrides";
+CREATE TABLE "survey_prompt_overrides" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+  "survey_id" TEXT NOT NULL,
+  "prompt_key" TEXT NOT NULL,
+  "content" TEXT NOT NULL,
+  "description" TEXT,
+  "is_active" INTEGER NOT NULL DEFAULT 1,
+  "created_at" TEXT NOT NULL DEFAULT (datetime('now','localtime')),
+  "updated_at" TEXT NOT NULL DEFAULT (datetime('now','localtime')),
+  UNIQUE ("survey_id" ASC, "prompt_key" ASC)
+);
+
+-- ----------------------------
+-- Records of survey_prompt_overrides
+-- ----------------------------
+
+-- ----------------------------
+-- Auto increment value for _page_html_source_old_20260528
+-- ----------------------------
+UPDATE "sqlite_sequence" SET seq = 133 WHERE name = '_page_html_source_old_20260528';
+
+-- ----------------------------
+-- Auto increment value for page_html_source
+-- ----------------------------
+UPDATE "sqlite_sequence" SET seq = 148 WHERE name = 'page_html_source';
+
+-- ----------------------------
+-- Indexes structure for table page_html_source
+-- ----------------------------
+CREATE INDEX "idx_html_source_page_results_id"
+ON "page_html_source" (
+  "page_results_id" ASC
+);
+CREATE INDEX "idx_html_source_raw_md5"
+ON "page_html_source" (
+  "raw_html_md5" ASC
+);
+
+-- ----------------------------
+-- Auto increment value for page_result_prompt
+-- ----------------------------
+UPDATE "sqlite_sequence" SET seq = 64 WHERE name = 'page_result_prompt';
+
+-- ----------------------------
+-- Indexes structure for table page_result_prompt
+-- ----------------------------
+CREATE INDEX "idx_page_result_prompt_page_result_id"
+ON "page_result_prompt" (
+  "page_result_id" ASC
+);
+
+-- ----------------------------
+-- Auto increment value for page_results
+-- ----------------------------
+UPDATE "sqlite_sequence" SET seq = 114 WHERE name = 'page_results';
+
+-- ----------------------------
+-- Auto increment value for prompt_assembly_orders
+-- ----------------------------
+UPDATE "sqlite_sequence" SET seq = 32 WHERE name = 'prompt_assembly_orders';
+
+-- ----------------------------
+-- Auto increment value for prompts
+-- ----------------------------
+UPDATE "sqlite_sequence" SET seq = 208 WHERE name = 'prompts';
+
+-- ----------------------------
+-- Auto increment value for site_page_fingerprints
+-- ----------------------------
+UPDATE "sqlite_sequence" SET seq = 11 WHERE name = 'site_page_fingerprints';
+
+-- ----------------------------
+-- Indexes structure for table site_page_fingerprints
+-- ----------------------------
+CREATE INDEX "idx_fingerprints_site_id"
+ON "site_page_fingerprints" (
+  "site_id" ASC
+);
+
+-- ----------------------------
+-- Auto increment value for sites
+-- ----------------------------
+UPDATE "sqlite_sequence" SET seq = 5 WHERE name = 'sites';
+
+-- ----------------------------
+-- Indexes structure for table sites
+-- ----------------------------
+CREATE INDEX "idx_sites_survey_id"
+ON "sites" (
+  "survey_name" ASC
+);
+
+-- ----------------------------
+-- Auto increment value for survey
+-- ----------------------------
+UPDATE "sqlite_sequence" SET seq = 41 WHERE name = 'survey';
+
+-- ----------------------------
+-- Auto increment value for survey_persona
+-- ----------------------------
+UPDATE "sqlite_sequence" SET seq = 2 WHERE name = 'survey_persona';
+
+PRAGMA foreign_keys = true;

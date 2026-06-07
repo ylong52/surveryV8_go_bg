@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect('data/survey.db')
+conn = sqlite3.connect('data/survey202605.db')
 cur = conn.cursor()
 
 print("=== 清理和验证 ===\n")

@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "page_summary": "The respondent indicates their current country of residence is United States.",
+      "timestamp": "2026-06-03T17:19:51.5535882+08:00",
+      "page_id": "what is your current country of residence"
+    },
+    {
+      "page_summary": "The respondent provides their zip code, indicating a specific geographic location within the United States.",
+      "timestamp": "2026-06-03T17:20:09.6452776+08:00",
+      "page_id": "what is your zip code"
+    },
+    {
+      "page_summary": "The respondent selected common leisure activities from the past weekend, avoiding extreme or rare options.",
+      "timestamp": "2026-06-03T17:20:25.7638355+08:00",
+      "page_id": "which if any of the following have you done over the past weekend"
+    },
+    {
+      "page_summary": "The respondent indicates they are not Spanish, Hispanic, or Latinx.",
+      "timestamp": "2026-06-03T17:20:51.2076774+08:00",
+      "page_id": "are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an"
+    }
+  ],
+  "updated_at": "2026-06-03T17:20:51.2076774+08:00"
+}

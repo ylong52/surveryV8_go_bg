@@ -1,0 +1,205 @@
+{
+  "items": [
+    {
+      "page_summary": "This page collects basic demographic information including age and gender.",
+      "timestamp": "2026-05-26T21:45:04.7006335+08:00",
+      "page_id": "what is your age"
+    },
+    {
+      "page_summary": "This page asks for the respondent's current country of residence.",
+      "timestamp": "2026-05-26T21:49:08.2777376+08:00",
+      "page_id": "what is your current country of residence"
+    },
+    {
+      "page_summary": "This page asks for the respondent's zip code.",
+      "timestamp": "2026-05-26T21:50:02.351599+08:00",
+      "page_id": "what is your zip code"
+    },
+    {
+      "page_summary": "This page asks about activities done over the past weekend, with multiple checkbox options.",
+      "timestamp": "2026-05-26T21:50:23.8985467+08:00",
+      "page_id": "which if any of the following have you done over the past weekend"
+    },
+    {
+      "page_summary": "This page asks about Hispanic or Latinx ethnicity.",
+      "timestamp": "2026-05-26T21:51:15.8217537+08:00",
+      "page_id": "are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an"
+    },
+    {
+      "page_summary": "This page asks about the respondent's racial background with multiple checkbox options.",
+      "timestamp": "2026-05-26T21:51:36.1737101+08:00",
+      "page_id": "what is your racial background"
+    },
+    {
+      "page_summary": "This page asks how much the respondent agrees or disagrees that certain words describe them, using a matrix of rows (Sophisticated, Elegant, Funny, a trap item, Edgy) and columns (Agree strongly to Disagree strongly).",
+      "timestamp": "2026-05-26T21:51:49.7996568+08:00",
+      "page_id": "how much do you agree or disagree that each of the words below describe you"
+    },
+    {
+      "page_summary": "This page asks whether the respondent has children under 18 living in the household.",
+      "timestamp": "2026-05-26T21:52:05.8454601+08:00",
+      "page_id": "do you have any children under 18 years old living in your household"
+    },
+    {
+      "page_summary": "This page asks whether the respondent is the parent or guardian of children under 18 living in the household.",
+      "timestamp": "2026-05-26T21:52:19.9785267+08:00",
+      "page_id": "are you the parent or guardian of any of those children"
+    },
+    {
+      "page_summary": "This page asks about the age and gender of children under 18 living in the household.",
+      "timestamp": "2026-05-26T21:52:39.9119367+08:00",
+      "page_id": "please can you let us know the age and gender of the child or children under age 18 who live with yo"
+    },
+    {
+      "page_summary": "This page asks about the age and gender of children under 18 living in the household.",
+      "timestamp": "2026-05-26T22:00:11.0729066+08:00",
+      "page_id": "please can you let us know the age and gender of the child or children under age 18 who live with yo"
+    },
+    {
+      "page_summary": "This page asks how often the respondent watches content from various TV networks, with options ranging from Never to Once a week or more.",
+      "timestamp": "2026-05-26T22:00:51.5556883+08:00",
+      "page_id": "how often do you watch shows movies web series videos or clips from each of the following"
+    },
+    {
+      "page_summary": "This page asks how often the respondent watches shows, movies, or clips from various TV networks, with options ranging from Never to Once a week or more.",
+      "timestamp": "2026-05-26T22:10:45.7946369+08:00",
+      "page_id": "how often do you watch shows movies web series videos or clips from each of the following"
+    },
+    {
+      "page_summary": "This page asks how often the respondent watches content from various TV networks, using a matrix of rows (network names) and columns (frequency: Never, Less than once a month, Once or twice a month, Once a week or more).",
+      "timestamp": "2026-05-26T22:11:22.9530865+08:00",
+      "page_id": "how often do you watch shows movies web series videos or clips from each of the following"
+    },
+    {
+      "page_summary": "This page asks how often the respondent watches shows, movies, web series, videos, or clips from various TV networks and channels.",
+      "timestamp": "2026-05-26T22:12:04.8547244+08:00",
+      "page_id": "how often do you watch shows movies web series videos or clips from each of the following"
+    },
+    {
+      "page_summary": "This page asks for the respondent's age and gender.",
+      "timestamp": "2026-05-26T22:27:42.9756549+08:00",
+      "page_id": "what is your age"
+    },
+    {
+      "page_summary": "This page asks for the respondent's current country of residence.",
+      "timestamp": "2026-05-26T22:34:14.4818824+08:00",
+      "page_id": "what is your current country of residence"
+    },
+    {
+      "page_summary": "This page asks for the respondent's zip code.",
+      "timestamp": "2026-05-26T22:34:27.5894024+08:00",
+      "page_id": "what is your zip code"
+    },
+    {
+      "page_summary": "This page asks about weekend activities, with multiple checkbox options.",
+      "timestamp": "2026-05-26T22:34:47.4093315+08:00",
+      "page_id": "which if any of the following have you done over the past weekend"
+    },
+    {
+      "page_summary": "This page asks whether the respondent is of Spanish, Hispanic, or Latinx origin.",
+      "timestamp": "2026-05-26T22:34:59.8033381+08:00",
+      "page_id": "are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an"
+    },
+    {
+      "page_summary": "This page asks about the respondent's racial background with multiple checkboxes.",
+      "timestamp": "2026-05-26T22:36:29.6316627+08:00",
+      "page_id": "what is your racial background"
+    },
+    {
+      "page_summary": "This page asks how much the respondent agrees or disagrees that certain words describe them, using a matrix of rows (Sophisticated, Elegant, Funny, Select “Agree slightly” for this item, Edgy) and columns (Agree strongly, Agree slightly, Neither agree nor disagree, Disagree slightly, Disagree strongly).",
+      "timestamp": "2026-05-26T22:51:03.3633592+08:00",
+      "page_id": "how much do you agree or disagree that each of the words below describe you"
+    },
+    {
+      "page_summary": "This page asks whether the respondent has any children under 18 living in their household.",
+      "timestamp": "2026-05-26T22:51:23.9426521+08:00",
+      "page_id": "do you have any children under 18 years old living in your household"
+    },
+    {
+      "page_summary": "This page asks whether the respondent is the parent or guardian of any children under 18 in the household.",
+      "timestamp": "2026-05-26T22:52:21.3499814+08:00",
+      "page_id": "are you the parent or guardian of any of those children"
+    },
+    {
+      "page_summary": "This page asks about the age and gender of children under 18 living in the household.",
+      "timestamp": "2026-05-26T22:54:48.3643508+08:00",
+      "page_id": "please can you let us know the age and gender of the child or children under age 18 who live with yo"
+    },
+    {
+      "page_summary": "This page asks how often the respondent watches content from various TV networks and channels, with options ranging from Never to Once a week or more.",
+      "timestamp": "2026-05-26T22:58:04.772427+08:00",
+      "page_id": "how often do you watch shows movies web series videos or clips from each of the following"
+    },
+    {
+      "page_summary": "This page asks how often the respondent watches content from various TV networks and channels.",
+      "timestamp": "2026-05-26T22:58:39.6663194+08:00",
+      "page_id": "how often do you watch shows movies web series videos or clips from each of the following"
+    },
+    {
+      "page_summary": "This page asks how often the respondent streams content from various streaming services.",
+      "timestamp": "2026-05-26T22:59:19.1918284+08:00",
+      "page_id": "how often do you stream shows movies web series videos or clips from each of the following"
+    },
+    {
+      "page_summary": "This page asks for the respondent's age and gender.",
+      "timestamp": "2026-05-26T23:02:16.2460418+08:00",
+      "page_id": "what is your age"
+    },
+    {
+      "page_summary": "This page asks for the respondent's current country of residence.",
+      "timestamp": "2026-05-26T23:02:31.8306148+08:00",
+      "page_id": "what is your current country of residence"
+    },
+    {
+      "page_summary": "This page asks for the respondent's zip code.",
+      "timestamp": "2026-05-26T23:02:51.548703+08:00",
+      "page_id": "what is your zip code"
+    },
+    {
+      "page_summary": "This page asks about weekend activities, with multiple checkbox options.",
+      "timestamp": "2026-05-26T23:03:02.8027724+08:00",
+      "page_id": "which if any of the following have you done over the past weekend"
+    },
+    {
+      "page_summary": "This page asks whether the respondent is of Spanish, Hispanic, or Latinx origin.",
+      "timestamp": "2026-05-26T23:03:17.1158214+08:00",
+      "page_id": "are you spanish hispanic or latinx such as mexican mexican-american chicano puerto rican cuban or an"
+    },
+    {
+      "page_summary": "This page asks about the respondent's racial background with multiple checkbox options.",
+      "timestamp": "2026-05-26T23:03:28.9935556+08:00",
+      "page_id": "what is your racial background"
+    },
+    {
+      "page_summary": "This page asks how much the respondent agrees or disagrees that certain words describe them, using a matrix of words and agreement levels.",
+      "timestamp": "2026-05-26T23:03:47.8864356+08:00",
+      "page_id": "how much do you agree or disagree that each of the words below describe you"
+    },
+    {
+      "page_summary": "This page asks whether the respondent has any children under 18 living in the household.",
+      "timestamp": "2026-05-26T23:04:12.5853115+08:00",
+      "page_id": "do you have any children under 18 years old living in your household"
+    },
+    {
+      "page_summary": "This page asks whether the respondent is the parent or guardian of children under 18 in the household.",
+      "timestamp": "2026-05-26T23:06:51.1396457+08:00",
+      "page_id": "are you the parent or guardian of any of those children"
+    },
+    {
+      "page_summary": "This page asks for the age and gender of children under 18 living in the household.",
+      "timestamp": "2026-05-26T23:07:04.5270751+08:00",
+      "page_id": "please can you let us know the age and gender of the child or children under age 18 who live with yo"
+    },
+    {
+      "page_summary": "This page asks how often the respondent watches content from various TV networks and channels.",
+      "timestamp": "2026-05-26T23:07:26.1953644+08:00",
+      "page_id": "how often do you watch shows movies web series videos or clips from each of the following"
+    },
+    {
+      "page_summary": "This page asks how often the respondent watches content from various TV networks and channels, with options ranging from Never to Once a week or more.",
+      "timestamp": "2026-05-26T23:08:23.8060049+08:00",
+      "page_id": "how often do you watch shows movies web series videos or clips from each of the following"
+    }
+  ],
+  "updated_at": "2026-05-26T23:08:23.8060049+08:00"
+}
