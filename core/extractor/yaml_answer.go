@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"survey.cli/core/database"
+	"survey.cli/core/models"
 )
 
 // min 返回两个整数中较小的值
@@ -27,44 +28,57 @@ func min(a, b int) int {
 // 1. 数据结构定义
 // =============================================================================
 
-// Interaction 单个题目的推荐答案
-type Interaction struct {
-	Subject      string      `yaml:"subject" json:"subject"`
-	ShowAnswer   interface{} `yaml:"showAnswer" json:"showAnswer"`      // string 或 []string
-	QuestionType string      `yaml:"questionType" json:"questionType"`   // 题目类型
-	// 开放题字数限制（非 AI 返回，验证前由代码填写）
-	WordLimit WordLimit `yaml:"wordLimit" json:"wordLimit"`
-	// 开放题验证结果（非 AI 返回，验证后由 validator 填写）
-	HumansPass           *bool  `yaml:"-" json:"-"`
-	PromptSuggestionNote string `yaml:"-" json:"-"`
-}
+// Interaction 从 models 包导入（类型别名）
+type Interaction = models.Interaction
 
 // YamlAnswerResult 推荐答案结果
 type YamlAnswerResult struct {
-	Interactions []Interaction // 推荐答案列表
-	PageSummary  string        // 页面总结（AI 回复）
-	Source       string        // "cache" / "ai"
+	Interactions []Interaction              // 推荐答案列表
+	AIQuestions  []AIQuestionsResponseItem  // AI 返回的 questions（含 xpath）
+	PageSummary  string                     // 页面总结（AI 回复）
+	Source       string                     // "cache" / "ai"
 	Meta         PageMetadata
 	CachePath    string
 }
 
 // InteractionsResponse AI 返回的 JSON 结构
+// =============================================================================
+// 3. AI 响应结构
+// =============================================================================
+
+// AIQuestionsResponseItem 单个题目的 AI 返回格式（对应 AI 输出的 questions 数组项）
+type AIQuestionsResponseItem struct {
+	QuestionID   string             `json:"question_id"`
+	QuestionType string             `json:"question_type"`
+	Options     []AIQuestionOption `json:"options,omitempty"`
+}
+
+// AIQuestionOption 单个选项的 AI 返回格式
+type AIQuestionOption struct {
+	OptID int    `json:"opt_id"`
+	Value string `json:"value,omitempty"`
+	XPath string `json:"xpath"`
+}
+
+// InteractionsResponse AI JSON 响应结构
 type InteractionsResponse struct {
-	Interactions []Interaction `json:"interactions"`
-	PageSummary  string        `json:"page_summary"`
+	Interactions []Interaction              `json:"interactions"`
+	Questions    []AIQuestionsResponseItem `json:"questions,omitempty"`
+	PageSummary  string                     `json:"page_summary"`
 }
 
 // RealtimeAnswerOnlyResult 推荐答案结果（单次AI调用）
 type RealtimeAnswerOnlyResult struct {
-	Interactions  []Interaction   // 推荐答案列表
-	PageSummary   string          // 页面摘要
-	PageID        string          // 页面ID
-	PageSettings  PageSettings    // 页面设置
-	YamlStructure string          // YAML结构
-	FinalJson     FinalAnswerJson // 最终JSON
-	Source        string          // "realtime"
-	SystemPrompt  string          // 发给AI的 system prompt
-	UserPrompt    string          // 发给AI的 user prompt
+	Interactions  []Interaction    // 推荐答案列表
+	Questions     QuestionsOutput  // 题目结构数组（从 HTML 解析）
+	PageSummary   string           // 页面摘要
+	PageID        string           // 页面ID
+	PageSettings  PageSettings     // 页面设置
+	YamlStructure string           // YAML结构
+	FinalJson     FinalAnswerJson  // 最终JSON
+	Source        string           // "realtime"
+	SystemPrompt  string           // 发给AI的 system prompt
+	UserPrompt    string           // 发给AI的 user prompt
 }
 
 // PageSummaryCacheItem page_summary 缓存项
@@ -340,15 +354,14 @@ func buildAnswerUserPrompt(answerContext, yamlTemplate, htmlContent string) stri
 //	支持两种格式：
 //	  直接格式: {"interactions":[...],"page_summary":"..."}
 //	  data 包装: {"data":{"interactions":[...],"page_summary":"...",...}}
-func parseInteractionsResponse(content string) ([]Interaction, string, error) {
+func parseInteractionsResponse(content string) ([]Interaction, []AIQuestionsResponseItem, string, error) {
 	cleaned := stripMarkdownFence(content)
 
 	fmt.Println()
 	fmt.Println("=== [DEBUG] AI Raw Response ===")
 	if len(cleaned) > 1000 {
 		fmt.Printf("Length: %d chars\n", len(cleaned))
-		fmt.Printf("First 500 chars:\n%s\n...\n", cleaned[:500])
-		fmt.Printf("Last 200 chars:\n...%s\n", cleaned[len(cleaned)-200:])
+		fmt.Printf("Content:\n%s\n", cleaned)
 	} else {
 		fmt.Printf("Length: %d chars\n", len(cleaned))
 		fmt.Printf("Content:\n%s\n", cleaned)
@@ -361,20 +374,42 @@ func parseInteractionsResponse(content string) ([]Interaction, string, error) {
 		Data InteractionsResponse `json:"data"`
 	}
 	if err := json.Unmarshal([]byte(cleaned), &wrapped); err == nil && len(wrapped.Data.Interactions) > 0 {
-		return wrapped.Data.Interactions, wrapped.Data.PageSummary, nil
+		mergeInteractionQuestionType(wrapped.Data.Interactions)
+		return wrapped.Data.Interactions, wrapped.Data.Questions, wrapped.Data.PageSummary, nil
 	}
 
 	// 备选：直接格式
 	var resp InteractionsResponse
 	if err := json.Unmarshal([]byte(cleaned), &resp); err != nil {
-		return nil, "", fmt.Errorf("json.Unmarshal failed: %w, content: %s", err, cleaned[:min(200, len(cleaned))])
+		return nil, nil, "", fmt.Errorf("json.Unmarshal failed: %w, content: %s", err, cleaned[:min(200, len(cleaned))])
 	}
 
 	if len(resp.Interactions) == 0 {
-		return nil, "", fmt.Errorf("no interactions found in response")
+		return nil, nil, "", fmt.Errorf("no interactions found in response")
 	}
 
-	return resp.Interactions, resp.PageSummary, nil
+	mergeInteractionQuestionType(resp.Interactions)
+	return resp.Interactions, resp.Questions, resp.PageSummary, nil
+}
+
+// mergeInteractionQuestionType 将 AI snake_case 字段合并到标准字段
+// AI 返回 question_type = 序号 ("1","2"...) → QID
+// AI 返回 showAnswer → RecommendedAnswer
+func mergeInteractionQuestionType(interactions []Interaction) {
+	for i := range interactions {
+		// question_type(Alt) 实际是序号 → QID
+		if interactions[i].QID.Value == "" && interactions[i].QuestionTypeAlt != "" {
+			interactions[i].QID = models.QID{Value: interactions[i].QuestionTypeAlt}
+		}
+		// questionType(Alt) 保留为题型
+		if interactions[i].QuestionType == "" && interactions[i].QuestionTypeAlt != "" {
+			interactions[i].QuestionType = interactions[i].QuestionTypeAlt
+		}
+		// showAnswer（旧）→ recommended_answer（新）
+		if interactions[i].RecommendedAnswer == nil && interactions[i].ShowAnswer != nil {
+			interactions[i].RecommendedAnswer = interactions[i].ShowAnswer
+		}
+	}
 }
 
 // =============================================================================
@@ -445,7 +480,7 @@ func writeAnswerPromptLog(basePath, surveyID string, meta PageMetadata, personaS
 }
 
 // printRealtimeAnswerOnlyResult 打印推荐答案摘要
-func printRealtimeAnswerOnlyResult(meta PageMetadata, interactions []Interaction, pageSummary string, pageSettings PageSettings, jsonPath string) {
+func printRealtimeAnswerOnlyResult(meta PageMetadata, interactions []Interaction, questions QuestionsOutput, pageSummary string, pageSettings PageSettings, jsonPath string) {
 	fmt.Println()
 	fmt.Println("=== 单次AI调用：推荐答案生成完成 ===")
 	fmt.Printf("SurveyID: %s\n", meta.SurveyID)
@@ -462,10 +497,10 @@ func printRealtimeAnswerOnlyResult(meta PageMetadata, interactions []Interaction
 
 	for i, item := range interactions {
 		fmt.Printf("[%d] %s\n", i+1, item.Subject)
-		if arr, ok := item.ShowAnswer.([]interface{}); ok {
+		if arr, ok := item.RecommendedAnswer.([]interface{}); ok {
 			fmt.Printf("    → %v\n", arr)
 		} else {
-			fmt.Printf("    → %v\n", item.ShowAnswer)
+			fmt.Printf("    → %v\n", item.RecommendedAnswer)
 		}
 	}
 	fmt.Println()
@@ -531,7 +566,7 @@ func GenerateRealtimeAnswerOnlyWithMeta(meta PageMetadata, cleanHTML, cachedYaml
 		return nil, fmt.Errorf("GenerateRealtimeAnswerOnlyWithMeta: CallAI failed: %w", err)
 	}
 
-	interactions, pageSummary, err := parseInteractionsResponse(aiResponse)
+	interactions, aiQuestions, pageSummary, err := parseInteractionsResponse(aiResponse)
 	if err != nil {
 		saveAnswerFailureLog(basePath, surveyID, meta.PageID, systemPrompt, userPrompt, aiResponse, err)
 		return nil, fmt.Errorf("GenerateRealtimeAnswerOnlyWithMeta: parse response failed: %w", err)
@@ -541,53 +576,62 @@ func GenerateRealtimeAnswerOnlyWithMeta(meta PageMetadata, cleanHTML, cachedYaml
 		SavePageSummaryCache(surveyIDKey, meta.PageID, pageSummary)
 	}
 
-		// 步骤 4b：对开放题执行迭代验证（方案 A：强制，方案 C：失败返回 humans_pass=false）
-		// 解析 YAML 题型，防止因 AI 返回长文本而误判单选/多选题为开放题
-		yamlQuestionTypes := parseQuestionsTypeFromYaml(cachedYaml)
-		closedQuestionTypes := map[string]bool{
-			"single": true, "multi": true, "matrix_radio": true,
-			"matrix_checkbox": true, "dropdown": true, "ranking": true,
+	// 步骤 4b：对开放题执行迭代验证（方案 A：强制，方案 C：失败返回 humans_pass=false）
+	// 解析 YAML 题型，防止因 AI 返回长文本而误判单选/多选题为开放题
+	yamlQuestionTypes := parseQuestionsTypeFromYaml(cachedYaml)
+	closedQuestionTypes := map[string]bool{
+		"single": true, "multi": true, "matrix_radio": true,
+		"matrix_checkbox": true, "dropdown": true, "ranking": true,
+	}
+	openTextPrompts := loadOpenTextPrompts()
+	for i := range interactions {
+		yamlType := ""
+		if i < len(yamlQuestionTypes) {
+			yamlType = yamlQuestionTypes[i]
 		}
-		openTextPrompts := loadOpenTextPrompts()
-		for i := range interactions {
-			yamlType := ""
-			if i < len(yamlQuestionTypes) {
-				yamlType = yamlQuestionTypes[i]
-			}
 
-			// YAML 明确为封闭题型，跳过
-			if closedQuestionTypes[yamlType] {
-				continue
-			}
+		// YAML 明确为封闭题型，跳过
+		if closedQuestionTypes[yamlType] {
+			continue
+		}
 
-			// YAML 未解析/空 且 AI 也未返回 questionType → 题型不明，不进入开放题流程
-			if yamlType == "" && interactions[i].QuestionType == "" {
-				fmt.Printf("[OpenText] 跳过 question[%d] %q: YAML questions_type 占位符未解析且 AI 未返回 questionType，无法确定题型\n",
-					i+1, interactions[i].Subject)
-				continue
-			}
+		// YAML 未解析/空 且 AI 也未返回 questionType → 题型不明，不进入开放题流程
+		if yamlType == "" && interactions[i].QuestionType == "" {
+			fmt.Printf("[OpenText] 跳过 question[%d] %q: YAML questions_type 占位符未解析且 AI 未返回 questionType，无法确定题型\n",
+				i+1, interactions[i].Subject)
+			continue
+		}
 
-			if !IsOpenTextQuestion(interactions[i]) {
-				continue
-			}
-			fmt.Printf("[OpenText] 检测到开放题 [%d]: %s\n", i+1, interactions[i].Subject)
-			finalAnswer, humanPass, note, vErr := ValidateOpenTextAnswer(
-				interactions[i].Subject, surveyID, basePath, openTextPrompts, interactions[i].WordLimit,
-			)
+		if !IsOpenTextQuestion(interactions[i]) {
+			continue
+		}
+		fmt.Printf("[OpenText] 检测到开放题 [%d]: %s\n", i+1, interactions[i].Subject)
+		finalAnswer, humanPass, note, vErr := ValidateOpenTextAnswer(
+			interactions[i].Subject, surveyID, basePath, openTextPrompts, interactions[i].WordLimit,
+		)
 		if vErr != nil {
 			fmt.Printf("[OpenText] 验证失败，保留原始答案: %v\n", vErr)
 			pass := false
 			interactions[i].HumansPass = &pass
 			continue
 		}
-		interactions[i].ShowAnswer = finalAnswer
+		interactions[i].RecommendedAnswer = finalAnswer
 		interactions[i].HumansPass = &humanPass
 		interactions[i].PromptSuggestionNote = note
+	}
+
+	// 从 HTML 解析 questions 数组（AI 未返回时兜底）
+	htmlQuestions := BuildQuestionsFromHTML(cleanHTML, interactions)
+	// 优先使用 AI 返回的 questions（带真实 xpath），否则用 HTML 解析结果
+	questions := htmlQuestions
+	if len(aiQuestions) > 0 {
+		questions = ConvertAIQuestions(aiQuestions)
 	}
 
 	finalJson := buildFinalAnswerJson(
 		&YamlAnswerResult{
 			Interactions: interactions,
+			AIQuestions:  aiQuestions,
 			PageSummary:  pageSummary,
 		},
 		cachedYaml,
@@ -595,6 +639,7 @@ func GenerateRealtimeAnswerOnlyWithMeta(meta PageMetadata, cleanHTML, cachedYaml
 		surveyID,
 		meta.PageID,
 		cleanHTML,
+		questions,
 	)
 
 	jsonPath, err := saveRealtimeAnswersJson(basePath, surveyID, meta.PageID, finalJson)
@@ -606,10 +651,11 @@ func GenerateRealtimeAnswerOnlyWithMeta(meta PageMetadata, cleanHTML, cachedYaml
 	fmt.Println("[日志] 记录 Prompt 日志...")
 	writeAnswerPromptLog(basePath, surveyID, meta, personaSource, systemPrompt, userPrompt, aiResponse)
 
-	printRealtimeAnswerOnlyResult(meta, interactions, pageSummary, pageSettings, jsonPath)
+	printRealtimeAnswerOnlyResult(meta, interactions, questions, pageSummary, pageSettings, jsonPath)
 
 	return &RealtimeAnswerOnlyResult{
 		Interactions:  interactions,
+		Questions:     questions,
 		PageSummary:   pageSummary,
 		PageID:        meta.PageID,
 		PageSettings:  pageSettings,

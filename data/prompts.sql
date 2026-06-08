@@ -22,9 +22,11 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
 - 例如 HTML 为 "Boy aged 1 or younger"，禁止改为 "Under 1 year"
 - 例如 HTML 为 "Strongly agree"，禁止改为 "Agree strongly"
 
-【输出要求 — interactions 数组中每个元素只需以下两个字段】
+【输出要求 — interactions 数组中每个元素必须包含以下四个字段】
+- q_id: 题目序号（从 1 开始递增）
+- question_type: 题型名称（如 "single"）
 - subject: 题目原文（如 "What is your gender?"）
-- showAnswer: 选中的选项原文（如 "Female" 或 "4 - Likely"）
+- showAnswer: 选中的选项原文（如 "Female"）
 
 【推荐值生成规则】
 - showAnswer 禁止为空！禁止返回 null / 空字符串！
@@ -71,7 +73,11 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
 - showAnswer 必须返回字符串数组（建议 2-4 个选项），禁止返回 null / 空数组 / 空字符串！
 - 如果页面选项过少（如只有 0-1 个选项），仍需返回至少 1 个选项！
 
-【输出要求 — interactions 数组中每个元素只需以下两个字段】
+【输出要求 — interactions 数组中每个元素必须包含以下四个字段】
+- q_id: 题目序号（从 1 开始递增）
+- question_type: 题型名称
+- subject: 题目原文
+- showAnswer: 推荐答案
 - subject: 题目原文
 - showAnswer: 字符串数组（必须！不能为 null！），例如 ["Watched TV", "Visited a flea market"]
 
@@ -112,7 +118,11 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
 - showAnswer：必须使用选项列表中的原始文本，禁止改写
 - showAnswer 禁止为空，必须返回一个有效选项！
 
-【输出要求 — interactions 数组中每个元素只需以下两个字段】
+【输出要求 — interactions 数组中每个元素必须包含以下四个字段】
+- q_id: 题目序号（从 1 开始递增）
+- question_type: 题型名称
+- subject: 题目原文
+- showAnswer: 推荐答案
 - subject: 题目原文
 - showAnswer: 选中的选项原文（字符串）', '下拉选择题处理指令', 'survey_page:
   title: "<<<FROM_HTML:title>>>"
@@ -183,7 +193,11 @@ General student body political affiliation leans liberal.:
   Political engagement on campus.:
   ► Impacts my impression positively.       ← 正确！这是 column label
 
-【输出要求 — interactions 数组中每个元素只需以下两个字段】
+【输出要求 — interactions 数组中每个元素必须包含以下四个字段】
+- q_id: 题目序号（从 1 开始递增）
+- question_type: 题型名称
+- subject: 题目原文
+- showAnswer: 推荐答案
 - subject: 见上方方向规则
 - showAnswer: 选中的选项原文（必须是列标签，不是行标签！）
 
@@ -221,7 +235,11 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
 【强制约束 — 只记录选中的 checkbox，未选中的不记录】
 - 模拟随机选择 2-4 个选项，不要输出全部
 
-【输出要求 — interactions 数组中每个元素只需以下两个字段】
+【输出要求 — interactions 数组中每个元素必须包含以下四个字段】
+- q_id: 题目序号（从 1 开始递增）
+- question_type: 题型名称
+- subject: 题目原文
+- showAnswer: 推荐答案
 - subject: "{行文本}（{列文本}）"
 - showAnswer: 字符串数组，例如 ["Under 1 year", "2 years"]', '矩阵多选题处理指令', 'survey_page:
   title: "<<<FROM_HTML:title>>>"
@@ -426,7 +444,11 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
 - 即使是开放式问题，showAnswer 也必须有值！
 - 禁止返回 null / 空字符串！
 
-【输出要求 — interactions 数组中每个元素只需以下两个字段】
+【输出要求 — interactions 数组中每个元素必须包含以下四个字段】
+- q_id: 题目序号（从 1 开始递增）
+- question_type: 题型名称
+- subject: 题目原文
+- showAnswer: 推荐答案
 - subject: 题目原文
 - showAnswer: 根据上下文生成的合理文本（字符串）
 
@@ -608,7 +630,11 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
 - subject：必须使用 HTML 中的原始题目文本
 - showAnswer：必须使用 HTML 中的原始选项文本，禁止改写或意译
 
-【输出要求 — interactions 数组中每个元素只需以下两个字段】
+【输出要求 — interactions 数组中每个元素必须包含以下四个字段】
+- q_id: 题目序号（从 1 开始递增）
+- question_type: 题型名称
+- subject: 题目原文
+- showAnswer: 推荐答案
 - subject: 题目原文
 - showAnswer: 选中的量表选项原文（字符串或数字）', '卡片式量表/星级评分处理指令', 'survey_page:
   title: "<<<FROM_HTML:title>>>"
@@ -645,7 +671,11 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
 - showAnswer 必须返回字符串数组（数量由题目指定，通常 2-5 个）
 - 禁止返回 null / 空数组 / 空字符串！
 
-【输出要求 — interactions 数组中每个元素只需以下两个字段】
+【输出要求 — interactions 数组中每个元素必须包含以下四个字段】
+- q_id: 题目序号（从 1 开始递增）
+- question_type: 题型名称
+- subject: 题目原文
+- showAnswer: 推荐答案
 - subject: 题目原文
 - showAnswer: 字符串数组，例如 ["选项A", "选项B", "选项C"]
 - showAnswer 是字符串数组，格式为 ["选中项1", "选中项2", "选中项3"]
@@ -681,7 +711,11 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
 - subject：必须使用 HTML 中的原始题目文本，禁止改写
 - showAnswer：必须使用 HTML 中选项的原始文本，禁止改写或意译
 
-【输出要求 — interactions 数组中每个元素只需以下两个字段】
+【输出要求 — interactions 数组中每个元素必须包含以下四个字段】
+- q_id: 题目序号（从 1 开始递增）
+- question_type: 题型名称
+- subject: 题目原文
+- showAnswer: 推荐答案
 - subject: 题目原文
 - showAnswer: 排序后的选项文本数组（按排名顺序，1=最优先）
 - 格式：["第1名", "第2名", "第3名", "第4名"]，只输出 top N 项
@@ -716,7 +750,11 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
 - subject：必须使用 HTML 中的原始题目文本，禁止改写
 - showAnswer：必须使用选项列表中的原始文本，禁止改写
 
-【输出要求 — interactions 数组中每个元素只需以下两个字段】
+【输出要求 — interactions 数组中每个元素必须包含以下四个字段】
+- q_id: 题目序号（从 1 开始递增）
+- question_type: 题型名称
+- subject: 题目原文
+- showAnswer: 推荐答案
 - subject: 题目原文
 - showAnswer: 排序后的选项文本数组（按排名顺序）
 - 格式：["第1名", "第2名", "第3名"]，只输出选中的 top N 项
@@ -813,7 +851,11 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
 - subject：必须使用 HTML 中的原始卡片文本，禁止改写
 - showAnswer：必须使用 HTML 中的分类桶名称，禁止改写
 
-【输出要求 — interactions 数组中每个元素只需以下两个字段】
+【输出要求 — interactions 数组中每个元素必须包含以下四个字段】
+- q_id: 题目序号（从 1 开始递增）
+- question_type: 题型名称
+- subject: 题目原文
+- showAnswer: 推荐答案
 - subject: 卡片原文
 - showAnswer: 目标分类桶名称（字符串）', '拖拽分类题处理指令', 'survey_page:
   title: "<<<FROM_HTML:title>>>"
@@ -841,7 +883,11 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
 - subject：必须使用 HTML 中的原始卡片文本，禁止改写
 - showAnswer：必须使用选项列表中的原始分类名称，禁止改写
 
-【输出要求 — interactions 数组中每个元素只需以下两个字段】
+【输出要求 — interactions 数组中每个元素必须包含以下四个字段】
+- q_id: 题目序号（从 1 开始递增）
+- question_type: 题型名称
+- subject: 题目原文
+- showAnswer: 推荐答案
 - subject: 卡片原文
 - showAnswer: 选中的分类名称（字符串）', '下拉分类题处理指令', 'survey_page:
   title: "<<<FROM_HTML:title>>>"
@@ -937,7 +983,11 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
 - 同一交互组的多个题型 = 一个 interaction
 - 不要将不同题型拆分为多个 interaction
 
-【输出要求 — interactions 数组中每个元素只需以下两个字段】
+【输出要求 — interactions 数组中每个元素必须包含以下四个字段】
+- q_id: 题目序号（从 1 开始递增）
+- question_type: 题型名称
+- subject: 题目原文
+- showAnswer: 推荐答案
 - subject: 题目原文
 - showAnswer: 字符串或字符串数组（根据题型决定）
 
@@ -971,7 +1021,11 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
 【强制约束 — 禁止凭空捏造！】
 - showAnswer 必须是 HTML 中存在的值！
 
-【输出要求 — interactions 数组中每个元素只需以下两个字段】
+【输出要求 — interactions 数组中每个元素必须包含以下四个字段】
+- q_id: 题目序号（从 1 开始递增）
+- question_type: 题型名称
+- subject: 题目原文
+- showAnswer: 推荐答案
 - subject: 题目原文
 - showAnswer: 根据元素类型推断的合理答案
 
@@ -1216,8 +1270,14 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
     },
     "interactions": [
       {
+        "question_type": "1",
         "subject": "题目文本（矩阵题：\"行文本（列文本）\"）",
-        "showAnswer": "推荐答案文本"
+        "recommended_answer": "推荐答案文本"
+      },
+      {
+        "question_type": "2",
+        "subject": "What is your age?",
+        "recommended_answer": "35"
       }
     ],
     "nav_buttons": {
@@ -1244,12 +1304,14 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
 }
 
 【重要约束】
-1. interactions 中只需返回 subject 和 showAnswer 两个字段，无需其他字段
-2. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
-3. original_question_type 列出页面上所有题目的原文、题型和选项列表
-4. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
-5. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
-6. 禁止返回任何非 JSON 文字
+1. interactions 中每个元素必须返回 q_id、question_type、subject、showAnswer 四个字段
+2. q_id：题目序号，从 1 开始递增
+3. question_type：题型，如 single/multi/number/date 等
+4. showAnswer 格式：单选/矩阵为字符串，多选为字符串数组
+5. original_question_type 列出页面上所有题目的原文、题型和选项列表
+6. 矩阵题的 options 为列选项（如 ["Very Dissatisfied","Dissatisfied","Neutral","Satisfied","Very Satisfied"]）
+7. recommended_value_numeric / xpath_sources / fix_log 不需要返回（后端自动计算）
+8. 禁止返回任何非 JSON 文字
  ', '最终JSON输出格式规范', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
 INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "content", "description", "yaml_template", "version", "is_active", "created_at", "updated_at") VALUES (181, 'yaml_structure.system', 'yaml_structure', NULL, '你是一个问卷结构解析助手。我会给你一段海外调查问卷的 HTML 源码文件。
 
@@ -1334,7 +1396,7 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
 你的职责：
 - 理解题目语义和选项
 - 结合人设信息生成符合该身份的回答
-- 确保 showAnswer 必须是 HTML 中存在的选项
+- 确保 recommended_answer 必须是 HTML 中存在的选项
 - 禁止凭空捏造选项
 - 禁止输出 YAML 结构，只输出推荐答案
 
@@ -1346,9 +1408,10 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
 **输出格式必须是合法的 JSON**：
 {
   "interactions": [
-    {"questionType": "matrix_radio", "subject": "ABC（Never）", "showAnswer": "Never"}
+    {"question_type": "1", "subject": "What is your gender?", "recommended_answer": "Female"},
+    {"question_type": "2", "subject": "What is your age?", "recommended_answer": "35"}
   ],
-  "page_summary": "This page surveys TV watching habits."
+  "page_summary": "This page asks demographic questions."
 }', 'YAML答案推荐：系统提示词（ANSWER_SYSTEM_PROMPT）', NULL, 1, 1, '2026-05-27 14:38:44', '2026-05-27 14:38:44');
 INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "content", "description", "yaml_template", "version", "is_active", "created_at", "updated_at") VALUES (184, 'yaml_structure.answer_user_prefix', 'yaml_structure', NULL, '---
 
@@ -1388,12 +1451,17 @@ INSERT INTO "prompts" ("id", "prompt_key", "prompt_type", "question_type", "cont
 {
   "interactions": [
     {
-      "questionType": "<<<FROM_HTML:q1_type>>>",
-      "subject": "<<<FROM_HTML:q1_row1>>>（<<<FROM_HTML:q1_col1>>>）",
-      "showAnswer": "<<<FROM_HTML:q1_col1>>>"
+      "question_type": "1",
+      "subject": "What is your gender?",
+      "recommended_answer": "Female"
+    },
+    {
+      "question_type": "2",
+      "subject": "What is your age?",
+      "recommended_answer": "35"
     }
   ],
-  "page_summary": "<<<FROM_HTML:page_summary>>>"
+  "page_summary": "This page asks demographic questions."
 }
 
 **【重要约束】**

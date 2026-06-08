@@ -27,18 +27,20 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
 	"survey.cli/core/cleaner"
 	"survey.cli/core/database"
+	"survey.cli/core/simulator"
 )
 
 // =============================================================================
 // 1. 类型定义
 // =============================================================================
 
-// PageSettings 页面按钮/类型设置
+// Interaction 和 WordLimit 已在 yaml_answer.go 中通过 models 定义别名
 type PageSettings struct {
 	HasNextButton     bool `json:"has_next_button"`
 	HasSubmitButton   bool `json:"has_submit_button"`
@@ -72,17 +74,36 @@ type PageMetadataOutput struct {
 
 // InteractionItem interactions 项
 type InteractionItem struct {
-	QuestionType         string      `json:"question_type"`
-	Subject              string      `json:"subject"`
-	RecommendedAnswers   interface{} `json:"recommended_answers"`           // string or []string
-	HumansPass           *bool       `json:"humans_pass,omitempty"`         // nil=未验证，true/false=验证结果
+	QuestionID           string      `json:"question_id"` // "q1", "q2"...
+	QuestionType         string      `json:"question_type,omitempty"`
+	Subject             string      `json:"subject"`
+	RecommendedAnswers interface{} `json:"recommended_answers"`              // string or []string
+	HumansPass          *bool       `json:"humans_pass,omitempty"`           // nil=未验证，true/false=验证结果
 	PromptSuggestionNote string      `json:"prompt_suggestion_note,omitempty"` // ai_score>40 时的改进建议
 }
+
+// QuestionOption 单个选项（XPath 配置下发方案）
+type QuestionOption struct {
+	OptID int    `json:"opt_id"`                // 1, 2, 3...
+	Value string `json:"value,omitempty"`        // 表单值
+	XPath string `json:"xpath"`                 // "//input[@id='xxx']"
+}
+
+// QuestionItem questions 数组的单个题目（XPath 配置下发方案）
+type QuestionItem struct {
+	QuestionID   string           `json:"question_id"` // "q1"
+	QuestionType string           `json:"question_type"` // "single" / "multi" / "text" / ...
+	Options      []QuestionOption `json:"options"` // 无选项时（如 text 题）为空数组
+}
+
+// QuestionsOutput questions 数组
+type QuestionsOutput []QuestionItem
 
 // DataOutput data 输出
 type DataOutput struct {
 	PageMetadata PageMetadataOutput `json:"page_metadata"`
 	Interactions []InteractionItem  `json:"interactions"`
+	Questions    QuestionsOutput    `json:"questions,omitempty"`
 	NavButtons   NavButtonsOutput   `json:"nav_buttons"`
 	PageSummary  string             `json:"page_summary"`
 }
@@ -178,6 +199,93 @@ func parseQuestionsTypeFromYaml(yamlData string) []string {
 	return types
 }
 
+// ConvertAIQuestions 将 AI 返回的 questions（含真实 xpath）转换为 QuestionsOutput
+func ConvertAIQuestions(aiQuestions []AIQuestionsResponseItem) QuestionsOutput {
+	if len(aiQuestions) == 0 {
+		return nil
+	}
+	questions := make(QuestionsOutput, 0, len(aiQuestions))
+	for _, aq := range aiQuestions {
+		var options []QuestionOption
+		if len(aq.Options) > 0 {
+			options = make([]QuestionOption, 0, len(aq.Options))
+			for _, opt := range aq.Options {
+				options = append(options, QuestionOption{
+					OptID: opt.OptID,
+					Value: opt.Value,
+					XPath: opt.XPath,
+				})
+			}
+		}
+		questions = append(questions, QuestionItem{
+			QuestionID:   aq.QuestionID,
+			QuestionType: aq.QuestionType,
+			Options:      options,
+		})
+	}
+	return questions
+}
+
+// BuildQuestionsFromHTML 从原始 HTML 解析 questions 数组
+// @param rawHTML        原始 HTML（未清洗）
+// @param interactions   AI 返回的推荐答案列表（用于确定题型和数量）
+// @returns              QuestionsOutput
+func BuildQuestionsFromHTML(rawHTML string, interactions []Interaction) QuestionsOutput {
+	if rawHTML == "" {
+		return nil
+	}
+	parser := simulator.NewHTMLOptionParser(rawHTML)
+	simQuestions := parser.ParseQuestions(interactions)
+	if len(simQuestions) == 0 {
+		return nil
+	}
+
+	questions := make(QuestionsOutput, 0, len(simQuestions))
+	for i, sq := range simQuestions {
+		qID := "q" + strconv.Itoa(i+1)
+		optPrefix := simulator.GetOptIDPrefix(qID) // q1→10, q2→20...
+
+		var options []QuestionOption
+		if len(sq.Options) > 0 {
+			options = make([]QuestionOption, 0, len(sq.Options))
+			for j, opt := range sq.Options {
+				// opt_id 使用前缀格式：q1→11,12,13... / q2→21,22,23...
+				optID := optPrefix + j + 1
+				options = append(options, QuestionOption{
+					OptID: optID,
+					Value: opt.Value,
+					XPath: opt.XPath,
+				})
+			}
+		}
+
+		questions = append(questions, QuestionItem{
+			QuestionID:   qID,
+			QuestionType: sq.QuestionType,
+			Options:      options,
+		})
+	}
+	return questions
+}
+
+// cssSelectorForType 根据题型返回对应的 CSS selector
+func cssSelectorForType(qType string) string {
+	switch qType {
+	case "single", "dropdown":
+		return "input[type='radio']"
+	case "multi":
+		return "input[type='checkbox']"
+	case "matrix_radio":
+		return "table[type='matrix'] input[type='radio']"
+	case "matrix_checkbox":
+		return "table[type='matrix'] input[type='checkbox']"
+	case "text", "number", "open_text", "open_end":
+		return "input[type='text'], input[type='number'], textarea"
+	default:
+		return "input[type='text']"
+	}
+}
+
 // buildFinalAnswerJson 构建最终 JSON 输出
 //
 // @param answerResult  AI 生成的结果
@@ -186,11 +294,11 @@ func parseQuestionsTypeFromYaml(yamlData string) []string {
 // @param surveyID      问卷 ID
 // @param pageID        页面 ID（由调用方直接传入）
 // @param cleanHTML     清洗后的 HTML
+// @param questions     questions 数组（从 HTML 解析）
 // @returns             FinalAnswerJson
-func buildFinalAnswerJson(answerResult *YamlAnswerResult, yamlData string, pageSettings PageSettings, surveyID string, pageID string, cleanHTML string) FinalAnswerJson {
+func buildFinalAnswerJson(answerResult *YamlAnswerResult, yamlData string, pageSettings PageSettings, surveyID string, pageID string, cleanHTML string, questions QuestionsOutput) FinalAnswerJson {
 	isMatrixPage := detectIsMatrixPage(yamlData)
-	yamlQuestionTypes := parseQuestionsTypeFromYaml(yamlData)
-	interactions := buildInteractions(answerResult.Interactions, yamlQuestionTypes)
+	interactions := buildInteractions(answerResult.Interactions)
 	navButtons := buildNavButtons(pageSettings, surveyID, cleanHTML)
 
 	return FinalAnswerJson{
@@ -203,6 +311,7 @@ func buildFinalAnswerJson(answerResult *YamlAnswerResult, yamlData string, pageS
 				IsThankYouPage:  pageSettings.IsThankYouPage,
 			},
 			Interactions: interactions,
+			Questions:    questions,
 			NavButtons:   navButtons,
 			PageSummary:  answerResult.PageSummary,
 		},
@@ -221,23 +330,24 @@ func detectIsMatrixPage(yamlData string) bool {
 }
 
 // buildInteractions 将 []Interaction 转换为 []InteractionItem
-// yamlTypes 为从 YAML 模板解析出的题型列表，当 AI 未返回 question_type 时作为回退值
-func buildInteractions(answers []Interaction, yamlTypes []string) []InteractionItem {
+// AI 返回 question_id 格式为 q1, q2...（与 questions 数组保持一致）
+func buildInteractions(answers []Interaction) []InteractionItem {
 	result := make([]InteractionItem, 0, len(answers))
 
-	for i, ans := range answers {
-		qt := ans.QuestionType
-		if qt == "" && i < len(yamlTypes) && yamlTypes[i] != "" {
-			qt = yamlTypes[i]
+	for _, ans := range answers {
+		qid := ans.QID.Value
+		if qid == "" {
+			qid = "q0"
 		}
 		item := InteractionItem{
-			QuestionType:         qt,
-			Subject:              cleaner.CleanPageID(ans.Subject),
-			HumansPass:           ans.HumansPass,
+			QuestionID:           qid,
+			QuestionType:         ans.QuestionType,
+			Subject:             cleaner.CleanPageID(ans.Subject),
+			HumansPass:          ans.HumansPass,
 			PromptSuggestionNote: ans.PromptSuggestionNote,
 		}
 
-		switch v := ans.ShowAnswer.(type) {
+		switch v := ans.RecommendedAnswer.(type) {
 		case string:
 			item.RecommendedAnswers = v
 		case []interface{}:

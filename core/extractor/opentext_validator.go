@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"survey.cli/core/database"
+	"survey.cli/core/models"
 )
 
 // =============================================================================
@@ -29,11 +30,8 @@ const (
 // 数据结构
 // =============================================================================
 
-// WordLimit 字数限制结构（从 YAML 或页面文本解析）
-type WordLimit struct {
-	Min int // 0 = 无下限
-	Max int // 0 = 无上限
-}
+// WordLimit 从 models 包导入（类型别名）
+type WordLimit = models.WordLimit
 
 // buildLengthRule 根据 min/max 生成 <<<LENGTH_RULE>>> 替换文本
 //
@@ -69,17 +67,25 @@ func extractShowAnswer(rawJSON string) (answer string, raw string) {
 	}
 	cleaned := stripMarkdownFence(rawJSON)
 	var wrapper struct {
-		ShowAnswer interface{} `json:"showAnswer"`
+		ShowAnswer    interface{} `json:"showAnswer"`     // 旧版兼容
+		RecAnswer     interface{} `json:"recommended_answer"` // 新版
 	}
-	if err := json.Unmarshal([]byte(cleaned), &wrapper); err == nil && wrapper.ShowAnswer != nil {
-		switch v := wrapper.ShowAnswer.(type) {
-		case string:
-			return strings.TrimSpace(v), cleaned
-		case []interface{}:
-			// 多选项时取第一个
-			if len(v) > 0 {
-				if s, ok := v[0].(string); ok {
-					return strings.TrimSpace(s), cleaned
+	if err := json.Unmarshal([]byte(cleaned), &wrapper); err == nil {
+		var rawAns interface{}
+		if wrapper.RecAnswer != nil {
+			rawAns = wrapper.RecAnswer
+		} else if wrapper.ShowAnswer != nil {
+			rawAns = wrapper.ShowAnswer
+		}
+		if rawAns != nil {
+			switch v := rawAns.(type) {
+			case string:
+				return strings.TrimSpace(v), cleaned
+			case []interface{}:
+				if len(v) > 0 {
+					if s, ok := v[0].(string); ok {
+						return strings.TrimSpace(s), cleaned
+					}
 				}
 			}
 		}
@@ -90,6 +96,13 @@ func extractShowAnswer(rawJSON string) (answer string, raw string) {
 	}
 	if err := json.Unmarshal([]byte(cleaned), &simple); err == nil && simple.ShowAnswer != "" {
 		return strings.TrimSpace(simple.ShowAnswer), cleaned
+	}
+	// 兜底2：直接尝试解析 recommended_answer
+	var simple2 struct {
+		RecAnswer string `json:"recommended_answer"`
+	}
+	if err := json.Unmarshal([]byte(cleaned), &simple2); err == nil && simple2.RecAnswer != "" {
+		return strings.TrimSpace(simple2.RecAnswer), cleaned
 	}
 	return "", cleaned
 }
