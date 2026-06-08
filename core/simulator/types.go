@@ -17,6 +17,13 @@ type SimOption struct {
 	XPath string // 元素 XPath（用于前端点击定位）
 }
 
+// StructuredQuestion AI 已解析的题目结构（option label+xpath 已填充）
+// 用于跳过 HTML 重解析，直接构建 SimQuestion
+type StructuredQuestion struct {
+	QuestionType string
+	Options      []SimOption
+}
+
 // SimQuestion 单题
 type SimQuestion struct {
 	Index            int           // 题号（1-based）

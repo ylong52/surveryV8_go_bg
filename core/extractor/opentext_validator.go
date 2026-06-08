@@ -229,10 +229,20 @@ func loadOpenTextPrompts() *OpenTextPrompts {
 
 // IsOpenTextQuestion 判断 Interaction 是否为需要人工化验证的开放题
 //
-// 仅依赖 QuestionType 字段（含 "open" 即视为开放题）。
-// 调用方需保证 QuestionType 已明确设置，不在此做类型推断。
+// 判断规则：
+//   - QuestionType 含 "open"（open_text / open_end）才触发验证
+//   - text / number / email / phone / date 等短格式输入题即使含 open 也不触发
 func IsOpenTextQuestion(interaction Interaction) bool {
-	return strings.Contains(strings.ToLower(interaction.QuestionType), "open")
+	qt := strings.ToLower(interaction.QuestionType)
+	// 短格式输入题白名单 — 绝不走 essay 验证
+	shortTypes := map[string]bool{
+		"text": true, "number": true, "email": true, "phone": true,
+		"date": true, "time": true, "zip": true, "postal": true,
+	}
+	if shortTypes[qt] {
+		return false
+	}
+	return strings.Contains(qt, "open")
 }
 
 // =============================================================================

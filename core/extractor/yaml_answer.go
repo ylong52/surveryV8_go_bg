@@ -47,16 +47,18 @@ type YamlAnswerResult struct {
 // =============================================================================
 
 // AIQuestionsResponseItem 单个题目的 AI 返回格式（对应 AI 输出的 questions 数组项）
+// question_id 为整数（1, 2, 3...），opt_id 为 question_id*10+序号（11,12 / 21,22...）
 type AIQuestionsResponseItem struct {
-	QuestionID   string             `json:"question_id"`
+	QuestionID   int                `json:"question_id"`
 	QuestionType string             `json:"question_type"`
 	Options     []AIQuestionOption `json:"options,omitempty"`
 }
 
 // AIQuestionOption 单个选项的 AI 返回格式
+// opt_id: question_id*10+序号（11,12...）；label: 可见选项文本；xpath: 定位路径
 type AIQuestionOption struct {
 	OptID int    `json:"opt_id"`
-	Value string `json:"value,omitempty"`
+	Label string `json:"label,omitempty"`
 	XPath string `json:"xpath"`
 }
 
@@ -547,7 +549,12 @@ func GenerateRealtimeAnswerOnlyWithMeta(meta PageMetadata, cleanHTML, cachedYaml
 	}
 	fmt.Printf("[人设加载] 完成，有效人设长度: %d 字符\n", len(effectivePersona))
 
-	surveyIDKey := strconv.FormatInt(surveyIDInt, 10)
+	// 缓存 key 优先用字符串 surveyID，防止 surveyIDInt=0 时所有测试共享同一个 "0" 键互相污染
+	// 生产环境 surveyIDInt > 0 时仍用数字 key，与旧数据兼容
+	surveyIDKey := surveyID
+	if surveyIDInt > 0 {
+		surveyIDKey = strconv.FormatInt(surveyIDInt, 10)
+	}
 	answerContext := GetPageSummaryContext(surveyIDKey, meta.PageID)
 
 	// 组装系统提示词（DB 驱动，按 detectedTypes 过滤 qtype.* 块）
@@ -579,9 +586,14 @@ func GenerateRealtimeAnswerOnlyWithMeta(meta PageMetadata, cleanHTML, cachedYaml
 	// 步骤 4b：对开放题执行迭代验证（方案 A：强制，方案 C：失败返回 humans_pass=false）
 	// 解析 YAML 题型，防止因 AI 返回长文本而误判单选/多选题为开放题
 	yamlQuestionTypes := parseQuestionsTypeFromYaml(cachedYaml)
+	// text/number 是短格式输入题，multiple/multi_select 是多选，都不需要 essay 验证
 	closedQuestionTypes := map[string]bool{
-		"single": true, "multi": true, "matrix_radio": true,
-		"matrix_checkbox": true, "dropdown": true, "ranking": true,
+		"single": true, "multi": true, "multiple": true, "multi_select": true,
+		"matrix_radio": true, "matrix_checkbox": true,
+		"dropdown": true, "select": true, "ranking": true,
+		"ranking_drag": true, "ranking_select": true,
+		"text": true, "number": true, "email": true, "phone": true,
+		"date": true, "time": true, "slider": true, "nps": true,
 	}
 	openTextPrompts := loadOpenTextPrompts()
 	for i := range interactions {
@@ -622,10 +634,10 @@ func GenerateRealtimeAnswerOnlyWithMeta(meta PageMetadata, cleanHTML, cachedYaml
 
 	// 从 HTML 解析 questions 数组（AI 未返回时兜底）
 	htmlQuestions := BuildQuestionsFromHTML(cleanHTML, interactions)
-	// 优先使用 AI 返回的 questions（带真实 xpath），否则用 HTML 解析结果
+	// 优先使用 AI 返回的 questions（带真实 xpath），并用 HTML 结果补齐 label / opt_id / xpath
 	questions := htmlQuestions
 	if len(aiQuestions) > 0 {
-		questions = ConvertAIQuestions(aiQuestions)
+		questions = ConvertAIQuestions(aiQuestions, htmlQuestions)
 	}
 
 	finalJson := buildFinalAnswerJson(

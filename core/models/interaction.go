@@ -1,6 +1,9 @@
 package models
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 // QID 题目序号，支持从 JSON 整数或字符串反序列化
 type QID struct {
@@ -13,10 +16,10 @@ func (q *QID) UnmarshalJSON(data []byte) error {
 		// 字符串格式：直接去掉引号
 		s = s[1 : len(s)-1]
 	} else {
-		// 整数格式：转为字符串（q1, q2...）
-		// 支持 1-9 范围
-		if len(data) == 1 && data[0] >= '1' && data[0] <= '9' {
-			s = fmt.Sprintf("q%d", int(data[0]-'0'))
+		// 整数格式：任意正整数转为 q{n}
+		n, err := strconv.Atoi(string(data))
+		if err == nil && n > 0 {
+			s = fmt.Sprintf("q%d", n)
 		} else {
 			s = string(data)
 		}

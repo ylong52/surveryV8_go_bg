@@ -3,3 +3,7 @@
 /*.exe
 /ws_server/*.exe
 /tests/*.exe
+/logs/
+/page_summary_cache/
+**/__pycache__/
+*.pyc

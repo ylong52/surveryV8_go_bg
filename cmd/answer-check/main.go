@@ -109,6 +109,12 @@ func main() {
 		fmt.Fprintf(os.Stderr, "读取文件失败: %v\n", err)
 		os.Exit(1)
 	}
+	if len(strings.TrimSpace(string(rawHTML))) < 50 {
+		fmt.Fprintf(os.Stderr, "错误: 文件内容为空或过短（%d 字节），无法解析题目。\n", len(rawHTML))
+		fmt.Fprintf(os.Stderr, "  文件路径: %s\n", *htmlPath)
+		fmt.Fprintf(os.Stderr, "  请检查 HTML 是否已正确保存（部分平台页面由 JS 动态渲染，需等待加载完成后再保存）。\n")
+		os.Exit(1)
+	}
 
 	// ── 清洗 HTML + 提取 PageID ──
 	cleanHTML := cleaner.StripForDirectSurvey(string(rawHTML))
@@ -160,7 +166,23 @@ func main() {
 	// ── 从 HTML 解析选项列表 ──
 	fmt.Printf("[2/4] 解析选项列表...\n")
 	htmlParser := simulator.NewHTMLOptionParser(string(rawHTML))
-	questions := htmlParser.ParseQuestions(aiResult.Interactions)
+
+	var questions []simulator.SimQuestion
+	if len(aiResult.Questions) > 0 && len(aiResult.Questions) == len(aiResult.Interactions) {
+		// AI 已返回完整 questions（含 label+xpath），直接转换，跳过 HTML 重解析
+		// 适用于 matrix_radio / cardsort 等 HTML 无法正确拆分的复杂题型
+		structured := make([]simulator.StructuredQuestion, len(aiResult.Questions))
+		for i, q := range aiResult.Questions {
+			opts := make([]simulator.SimOption, len(q.Options))
+			for j, opt := range q.Options {
+				opts[j] = simulator.SimOption{Index: j + 1, Label: opt.Label, XPath: opt.XPath}
+			}
+			structured[i] = simulator.StructuredQuestion{QuestionType: q.QuestionType, Options: opts}
+		}
+		questions = htmlParser.ParseQuestionsFromStructured(aiResult.Interactions, structured)
+	} else {
+		questions = htmlParser.ParseQuestions(aiResult.Interactions)
+	}
 
 	// ── 启动交互式答题 ──
 	fmt.Printf("[3/4] 启动交互式答题...\n\n")

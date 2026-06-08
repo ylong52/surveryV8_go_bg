@@ -87,6 +87,62 @@ func (p *HTMLOptionParser) ParseQuestions(interactions []models.Interaction) []S
 	return questions
 }
 
+// ParseQuestionsFromStructured 用 AI 已解析结构构建 SimQuestions（跳过 HTML 重解析）
+//
+// 适用场景：AI 已返回完整的 questions（matrix_radio / cardsort 等复杂题型），
+// HTML 解析无法正确拆分多行时，直接用 AI 结果。
+//
+// @param interactions  AI 推荐答案列表（subject + recommended answer）
+// @param structured    AI 已解析的题目结构（question_type + options with label/xpath）
+// @returns             []SimQuestion
+func (p *HTMLOptionParser) ParseQuestionsFromStructured(interactions []models.Interaction, structured []StructuredQuestion) []SimQuestion {
+	questions := make([]SimQuestion, 0, len(interactions))
+
+	for i, interaction := range interactions {
+		var sq StructuredQuestion
+		if i < len(structured) {
+			sq = structured[i]
+		}
+
+		qType := p.normalizeQuestionType(sq.QuestionType)
+		if qType == "unknown" && interaction.QuestionType != "" {
+			qType = p.normalizeQuestionType(interaction.QuestionType)
+		}
+		if qType == "unknown" {
+			qType = "text"
+		}
+		// 兜底：有选项但 type 仍是 text/unknown，从 HTML 推断真实类型
+		if len(sq.Options) > 0 && (qType == "text" || qType == "unknown") {
+			block := p.extractQuestionBlock(i)
+			inferred := p.inferQuestionTypeFromBlock(block)
+			if inferred != "unknown" {
+				qType = inferred
+			} else {
+				qType = "single" // 有选项默认单选
+			}
+		}
+
+		q := SimQuestion{
+			Index:        i + 1,
+			QuestionType: qType,
+			Subject:      interaction.Subject,
+			Options:      sq.Options,
+		}
+
+		recommendedAnswer := interaction.RecommendedAnswer
+		if recommendedAnswer == nil {
+			recommendedAnswer = interaction.ShowAnswer
+		}
+		q.RecommendedIndex = p.mapRecommendedAnswer(&q, recommendedAnswer)
+
+		fmt.Printf("[DEBUG ParseQuestionsFromStructured] qIndex=%d, qType=%q, subject=%q, options=%d, rec=%v\n",
+			i, qType, interaction.Subject, len(sq.Options), q.RecommendedIndex)
+
+		questions = append(questions, q)
+	}
+	return questions
+}
+
 // parseOptionsForBlock 解析单个问题块的选项
 func (p *HTMLOptionParser) parseOptionsForBlock(block string, qType string) []SimOption {
 	switch qType {
@@ -139,38 +195,86 @@ func (p *HTMLOptionParser) parseInputOptions(block string, inputType string) []S
 }
 
 // extractLabelForInput 提取 input 对应的 label 文本
+//
+// 优先级：
+//   1. <label for="input_id">  → 精确匹配
+//   2. <label> 包裹 input      → 父元素
+//   3. <label> 紧邻 input     → 兄弟元素
+//   4. <span> 在 input 附近    → 兜底
 func (p *HTMLOptionParser) extractLabelForInput(block, inputTag string, inputStart, inputEnd int) string {
-	// 1. 从 input 的 id 属性查找 for
+	// 1. 从 input 的 id 属性查找 for（(?s) 使 . 匹配换行，支持多行 label 内容）
 	inputID := p.extractAttr(inputTag, "id")
 	if inputID != "" {
 		labelRe := regexp.MustCompile(
-			`(?i)<label[^>]*for=["']?` + regexp.QuoteMeta(inputID) + `["']?[^>]*>(.*?)</label>`,
+			`(?is)<label[^>]*for=["']?` + regexp.QuoteMeta(inputID) + `["']?[^>]*>([\s\S]*?)</label>`,
 		)
 		if match := labelRe.FindStringSubmatch(block); len(match) >= 2 {
 			return p.extractTextFromLabel(match[1])
 		}
 	}
 
-	// 2. 在 input 周围查找最近的 label
-	searchStart := inputStart - 500
+	// 2. 搜索范围：严格限制在当前 input 所在容器的附近
+	// 避免跨越到其他选项的 label
+	searchStart := inputStart - 300
 	if searchStart < 0 {
 		searchStart = 0
 	}
-	searchEnd := inputEnd + 500
+	searchEnd := inputEnd + 300
 	if searchEnd > len(block) {
 		searchEnd = len(block)
 	}
 	nearBlock := block[searchStart:searchEnd]
 
-	labelRe := regexp.MustCompile(`(?i)<label[^>]*>(.*?)</label>`)
-	if match := labelRe.FindStringSubmatch(nearBlock); len(match) >= 2 {
-		return p.extractTextFromLabel(match[1])
+	// 3. 尝试找包裹 input 的 <label>（支持多行内容）
+	wrapperRe := regexp.MustCompile(`(?is)<label[^>]*>([\s\S]*?)</label>`)
+	if wrapperMatches := wrapperRe.FindAllStringSubmatchIndex(nearBlock, -1); len(wrapperMatches) > 0 {
+		for _, m := range wrapperMatches {
+			if len(m) >= 4 {
+				labelStart, labelEnd := m[2], m[3]
+				// 检查 label 内容是否包含当前 input 的位置
+				if labelStart <= inputStart && labelEnd >= inputEnd {
+					labelContent := nearBlock[labelStart:labelEnd]
+					// 检查 label 内是否包含这个 input
+					if strings.Contains(labelContent, inputTag) {
+						return p.extractTextFromLabel(labelContent)
+					}
+				}
+			}
+		}
 	}
 
-	// 3. 提取 <span>text</span> 或纯文本
-	spanRe := regexp.MustCompile(`(?i)<span[^>]*>(.*?)</span>`)
+	// 4. 找紧邻 input 之前的 <label> 兄弟元素
+	prevLabelRe := regexp.MustCompile(`(?i)</label>\s*<input[^>]*>`)
+	prevLabelMatches := prevLabelRe.FindAllStringSubmatchIndex(nearBlock, -1)
+	for _, m := range prevLabelMatches {
+		if len(m) >= 4 && m[0] <= inputStart && m[1] <= inputStart+10 {
+			// 找到了 label 结束到 input 开始之间距离很近的
+			// 提取这个 label
+			searchArea := nearBlock[:m[1]]
+			labelFindRe := regexp.MustCompile(`(?i)<label[^>]*>(.*?)</label>`)
+			if lastMatch := labelFindRe.FindAllStringSubmatchIndex(searchArea, -1); len(lastMatch) > 0 {
+				last := lastMatch[len(lastMatch)-1]
+				if len(last) >= 4 {
+					labelContent := searchArea[last[2]:last[3]]
+					return p.extractTextFromLabel(labelContent)
+				}
+			}
+		}
+	}
+
+	// 5. 兜底：在更窄范围找 <span> 或文本
+	spanRe := regexp.MustCompile(`(?i)<span[^>]*class=["']?[^"']*choice[^"']*["'][^>]*>(.*?)</span>`)
 	if match := spanRe.FindStringSubmatch(nearBlock); len(match) >= 2 {
 		return strings.TrimSpace(match[1])
+	}
+
+	// 6. 最终兜底：找任何 <span>
+	spanRe2 := regexp.MustCompile(`(?i)<span[^>]*>(.*?)</span>`)
+	if match := spanRe2.FindStringSubmatch(nearBlock); len(match) >= 2 {
+		text := p.extractTextFromLabel(match[1])
+		if text != "" {
+			return text
+		}
 	}
 
 	return ""
@@ -308,7 +412,7 @@ func (p *HTMLOptionParser) normalizeQuestionType(qType string) string {
 	switch strings.ToLower(qType) {
 	case "single", "single_choice", "radio":
 		return "single"
-	case "multi", "multi_choice", "checkbox":
+	case "multi", "multi_choice", "checkbox", "multiple", "multi_select":
 		return "multi"
 	case "text", "open", "textarea", "number", "input":
 		return "text"
@@ -318,7 +422,7 @@ func (p *HTMLOptionParser) normalizeQuestionType(qType string) string {
 		return "matrix_checkbox"
 	case "dropdown", "select":
 		return "dropdown"
-	case "ranking":
+	case "ranking", "ranking_drag", "ranking_select":
 		return "ranking"
 	default:
 		return "unknown"
@@ -327,8 +431,12 @@ func (p *HTMLOptionParser) normalizeQuestionType(qType string) string {
 
 // mapRecommendedAnswer 将 AI 推荐答案映射到选项索引
 func (p *HTMLOptionParser) mapRecommendedAnswer(q *SimQuestion, recommended interface{}) interface{} {
-	if recommended == nil || len(q.Options) == 0 {
+	if recommended == nil {
 		return nil
+	}
+	// 文字题（无选项）直接透传推荐文本
+	if len(q.Options) == 0 {
+		return recommended
 	}
 
 	switch v := recommended.(type) {

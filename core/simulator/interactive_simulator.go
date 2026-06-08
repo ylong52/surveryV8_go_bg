@@ -87,7 +87,8 @@ func (s *InteractiveSimulator) printAll() {
 		fmt.Printf("[题目 %d/%d] %s\n", i+1, total, q.Subject)
 		fmt.Printf("  类型: %s\n", questionTypeCN(q.QuestionType))
 
-		if len(q.Options) > 0 {
+		// 单选/矩阵单选：在此直接打印选项；多选题由 handleMultiChoice→printMultiSelections 打印
+		if len(q.Options) > 0 && q.QuestionType != "multi" && q.QuestionType != "matrix_checkbox" {
 			fmt.Println("  ─────────────────────")
 			for j, opt := range q.Options {
 				optID := optPrefix + j + 1
@@ -169,21 +170,45 @@ func (s *InteractiveSimulator) handleMultiChoice(qIndex int, q SimQuestion, optP
 	s.currentMultiSelections = []int{}
 	s.isMultiMode = true
 
-	// 显示当前选中状态
-	s.printMultiSelections(q, optPrefix)
+	// 收集推荐 opt_id 列表（RecommendedIndex 为 []int，元素为 1-based 选项位置）
+	var recOptIDs []int
+	if q.RecommendedIndex != nil {
+		if idxs, ok := q.RecommendedIndex.([]int); ok {
+			for _, idx := range idxs {
+				if idx >= 1 && idx <= len(q.Options) {
+					recOptIDs = append(recOptIDs, optPrefix+idx)
+				}
+			}
+		}
+	}
+	if len(recOptIDs) > 0 {
+		parts := make([]string, len(recOptIDs))
+		for i, id := range recOptIDs {
+			parts[i] = strconv.Itoa(id)
+		}
+		fmt.Printf("  推荐答案: %s\n", strings.Join(parts, ", "))
+	}
 
 	for {
 		if len(s.currentMultiSelections) > 0 {
-			fmt.Printf("  ▶ 请输入 opt_id: ")
+			fmt.Printf("  ▶ 请输入 opt_id (输入 s 提交): ")
 		} else {
-			fmt.Printf("  ▶ 请输入 opt_id (选完输入 s 提交): ")
+			fmt.Printf("  ▶ 请输入 opt_id (选完输入 s 提交，回车采纳推荐): ")
 		}
 
 		input, _ := s.reader.ReadString('\n')
 		input = strings.TrimSpace(input)
 
+		// 空回车且无手动选择 → 采纳推荐答案自动提交
+		if input == "" && len(s.currentMultiSelections) == 0 {
+			if len(recOptIDs) > 0 {
+				s.currentMultiSelections = recOptIDs
+			}
+			s.submitMultiAnswer(qIndex, q, optPrefix)
+			break
+		}
+
 		if strings.ToLower(input) == "s" {
-			// 提交多选题答案
 			s.submitMultiAnswer(qIndex, q, optPrefix)
 			break
 		}
@@ -274,10 +299,33 @@ func (s *InteractiveSimulator) submitMultiAnswer(qIndex int, q SimQuestion, optP
 
 // handleTextInput 处理填空题用户输入
 func (s *InteractiveSimulator) handleTextInput(qIndex int, q SimQuestion) {
+	// 提取推荐文本（string 或 []interface{} 取第一项）
+	recText := ""
+	if q.RecommendedIndex != nil {
+		switch v := q.RecommendedIndex.(type) {
+		case string:
+			recText = v
+		case []interface{}:
+			if len(v) > 0 {
+				if str, ok := v[0].(string); ok {
+					recText = str
+				}
+			}
+		}
+	}
+
+	if recText != "" {
+		fmt.Printf("  推荐答案: %s\n", recText)
+	}
 	fmt.Printf("  ▶ 请输入答案: ")
 
 	input, _ := s.reader.ReadString('\n')
 	input = strings.TrimSpace(input)
+
+	// 空回车采纳推荐答案
+	if input == "" && recText != "" {
+		input = recText
+	}
 
 	if s.debugMode {
 		fmt.Printf("\n[调试] 提交到后端: { \"question_id\": \"q%d\", \"text\": \"%s\" }\n", qIndex+1, input)

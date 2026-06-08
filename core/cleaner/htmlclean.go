@@ -13,6 +13,8 @@ import (
 
 var (
 	reStyle       = regexp.MustCompile(`(?is)<style[^>]*>.*?</style>`)
+	reScript      = regexp.MustCompile(`(?is)<script[^>]*>.*?</script>`)
+	reNoscript    = regexp.MustCompile(`(?is)<noscript[^>]*>.*?</noscript>`)
 	reSvg         = regexp.MustCompile(`(?is)<svg[^>]*>.*?</svg>`)
 	reComment     = regexp.MustCompile(`(?s)<!--.*?-->`)
 	reOpenTag     = regexp.MustCompile(`<[a-zA-Z][^>]*>`) // 只匹配开标签（非 </ <!  <?）
@@ -54,7 +56,9 @@ var attrWhitelist = map[string]bool{
 // @param raw  原始 HTML 字符串
 // @returns    清洗后的紧凑 HTML
 func StripForDirectSurvey(raw string) string {
-	s := reStyle.ReplaceAllString(raw, "")
+	s := reScript.ReplaceAllString(raw, "")   // 先删 script（含大型 JSON runtime blob）
+	s = reNoscript.ReplaceAllString(s, "")
+	s = reStyle.ReplaceAllString(s, "")
 	s = reSvg.ReplaceAllString(s, "")
 	s = reComment.ReplaceAllString(s, "")
 	s = reOpenTag.ReplaceAllStringFunc(s, filterTagAttrs)

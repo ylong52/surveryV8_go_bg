@@ -84,9 +84,9 @@ type InteractionItem struct {
 
 // QuestionOption 单个选项（XPath 配置下发方案）
 type QuestionOption struct {
-	OptID int    `json:"opt_id"`                // 1, 2, 3...
-	Value string `json:"value,omitempty"`        // 表单值
-	XPath string `json:"xpath"`                 // "//input[@id='xxx']"
+	OptID int    `json:"opt_id"`         // 11, 12, 13...
+	Label string `json:"label,omitempty"` // 选项展示文本
+	XPath string `json:"xpath"`          // "//input[@id='xxx']"
 }
 
 // QuestionItem questions 数组的单个题目（XPath 配置下发方案）
@@ -200,25 +200,59 @@ func parseQuestionsTypeFromYaml(yamlData string) []string {
 }
 
 // ConvertAIQuestions 将 AI 返回的 questions（含真实 xpath）转换为 QuestionsOutput
-func ConvertAIQuestions(aiQuestions []AIQuestionsResponseItem) QuestionsOutput {
+//
+// AI 新格式：question_id 为整数（1,2,3...），opt_id 为 question_id*10+序号（11,12...）
+// 兜底逻辑：若 AI opt_id 不符合前缀规范，按位置重新赋值
+func ConvertAIQuestions(aiQuestions []AIQuestionsResponseItem, htmlQuestions QuestionsOutput) QuestionsOutput {
 	if len(aiQuestions) == 0 {
 		return nil
 	}
+
+	htmlQuestionMap := make(map[string]QuestionItem, len(htmlQuestions))
+	for _, q := range htmlQuestions {
+		htmlQuestionMap[q.QuestionID] = q
+	}
+
 	questions := make(QuestionsOutput, 0, len(aiQuestions))
-	for _, aq := range aiQuestions {
+	for i, aq := range aiQuestions {
+		// question_id 为整数，转为 q{n} 字符串；AI 返回 0 时按顺序兜底
+		qNum := aq.QuestionID
+		if qNum <= 0 {
+			qNum = i + 1
+		}
+		qID := "q" + strconv.Itoa(qNum)
+		optPrefix := simulator.GetOptIDPrefix(qID)
+		htmlQuestion := htmlQuestionMap[qID]
+
 		var options []QuestionOption
 		if len(aq.Options) > 0 {
 			options = make([]QuestionOption, 0, len(aq.Options))
-			for _, opt := range aq.Options {
+			for j, opt := range aq.Options {
+				optID := opt.OptID
+				// 兜底：AI 未按前缀规范返回时（如仍用 1,2,3...），按位置重算
+				if optID <= 0 || optID < optPrefix+1 || optID > optPrefix+99 {
+					optID = optPrefix + j + 1
+				}
+
+				label := opt.Label
+				if label == "" && j < len(htmlQuestion.Options) {
+					label = htmlQuestion.Options[j].Label
+				}
+
+				xpath := opt.XPath
+				if xpath == "" && j < len(htmlQuestion.Options) {
+					xpath = htmlQuestion.Options[j].XPath
+				}
+
 				options = append(options, QuestionOption{
-					OptID: opt.OptID,
-					Value: opt.Value,
-					XPath: opt.XPath,
+					OptID: optID,
+					Label: label,
+					XPath: xpath,
 				})
 			}
 		}
 		questions = append(questions, QuestionItem{
-			QuestionID:   aq.QuestionID,
+			QuestionID:   qID,
 			QuestionType: aq.QuestionType,
 			Options:      options,
 		})
@@ -253,7 +287,7 @@ func BuildQuestionsFromHTML(rawHTML string, interactions []Interaction) Question
 				optID := optPrefix + j + 1
 				options = append(options, QuestionOption{
 					OptID: optID,
-					Value: opt.Value,
+					Label: opt.Label,
 					XPath: opt.XPath,
 				})
 			}
